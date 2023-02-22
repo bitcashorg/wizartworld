@@ -3,22 +3,26 @@ import { Configuration, OpenAIApi } from "openai";
 import { clientEnv } from '../config/client/client-env.config';
 import { OpenAIContextActionProvider, OpenAIContextProvider, OpenAIContextStateProvider } from '~/types';
 import { promptCommand } from '~/lib/openai';
+import { openaiService } from '~/services/ai';
 
 const configuration = new Configuration({
   apiKey: clientEnv.services.openai,
 });
-const openai = new OpenAIApi(configuration);
+const openai = new OpenAIApi(configuration); 
 
-const defaultOpenAIState: OpenAIContextStateProvider = {
+const defaultOpenAIState: OpenAIContextProvider = {
   history: promptCommand(),
   prompt: '',
   error: null,
+  onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => {},
+  generateChatCompletion: async (e: React.FormEvent<HTMLFormElement>) => { },
+  initiateChat: async () => {},
 }
 
 export const OpenAIContext = React.createContext(defaultOpenAIState)
 
 function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Element {
-  const [{ history, prompt, error }, dispatch] = React.useReducer<React.Reducer<OpenAIContextStateProvider, OpenAIContextActionProvider>>(openAIReducer, defaultOpenAIState)
+  const [{ history, prompt, error }, dispatch] = React.useReducer<React.Reducer<OpenAIContextProvider, OpenAIContextActionProvider>>(openAIReducer, defaultOpenAIState)
 
   const onChangeInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
@@ -27,26 +31,29 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
     })
   }
 
-  const generateChatCompletion = async () => {
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: history + prompt,
-      temperature: 0.75,
-      max_tokens: 1037,
-      top_p: 1,
-      frequency_penalty: 1,
-      presence_penalty: 0,
-      stop: ["USER:"],
-      user: 'USER:'
-    });
+  const initiateChat = async () => {
+    const response = await openaiService.getTextCompletion({
+      prompt: promptCommand(),
+    })
 
-    console.log('response', response)
+    console.log('response from initiation of chatbot => ', response)
+  }
+
+  const generateChatCompletion = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const response = await openaiService.getTextCompletion({
+      prompt: history + prompt,
+    })
+
+    console.log('response from generation of chat completion => ', response)
   }
 
   const providerValue: OpenAIContextProvider = {
     history,
     prompt,
     error,
+    initiateChat,
     onChangeInput,
     generateChatCompletion,
   }
@@ -54,7 +61,7 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
   return <OpenAIContext.Provider value={providerValue}>{children}</OpenAIContext.Provider>
 }
 
-function openAIReducer(state: OpenAIContextStateProvider, action: OpenAIContextActionProvider): OpenAIContextStateProvider {
+function openAIReducer(state: OpenAIContextProvider, action: OpenAIContextActionProvider): OpenAIContextProvider {
   switch (action.type) {
     case 'change_input':
       return {
@@ -65,6 +72,11 @@ function openAIReducer(state: OpenAIContextStateProvider, action: OpenAIContextA
       return {
         ...state,
         error: action.payload,
+      }
+    case 'update_prompt':
+      return {
+        ...state,
+        history: promptCommand(action.payload as string)
       }
     case 'set_history':
       return {

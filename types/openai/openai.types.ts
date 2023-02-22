@@ -1,3 +1,1 @@
-export type PromptCommandPropsType = {
-  additionalDetails?: string
-}
+export type PromptCommandPropsType = string

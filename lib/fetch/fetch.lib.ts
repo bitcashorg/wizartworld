@@ -12,6 +12,7 @@ export async function fetchJson<JSON = unknown>(
   // https://developer.mozilla.org/en-US/docs/Web/API/Response/ok
   if (response.ok) return data
 
+  // ! FetchError it is not returning the error. TODO: An Error Handler Is Required
   throw new FetchError({
     message: response.statusText,
     response,

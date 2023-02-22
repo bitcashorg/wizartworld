@@ -5,11 +5,12 @@ export type OpenAIContextStateProvider = {
 }
 
 export type OpenAIContextActionProvider = {
-  type: 'change_input' | 'set_error' | 'set_history'
+  type: 'change_input' | 'set_error' | 'set_history' | 'update_prompt'
   payload: string | null
 }
 
 export interface OpenAIContextProvider extends OpenAIContextStateProvider {
+  initiateChat: () => Promise<void>
   onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void
-  generateChatCompletion: () => Promise<void>
+  generateChatCompletion: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
 }
