@@ -4,6 +4,8 @@ export const clientEnv = {
   debug: process.env.NODE_ENV !== 'production',
   services: {
     auth: process.env.NEXT_PUBLIC_SERVICE_AUTH || '',
+    replicate: process.env.NEXT_PUBLIC_REPLICATE_API_KEY || '',
+    openai: process.env.NEXT_PUBLIC_OPENAI_API_KEY || '',
   },
   analytics: {
     google: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || '',
@@ -18,7 +20,5 @@ export const clientEnv = {
     clientId: process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID || '',
     verifier: process.env.NEXT_PUBLIC_WEB3AUTH_APP_VERIFIER || '',
   },
-  features: {
-    someFeature: Boolean(process.env.NEXT_PUBLIC_FEATURE_WEBGL) || false,
-  },
+  features: {},
 }
