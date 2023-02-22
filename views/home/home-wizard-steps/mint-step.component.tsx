@@ -6,6 +6,7 @@ export function MintStep({ next, prev }: WizardStepProps) {
     <div className="bg-blue-500">
       <HomeWizardStepNav label="Mint" prev={prev} />
       I'm the Mint step <button onClick={next}>next</button>
+      <button onClick={next}>next</button>
     </div>
   )
 }
