@@ -1,21 +1,21 @@
 import { WizardStep } from '~/components/wizard'
-import { IntialStep } from './initial-step.component'
-import { LastStep } from './last-step.component'
-import { MIdStep } from './mid-step.component'
+import { CategoryStep } from './category-step.component'
+import { InspirationStep } from './inspiration-step.component'
+import { StyleStep } from './style-step.component'
 
-export * from './last-step.component'
+export * from './inspiration-step.component'
 
 export const homeWizardSteps: WizardStep[] = [
   {
-    name: 'initial',
-    component: IntialStep,
+    name: 'category',
+    component: CategoryStep,
   },
   {
-    name: 'initial',
-    component: MIdStep,
+    name: 'style',
+    component: StyleStep,
   },
   {
-    name: 'initial',
-    component: LastStep,
+    name: 'inspiration',
+    component: InspirationStep,
   },
 ]
