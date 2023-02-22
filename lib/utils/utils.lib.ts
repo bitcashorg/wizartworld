@@ -11,15 +11,6 @@ export const copyToClipboard = (text: string) => {
   textField.remove()
 }
 
-export const handleStyledTags = (text: string) => {
-  let newTextWithLinks = ''
-  newTextWithLinks = text.replace(/(^|\s)([#@][a-z\d-]+)/gi, (tag) => {
-    const account = tag.trim().substring(1)
-    return `<a href="/${account}" class="text-primary-purple text-sm md:text-2xl md:font-normal text-start">${tag}</a>`
-  })
-  return newTextWithLinks
-}
-
 export const capitalizeEachWord = (str: string) => {
   return str.replace(/\w\S*/g, function (txt: string) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
@@ -27,4 +18,8 @@ export const capitalizeEachWord = (str: string) => {
 }
 export const numberWithCommas = (x: number) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+export const simplifyURL = ({ url }: { url: string }) => {
+  return url.replace(/^https?:\/\//, '')
 }
