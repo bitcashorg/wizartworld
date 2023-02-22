@@ -4,19 +4,19 @@ export type PromptOptions = {
   prompt: string
 }
 
-type ProviderType = {
+type ReplicateContextType = {
   prediction: Prediction | null
   error: string | null
   fetchPrediction: (options: PromptOptions) => Promise<void>
 }
 
-const defaultReplicate: ProviderType = {
+const defaultReplicate: ReplicateContextType = {
   prediction: null,
   error: null,
   fetchPrediction: async () => {},
 }
 
-export const ReplicateContext = React.createContext(defaultReplicate)
+export const ReplicateContext = React.createContext<ReplicateContextType>(defaultReplicate)
 
 function ReplicateProvider({ children }: { children: React.ReactNode }): JSX.Element {
   const [prediction, setPrediction] = React.useState<Prediction | null>(null)
@@ -30,6 +30,10 @@ function ReplicateProvider({ children }: { children: React.ReactNode }): JSX.Ele
       },
       body: JSON.stringify({
         prompt: options.prompt,
+        guidance_scale: 10,
+        num_inference_steps: 200,
+        num_outputs: 1,
+        scheduler: 'PNDM',
       }),
     })
     let prediction = await response.json()
@@ -53,7 +57,7 @@ function ReplicateProvider({ children }: { children: React.ReactNode }): JSX.Ele
     }
   }
 
-  const providerValue: ProviderType = {
+  const providerValue: ReplicateContextType = {
     prediction,
     error,
     fetchPrediction,
@@ -71,9 +75,6 @@ function useReplicateContext() {
 }
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
-
-export { ReplicateProvider, useReplicateContext }
-
 export interface Prediction {
   completed_at: string
   created_at: string
@@ -102,3 +103,5 @@ export interface Urls {
   get: string
   cancel: string
 }
+
+export { ReplicateProvider, useReplicateContext }

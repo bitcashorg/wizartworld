@@ -1,5 +1,5 @@
-import { Main } from '~/layouts/components/main'
-import { Header } from '~/layouts/components/header'
+import { Header } from '../components/header'
+import { Main } from '../components/main'
 
 export function RootLayout({ children }: { children: React.ReactNode }) {
   return (
