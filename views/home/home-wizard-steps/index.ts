@@ -1,5 +1,6 @@
 import { WizardStep } from '~/components/wizard'
 import { CategoryStep } from './category-step.component'
+import { ChatStep } from './chat-step.component'
 import { InspirationStep } from './inspiration-step.component'
 import { StyleStep } from './style-step.component'
 
@@ -17,5 +18,9 @@ export const homeWizardSteps: WizardStep[] = [
   {
     name: 'inspiration',
     component: InspirationStep,
+  },
+  {
+    name: 'chat',
+    component: ChatStep,
   },
 ]
