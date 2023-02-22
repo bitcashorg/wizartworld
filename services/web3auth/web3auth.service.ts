@@ -1,6 +1,6 @@
 import { ADAPTER_EVENTS, WALLET_ADAPTERS } from '@web3auth/base'
 import { logger } from '~/lib/logger/logger.lib'
-import { clientEnv } from '~/config/client/client-env.config'
+import { clientEnv } from '~/config/client/client.config'
 import { chainConfig } from '~/config/chain/chain.config'
 import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
 import { Web3AuthCore } from '@web3auth/core'

@@ -5,33 +5,39 @@
 @tailwind utilities;
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter';
-  }
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter';
+}
 
-  button,
-  input,
-  textarea {
-    font-family: 'Inter';
-  }
+button,
+input,
+textarea {
+  font-family: 'Inter';
+}
 
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
 
-  input:focus,
-  select:focus,
-  textarea:focus,
-  button:focus {
-    outline: none;
-  }
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
 
-  pre {
-    overflow-y: auto;
-  }
+pre {
+  overflow-y: auto;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important ;
+}
