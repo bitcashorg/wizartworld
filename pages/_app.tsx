@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app'
 
 import { GlobalLayout } from '~/layouts/global'
 import { GlobalContextProvider } from '~/context/global.context'
-import { ReplicateProvider } from '~/context/replicate.provider'
+import { ReplicateProvider } from '~/context/replicate.context'
 
 export default function MyApp({ Component, pageProps }: AppProps<any>) {
   return (

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/replicate.module.css'
-import { useReplicateContext } from '~/context/replicate.provider'
+import { useReplicateContext } from '~/context/replicate.context'
 
 export default function Replicate() {
   const replicate = useReplicateContext()
