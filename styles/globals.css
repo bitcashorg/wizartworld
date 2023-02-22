@@ -4,6 +4,8 @@
 @tailwind variants;
 
 body {
+  @apply font-urbanist;
+
   margin: 0;
   padding: 0;
 }

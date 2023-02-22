@@ -17,7 +17,6 @@ export default function MyApp({ Component, pageProps }: AppProps<any>) {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           {/* importing public css assets */}
           <link rel="stylesheet" href="/assets/css/icons.min.css" />
-          <link rel="stylesheet" href="/assets/css/tailwind.min.css" />
         </Head>
         <RootLayout>
           <OpenAIProvider>
