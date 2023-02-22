@@ -2,6 +2,7 @@ import React from 'react'
 import { OpenAIContextActionProvider, OpenAIContextProvider, OpenAIContextStateProvider, OpenAIWizartChatType } from '~/types';
 import { promptCommand } from '~/lib/openai';
 import { openaiService } from '~/services/ai';
+import { logger } from '~/lib/logger';
 
 const defaultOpenAIState: OpenAIContextProvider = {
   history: promptCommand(),
@@ -33,21 +34,28 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
 
     initiated = true
 
-    const { result } = await openaiService.getTextCompletion({
-      prompt: promptCommand(),
-    })
+    try {
+      const { result } = await openaiService.getTextCompletion({
+        // ? TODO: Ready to receive additional details from the inspiration selection page
+        prompt: promptCommand(),
+      })
 
-    dispatch({
-      type: 'update_chat',
-      payload: {
-        from: 'wizart',
-        message: result
-      }
-    })
-    dispatch({
-      type: 'update_history',
-      payload: result,
-    })
+      dispatch({
+        type: 'update_chat',
+        payload: {
+          from: 'wizart',
+          message: result
+        }
+      })
+      dispatch({
+        type: 'set_history',
+        // * Making sure that the AI will have his identity on all results. If by chance has it, we replace it to not confuse the AI
+        payload: result,
+      })
+    } catch (error) {
+      logger.error('[ERROR] initiateChat ===>', error)
+      throw new Error((error as Error).message)
+    }
   }
 
   const updateChat = (payload: OpenAIWizartChatType) => dispatch({
@@ -58,21 +66,29 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
   const generateChatCompletion = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const { result } = await openaiService.getTextCompletion({
-      prompt: history + '\n' + prompt,
-    })
+    try {
+      const { result } = await openaiService.getTextCompletion({
+        prompt: history + '\n\n' + prompt,
+      })
 
-    dispatch({
-      type: 'update_chat',
-      payload: {
+      updateChat({
         from: 'wizart',
         message: result
-      }
-    })
-    dispatch({
-      type: 'update_history',
-      payload: prompt,
-    })
+      })
+      dispatch({
+        type: 'set_history',
+        payload: result + '\n\n' + prompt,
+      })
+    } catch (error) {
+      logger.error('[ERROR] generateChatCompletion ===>', error)
+      throw new Error((error as Error).message)
+    } finally {
+      dispatch({
+        type: 'change_input',
+        payload: '',
+      })
+    }
+
   }
 
   const providerValue: OpenAIContextProvider = {

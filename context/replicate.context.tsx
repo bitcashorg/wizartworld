@@ -30,6 +30,10 @@ function ReplicateProvider({ children }: { children: React.ReactNode }): JSX.Ele
       },
       body: JSON.stringify({
         prompt: options.prompt,
+        guidance_scale: 10,
+        num_inference_steps: 200,
+        num_outputs: 1,
+        scheduler: 'PNDM',
       }),
     })
     let prediction = await response.json()

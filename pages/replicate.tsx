@@ -4,6 +4,15 @@ import styles from '../styles/replicate.module.css'
 import { useReplicateContext } from '~/context/replicate.context'
 import { useOpenAI } from '~/context/openai.context'
 import React from 'react'
+import { wizartDescriptionHeader } from '~/lib/openai'
+import clsx from 'clsx'
+import { OpenAIWizartChatType } from '~/types'
+
+// ? Can be other colors
+const chatCardClass = (item: OpenAIWizartChatType) => clsx(
+  'flex gap-3',
+  item.from === 'wizart' ? 'bg-slate-300' : 'bg-slate-100'
+)
 
 export default function Replicate() {
   const replicate = useReplicateContext()
@@ -13,6 +22,20 @@ export default function Replicate() {
   React.useEffect(() => {
     initiateChat()
   }, [])
+
+  // Verifying if wizartChat has a message from wizart with a specific regex pattern on a React.useEffect to execute a function
+  React.useEffect(() => {
+    const wizartMessage = wizartChat.find((item) => item.from === 'wizart' && item.message.includes(wizartDescriptionHeader))
+
+    if (wizartMessage) {
+      const message = wizartMessage.message
+      const timeout = setTimeout(() => {
+        replicate.fetchPrediction({ prompt: message.substring(message.indexOf('"'), message.lastIndexOf("")).replace(/"/g, '') })
+
+        clearTimeout(timeout)
+      }, 6000)
+    }
+  }, [wizartChat])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -32,7 +55,7 @@ export default function Replicate() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Replicate + Next.js</title>
+        <title>GPT3 + Replicate + Next.js</title>
       </Head>
 
 
@@ -40,8 +63,8 @@ export default function Replicate() {
 
       <div className="p-4 w-100 flex gap-6 flex-col">
         {wizartChat.map((item, index) => (
-          <div key={`${item.from}__${index}`} className="flex gap-3 bg-slate-100">
-            {item.message}
+          <div key={`${item.from}__${index}`} className={chatCardClass(item)}>
+            {item.message.split(item.from === 'wizart' ? 'Wizart:' : 'USER:')[1]}
           </div>
         ))}
 
@@ -50,13 +73,6 @@ export default function Replicate() {
           <button type="submit">Send</button>
         </form>
       </div>
-
-      <p>Prompt something:</p>
-
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <input type="text" name="prompt" placeholder="Enter a prompt to display an image" />
-        <button type="submit">Go!</button>
-      </form>
 
       {error && <div>{error}</div>}
 
