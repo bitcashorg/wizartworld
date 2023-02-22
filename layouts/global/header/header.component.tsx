@@ -6,9 +6,10 @@ import XcloseIcon from '~/icons/XcloseIcon'
 import Image from 'next/image'
 import { Sidebar } from '../sidebar'
 import { SearchBar } from '../search-bar'
+import { Auth } from './auth.component'
 
 export function Header() {
-  const defaultImage = '/images/user.png'
+  // const defaultImage = '/images/user.png'
 
   return (
     <div className="pt-1 bg-white h-30 sm:border-b sm:border-gray-400 sm:border-opacity-25 lg:pr-7">
@@ -17,13 +18,15 @@ export function Header() {
           <>
             <div className="flex h-24 max-w-full sm:px-2 lg:px-3">
               <div className="flex items-center justify-between w-full px-1 mt-0">
-                <div className="items-center justify-between px-0 lg:px-4">
+                {/* TODO: uncomment */}
+                {/* <div className="items-center justify-between px-0 lg:px-4">
                   <div className="flex space-x-2 md:hidden">
                     <BlockmaticIcon />
                     <Blockmatic />
                   </div>
                   <SearchBar />
-                </div>
+                </div> */}
+                <div className="flex items-center justify-between px-0 lg:px-4"></div>
                 <div className="flex md:hidden">
                   <Disclosure.Button className="inline-flex items-center justify-center p-2 text-indigo-200 rounded-md hover:bg-white hover:bg-opacity-75 hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-200">
                     <span className="sr-only">Open main menu</span>
@@ -32,15 +35,16 @@ export function Header() {
                 </div>
                 <div className="hidden lg:ml-4 md:block md:mr-4">
                   <div className="flex">
-                    <button
+                    {/* <button
                       type="button"
                       className="flex-shrink-0 p-2 rounded-full focus:outline-none focus:ring-1 focus:ring-gray-100 focus:ring-offset-2"
                     >
                       <span className="sr-only">View notifications</span>
                       <BellIcon />
-                    </button>
+                    </button> */}
                     {/* Profile dropdown */}
-                    <Menu as="div" className="relative flex-shrink-0 ml-3h-11">
+                    {/* TODO: uncomment */}
+                    {/* <Menu as="div" className="relative flex-shrink-0 ml-3h-11">
                       <div className="flex items-center justify-between border border-gray-100 rounded-full w-44 h-11">
                         <Menu.Button className="grid grid-cols-3 p-1 mt-2 mb-2">
                           <span className="sr-only">Open user menu</span>
@@ -90,7 +94,8 @@ export function Header() {
                           ))}
                         </Menu.Items>
                       </Transition>
-                    </Menu>
+                    </Menu> */}
+                    <Auth />
                   </div>
                 </div>
               </div>

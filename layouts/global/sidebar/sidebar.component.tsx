@@ -1,7 +1,6 @@
 import { SidebarLink } from './sidebar-link.component'
 import { Blockmatic, BlockmaticIcon } from '~/icons'
 
-
 const sidebarLinks = [
   {
     text: 'Account',
@@ -24,12 +23,13 @@ const sidebarLinks = [
 export function Sidebar() {
   return (
     <div>
-      <div className="flex mx-3 my-8">
+      {/* <div className="flex mx-3 my-8">
         <div className="mr-2">
           <BlockmaticIcon />
         </div>
         <Blockmatic />
-      </div>
+      </div> */}
+      <div className="flex mx-3 my-16"></div>
       <nav>
         <ol>
           {sidebarLinks.map((props, idx) => (
