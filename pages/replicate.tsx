@@ -8,11 +8,10 @@ import React from 'react'
 export default function Replicate() {
   const replicate = useReplicateContext()
   const { error, prediction } = replicate
-  const { history, prompt, error: openAIError, onChangeInput, generateChatCompletion, initiateChat } = useOpenAI()
+  const { history, prompt, error: openAIError, wizartChat, onChangeInput, updateChat, generateChatCompletion, initiateChat } = useOpenAI()
 
   React.useEffect(() => {
     initiateChat()
-    console.log('initiated?')
   }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -20,6 +19,14 @@ export default function Replicate() {
     const formData = new FormData(e.currentTarget)
     const prompt = formData.get('prompt') as string
     replicate.fetchPrediction({ prompt })
+  }
+
+  const sendPromptToWizart = async (e: React.FormEvent<HTMLFormElement>) => {
+    updateChat({
+      from: 'user',
+      message: prompt
+    })
+    generateChatCompletion(e)
   }
 
   return (
@@ -32,14 +39,14 @@ export default function Replicate() {
       <h2>Wizart ChatBot</h2>
 
       <div className="p-4 w-100 flex gap-6 flex-col">
-        {history.split('USER:').map((item, index) => (
-          <div key={index} className="flex gap-3 bg-slate-100">
-            {item}
+        {wizartChat.map((item, index) => (
+          <div key={`${item.from}__${index}`} className="flex gap-3 bg-slate-100">
+            {item.message}
           </div>
         ))}
 
-        <form className={styles.form} onSubmit={generateChatCompletion}>
-          <input type="text" name="chatbot-wizart" placeholder="Enter a prompt to chat with Wizart" />
+        <form className={styles.form} onSubmit={sendPromptToWizart}>
+          <input type="text" name="chatbot-wizart" onChange={onChangeInput} placeholder="Enter a prompt to chat with Wizart" />
           <button type="submit">Send</button>
         </form>
       </div>

@@ -19,19 +19,22 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     return;
   }
 
+  const body = JSON.parse(req.body)
+  console.log('body', body)
+
   try {
     const completion = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: JSON.parse(req.body).prompt || promptCommand(),
+      model: 'text-davinci-003',
+      prompt: body.prompt || promptCommand(),
       temperature: 0.75,
       max_tokens: 1037,
       top_p: 1,
       frequency_penalty: 1,
       presence_penalty: 0,
-      stop: ["USER:"],
+      stop: ['USER:'],
       user: 'USER:'
     });
-    console.log('response completion => ', completion)
+
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
