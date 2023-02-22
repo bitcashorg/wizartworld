@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: [
     './layouts/**/*.{js,ts,jsx,tsx}',
@@ -8,9 +10,11 @@ module.exports = {
     '/ui/_legacy/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors
+    },
     fontFamily: {
-      inter: ['Inter'],
+      inter: ['Urbanist'],
     },
   },
   plugins: [require('@tailwindcss/forms')],

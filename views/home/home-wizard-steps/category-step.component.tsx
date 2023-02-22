@@ -3,7 +3,7 @@ import { HomeWizardStepNav } from '~/views/home/home-wizard-header/home-header-n
 
 export function CategoryStep({ next, prev }: WizardStepProps) {
   return (
-    <div className="flex-1 text-red-900 bg-white">
+    <div className="flex-1 text-red-500">
       <HomeWizardStepNav label="Category" prev={prev} />
       I'm the category step{' '}
       <button className="text-color-black text-bold" onClick={next}>

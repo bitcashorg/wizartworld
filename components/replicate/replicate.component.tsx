@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import styles from './replicate.module.css'
 import { useReplicateContext } from '~/context/replicate.context'
 import { useOpenAI } from '~/context/openai.context'
 import React from 'react'
@@ -7,6 +6,8 @@ import { wizartDescriptionHeader } from '~/lib/openai'
 import clsx from 'clsx'
 import { OpenAIWizartChatType } from '~/types'
 import { useEffectOnce } from 'react-use'
+
+'./replicate.module.css'
 
 // ? Can be other colors
 const chatCardClass = (item: OpenAIWizartChatType) =>
@@ -50,14 +51,6 @@ export function Replicate() {
     }
   }, [wizartChat, replicate])
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const prompt = formData.get('prompt') as string
-
-    replicate.fetchPrediction({ prompt })
-  }
-
   const sendPromptToWizart = async (e: React.FormEvent<HTMLFormElement>) => {
     updateChat({
       from: 'user',
@@ -67,7 +60,7 @@ export function Replicate() {
   }
 
   return (
-    <div className={styles.container}>
+    <div className="container">
       <div className="flex flex-col gap-6 p-4 w-100">
         {wizartChat.map((item, index) => (
           <div key={`${item.from}__${index}`} className={chatCardClass(item)}>
@@ -75,7 +68,7 @@ export function Replicate() {
           </div>
         ))}
 
-        <form className={styles.form} onSubmit={sendPromptToWizart}>
+        <form className="form" onSubmit={sendPromptToWizart}>
           <div className="flex">
             <div className="relative z-50 flex items-center justify-center max-w-screen-sm mx-auto ">
               <div className="w-full p-1 rounded-md md:min-w-[500px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
@@ -105,7 +98,7 @@ export function Replicate() {
         <div>
           <p>status: {prediction.status}</p>
           {prediction.output && (
-            <div className={styles.imageWrapper}>
+            <div className="imageWrapper">
               <Image
                 src={prediction.output[prediction.output.length - 1]}
                 alt="output"
