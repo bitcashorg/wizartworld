@@ -2,24 +2,28 @@ import '~/styles/globals.css'
 import '../flow/config'
 import type { AppProps } from 'next/app'
 
-import { GlobalLayout } from '~/layouts/global'
+import { RootLayout } from '~/layouts/root'
 import { GlobalContextProvider } from '~/context/global.context'
-import { ReplicateProvider } from '~/context/replicate.provider'
-import TransactionProvider from '~/context/transaction.context'
-import { AuthProvider } from '~/context/auth.provider'
+import { ReplicateProvider } from '~/context/replicate.context'
+import { OpenAIProvider } from '~/context/openai.context'
+import Head from 'next/head'
+import { AuthProvider } from '~/context/auth.context'
 
 export default function MyApp({ Component, pageProps }: AppProps<any>) {
   return (
-    <GlobalContextProvider>
-      <TransactionProvider>
-        <AuthProvider>
-          <GlobalLayout>
+    <AuthProvider>
+      <GlobalContextProvider>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        </Head>
+        <RootLayout>
+          <OpenAIProvider>
             <ReplicateProvider>
               <Component {...pageProps} />
             </ReplicateProvider>
-          </GlobalLayout>
-        </AuthProvider>
-      </TransactionProvider>
-    </GlobalContextProvider>
+          </OpenAIProvider>
+        </RootLayout>
+      </GlobalContextProvider>
+    </AuthProvider>
   )
 }
