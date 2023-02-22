@@ -1,5 +1,6 @@
 import * as fcl from '@onflow/fcl'
-import { createContext, useCallback, useContext, useEffect, useState } from 'react'
+import React from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useTransaction } from './transaction.context'
 
 export type User = { loggedIn: false; addr: string | undefined }
@@ -28,22 +29,21 @@ export type AuthContextType = {
 const defaultUser: User = { loggedIn: false, addr: undefined }
 export const defaultProfile: Profile = { name: '', color: '', info: '' }
 
-// TODO: fix types because onflow doesn't have types
-export const AuthContext = createContext<AuthContextType>({
+const defaultAuthContext: AuthContextType = {
   currentUser: defaultUser,
   userProfile: null,
   profileExists: false,
   logOut: () => {},
-  logIn: () => {},
+  logIn: () => {
+    console.log('default login')
+  },
   signUp: () => {},
   loadProfile: async () => null,
   createProfile: () => {},
   updateProfile: (profile: Profile) => {},
-})
+}
 
-export const useAuth = () => useContext(AuthContext)
-
-export default function AuthProvider({ children }: { children: React.ReactNode }) {
+function AuthProvider({ children }: { children: React.ReactNode }): JSX.Element {
   const { initTransactionState, setTxId, setTransactionStatus } = useTransaction()
   const [currentUser, setUser] = useState<User>(defaultUser)
   const [userProfile, setProfile] = useState<UserProfile>(null)
@@ -158,7 +158,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     })
   }
 
-  const value: AuthContextType = {
+  const providerValue = {
     currentUser,
     userProfile,
     profileExists,
@@ -170,7 +170,18 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     updateProfile,
   }
 
-  console.log('AuthProvider', value)
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={providerValue}>{children}</AuthContext.Provider>
 }
+
+// TODO: fix types because onflow doesn't have types
+export const AuthContext = React.createContext<AuthContextType>(defaultAuthContext)
+
+function useAuthContext() {
+  const auth = React.useContext(AuthContext)
+  if (!auth) {
+    throw new Error('useAuthContext must be used within AuthProvider')
+  }
+  return auth
+}
+
+export { AuthProvider, useAuthContext }

@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { defaultProfile, useAuth } from '~/context/auth.context'
+import { defaultProfile, useAuthContext } from '~/context/auth.provider'
 
 export const Profile = () => {
-  const { userProfile, updateProfile } = useAuth()
+  const { userProfile, updateProfile } = useAuthContext()
   const [editedProfile, setProfile] = useState({ ...userProfile, ...defaultProfile })
 
   const saveProfile = () => {

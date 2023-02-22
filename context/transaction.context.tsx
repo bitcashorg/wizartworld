@@ -21,14 +21,16 @@ export type TransactionContextType = {
   setTransactionStatus: (transactionStatus: number) => void
 }
 
-export const TransactionContext = createContext<TransactionContextType>({
+const defaultTransactionContext = {
   transactionInProgress: false,
   transactionStatus: 0,
   txId: '',
   initTransactionState: () => {},
   setTxId: (txId: string) => {},
   setTransactionStatus: (transactionStatus: number) => {},
-})
+}
+
+export const TransactionContext = createContext<TransactionContextType>(defaultTransactionContext)
 
 export const useTransaction = () => useContext(TransactionContext)
 
