@@ -9,15 +9,22 @@ import { OpenAIWizartChatType } from '~/types'
 import { useEffectOnce } from 'react-use'
 
 // ? Can be other colors
-const chatCardClass = (item: OpenAIWizartChatType) => clsx(
-  'flex gap-3',
-  item.from === 'wizart' ? 'bg-slate-800' : 'bg-slate-600'
-)
+const chatCardClass = (item: OpenAIWizartChatType) =>
+  clsx('flex gap-3', item.from === 'wizart' ? 'bg-slate-800' : 'bg-slate-600')
 
 export function Replicate() {
   const replicate = useReplicateContext()
   const { error, prediction } = replicate
-  const { history, prompt, error: openAIError, wizartChat, onChangeInput, updateChat, generateChatCompletion, initiateChat } = useOpenAI()
+  const {
+    history,
+    prompt,
+    error: openAIError,
+    wizartChat,
+    onChangeInput,
+    updateChat,
+    generateChatCompletion,
+    initiateChat,
+  } = useOpenAI()
 
   useEffectOnce(() => {
     initiateChat()
@@ -25,17 +32,23 @@ export function Replicate() {
 
   // Verifying if wizartChat has a message from wizart with a specific regex pattern on a React.useEffect to execute a function
   React.useEffect(() => {
-    const wizartMessage = wizartChat.find((item) => item.from === 'wizart' && item.message.includes(wizartDescriptionHeader))
+    const wizartMessage = wizartChat.find(
+      (item) => item.from === 'wizart' && item.message.includes(wizartDescriptionHeader),
+    )
 
     if (wizartMessage) {
       const message = wizartMessage.message
       const timeout = setTimeout(() => {
-        replicate.fetchPrediction({ prompt: message.substring(message.indexOf('"'), message.lastIndexOf("")).replace(/"/g, '') })
+        replicate.fetchPrediction({
+          prompt: message
+            .substring(message.indexOf('"'), message.lastIndexOf(''))
+            .replace(/"/g, ''),
+        })
 
         clearTimeout(timeout)
       }, 6000)
     }
-  }, [wizartChat])
+  }, [wizartChat, replicate])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -48,14 +61,14 @@ export function Replicate() {
   const sendPromptToWizart = async (e: React.FormEvent<HTMLFormElement>) => {
     updateChat({
       from: 'user',
-      message: prompt
+      message: prompt,
     })
     generateChatCompletion(e)
   }
 
   return (
     <div className={styles.container}>
-      <div className="p-4 w-100 flex gap-6 flex-col">
+      <div className="flex flex-col gap-6 p-4 w-100">
         {wizartChat.map((item, index) => (
           <div key={`${item.from}__${index}`} className={chatCardClass(item)}>
             {item.message.split(item.from === 'wizart' ? 'Wizart:' : 'USER:')[1]}
@@ -80,7 +93,7 @@ export function Replicate() {
             <button
               type="submit"
               className="ml-3 font-bold bg-gradient-to-r from-violet-600 to-red-600"
-              >
+            >
               Go!
             </button>
           </div>
