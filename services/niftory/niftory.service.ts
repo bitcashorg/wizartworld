@@ -1,6 +1,8 @@
 import { BaseClient, Issuer, TokenSet, custom } from 'openid-client'
 
+import { chainConfig } from '~/config/chain'
 import { clientEnv } from '~/config/client'
+import { serverEnv } from '~/config/server'
 
 let client: BaseClient
 let token: TokenSet
@@ -9,10 +11,10 @@ custom.setHttpOptionsDefaults({ timeout: 30000 })
 
 async function getOAuthClient() {
   if (!client) {
-    const issuer = await Issuer.discover(clientEnv.niftory.authIssuer)
+    const issuer = await Issuer.discover(chainConfig.flowTestnet.niftoryAuth)
     client = new issuer.Client({
       client_id: clientEnv.niftory.clientId,
-      client_secret: clientEnv.niftory.clientSecret,
+      client_secret: serverEnv.niftorySecret,
     })
   }
 

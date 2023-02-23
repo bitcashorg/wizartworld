@@ -1,18 +1,23 @@
 import { Provider } from 'next-auth/providers'
 
+import { chainConfig } from '~/config/chain'
+import { clientEnv } from '~/config/client'
+import { serverEnv } from '~/config/server'
+
+console.log(clientEnv.niftory, serverEnv.niftorySecret)
+
 export const niftoryAuthProvider: Provider = {
   id: 'niftory',
   name: 'Niftory',
   type: 'oauth',
   wellKnown: `
-    ${process.env.NIFTORY_AUTH_ISSUER}/.well-known/openid-configuration`,
+    ${chainConfig.flowTestnet.niftoryAuth}/.well-known/openid-configuration`,
   // We request offline_access and consent prompt because we need to get a refresh token
   authorization: {
     params: { scope: 'openid email profile offline_access', prompt: 'consent' },
   },
-
-  clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
+  clientId: clientEnv.niftory.clientId,
+  // clientSecret: serverEnv.niftorySecret,
   checks: ['pkce', 'state'],
   idToken: true,
   profile(profile) {

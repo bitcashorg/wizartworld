@@ -20,8 +20,6 @@ export const clientEnv = {
   },
   niftory: {
     clientId: process.env.NEXT_PUBLIC_CLIENT_ID || '',
-    clientSecret: process.env.CLIENT_SECRET || '',
-    authIssuer: process.env.NIFTORY_AUTH_ISSUER || '',
   },
   features: {},
 }

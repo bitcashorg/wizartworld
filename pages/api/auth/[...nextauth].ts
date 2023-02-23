@@ -1,10 +1,9 @@
 import NextAuth from 'next-auth'
+import { NextAuthOptions } from 'next-auth'
 
 import { niftoryAuthProvider } from './niftory-auth.provider'
 
-// For more information on each option (and a full list of options) go to
-// https://next-auth.js.org/configuration/options
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
   // https://next-auth.js.org/configuration/providers/oauth
   providers: [niftoryAuthProvider],
   theme: {
@@ -26,4 +25,8 @@ export default NextAuth({
       return session
     },
   },
-})
+}
+
+// For more information on each option (and a full list of options) go to
+// https://next-auth.js.org/configuration/options
+export default NextAuth(authOptions)
