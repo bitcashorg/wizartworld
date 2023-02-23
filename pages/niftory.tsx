@@ -1,4 +1,4 @@
-import { NiftoryAuth } from '~/layouts/components/header/niftory-auth.component'
+import { NiftoryAuth } from '~/views/niftory/niftory-auth.component'
 
 export default function Home() {
   return (

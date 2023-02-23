@@ -1,11 +1,13 @@
-import { WizardStepProps } from '~/components/wizard'
-import { HomeWizardStepNav } from '~/views/home/home-wizard-header/home-header-nav.component'
-import { HomeWizardPageTransition } from '../home-wizard/home-wizard-page-transition.component'
-import { useForm } from 'react-hook-form'
 import clsx from 'clsx'
 import React from 'react'
+import { useForm } from 'react-hook-form'
+
+import { WizardStepProps } from '~/components/wizard'
 import { useOpenAI } from '~/context/openai.context'
-  
+import { HomeWizardStepNav } from '~/views/home/home-wizard-header/home-header-nav.component'
+
+import { HomeWizardPageTransition } from '../home-wizard/home-wizard-page-transition.component'
+
 export const categories = [
   { label: 'Cinema', value: 'cinema' },
   { label: 'Video Games', value: 'video_games' },
@@ -21,10 +23,10 @@ export function CategoryStep({ next, prev }: WizardStepProps) {
   const { setArtCategory } = useOpenAI()
   const categoryField = register('category', {
     required: true,
-  }) 
+  })
   const categoryValue = watch('category')
 
-  const updateArtCategory = (e: React.ChangeEvent<HTMLInputElement>) => { 
+  const updateArtCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
     categoryField.onChange(e)
     setArtCategory(e.target.value)
 
@@ -48,7 +50,7 @@ export function CategoryStep({ next, prev }: WizardStepProps) {
               className={clsx(
                 'wizard-step-card',
                 category.value === categoryValue ? 'wizard-step-card--selected' : '',
-                index === (categories.length - 1) ? 'wizard-step-card--full' : '',
+                index === categories.length - 1 ? 'wizard-step-card--full' : '',
               )}
             >
               <label htmlFor={category.value}>

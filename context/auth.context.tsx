@@ -1,6 +1,8 @@
-import * as fcl from '@onflow/fcl'
 import React from 'react'
 import { useCallback, useEffect, useState } from 'react'
+
+import * as fcl from '@onflow/fcl'
+
 import { useTransaction } from './transaction.context'
 
 export type User = { loggedIn: false; addr: string | undefined }

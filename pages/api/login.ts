@@ -1,11 +1,12 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { withIronSessionApiRoute } from 'iron-session/next'
-import { serverEnv } from '~/config/server'
 import jwtDecode from 'jwt-decode'
-import type { CreateSessionParams, LoginMethod, LoginResponse } from '~/services/auth'
+import type { NextApiRequest, NextApiResponse } from 'next'
+
 import { clientEnv } from '~/config/client'
+import { serverEnv } from '~/config/server'
 import { fetchJson } from '~/lib/fetch'
 import { logger } from '~/lib/logger'
+import type { CreateSessionParams, LoginMethod, LoginResponse } from '~/services/auth'
 
 const getLoginPath = (auth_method: LoginMethod) => {
   switch (auth_method) {

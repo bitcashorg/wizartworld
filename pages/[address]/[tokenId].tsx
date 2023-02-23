@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
+
 import { serverResponse } from '~/lib/ssr'
 import { getNft } from '~/services/market'
 
