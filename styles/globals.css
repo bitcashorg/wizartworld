@@ -65,6 +65,9 @@ select:focus {
   
   border-radius: 6px;
 }
+.asset-image-wrapper--preview {
+  @apply block h-full;
+}
 .asset-image-wrapper img {
   @apply w-full h-[285px] duration-700 ease-in-out object-cover
 }

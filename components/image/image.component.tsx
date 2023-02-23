@@ -3,11 +3,11 @@ import Image from "next/image";
 import React from "react";
 import { ImageAssetProps } from "./image-component.type";
 
-export function ImageAsset({ src, alt }: ImageAssetProps) {
+export function ImageAsset({ src, alt, preview }: ImageAssetProps) {
   const [loading, setLoading] = React.useState(true)
 
   return (
-    <picture className="asset-image-wrapper">
+    <picture className={clsx('asset-image-wrapper', preview ? 'asset-image-wrapper--preview' : '')}>
       <Image
         src={src}
         alt={alt || ''}
