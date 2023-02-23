@@ -1,5 +1,6 @@
 import { ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import t from 'cntl'
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
@@ -11,3 +12,5 @@ export const handleStyledTags = (text: string) => {
   })
   return newTextWithLinks
 }
+
+export { t }
