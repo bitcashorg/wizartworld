@@ -9,5 +9,6 @@ export async function getMaketplaceData() {
 }
 
 export async function getNft({ address, tokenId }: GetNftParams) {
+  // call flow apis
   return {}
 }

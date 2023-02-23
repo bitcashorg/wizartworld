@@ -1,10 +1,10 @@
 import React from 'react'
-import { Auth } from '~/layouts/components/header/auth.component'
+import { Auth } from './auth.component'
 
 export function Header() {
   return (
-    <div className="flex justify-end pt-1 h-30 sm:border-b sm:border-gray-400 sm:border-opacity-25 lg:pr-7">
+    <header className="p-2 bg-indigo-200">
       <Auth />
-    </div>
+    </header>
   )
 }
