@@ -6,7 +6,7 @@
 
 }
 .wizard-step__content-wrapper--chat{
-  @apply max-h-[calc(740px-5rem-2.5rem)];
+  @apply min-h-[calc(93vh-194px-1.5rem)] h-full max-h-[calc(93vh-194px-1.5rem)];
 }
 
 .wizard-step-card {

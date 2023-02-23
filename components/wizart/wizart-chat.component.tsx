@@ -6,21 +6,21 @@ import { SendPromptIcon } from '~/components/icons'
 import { useOpenAI } from '~/context/openai.context'
 import { useReplicateContext } from '~/context/replicate.context'
 import { wizartDescriptionHeader } from '~/lib/openai'
-import { OpenAIWizartChatType } from '~/types'
 
 import { OpenAIWizartChatProps } from './wizart-chat.types'
 
+let replicateAssetRequested = false
+
 // ? Can be other colors
-const chatCardClass = (item: OpenAIWizartChatType) =>
-  clsx('flex gap-3', item.from === 'wizart' ? 'wizart-chat-globe-bg' : 'wizart-user-globe-bg')
+const chatCardClass = (item: string) =>
+  clsx('flex gap-3 relative', item === 'wizart' ? 'wizart-chat-globe-bg' : 'wizart-user-globe-bg')
 
 export function WizartChat({ next }: OpenAIWizartChatProps) {
   const replicate = useReplicateContext()
-  const { error, prediction } = replicate
+  const [loading, setLoading] = React.useState(true)
+  const { prediction } = replicate
   const {
-    history,
     prompt,
-    error: openAIError,
     wizartChat,
     onChangeInput,
     updateChat,
@@ -28,25 +28,44 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
     initiateChat,
   } = useOpenAI()
 
+  const initializeWizart = async () => {
+    if (prediction) {
+      setLoading(false)
+
+      return
+    }
+
+    try {
+      const { initiated } = await initiateChat()
+
+       if (initiated) setLoading(false)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   useEffectOnce(() => {
-    initiateChat()
+    initializeWizart()
   })
 
   // Verifying if wizartChat has a message from wizart with a specific regex pattern on a React.useEffect to execute a function
   React.useEffect(() => {
-    const wizartMessage = wizartChat.find(
-      (item) => item.from === 'wizart' && item.message.includes(wizartDescriptionHeader),
-    )
+    const message = wizartChat.wizart
+    const wizartMessage = message.includes(wizartDescriptionHeader)
 
     if (wizartMessage) {
-      const message = wizartMessage.message
       const nextPhaseTimeout = setTimeout(async () => {
         try {
+          if (replicateAssetRequested) return
+
           await replicate.fetchPrediction({
             prompt: message
-              .substring(message.indexOf('"'), message.lastIndexOf(''))
+              .substring(message.indexOf('"'), message.lastIndexOf('"'))
               .replace(/"/g, ''),
           })
+
+          // ? This is a global variable to prevent multiple requests
+          replicateAssetRequested = true
 
           next()
         } catch (error) {
@@ -54,26 +73,78 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
         } finally {
           clearTimeout(nextPhaseTimeout)
         }
-      }, 6000)
+      }, 4000)
     }
-  }, [wizartChat, replicate, next])
+  }, [wizartChat.wizart])
 
   const sendPromptToWizart = async (e: React.FormEvent<HTMLFormElement>) => {
-    updateChat({
-      from: 'user',
-      message: prompt,
-    })
-    generateChatCompletion(e)
+    e.currentTarget.reset()
+    setLoading(true)
+
+    try {
+      updateChat({
+        from: 'user',
+        message: prompt,
+      })
+      await generateChatCompletion(e)
+    } catch (error) {
+      return error
+    } finally {
+      setLoading(false)
+    }
   }
+
+  const retryPromptToWizart = async (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setLoading(true)
+
+    try {
+      await generateChatCompletion(e as React.MouseEvent<HTMLDivElement, MouseEvent>)
+    } catch (error) {
+      return error
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const wizartMessage = wizartChat.wizart ? wizartChat.wizart.split('Wizart:')[1] : ''
+  const userPrompt = wizartChat.user ? wizartChat.user.split('USER:')[1] : ''
+
+  // TODO: Add Loader Component Here
+  if (prediction) return (
+    <div className="wizart-chat-wrapper">
+      <div className="wizard-step__content-wrapper wizard-step__content-wrapper--chat">
+        <div className={chatCardClass('wizart')}>
+          Processing New Asset. Estimated time: {prediction?.metrics.predict_time || ''}sec
+        </div>
+        <pre className="flex gap-3">
+          {prediction?.logs || ''}
+        </pre>
+      </div>
+    </div>
+  )
+
+  const filterWizartPrompt = wizartMessage.includes(wizartDescriptionHeader) ? wizartDescriptionHeader : wizartMessage
+  const wizartThinkingResponse = loading ? 'Thinking...' : wizartDescriptionHeader
+  const wizardResponse = wizartMessage && (!wizartMessage.includes(wizartDescriptionHeader) || !loading)
+    ? filterWizartPrompt
+    : wizartThinkingResponse
 
   return (
     <div className="wizart-chat-wrapper">
       <div className="wizard-step__content-wrapper wizard-step__content-wrapper--chat">
-        {wizartChat.map((item, index) => (
-          <div key={`${item.from}__${index}`} className={chatCardClass(item)}>
-            {item.message.split(item.from === 'wizart' ? 'Wizart:' : 'USER:')[1]}
+        <div className={chatCardClass('wizart')} onClick={(e) => !loading && !wizartMessage ? retryPromptToWizart(e) : undefined}>
+          {!loading && !wizartMessage ? 'Retry' : wizardResponse}
+          {loading ? (
+            <span className="wizart-chat-loader-wrapper">
+              <span className="dot-flashing" />
+            </span>
+          ) : null}
+        </div>
+        {userPrompt ? (
+          <div className={chatCardClass('user')}>
+            {userPrompt}
           </div>
-        ))}
+        ) : null}
       </div>
 
       <form className="w-full form" onSubmit={sendPromptToWizart}>
@@ -95,14 +166,6 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
           </div>
         </div>
       </form>
-
-      {error && <div>{error}</div>}
-      {prediction && (
-        <div>
-          <p>status: {prediction.status}</p>
-          <pre>status: {prediction.logs}</pre>
-        </div>
-      )}
     </div>
   )
 }
