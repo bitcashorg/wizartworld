@@ -1,0 +1,23 @@
+.wizard-step-header {
+  @apply flex-1 flex justify-between h-14 items-center;
+}
+
+.wizard-step-header__back-btn {
+  @apply flex items-center;
+}
+.wizard-step-header__back-btn svg,
+.wizard-step-header__back-btn path {
+  @apply transition-all hover:fill-green-800;
+}
+
+.wizard-step-header__label,
+.wizard-step-header__step-counter {
+  @apply text-xl font-bold uppercase;
+}
+
+.wizard-step-header__step-counter {
+  @apply text-white font-semibold;
+}
+.wizard-step-header__step-counter::first-letter {
+  @apply text-green-400;
+}

@@ -6,14 +6,13 @@ import { wizartDescriptionHeader } from '~/lib/openai'
 import clsx from 'clsx'
 import { OpenAIWizartChatType } from '~/types'
 import { useEffectOnce } from 'react-use'
-
-'./replicate.module.css'
+import { OpenAIWizartChatProps } from './wizart-chat.types'
 
 // ? Can be other colors
 const chatCardClass = (item: OpenAIWizartChatType) =>
   clsx('flex gap-3', item.from === 'wizart' ? 'bg-slate-800' : 'bg-slate-600')
 
-export function Replicate() {
+export function WizartChat({ next }: OpenAIWizartChatProps) {
   const replicate = useReplicateContext()
   const { error, prediction } = replicate
   const {
@@ -39,17 +38,23 @@ export function Replicate() {
 
     if (wizartMessage) {
       const message = wizartMessage.message
-      const timeout = setTimeout(() => {
-        replicate.fetchPrediction({
-          prompt: message
-            .substring(message.indexOf('"'), message.lastIndexOf(''))
-            .replace(/"/g, ''),
-        })
+      const nextPhaseTimeout = setTimeout(async () => {
+        try {
+          await replicate.fetchPrediction({
+            prompt: message
+              .substring(message.indexOf('"'), message.lastIndexOf(''))
+              .replace(/"/g, ''),
+          })
 
-        clearTimeout(timeout)
+          next()
+        } catch (error) {
+          throw error
+        } finally {
+          clearTimeout(nextPhaseTimeout)
+        }
       }, 6000)
     }
-  }, [wizartChat, replicate])
+  }, [wizartChat])
 
   const sendPromptToWizart = async (e: React.FormEvent<HTMLFormElement>) => {
     updateChat({
@@ -78,6 +83,7 @@ export function Replicate() {
                     type="text"
                     name="prompt"
                     placeholder="What's on your mind ?"
+                    onChange={onChangeInput}
                   />
                 </div>
               </div>
@@ -97,17 +103,7 @@ export function Replicate() {
       {prediction && (
         <div>
           <p>status: {prediction.status}</p>
-          {prediction.output && (
-            <div className="imageWrapper">
-              <Image
-                src={prediction.output[prediction.output.length - 1]}
-                alt="output"
-                sizes="100vw"
-                width={768}
-                height={768}
-              />
-            </div>
-          )}
+          <pre>status: {prediction.logs}</pre>
         </div>
       )}
     </div>

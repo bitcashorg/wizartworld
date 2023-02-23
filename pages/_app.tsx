@@ -1,4 +1,8 @@
 import '~/styles/globals.css'
+import '~/styles/wizart-chat.css'
+import '~/styles/home-wizard-steps.css'
+import '~/styles/home-wizard-header.css'
+
 import '../flow/config'
 import type { AppProps } from 'next/app'
 

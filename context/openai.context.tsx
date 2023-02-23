@@ -8,7 +8,13 @@ const defaultOpenAIState: OpenAIContextProvider = {
   history: promptCommand(),
   wizartChat: [],
   prompt: '',
+  artStyle: '',
+  artCategory: '',
+  artInspiration: '',
   error: null,
+  setArtCategory: (payload: string) => {},
+  setArtStyle: (payload: string) => {},
+  setArtInspiration: (payload: string) => {},
   updateChat: (payload: OpenAIWizartChatType) => {},
   onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => {},
   generateChatCompletion: async (e: React.FormEvent<HTMLFormElement>) => { },
@@ -20,7 +26,7 @@ export const OpenAIContext = React.createContext(defaultOpenAIState)
 let initiated = false
 
 function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Element {
-  const [{ history, wizartChat, prompt, error }, dispatch] = React.useReducer<React.Reducer<OpenAIContextProvider, OpenAIContextActionProvider>>(openAIReducer, defaultOpenAIState)
+  const [{ history, wizartChat, prompt, error, artCategory, artStyle, artInspiration, }, dispatch] = React.useReducer<React.Reducer<OpenAIContextProvider, OpenAIContextActionProvider>>(openAIReducer, defaultOpenAIState)
 
   const onChangeInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
@@ -36,8 +42,7 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
 
     try {
       const { result } = await openaiService.getTextCompletion({
-        // ? TODO: Ready to receive additional details from the inspiration selection page
-        prompt: promptCommand(),
+        prompt: promptCommand(artInspiration),
       })
 
       dispatch({
@@ -49,7 +54,6 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
       })
       dispatch({
         type: 'set_history',
-        // * Making sure that the AI will have his identity on all results. If by chance has it, we replace it to not confuse the AI
         payload: result,
       })
     } catch (error) {
@@ -88,17 +92,37 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
         payload: '',
       })
     }
-
   }
+
+  const setArtCategory = (payload: string) => dispatch({
+    type: 'set_art_category',
+    payload
+  })
+
+  const setArtStyle = (payload: string) => dispatch({
+    type: 'set_art_style',
+    payload
+  })
+
+  const setArtInspiration = (payload: string) => dispatch({
+    type: 'set_art_inspiration',
+    payload
+  })
 
   const providerValue: OpenAIContextProvider = {
     history,
     wizartChat,
     prompt,
     error,
+    artCategory,
+    artStyle,
+    artInspiration,
     updateChat,
     initiateChat,
     onChangeInput,
+    setArtStyle,
+    setArtCategory,
+    setArtInspiration,
     generateChatCompletion,
   }
 
@@ -131,6 +155,21 @@ function openAIReducer(state: OpenAIContextProvider, action: OpenAIContextAction
       return {
         ...state,
         history: state.history + action.payload,
+      }
+    case 'set_art_category':
+      return {
+        ...state,
+        artCategory: action.payload as string,
+      }
+    case 'set_art_style':
+      return {
+        ...state,
+        artStyle: action.payload as string,
+      }
+    case 'set_art_inspiration':
+      return {
+        ...state,
+        artInspiration: action.payload as string,
       }
     default:
       throw new Error('Invalid action type')

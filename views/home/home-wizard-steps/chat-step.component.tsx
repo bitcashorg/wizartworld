@@ -1,15 +1,12 @@
 import { HomeWizardStepNav } from '~/views/home/home-wizard-header/home-header-nav.component'
 import { WizardStepProps } from '~/components/wizard'
-import { Replicate } from '~/components/replicate'
+import { WizartChat } from '~/components/wizart'
 
 export function ChatStep({ next, prev }: WizardStepProps) {
   return (
     <div className="flex-1">
-      <HomeWizardStepNav label="Chat" prev={prev} />
-      <Replicate />
-      <button className="text-color-black text-bold" onClick={next}>
-        next
-      </button>
+      <HomeWizardStepNav label="Chat" prev={prev} step={4} />
+      <WizartChat next={next} />
     </div>
   )
 }
