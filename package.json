@@ -15,11 +15,13 @@
     "buidl": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
+    "graphql": "genql --endpoint https://graphql.api.niftory.com --output ./graphql/generated -H 'content-type: application/json' -H 'X-Niftory-API-Key: 9ekwmnpiVXGj3DQO/fctn80yUUTc90Oj7PH+CUsVYWc='"
   },
   "dependencies": {
     "@babel/runtime": "^7.21.0",
     "@cloudinary/url-gen": "^1.9.1",
+    "@genql/runtime": "^2.10.0",
     "@headlessui/react": "^1.7.11",
     "@heroicons/react": "^2.0.16",
     "@hookform/resolvers": "^2.9.11",
@@ -36,6 +38,7 @@
     "lodash": "^4.17.21",
     "next": "13.1.6",
     "openai": "^3.1.0",
+    "openid-client": "^5.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.1",
@@ -45,6 +48,7 @@
     "zod": "^3.20.6"
   },
   "devDependencies": {
+    "@genql/cli": "^3.0.3",
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.14.0",
     "@types/react": "^18.0.28",

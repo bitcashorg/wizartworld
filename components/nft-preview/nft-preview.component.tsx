@@ -1,7 +1,8 @@
 import Image from 'next/image'
-import { useReplicateContext } from '~/context/replicate.context'
 import React from 'react'
-import { ImageAsset } from '~/components/image.component';
+
+import { ImageAsset } from '~/components/image/image.component'
+import { useReplicateContext } from '~/context/replicate.context'
 
 export function NFTPreview() {
   const replicate = useReplicateContext()
@@ -13,10 +14,7 @@ export function NFTPreview() {
         <div>
           {prediction.output && (
             <div className="imageWrapper">
-              <ImageAsset
-                src={prediction.output[prediction.output.length - 1]}
-                alt="output"
-              />
+              <ImageAsset src={prediction.output[prediction.output.length - 1]} alt="output" />
             </div>
           )}
         </div>

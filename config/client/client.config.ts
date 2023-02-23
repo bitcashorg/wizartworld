@@ -1,5 +1,3 @@
-import { logger } from '~/lib/logger'
-
 export const clientEnv = {
   debug: process.env.NODE_ENV !== 'production',
   services: {
@@ -19,6 +17,11 @@ export const clientEnv = {
   web3auth: {
     clientId: process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID || '',
     verifier: process.env.NEXT_PUBLIC_WEB3AUTH_APP_VERIFIER || '',
+  },
+  niftory: {
+    clientId: process.env.NEXT_PUBLIC_CLIENT_ID || '',
+    clientSecret: process.env.CLIENT_SECRET || '',
+    authIssuer: process.env.NIFTORY_AUTH_ISSUER || '',
   },
   features: {},
 }

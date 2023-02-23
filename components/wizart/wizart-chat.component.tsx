@@ -1,13 +1,14 @@
-import Image from 'next/image'
-import { useReplicateContext } from '~/context/replicate.context'
-import { useOpenAI } from '~/context/openai.context'
-import React from 'react'
-import { wizartDescriptionHeader } from '~/lib/openai'
 import clsx from 'clsx'
-import { OpenAIWizartChatType } from '~/types'
+import React from 'react'
 import { useEffectOnce } from 'react-use'
-import { OpenAIWizartChatProps } from './wizart-chat.types'
+
 import { SendPromptIcon } from '~/components/icons'
+import { useOpenAI } from '~/context/openai.context'
+import { useReplicateContext } from '~/context/replicate.context'
+import { wizartDescriptionHeader } from '~/lib/openai'
+import { OpenAIWizartChatType } from '~/types'
+
+import { OpenAIWizartChatProps } from './wizart-chat.types'
 
 // ? Can be other colors
 const chatCardClass = (item: OpenAIWizartChatType) =>
@@ -55,8 +56,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
         }
       }, 6000)
     }
-  // @eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [wizartChat])
+  }, [wizartChat, replicate, next])
 
   const sendPromptToWizart = async (e: React.FormEvent<HTMLFormElement>) => {
     updateChat({
@@ -76,9 +76,9 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
         ))}
       </div>
 
-      <form className="form w-full" onSubmit={sendPromptToWizart}>
+      <form className="w-full form" onSubmit={sendPromptToWizart}>
         <div className="flex">
-          <div className="relative z-50 flex w-full items-center justify-center mx-auto">
+          <div className="relative z-50 flex items-center justify-center w-full mx-auto">
             <div className="wizart-chat-user-prompt">
               <div className="wizart-chat-user-prompt__actions">
                 <input
@@ -92,7 +92,6 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
                 </button>
               </div>
             </div>
-            
           </div>
         </div>
       </form>
