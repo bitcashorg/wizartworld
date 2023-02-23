@@ -51,3 +51,5 @@ tsconfig.tsbuildinfo
 /drafts
 
 .env.*
+*.mock.tsx
+*.mock.ts

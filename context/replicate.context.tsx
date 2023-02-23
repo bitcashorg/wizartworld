@@ -8,19 +8,32 @@ type ReplicateContextType = {
   prediction: Prediction | null
   error: string | null
   fetchPrediction: (options: PromptOptions) => Promise<void>
+  loadingPercentage: string
 }
+
+const defaultPercentage = '0%'
 
 const defaultReplicate: ReplicateContextType = {
   prediction: null,
   error: null,
   fetchPrediction: async () => {},
+  loadingPercentage: defaultPercentage,
+}
+
+const getPercentage = (logs: string) => {
+  try {
+    return logs.split('\n').slice(2).slice(-1).join('').split('|')[0].trim()
+  } catch (e) {
+    return defaultPercentage
+  }
 }
 
 export const ReplicateContext = React.createContext<ReplicateContextType>(defaultReplicate)
 
 function ReplicateProvider({ children }: { children: React.ReactNode }): JSX.Element {
-  const [prediction, setPrediction] = React.useState<Prediction | null>(null)
+  const [prediction, setPrediction] = React.useState<Prediction | null>()
   const [error, setError] = React.useState<string | null>(null)
+  const [loadingPercentage, setLoadingPercentage] = React.useState<string>(defaultPercentage)
 
   const fetchPrediction = async (options: PromptOptions) => {
     const response = await fetch('/api/predictions', {
@@ -45,7 +58,7 @@ function ReplicateProvider({ children }: { children: React.ReactNode }): JSX.Ele
     setPrediction(prediction)
 
     while (prediction.status !== 'succeeded' && prediction.status !== 'failed') {
-      await sleep(1000)
+      await sleep(800)
       const response = await fetch('/api/predictions/' + prediction.id)
       prediction = await response.json()
       if (response.status !== 200) {
@@ -54,6 +67,7 @@ function ReplicateProvider({ children }: { children: React.ReactNode }): JSX.Ele
       }
       console.log({ prediction })
       setPrediction(prediction)
+      setLoadingPercentage(getPercentage(prediction.logs))
     }
   }
 
@@ -61,6 +75,7 @@ function ReplicateProvider({ children }: { children: React.ReactNode }): JSX.Ele
     prediction,
     error,
     fetchPrediction,
+    loadingPercentage,
   }
 
   return <ReplicateContext.Provider value={providerValue}>{children}</ReplicateContext.Provider>

@@ -20,7 +20,7 @@ export const Auth = () => {
 
   const UnauthenticatedState = () => {
     return (
-      <div>
+      <div className="flex gap-2">
         <Button onClick={logIn} label="Log in" variant="primary" />
         <Button onClick={signUp} label="Sign Up" />
       </div>

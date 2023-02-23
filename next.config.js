@@ -16,6 +16,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'bestaiprompts.art',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.imgur.com',
+      },
     ],
     domains: process.env.NEXT_PUBLIC_IMAGES_DOMAIN ? [process.env.NEXT_PUBLIC_IMAGES_DOMAIN] : [],
   },
