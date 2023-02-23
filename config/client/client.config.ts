@@ -19,7 +19,7 @@ export const clientEnv = {
     verifier: process.env.NEXT_PUBLIC_WEB3AUTH_APP_VERIFIER || '',
   },
   niftory: {
-    clientId: process.env.NEXT_PUBLIC_CLIENT_ID || '',
+    clientId: process.env.NEXT_PUBLIC_NIFTORY_CLIENT_ID || '',
   },
   features: {},
 }
