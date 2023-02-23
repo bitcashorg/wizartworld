@@ -37,3 +37,11 @@ textarea:focus,
 select:focus {
   outline: none !important ;
 }
+
+/** Global classes... Might be better at components.css... */
+
+.asset-image-wrapper {
+  @apply overflow-hidden w-full h-auto;
+  
+  border-radius: 6px;
+}

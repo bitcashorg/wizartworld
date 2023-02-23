@@ -7,7 +7,7 @@ export function ImageAsset({ src, alt }: ImageAssetProps) {
   const [loading, setLoading] = React.useState(true)
 
   return (
-    <picture className="overflow-hidden w-full h-auto">
+    <picture className="asset-image-wrapper">
       <Image
         src={src}
         alt={alt || ''}

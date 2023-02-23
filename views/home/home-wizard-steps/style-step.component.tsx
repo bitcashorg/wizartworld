@@ -8,28 +8,28 @@ import { useOpenAI } from '~/context/openai.context'
 
 export const artStyles = {
   video_games: [
-    { label: 'Sprite sheet', value: 'sprite_sheet' },
-    { label: 'Character', value: 'character' },
-    { label: 'Pixel Art', value: 'pixel_art' },
-    { label: 'Dark Souls', value: 'dark_souls_alike' },
+    { label: 'Sprite sheet', value: 'Sprite sheet with game visuals, ' },
+    { label: 'Character', value: 'fantasy point and click adventure game character, ' },
+    { label: 'Pixel Art', value: '16 bit pixel art, ' },
+    { label: 'Dark Souls', value: 'dark souls concept art, ' },
   ],
   cinema: [
-    { label: 'Horror', value: 'horror' },
-    { label: 'Sci-Fi', value: 'sci-fi' },
-    { label: '60s', value: '60s' },
-    { label: '80s', value: '80s' },
+    { label: 'Horror', value: 'horror movie, ' },
+    { label: 'Sci-Fi', value: 'sci-fi movie, ' },
+    { label: '80s', value: 'movie still from the 80s, ' },
+    { label: '60s', value: 'movie still from the 60s, ' },
   ],
   graphic_design: [
-    { label: 'Digital Print', value: 'digital_print' },
-    { label: '2D Illustration', value: '2d_illustration' },
-    { label: 'Flat Design', value: 'flat_design' },
-    { label: 'Vectorized', value: 'vectorized' },
+    { label: 'Digital Print', value: 'digital print, ' },
+    { label: '2D Illustration', value: '2d_illustration, ' },
+    { label: 'Flat Design', value: 'flat design, ' },
+    { label: 'Vectorized', value: 'vectorized, ' },
   ],
   illustration: [
-    { label: 'Retro', value: 'reetro_style' },
-    { label: 'Digital Painting', value: '2d_illustration' },
-    { label: 'Oil Painting', value: 'flat_design' },
-    { label: 'Claude Monet', value: 'claude_monet' },
+    { label: 'Retro', value: 'retro style, ' },
+    { label: 'Digital Painting', value: '2d illustration,' },
+    { label: 'Oil Painting', value: 'oil painting texture,' },
+    { label: 'Claude Monet', value: 'claude monet,' },
   ],
 }
 
