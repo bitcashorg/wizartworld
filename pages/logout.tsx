@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next'
+
 import { serverResponse } from '~/lib/ssr'
 
 export default function PageLogout() {

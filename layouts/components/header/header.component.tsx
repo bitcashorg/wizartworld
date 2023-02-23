@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { WizartLogo } from '~/components/icons'
+
 import { Auth } from './auth.component'
 
 export function Header() {

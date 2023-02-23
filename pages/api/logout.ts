@@ -1,5 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { withIronSessionApiRoute } from 'iron-session/next'
+import type { NextApiRequest, NextApiResponse } from 'next'
+
 import { serverEnv } from '~/config/server'
 
 async function logout(req: NextApiRequest, res: NextApiResponse) {

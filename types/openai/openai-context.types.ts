@@ -12,7 +12,15 @@ export type OpenAIContextStateProvider = {
 }
 
 export type OpenAIContextActionProvider = {
-  type: 'change_input' | 'set_error' | 'set_history' | 'update_history' | 'update_chat' | 'set_art_inspiration' | 'set_art_style' | 'set_art_category'
+  type:
+    | 'change_input'
+    | 'set_error'
+    | 'set_history'
+    | 'update_history'
+    | 'update_chat'
+    | 'set_art_inspiration'
+    | 'set_art_style'
+    | 'set_art_category'
   payload: string | null | OpenAIWizartChatType
 }
 

@@ -36,9 +36,9 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
     }
 
     try {
-      const { initiated } = await initiateChat()
+      const results = await initiateChat()
 
-       if (initiated) setLoading(false)
+       if (results?.initiated) setLoading(false)
     } catch (error) {
       console.error(error)
     }
@@ -75,6 +75,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
         }
       }, 4000)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wizartChat.wizart])
 
   const sendPromptToWizart = async (e: React.FormEvent<HTMLFormElement>) => {

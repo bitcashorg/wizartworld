@@ -116,7 +116,6 @@ if (!Array.prototype.indexOf) {
 })()
 
 // Element.firstElementChild
-
 ;(function () {
   if (!('firstElementChild' in document.documentElement)) {
     Object.defineProperty(Element.prototype, 'firstElementChild', {
@@ -133,7 +132,6 @@ if (!Array.prototype.indexOf) {
 })()
 
 // Element.previousElementSibling
-
 ;(function () {
   if (!('previousElementSibling' in document.documentElement)) {
     Object.defineProperty(Element.prototype, 'previousElementSibling', {
@@ -149,7 +147,6 @@ if (!Array.prototype.indexOf) {
 })()
 
 // Element.nextElementSibling
-
 ;(function () {
   if (!('nextElementSibling' in document.documentElement)) {
     Object.defineProperty(Element.prototype, 'nextElementSibling', {
@@ -165,7 +162,6 @@ if (!Array.prototype.indexOf) {
 })()
 
 // getComputedStyle
-
 ;(function () {
   if (!window.getComputedStyle) {
     window.getComputedStyle = function (el) {

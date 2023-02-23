@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
+
 import { serverResponse } from '~/lib/ssr'
 import { getMaketplaceData } from '~/services/market'
 import { Marketplace } from '~/views/marketplace'

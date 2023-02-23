@@ -1,8 +1,9 @@
-import { Configuration, OpenAIApi } from 'openai'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { promptCommand } from '~/lib/openai'
-import { FetchError } from '~/lib/fetch'
+import { Configuration, OpenAIApi } from 'openai'
+
 import { clientEnv } from '~/config/client'
+import { FetchError } from '~/lib/fetch'
+import { promptCommand } from '~/lib/openai'
 
 const configuration = new Configuration({
   apiKey: clientEnv.services.openai,

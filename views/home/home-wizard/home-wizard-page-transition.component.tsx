@@ -1,4 +1,4 @@
-import { Transition } from "@headlessui/react";
+import { Transition } from '@headlessui/react'
 
 export function HomeWizardPageTransition({ children, id }: React.ComponentProps<'div'>) {
   return (

@@ -1,8 +1,14 @@
 import React from 'react'
-import { OpenAIContextActionProvider, OpenAIContextProvider, OpenAIContextStateProvider, OpenAIWizartChatType } from '~/types';
-import { promptCommand } from '~/lib/openai';
-import { openaiService } from '~/services/ai';
-import { logger } from '~/lib/logger';
+
+import { logger } from '~/lib/logger'
+import { promptCommand } from '~/lib/openai'
+import { openaiService } from '~/services/ai'
+import {
+  OpenAIContextActionProvider,
+  OpenAIContextProvider,
+  OpenAIContextStateProvider,
+  OpenAIWizartChatType,
+} from '~/types'
 
 const defaultOpenAIState: OpenAIContextProvider = {
   history: promptCommand(),
@@ -29,7 +35,11 @@ export const OpenAIContext = React.createContext(defaultOpenAIState)
 let initiated = false
 
 function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Element {
-  const [{ history, wizartChat, prompt, error, artCategory, artStyle, artInspiration, }, dispatch] = React.useReducer<React.Reducer<OpenAIContextProvider, OpenAIContextActionProvider>>(openAIReducer, defaultOpenAIState)
+  const [{ history, wizartChat, prompt, error, artCategory, artStyle, artInspiration }, dispatch] =
+    React.useReducer<React.Reducer<OpenAIContextProvider, OpenAIContextActionProvider>>(
+      openAIReducer,
+      defaultOpenAIState,
+    )
 
   const onChangeInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
@@ -52,8 +62,8 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
         type: 'update_chat',
         payload: {
           from: 'wizart',
-          message: result
-        }
+          message: result,
+        },
       })
       dispatch({
         type: 'set_history',
@@ -67,10 +77,11 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
     }
   }
 
-  const updateChat = (payload: OpenAIWizartChatType) => dispatch({
-    type: 'update_chat',
-    payload
-  })
+  const updateChat = (payload: OpenAIWizartChatType) =>
+    dispatch({
+      type: 'update_chat',
+      payload,
+    })
 
   const generateChatCompletion = async (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault()
@@ -82,7 +93,7 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
 
       updateChat({
         from: 'wizart',
-        message: result
+        message: result,
       })
       dispatch({
         type: 'set_history',
@@ -99,20 +110,23 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
     }
   }
 
-  const setArtCategory = (payload: string) => dispatch({
-    type: 'set_art_category',
-    payload
-  })
+  const setArtCategory = (payload: string) =>
+    dispatch({
+      type: 'set_art_category',
+      payload,
+    })
 
-  const setArtStyle = (payload: string) => dispatch({
-    type: 'set_art_style',
-    payload
-  })
+  const setArtStyle = (payload: string) =>
+    dispatch({
+      type: 'set_art_style',
+      payload,
+    })
 
-  const setArtInspiration = (payload: string) => dispatch({
-    type: 'set_art_inspiration',
-    payload
-  })
+  const setArtInspiration = (payload: string) =>
+    dispatch({
+      type: 'set_art_inspiration',
+      payload,
+    })
 
   const providerValue: OpenAIContextProvider = {
     history,
@@ -134,7 +148,10 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
   return <OpenAIContext.Provider value={providerValue}>{children}</OpenAIContext.Provider>
 }
 
-function openAIReducer(state: OpenAIContextProvider, action: OpenAIContextActionProvider): OpenAIContextProvider {
+function openAIReducer(
+  state: OpenAIContextProvider,
+  action: OpenAIContextActionProvider,
+): OpenAIContextProvider {
   switch (action.type) {
     case 'change_input':
       return {
@@ -157,7 +174,7 @@ function openAIReducer(state: OpenAIContextProvider, action: OpenAIContextAction
     case 'update_history':
       return {
         ...state,
-        history: promptCommand(action.payload as string)
+        history: promptCommand(action.payload as string),
       }
     case 'set_history':
       return {

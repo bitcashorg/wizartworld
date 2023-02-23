@@ -1,11 +1,13 @@
-import { WizardStepProps } from '~/components/wizard'
-import { HomeWizardStepNav } from '../home-wizard-header'
-import { HomeWizardPageTransition } from '../home-wizard/home-wizard-page-transition.component'
 import clsx from 'clsx'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+
+import { WizardStepProps } from '~/components/wizard'
 import { useOpenAI } from '~/context/openai.context'
 import { ImageAsset } from '~/components/image'
+
+import { HomeWizardStepNav } from '../home-wizard-header'
+import { HomeWizardPageTransition } from '../home-wizard/home-wizard-page-transition.component'
 
 export const artStyles = {
   video_games: [
@@ -58,10 +60,10 @@ export function StyleStep({ next, prev }: WizardStepProps) {
   const { artCategory, setArtStyle } = useOpenAI()
   const categoryStyleField = register('category-style', {
     required: true,
-  }) 
+  })
   const categoryStyleValue = watch('category-style')
 
-  const updateArtStyle = (e: React.ChangeEvent<HTMLInputElement>) => { 
+  const updateArtStyle = (e: React.ChangeEvent<HTMLInputElement>) => {
     categoryStyleField.onChange(e)
     setArtStyle(e.target.value)
 
