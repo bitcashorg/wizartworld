@@ -12,19 +12,21 @@ import '../config/flow/config'
 
 export default function MyApp({ Component, pageProps }: AppProps<any>) {
   return (
-    <AuthProvider>
-      <GlobalContextProvider>
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        </Head>
-        <RootLayout>
-          <OpenAIProvider>
-            <ReplicateProvider>
-              <Component {...pageProps} />
-            </ReplicateProvider>
-          </OpenAIProvider>
-        </RootLayout>
-      </GlobalContextProvider>
-    </AuthProvider>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <AuthProvider>
+        <GlobalContextProvider>
+          <RootLayout>
+            <OpenAIProvider>
+              <ReplicateProvider>
+                <Component {...pageProps} />
+              </ReplicateProvider>
+            </OpenAIProvider>
+          </RootLayout>
+        </GlobalContextProvider>
+      </AuthProvider>
+    </>
   )
 }
