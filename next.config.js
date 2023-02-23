@@ -12,6 +12,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'replicate.delivery',
       },
+      {
+        protocol: 'https',
+        hostname: 'bestaiprompts.art',
+      },
     ],
     domains: process.env.NEXT_PUBLIC_IMAGES_DOMAIN ? [process.env.NEXT_PUBLIC_IMAGES_DOMAIN] : [],
   },

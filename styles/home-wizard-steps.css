@@ -1,0 +1,57 @@
+.wizard-step-card {
+  @apply snap-center p-3 transition-all border border-solid border-spacing-6 border-white border-opacity-30 bg-white bg-opacity-5 flex max-w-sm rounded overflow-hidden shadow-lg items-center gap-2 h-[100px] min-w-[calc(50%-1.5rem)] hover:border-opacity-60 hover:bg-opacity-10;
+
+  border-radius: 6px;
+}
+.wizard-step-card--inspiration {
+  @apply h-[320px];
+}
+
+.wizard-step-card--full {
+  @apply min-w-[calc(100%-1.5rem)];
+}
+
+.wizard-step-card > label {
+  @apply flex-1 flex flex-col items-center justify-center cursor-pointer h-full w-full text-lg font-bold;
+}
+
+.wizard-step-card > label > img {
+  border-radius: 6px;
+}
+
+.wizard-step-card > label > input {
+  @apply hidden;
+}
+
+.wizard-step-card--selected,
+.wizard-step-card--selected:hover,
+.wizard-step-card:focus-within {
+  @apply border-opacity-100 bg-opacity-10
+}
+
+.wizard-step__content-wrapper {
+  @apply flex-1 flex flex-wrap gap-x-3 gap-y-7 w-full justify-center overflow-y-auto max-h-[calc(740px-5rem)] snap-y;
+
+  scrollbar-color: rgba(100, 230, 42, 0.6) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
+
+}
+.wizard-step__content-wrapper::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.wizard-step__content-wrapper::-webkit-scrollbar-track,
+.wizard-step__content-wrapper::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0) !important;
+}
+.wizard-step__content-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(100, 230, 42, 0.6);
+  border-radius: 24px;
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+.wizard-step__content-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 230, 42, 1);
+}
+.wizard-step-wrapper {
+  @apply flex-1 overflow-x-hidden;
+}
