@@ -1,7 +1,8 @@
-import clsx from "clsx";
-import Image from "next/image";
-import React from "react";
-import { ImageAssetProps } from "~/types";
+import clsx from 'clsx'
+import Image from 'next/image'
+import React from 'react'
+
+import { ImageAssetProps } from './image-component.type'
 
 export function ImageAsset({ src, alt }: ImageAssetProps) {
   const [loading, setLoading] = React.useState(true)

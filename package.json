@@ -16,7 +16,8 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
-    "graphql": "genql --endpoint https://graphql.api.niftory.com --output ./graphql/generated -H 'content-type: application/json' -H 'X-Niftory-API-Key: 9ekwmnpiVXGj3DQO/fctn80yUUTc90Oj7PH+CUsVYWc='"
+    "fetch-schema": "rover graph fetch Niftory-Test > generated/schema.graphql",
+    "generate": "dotenv -- graphql-codegen"
   },
   "dependencies": {
     "@babel/runtime": "^7.21.0",
@@ -33,18 +34,22 @@
     "clsx": "^1.2.1",
     "ethers": "^6.0.5",
     "framer-motion": "^9.0.7",
+    "graphql-request": "^5.1.0",
     "iron-session": "^6.3.1",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
     "next": "13.1.6",
+    "next-auth": "^4.19.2",
     "openai": "^3.1.0",
     "openid-client": "^5.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.1",
     "react-use": "^17.4.0",
+    "swr": "^2.0.3",
     "tailwind-merge": "^1.10.0",
     "tailwindcss": "^3.2.7",
+    "urql": "^3.0.3",
     "zod": "^3.20.6"
   },
   "devDependencies": {
