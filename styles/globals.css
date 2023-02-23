@@ -21,6 +21,26 @@ body {
   scroll-behavior: smooth;
 }
 
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0) !important;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(100, 230, 42, 0.6);
+  border-radius: 24px;
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 230, 42, 1);
+}
+.wizard-step-wrapper {
+  @apply flex-1 overflow-x-hidden;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -44,4 +64,7 @@ select:focus {
   @apply overflow-hidden w-full h-auto;
   
   border-radius: 6px;
+}
+.asset-image-wrapper img {
+  @apply w-full h-[285px] duration-700 ease-in-out object-cover
 }

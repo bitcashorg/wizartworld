@@ -1,30 +1,47 @@
-.container {
-  padding: 2rem;
-  font-size: 1.3rem;
+.wizart-chat-globe-bg {
+  @apply bg-violet-600 p-5 mr-auto w-9/12;
+  
+  border-radius: 24px;
+  height: min-content;
+
+  /* clip-path: path('M267 1C276.941 1 285 9.05887 285 19V62.1463C285 72.0628 276.98 80.1114 267.063 80.1462L23.7424 81C19.765 81 16.1112 79.4803 13.2374 76.9415C10.093 79.9818 6.07313 81.2408 1.17807 80.7188C1.11549 80.7121 1.05956 80.6731 1.02753 80.6138C0.983161 80.5316 0.994113 80.4303 1.04823 80.3619L1.09672 80.3176L1.45086 80.0833C3.77177 78.5185 5.28968 76.8976 6.0046 75.2206C6.76821 73.4293 7.10166 69.5293 7.00494 63.5205C6.99115 63.2222 6.98455 62.9228 6.98455 62.6216V19C6.98455 9.05889 15.0434 1 24.9845 1H267Z'); */
+}
+.wizart-user-globe-bg {
+  @apply bg-green-400 p-5 ml-auto w-9/12;
+  
+  border-radius: 24px;
+  height: min-content;
+
+  /* clip-path: path('M288.935 87.25H288.934L18.9375 86.3259C8.88278 86.2915 0.75 78.1308 0.75 68.076V19C0.75 8.9208 8.92081 0.75 19 0.75H289.404C299.484 0.75 307.654 8.92079 307.654 19V67.2432C307.654 67.5694 307.647 67.894 307.632 68.2175C307.579 71.4409 307.644 74.0932 307.827 76.1767C308.01 78.2674 308.31 79.7631 308.713 80.687C309.474 82.427 311.102 84.1361 313.64 85.8051C313.64 85.8053 313.64 85.8055 313.64 85.8056L314.029 86.0564L314.045 86.0669L314.06 86.0798L314.113 86.1274L314.128 86.1408L314.141 86.1565C314.264 86.3081 314.287 86.5271 314.188 86.7058C314.116 86.8368 313.985 86.9302 313.83 86.9463C308.458 87.5051 304.007 86.1863 300.506 82.9717C297.323 85.6501 293.304 87.25 288.935 87.25Z'); */
+}
+
+.wizart-chat-wrapper {
+  @apply flex flex-col gap-6 p-4 w-full min-h-[calc(90vh-5rem-2.5rem)] text-xl justify-between;
+
   max-width: 48rem;
   margin: 0 auto;
 }
-
-.form {
-  display: flex;
-  margin-bottom: 2rem;
+.wizart-chat-form {
+  @apply flex mb-8;
 }
 
-.form input {
-  width: 100%;
-  padding: 1rem;
-  border-radius: 0.25rem;
-  font-size: 1.3rem;
-  margin-right: 1rem;
+.form > div {
+  max-width: 400px;
 }
 
-.form button {
-  padding: 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  cursor: pointer;
-  font-size: 1.3rem;
+.wizart-chat-user-prompt {
+  @apply flex-1 flex items-center justify-between p-1 rounded-2xl w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500;
+}
+
+.wizart-chat-user-prompt input {
+  @apply relative w-full rounded-2xl bg-transparent border-none outline-none z-10 backdrop-blur-sm focus-within:outline-offset-8;
+}
+.wizart-chat-user-prompt button {
+ @apply transition-all ml-1 mr-2 my-2 flex items-center justify-center font-bold h-8 p-0 rounded-2xl bg-gradient-to-r from-violet-600 to-red-600 w-16 opacity-100 hover:opacity-80;
+}
+
+.wizart-chat-user-prompt__actions {
+  @apply flex rounded-2xl items-center justify-center w-full h-full bg-gray-800;
 }
 
 .imageWrapper {

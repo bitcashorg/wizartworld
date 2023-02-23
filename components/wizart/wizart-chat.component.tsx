@@ -7,10 +7,11 @@ import clsx from 'clsx'
 import { OpenAIWizartChatType } from '~/types'
 import { useEffectOnce } from 'react-use'
 import { OpenAIWizartChatProps } from './wizart-chat.types'
+import { SendPromptIcon } from '~/components/icons'
 
 // ? Can be other colors
 const chatCardClass = (item: OpenAIWizartChatType) =>
-  clsx('flex gap-3', item.from === 'wizart' ? 'bg-slate-800' : 'bg-slate-600')
+  clsx('flex gap-3', item.from === 'wizart' ? 'wizart-chat-globe-bg' : 'wizart-user-globe-bg')
 
 export function WizartChat({ next }: OpenAIWizartChatProps) {
   const replicate = useReplicateContext()
@@ -54,6 +55,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
         }
       }, 6000)
     }
+  // @eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wizartChat])
 
   const sendPromptToWizart = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -65,39 +67,35 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
   }
 
   return (
-    <div className="container">
-      <div className="flex flex-col gap-6 p-4 w-100">
+    <div className="wizart-chat-wrapper">
+      <div className="wizard-step__content-wrapper wizard-step__content-wrapper--chat">
         {wizartChat.map((item, index) => (
           <div key={`${item.from}__${index}`} className={chatCardClass(item)}>
             {item.message.split(item.from === 'wizart' ? 'Wizart:' : 'USER:')[1]}
           </div>
         ))}
+      </div>
 
-        <form className="form" onSubmit={sendPromptToWizart}>
-          <div className="flex">
-            <div className="relative z-50 flex items-center justify-center max-w-screen-sm mx-auto ">
-              <div className="w-full p-1 rounded-md md:min-w-[500px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
-                <div className="flex items-center justify-center w-full h-full bg-gray-800 back">
-                  <input
-                    className="relative bg-transparent border-none outline-none z-4"
-                    type="text"
-                    name="prompt"
-                    placeholder="What's on your mind ?"
-                    onChange={onChangeInput}
-                  />
-                </div>
+      <form className="form w-full" onSubmit={sendPromptToWizart}>
+        <div className="flex">
+          <div className="relative z-50 flex w-full items-center justify-center mx-auto">
+            <div className="wizart-chat-user-prompt">
+              <div className="wizart-chat-user-prompt__actions">
+                <input
+                  type="text"
+                  name="prompt"
+                  placeholder="What's on your mind ?"
+                  onChange={onChangeInput}
+                />
+                <button type="submit" aria-label="click to send a prompt to Wizart">
+                  <SendPromptIcon />
+                </button>
               </div>
             </div>
-
-            <button
-              type="submit"
-              className="ml-3 font-bold bg-gradient-to-r from-violet-600 to-red-600"
-            >
-              Go!
-            </button>
+            
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
 
       {error && <div>{error}</div>}
       {prediction && (

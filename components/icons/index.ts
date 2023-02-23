@@ -1,3 +1,3 @@
 export * from './back-icon.component'
-export * from './wizart-chat-globe-icon.component'
-export { WizartLogo } from './wizard-logo'
+export * from './send-prompt-icon.component'
+export * from './wizard-logo.component'
