@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -61,15 +61,15 @@ select:focus {
 /** Global classes... Might be better at components.css... */
 
 .asset-image-wrapper {
-  @apply overflow-hidden w-full h-auto;
-  
+  @apply h-auto w-full overflow-hidden;
+
   border-radius: 6px;
 }
 .asset-image-wrapper--preview {
   @apply block h-full;
 }
 .asset-image-wrapper img {
-  @apply w-full h-[285px] duration-700 ease-in-out object-cover rounded-xl;
+  @apply h-[285px] w-full rounded-xl object-cover duration-700 ease-in-out;
 }
 
 /**
@@ -88,8 +88,9 @@ select:focus {
   animation: dot-flashing 1s infinite linear alternate;
   animation-delay: 0.5s;
 }
-.dot-flashing::before, .dot-flashing::after {
-  content: "";
+.dot-flashing::before,
+.dot-flashing::after {
+  content: '';
   display: block;
   position: absolute;
   top: 0;
@@ -119,7 +120,8 @@ select:focus {
   0% {
     background-color: #9880ff;
   }
-  50%, 100% {
+  50%,
+  100% {
     background-color: rgba(152, 128, 255, 0.2);
   }
 }

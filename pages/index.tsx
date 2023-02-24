@@ -5,10 +5,35 @@ import { WizartLogo } from '~/components/icons'
 import Image from 'next/image'
 import { ImageAsset } from '~/components/image'
 
-const landingAssets = [1, 2, 3, 4, 5, 6]
+const landingAssets = {
+  'movies_🎥': [
+    '/images/movie1.png',
+    '/images/movie2.png',
+    '/images/movie3.png',
+    '/images/movie4.png',
+    '/images/movie5.png',
+    '/images/movie6.png',
+    '/images/movie7.png',
+    '/images/movie8.png',
+    '/images/movie9.png',
+    '/images/movie10.png',
+    '/images/movie11.png',
+    '/images/movie12.png',
+  ],
+  'video_games_🎮': [
+    '/images/game1.png',
+    '/images/game2.png',
+    '/images/game3.png',
+    '/images/game4.png',
+    '/images/game5.png',
+    '/images/game6.png',
+    '/images/game7.png',
+  ]
+}
 
 export default function Home() {
   const [open, setOpen] = React.useState(false)
+  const [backToTop, setBackToTop] = React.useState(false)
 
   React.useEffect(() => {
     if (!document) return
@@ -31,6 +56,31 @@ export default function Home() {
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [open])
+
+  // on scroll listener, to set a boolean to true when the user scrolls down higher than current screen
+  // then, when the user clicks on the button, it will scroll to the top of the screen
+  React.useEffect(() => {
+    if (!document) return () => {}
+
+    const handleScroll = () => {
+      if (backToTop) return
+
+      if (window.scrollY > window.innerHeight) {
+        setBackToTop(true)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const navigateToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    setBackToTop(false)
+  }
 
   return (
     <>
@@ -85,16 +135,22 @@ export default function Home() {
           <h2 className="md:text-4xl text-3xl font-semibold">Generated Assets</h2>
         </div>
 
-        <div className="flex flex-wrap flex-1 items-center justify-evenly snap-y snap-proximity">
-          {landingAssets.map((item, index) => (
-            <div key={`generated-asset-${index}`} className="snap-center scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
-              <ImageAsset src="/assets/images/items/1.jpg" alt="" />
+        {Object.keys(landingAssets).map((item, index) => (
+          <>
+            <h3 className="capitalize md:text-4xl text-3xl font-semibold mt-20 mb-6">{item.replace(/_/g, ' ')}</h3>
+
+            <div className="flex flex-wrap flex-1 items-center justify-evenly snap-y snap-proximity">
+              {landingAssets[item as keyof typeof landingAssets].map((asset, index) => (
+                <div key={`generated-asset-${index}`} className="snap-center max-w-[45%] scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
+                  <ImageAsset src={asset} alt="" />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        ))}
       </section>
 
-      <a href="#" onClick={() => scrollTo({ top: 0, behavior: 'smooth' })} id="back-to-top" className="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 right-5 h-9 w-9 text-center bg-violet-600 text-white leading-9"><i className="uil uil-arrow-up"></i></a>
+      <a href="#" onClick={navigateToTop} id="back-to-top" className="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 right-5 h-9 w-9 text-center bg-violet-600 text-white leading-9"><i className="uil uil-arrow-up"></i></a>
     </>
   )
 }
