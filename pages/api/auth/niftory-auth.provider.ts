@@ -1,7 +1,6 @@
 import { Provider } from 'next-auth/providers'
 
 import { chainConfig } from '~/config/chain'
-import { clientEnv } from '~/config/client'
 import { serverEnv } from '~/config/server'
 
 console.log(serverEnv.niftoryClientId, serverEnv.niftorySecret)
@@ -16,7 +15,7 @@ export const niftoryAuthProvider: Provider = {
     params: { scope: 'openid email profile offline_access', prompt: 'consent' },
   },
   clientId: serverEnv.niftoryClientId,
-  // clientSecret: serverEnv.niftorySecret,
+  clientSecret: serverEnv.niftorySecret,
   checks: ['pkce', 'state'],
   idToken: true,
   profile(profile) {
