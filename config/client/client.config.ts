@@ -18,4 +18,6 @@ export const clientEnv = {
     clientId: process.env.WEB3AUTH_CLIENT_ID || '',
     verifier: process.env.WEB3AUTH_APP_VERIFIER || '',
   },
+  niftoryApiKey: process.env.NEXT_PUBLIC_NIFTORY_API || '',
+  jwtLocalStorageKey: 'jwt-secret',
 }
