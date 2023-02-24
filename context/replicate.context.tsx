@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { defaultPercentage, getPercentage, sleep } from '~/lib/utils'
+import * as replicateService from '~/services/replicate'
+
 export type PromptOptions = {
   prompt: string
 }
@@ -7,25 +10,17 @@ export type PromptOptions = {
 type ReplicateContextType = {
   prediction: Prediction | null
   error: string | null
-  fetchPrediction: (options: PromptOptions) => Promise<void>
+  replicateAssetRequested: boolean
+  fetchPrediction: (promptOptions: PromptOptions) => Promise<void>
   loadingPercentage: string
 }
-
-const defaultPercentage = '0%'
 
 const defaultReplicate: ReplicateContextType = {
   prediction: null,
   error: null,
-  fetchPrediction: async () => {},
+  replicateAssetRequested: false,
+  fetchPrediction: async (promptOptions: PromptOptions) => {},
   loadingPercentage: defaultPercentage,
-}
-
-const getPercentage = (logs: string) => {
-  try {
-    return logs.split('\n').slice(2).slice(-1).join('').split('|')[0].trim()
-  } catch (e) {
-    return defaultPercentage
-  }
 }
 
 export const ReplicateContext = React.createContext<ReplicateContextType>(defaultReplicate)
@@ -33,41 +28,35 @@ export const ReplicateContext = React.createContext<ReplicateContextType>(defaul
 function ReplicateProvider({ children }: { children: React.ReactNode }): JSX.Element {
   const [prediction, setPrediction] = React.useState<Prediction | null>(null)
   const [error, setError] = React.useState<string | null>(null)
-  const [loadingPercentage, setLoadingPercentage] = React.useState<string>(defaultPercentage)
+  const [loadingPercentage, setLoadingPercentage] = React.useState<string>('0%')
+  const [replicateAssetRequested, setReplicateAssetRequested] = React.useState<boolean>(false)
 
-  const fetchPrediction = async (options: PromptOptions) => {
-    const response = await fetch('/api/predictions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        prompt: options.prompt,
-        guidance_scale: 10,
-        num_inference_steps: 200,
-        num_outputs: 1,
-        scheduler: 'PNDM',
-      }),
-    })
-    let prediction = await response.json()
-    if (response.status !== 201) {
-      setError(prediction.detail)
-      return
-    }
-    console.log(prediction)
-    setPrediction(prediction)
-
-    while (prediction.status !== 'succeeded' && prediction.status !== 'failed') {
-      await sleep(800)
-      const response = await fetch('/api/predictions/' + prediction.id)
-      prediction = await response.json()
-      if (response.status !== 200) {
-        setError(prediction.detail)
+  const fetchPrediction = async (promptOptions: PromptOptions) => {
+    if (!promptOptions || replicateAssetRequested) return
+    try {
+      setReplicateAssetRequested(true)
+      let { prediction, error } = await replicateService.fetchPrediction(promptOptions.prompt)
+      if (error) {
+        setError(error)
         return
       }
-      console.log({ prediction })
+      console.log(prediction)
       setPrediction(prediction)
-      setLoadingPercentage(getPercentage(prediction.logs))
+      while (prediction?.status !== 'succeeded' && prediction?.status !== 'failed') {
+        await sleep(500)
+        const response = await replicateService.fetchPredictionStatus(prediction?.id)
+        if (response.error) {
+          setError(response.error)
+          return
+        }
+        prediction = response.prediction!
+        console.log({ prediction })
+        setPrediction({ ...prediction })
+        const newPercentage = getPercentage(prediction?.logs || '')
+        setLoadingPercentage(newPercentage)
+      }
+    } finally {
+      setReplicateAssetRequested(false)
     }
   }
 
@@ -76,6 +65,7 @@ function ReplicateProvider({ children }: { children: React.ReactNode }): JSX.Ele
     error,
     fetchPrediction,
     loadingPercentage,
+    replicateAssetRequested,
   }
 
   return <ReplicateContext.Provider value={providerValue}>{children}</ReplicateContext.Provider>
@@ -88,8 +78,6 @@ function useReplicateContext() {
   }
   return replicate
 }
-
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 export interface Prediction {
   completed_at: string
   created_at: string

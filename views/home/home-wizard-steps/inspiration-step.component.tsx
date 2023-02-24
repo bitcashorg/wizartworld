@@ -195,13 +195,7 @@ export function InspirationStep({ prev, next }: WizardStepProps) {
   const updateArtInspiration = (e: React.ChangeEvent<HTMLInputElement>) => {
     inspirationField.onChange(e)
     setArtInspiration(e.target.value)
-
-    // * Enhance UX. The movement is very quick, so we add a timeout to make it feel more natural
-    const timeout = setTimeout(() => {
-      next()
-
-      clearTimeout(timeout)
-    }, 360)
+    next()
   }
 
   return (
@@ -212,7 +206,7 @@ export function InspirationStep({ prev, next }: WizardStepProps) {
           {inspirationStyles[artCategory as keyof typeof inspirationStyles].map(
             (inspiration, index) => (
               <div
-                key={inspiration.value}
+                key={`${inspiration.value}-${inspiration.label}`}
                 className={clsx(
                   'wizard-step-card wizard-step-card--inspiration',
                   inspiration.value === inspirationValue ? 'wizard-step-card--selected' : '',

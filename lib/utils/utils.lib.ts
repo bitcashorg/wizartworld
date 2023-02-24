@@ -23,3 +23,15 @@ export const numberWithCommas = (x: number) => {
 export const simplifyURL = ({ url }: { url: string }) => {
   return url.replace(/^https?:\/\//, '')
 }
+
+export const defaultPercentage = '0%'
+
+export const getPercentage = (logs: string) => {
+  try {
+    return logs.split('\n').slice(2).slice(-1).join('').split('|')[0].trim()
+  } catch (e) {
+    return defaultPercentage
+  }
+}
+
+export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))

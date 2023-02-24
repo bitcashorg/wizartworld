@@ -18,7 +18,7 @@ module.exports = {
         xs: '341px',
       },
       dropShadow: {
-        'wz-purple': '0 20px 50px rgb(172 47 164 / 87%)',
+        'wz-purple': '0 0px 50px rgb(172 47 164 / 55%)',
       },
       colors: {
         'wz-green': '#1ED761',

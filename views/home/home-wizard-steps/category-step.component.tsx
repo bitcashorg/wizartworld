@@ -29,13 +29,7 @@ export function CategoryStep({ next, prev }: WizardStepProps) {
   const updateArtCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
     categoryField.onChange(e)
     setArtCategory(e.target.value)
-
-    // * Enhance UX. The movement is very quick, so we add a timeout to make it feel more natural
-    const timeout = setTimeout(() => {
-      next()
-
-      clearTimeout(timeout)
-    }, 360)
+    next()
   }
 
   return (
