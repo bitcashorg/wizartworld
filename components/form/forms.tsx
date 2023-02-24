@@ -66,8 +66,7 @@ export const Input = w.input(
   border-y-[0.5]
   border-x-[0.5]
   border-white/[0.3]
-  rounded-md
-  text-black`,
+  rounded-md`,
   {
     variants: {
       transparent: (yes: boolean) => (yes ? 'bg-transparent' : ''),

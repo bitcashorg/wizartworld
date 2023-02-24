@@ -7,6 +7,7 @@ import { useOpenAI } from '~/context/openai.context'
 import { useReplicateContext } from '~/context/replicate.context'
 import { wizartDescriptionHeader } from '~/lib/openai'
 
+import { Text } from '../text/text'
 import { OpenAIWizartChatProps } from './wizart-chat.types'
 
 let replicateAssetRequested = false
@@ -18,15 +19,9 @@ const chatCardClass = (item: string) =>
 export function WizartChat({ next }: OpenAIWizartChatProps) {
   const replicate = useReplicateContext()
   const [loading, setLoading] = React.useState(true)
-  const { prediction } = replicate
-  const {
-    prompt,
-    wizartChat,
-    onChangeInput,
-    updateChat,
-    generateChatCompletion,
-    initiateChat,
-  } = useOpenAI()
+  const { prediction, loadingPercentage } = replicate
+  const { prompt, wizartChat, onChangeInput, updateChat, generateChatCompletion, initiateChat } =
+    useOpenAI()
 
   const initializeWizart = async () => {
     if (prediction) {
@@ -38,7 +33,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
     try {
       const results = await initiateChat()
 
-       if (results?.initiated) setLoading(false)
+      if (results?.initiated) setLoading(false)
     } catch (error) {
       console.error(error)
     }
@@ -110,30 +105,48 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
   const wizartMessage = wizartChat.wizart ? wizartChat.wizart.split('Wizart:')[1] : ''
   const userPrompt = wizartChat.user ? wizartChat.user.split('USER:')[1] : ''
 
-  // TODO: Add Loader Component Here
-  if (prediction) return (
-    <div className="wizart-chat-wrapper">
-      <div className="wizard-step__content-wrapper wizard-step__content-wrapper--chat">
-        <div className={chatCardClass('wizart')}>
-          Processing New Asset. Estimated time: {prediction?.metrics.predict_time || ''}sec
-        </div>
-        <pre className="flex gap-3">
-          {prediction?.logs || ''}
-        </pre>
-      </div>
-    </div>
-  )
+  console.log('loadingPercentage', loadingPercentage)
 
-  const filterWizartPrompt = wizartMessage && wizartMessage.includes(wizartDescriptionHeader) ? wizartDescriptionHeader : wizartMessage
+  if (prediction)
+    return (
+      <div className="wizard-step__content-wrapper">
+        <div className="flex justify-center py-10">
+          <div className="w-[200px] h-[200px] flex justify-center place-items-center">
+            {loadingPercentage !== '100%' && <span className="dot-flashing" />}
+          </div>
+        </div>
+        <div className="w-full rounded-full bg-wz-white h-7 dark:bg-wz-white drop-shadow-wz-purple shadow-wz-purple-500">
+          <div
+            className="text-center rounded-full h-7 bg-wz-green"
+            style={{ width: loadingPercentage }}
+          ></div>
+          <div className="relative text-center top-[-29px]">
+            <Text variant="loading">{loadingPercentage}</Text>
+          </div>
+        </div>
+        <div className="flex justify-center py-5">
+          <Text>Generating Assets ...</Text>
+        </div>
+      </div>
+    )
+
+  const filterWizartPrompt =
+    wizartMessage && wizartMessage.includes(wizartDescriptionHeader)
+      ? wizartDescriptionHeader
+      : wizartMessage
   const wizartThinkingResponse = loading ? 'Thinking...' : wizartDescriptionHeader
-  const wizardResponse = wizartMessage && (!wizartMessage.includes(wizartDescriptionHeader) || !loading)
-    ? filterWizartPrompt
-    : wizartThinkingResponse
+  const wizardResponse =
+    wizartMessage && (!wizartMessage.includes(wizartDescriptionHeader) || !loading)
+      ? filterWizartPrompt
+      : wizartThinkingResponse
 
   return (
     <div className="wizart-chat-wrapper">
       <div className="wizard-step__content-wrapper wizard-step__content-wrapper--chat">
-        <div className={chatCardClass('wizart')} onClick={(e) => !loading && !wizartMessage ? retryPromptToWizart(e) : undefined}>
+        <div
+          className={chatCardClass('wizart')}
+          onClick={(e) => (!loading && !wizartMessage ? retryPromptToWizart(e) : undefined)}
+        >
           {!loading && !wizartMessage ? 'Retry' : wizardResponse}
           {loading ? (
             <span className="wizart-chat-loader-wrapper">
@@ -141,11 +154,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
             </span>
           ) : null}
         </div>
-        {userPrompt ? (
-          <div className={chatCardClass('user')}>
-            {userPrompt}
-          </div>
-        ) : null}
+        {userPrompt ? <div className={chatCardClass('user')}>{userPrompt}</div> : null}
       </div>
 
       <form className="w-full form" onSubmit={sendPromptToWizart}>

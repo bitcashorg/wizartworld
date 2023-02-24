@@ -1,5 +1,5 @@
 export interface HomeWizardStepHeaderProps {
-  prev: () => void
+  prev?: () => void
   label: string
   step: number
 }

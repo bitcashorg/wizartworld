@@ -17,7 +17,13 @@ export function Wizard({ error, steps }: WizardProps) {
 
   const next = () => {
     const nextStepIndex = getCurrentStepIndex() + 1
-    if (nextStepIndex < steps.length) setStep(steps[nextStepIndex].name)
+    if (nextStepIndex < steps.length) {
+      // * Enhance UX. The movement is very quick, so we add a timeout to make it feel more natural
+      const timeout = setTimeout(() => {
+        setStep(steps[nextStepIndex].name)
+        clearTimeout(timeout)
+      }, 360)
+    }
   }
 
   const goTo = (step: string) => setStep(step)
