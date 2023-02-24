@@ -4,7 +4,7 @@ import React from 'react'
 import { ImageAssetProps } from './image-component.type'
 import clsx from 'clsx'
 
-export function ImageAsset({ src, alt, preview }: ImageAssetProps) {
+export function ImageAsset({ src, alt, width, height }: ImageAssetProps) {
   const [loading, setLoading] = React.useState(true)
 
   return (
@@ -12,8 +12,8 @@ export function ImageAsset({ src, alt, preview }: ImageAssetProps) {
       <Image
         src={src}
         alt={alt || ''}
-        width={180}
-        height={320}
+        width={width || 180}
+        height={height || 320}
         sizes="x2"
         className={loading ? 'grayscale blur-2xl scale-110' : 'grayscale-0 blur-0 scale-100'}
         onLoadingComplete={() => setLoading(false)}

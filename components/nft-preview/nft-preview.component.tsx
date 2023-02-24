@@ -14,7 +14,12 @@ export function NFTPreview() {
         <div>
           {prediction.output && (
             <div className="imageWrapper">
-              <ImageAsset src={prediction.output[prediction.output.length - 1]} alt="output" />
+              <ImageAsset
+                width={400}
+                height={400}
+                src={prediction.output[prediction.output.length - 1]}
+                alt="output"
+              />
             </div>
           )}
         </div>
