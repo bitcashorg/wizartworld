@@ -1,6 +1,7 @@
-import { SessionProvider } from 'next-auth/react'
+import { SessionProvider, useSession } from 'next-auth/react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useEffect } from 'react'
 
 import { AuthProvider } from '~/context/auth.context'
 import { GlobalContextProvider } from '~/context/global.context'
@@ -9,18 +10,19 @@ import { ReplicateProvider } from '~/context/replicate.context'
 import { RootLayout } from '~/layouts/root'
 import '~/public/assets/css/icons.min.css'
 import '~/styles/globals.css'
-import '~/styles/globals.css'
 import '~/styles/home-wizard-header.css'
 import '~/styles/home-wizard-steps.css'
 import '~/styles/wizart-chat.css'
 
+import { clientEnv } from '../../geeklist-app/config/client'
 import '../config/flow/config'
 
-{
-  /* importing public css assets */
-}
-
 export default function MyApp({ Component, pageProps }: AppProps<any>) {
+  const session = useSession()
+  // keep jwt in sync with next session
+  useEffect(() => {
+    localStorage.setItem(clientEnv.auth.jwtKey, session.data?.user?.jwt || '')
+  }, [session.data?.user.jwt])
   return (
     <>
       <Head>

@@ -1,3 +1,5 @@
+import { getToken } from 'next-auth/jwt'
+
 import { GraphqlOperation } from '@genql/runtime'
 
 import { chainConfig } from '~/config/chain'
