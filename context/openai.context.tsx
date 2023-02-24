@@ -12,7 +12,10 @@ import {
 
 const defaultOpenAIState: OpenAIContextProvider = {
   history: promptCommand(),
-  wizartChat: [],
+  wizartChat: {
+    wizart: '',
+    user: '',
+  },
   prompt: '',
   artStyle: '',
   artCategory: '',
@@ -23,8 +26,8 @@ const defaultOpenAIState: OpenAIContextProvider = {
   setArtInspiration: (payload: string) => {},
   updateChat: (payload: OpenAIWizartChatType) => {},
   onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => {},
-  generateChatCompletion: async (e: React.FormEvent<HTMLFormElement>) => {},
-  initiateChat: async () => {},
+  generateChatCompletion: async (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement, MouseEvent>) => { },
+  initiateChat: async () => ({ initiated: false }),
 }
 
 export const OpenAIContext = React.createContext(defaultOpenAIState)
@@ -69,6 +72,8 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
     } catch (error) {
       logger.error('[ERROR] initiateChat ===>', error)
       throw new Error((error as Error).message)
+    } finally {
+      return { initiated }
     }
   }
 
@@ -78,7 +83,7 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
       payload,
     })
 
-  const generateChatCompletion = async (e: React.FormEvent<HTMLFormElement>) => {
+  const generateChatCompletion = async (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault()
 
     try {
@@ -161,7 +166,10 @@ function openAIReducer(
     case 'update_chat':
       return {
         ...state,
-        wizartChat: [...state.wizartChat, action.payload as OpenAIWizartChatType],
+        wizartChat: {
+          ...state.wizartChat,
+          [(action.payload as OpenAIWizartChatType).from as keyof typeof state.wizartChat]: (action.payload as OpenAIWizartChatType).message
+        },
       }
     case 'update_history':
       return {

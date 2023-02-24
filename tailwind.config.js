@@ -15,7 +15,7 @@ module.exports = {
     },
     extend: {
       screens: {
-        xs: '320px',
+        xs: '341px',
       },
       dropShadow: {
         'wz-purple': '0 20px 50px rgb(172 47 164 / 87%)',

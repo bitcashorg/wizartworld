@@ -31,7 +31,7 @@ const getPercentage = (logs: string) => {
 export const ReplicateContext = React.createContext<ReplicateContextType>(defaultReplicate)
 
 function ReplicateProvider({ children }: { children: React.ReactNode }): JSX.Element {
-  const [prediction, setPrediction] = React.useState<Prediction | null>()
+  const [prediction, setPrediction] = React.useState<Prediction | null>(null)
   const [error, setError] = React.useState<string | null>(null)
   const [loadingPercentage, setLoadingPercentage] = React.useState<string>(defaultPercentage)
 

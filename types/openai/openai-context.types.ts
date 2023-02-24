@@ -3,7 +3,10 @@ export type OpenAIContextStateProvider = {
   artStyle: string
   artInspiration: string
   history: string
-  wizartChat: OpenAIWizartChatType[]
+  wizartChat: {
+    user: string
+    wizart: string
+  }
   prompt: string
   error: string | null
 }
@@ -31,7 +34,7 @@ export interface OpenAIContextProvider extends OpenAIContextStateProvider {
   setArtStyle: (payload: string) => void
   setArtInspiration: (payload: string) => void
   updateChat: (payload: OpenAIWizartChatType) => void
-  initiateChat: () => Promise<void>
+  initiateChat: () => Promise<{ initiated: boolean } | undefined>
   onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void
-  generateChatCompletion: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
+  generateChatCompletion: (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement, MouseEvent>) => Promise<void>
 }
