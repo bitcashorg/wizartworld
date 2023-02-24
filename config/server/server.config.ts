@@ -6,7 +6,6 @@ export const serverEnv = {
   },
   niftorySecret: process.env.NIFTORY_CLIENT_SECRET || '',
   niftoryClientId: process.env.NIFTORY_CLIENT_ID || '',
-  replicate: process.env.REPLICATE_API_KEY || '',
   openai: process.env.OPENAI_API_KEY || '',
 }
 
