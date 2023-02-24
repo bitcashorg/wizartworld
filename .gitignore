@@ -49,3 +49,5 @@ tsconfig.tsbuildinfo
 .vscode
 
 /drafts
+
+.env.*
