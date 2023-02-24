@@ -1,14 +1,14 @@
 .wizart-chat-globe-bg {
-  @apply bg-violet-600 p-5 mr-auto max-w-[75%];
-  
+  @apply mr-auto max-w-[75%] bg-violet-600 p-5;
+
   border-radius: 24px;
   height: min-content;
 
   /* clip-path: path('M267 1C276.941 1 285 9.05887 285 19V62.1463C285 72.0628 276.98 80.1114 267.063 80.1462L23.7424 81C19.765 81 16.1112 79.4803 13.2374 76.9415C10.093 79.9818 6.07313 81.2408 1.17807 80.7188C1.11549 80.7121 1.05956 80.6731 1.02753 80.6138C0.983161 80.5316 0.994113 80.4303 1.04823 80.3619L1.09672 80.3176L1.45086 80.0833C3.77177 78.5185 5.28968 76.8976 6.0046 75.2206C6.76821 73.4293 7.10166 69.5293 7.00494 63.5205C6.99115 63.2222 6.98455 62.9228 6.98455 62.6216V19C6.98455 9.05889 15.0434 1 24.9845 1H267Z'); */
 }
 .wizart-user-globe-bg {
-  @apply bg-green-400 p-5 ml-auto mt-auto max-w-[75%];
-  
+  @apply ml-auto mt-auto max-w-[75%] bg-green-400 p-5;
+
   border-radius: 24px;
   height: min-content;
 
@@ -16,13 +16,13 @@
 }
 
 .wizart-chat-wrapper {
-  @apply flex flex-col gap-6 p-4 w-full min-h-[calc(90vh-5rem-2.5rem)] text-xl justify-between;
+  @apply flex min-h-[calc(90vh-5rem-2.5rem)] w-full flex-col justify-between gap-6 p-4 text-xl;
 
   max-width: 48rem;
   margin: 0 auto;
 }
 .wizart-chat-form {
-  @apply flex mb-8;
+  @apply mb-8 flex;
 }
 
 .wizart-chat-loader-wrapper {
@@ -30,18 +30,15 @@
 }
 
 .wizart-chat-user-prompt {
-  @apply flex-1 flex items-center justify-between p-1 rounded-2xl w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500;
+  @apply flex w-full flex-1 items-center justify-between rounded-2xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1;
 }
 
 .wizart-chat-user-prompt input {
-  @apply relative w-full rounded-2xl bg-transparent border-none outline-none z-10 backdrop-blur-sm focus-within:outline-offset-8;
-}
-.wizart-chat-user-prompt button {
- @apply transition-all ml-1 mr-2 my-2 flex items-center justify-center font-bold h-8 p-0 rounded-2xl bg-gradient-to-r from-violet-600 to-red-600 w-16 opacity-100 hover:opacity-80;
+  @apply relative z-10 w-full rounded-2xl border-none bg-transparent outline-none backdrop-blur-sm focus-within:outline-offset-8;
 }
 
 .wizart-chat-user-prompt__actions {
-  @apply flex rounded-2xl items-center justify-center w-full h-full bg-gray-800;
+  @apply flex h-full w-full items-center justify-center rounded-2xl bg-gray-800;
 }
 
 .imageWrapper {

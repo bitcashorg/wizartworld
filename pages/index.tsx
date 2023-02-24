@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { ImageAsset } from '~/components/image'
 
 const landingAssets = {
-  'movies_🎥': [
+  'cinema_🎥': [
     '/images/movie1.png',
     '/images/movie2.png',
     '/images/movie3.png',
@@ -15,10 +15,12 @@ const landingAssets = {
     '/images/movie6.png',
     '/images/movie7.png',
     '/images/movie8.png',
-    '/images/movie9.png',
     '/images/movie10.png',
     '/images/movie11.png',
     '/images/movie12.png',
+    'https://bestaiprompts.art/img/cine102.jpeg',
+    'https://bestaiprompts.art/img/cine103.jpeg',
+    '/images/movie9.png',
   ],
   'video_games_🎮': [
     '/images/game1.png',
@@ -28,6 +30,74 @@ const landingAssets = {
     '/images/game5.png',
     '/images/game6.png',
     '/images/game7.png',
+    'https://bestaiprompts.art/img/game81.jpeg',
+    'https://bestaiprompts.art/img/game34.jpeg',
+    'https://bestaiprompts.art/img/game90.jpeg',
+    'https://bestaiprompts.art/img/game19.jpeg',
+    'https://bestaiprompts.art/img/game70.jpeg',
+    'https://bestaiprompts.art/img/game96.jpeg',
+    'https://bestaiprompts.art/img/game99.jpeg',
+
+  ],
+  'graphic_design_🌁': [
+    '/images/graphic1.png',
+    '/images/graphic2.png',
+    '/images/graphic3.png',
+    '/images/graphic4.png',
+    '/images/graphic5.png',
+    '/images/graphic6.png',
+    '/images/graphic7.png',
+    '/images/graphic8.png',
+    '/images/graphic9.png',
+    '/images/graphic10.png',
+    '/images/graphic11.png',
+  ],
+  'illustration_🎨': [
+    '/images/illu1.png',
+    '/images/illu2.png',
+    '/images/illu3.png',
+    '/images/illu4.png',
+    '/images/illu5.png',
+    '/images/illu6.png',
+    '/images/illu7.png',
+    '/images/illu8.png',
+    '/images/illu9.png',
+    '/images/illu10.png',
+    '/images/illu11.png',
+    '/images/illu12.png',
+    '/images/illu13.png',
+    '/images/illu14.png',
+  ],
+  'interior_design_🏠': [
+    '/images/interior1.png',
+    '/images/interior2.png',
+    '/images/interior3.png',
+    '/images/interior4.png',
+    '/images/interior5.png',
+    '/images/interior6.png',
+    '/images/interior7.png',
+    '/images/interior8.png',
+    '/images/interior9.png',
+    '/images/interior10.png',
+    '/images/interior11.png',
+    '/images/interior12.png',
+  ],
+  'fashion_design_👗': [
+    '/images/fashion1.png',
+    '/images/fashion2.png',
+    '/images/fashion3.png',
+    '/images/fashion4.png',
+    '/images/fashion5.png',
+    '/images/fashion6.png',
+    '/images/fashion7.png',
+    '/images/fashion8.png',
+    '/images/fashion9.png',
+    '/images/fashion10.png',
+    '/images/fashion11.png',
+    '/images/fashion12.png',
+    '/images/fashion13.png',
+    '/images/fashion14.png',
+    '/images/fashion15.png',
   ]
 }
 
@@ -60,14 +130,15 @@ export default function Home() {
   // on scroll listener, to set a boolean to true when the user scrolls down higher than current screen
   // then, when the user clicks on the button, it will scroll to the top of the screen
   React.useEffect(() => {
-    if (!document) return () => {}
+    if (!document) return () => { }
 
     const handleScroll = () => {
-      if (backToTop) return
-
-      if (window.scrollY > window.innerHeight) {
-        setBackToTop(true)
-      }
+      // ? debounce the scroll event to avoid performance issues on mobile devices (scrolling is very sensitive)
+      const timeout = setTimeout(() => {
+        setBackToTop(window.scrollY > window.innerHeight)        
+        
+        clearTimeout(timeout)
+      }, 100)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -118,7 +189,7 @@ export default function Home() {
               </button>
             </div>
 
-            <a className="btn border-0 absolute flex w-full justify-center items-center mt-20" href="#assets">
+            <a className="btn border-0 absolute flex w-full justify-center items-center mt-10" href="#assets">
               <Image src="/images/icons8-chevron-down-96.png" alt="" width={42} height={42} />
             </a>
           </div>
@@ -131,15 +202,13 @@ export default function Home() {
       </section>
 
       <section className="md:mt-36 mt-30 px-5" id="assets">
-        <div className="md:w-10/12 md:text-left text-center mb-10">
-          <h2 className="md:text-4xl text-3xl font-semibold">Generated Assets</h2>
-        </div>
+        <h2 className="md:text-5xl text-4xl text-center font-bold w-full mb-10">Generated Assets</h2>
 
         {Object.keys(landingAssets).map((item, index) => (
           <>
             <h3 className="capitalize md:text-4xl text-3xl font-semibold mt-20 mb-6">{item.replace(/_/g, ' ')}</h3>
 
-            <div className="flex flex-wrap flex-1 items-center justify-evenly snap-y snap-proximity">
+            <div className="flex flex-wrap flex-1 items-center justify-center snap-y snap-proximity">
               {landingAssets[item as keyof typeof landingAssets].map((asset, index) => (
                 <div key={`generated-asset-${index}`} className="snap-center max-w-[45%] scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
                   <ImageAsset src={asset} alt="" />
@@ -150,7 +219,12 @@ export default function Home() {
         ))}
       </section>
 
-      <a href="#" onClick={navigateToTop} id="back-to-top" className="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 right-5 h-9 w-9 text-center bg-violet-600 text-white leading-9"><i className="uil uil-arrow-up"></i></a>
+      {/* TODO: Show Animation */}
+      {backToTop ? (
+        <button onClick={navigateToTop} className="btn-multicolor animate-bounce w-12 h-12 fixed flex text-lg rounded-full border-purple-800 bg-violet-900 bottom-5 right-5 text-center bg-transparent text-white leading-9">
+          <Image src="/images/icons8-chevron-down-96.png" className="scale-[-1]" alt="" width={32} height={32} />
+        </button>
+      ) : null}
     </>
   )
 }

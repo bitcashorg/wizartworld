@@ -169,7 +169,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
                   placeholder="What's on your mind ?"
                   onChange={onChangeInput}
                 />
-                <button type="submit" aria-label="click to send a prompt to Wizart">
+                <button className="btn-multicolor my-2 ml-1 mr-2 flex h-8 w-16 rounded-2xl" type="submit" aria-label="click to send a prompt to Wizart">
                   <SendPromptIcon />
                 </button>
               </div>

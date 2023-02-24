@@ -60,6 +60,10 @@ select:focus {
 
 /** Global classes... Might be better at components.css... */
 
+.btn-multicolor {
+  @apply items-center justify-center bg-gradient-to-r from-violet-600 to-red-600 p-0 font-bold opacity-100 transition-all hover:opacity-80;
+}
+
 .asset-image-wrapper {
   @apply h-auto w-full overflow-hidden;
 
