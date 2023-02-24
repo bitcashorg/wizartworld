@@ -119,13 +119,14 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
           <div
             className="text-center rounded-full h-7 bg-wz-green"
             style={{ width: loadingPercentage }}
+            role="progressbar"
           ></div>
           <div className="relative text-center top-[-29px]">
             <Text variant="loading">{loadingPercentage}</Text>
           </div>
         </div>
         <div className="flex justify-center py-5">
-          <Text>Generating Assets ...</Text>
+          <Text>Generating Assets</Text>
         </div>
       </div>
     )

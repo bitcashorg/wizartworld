@@ -4,8 +4,8 @@ import { SVGProps } from 'react'
 export function WizartLogo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
-      width={139}
-      height={57}
+      width={props.width || 139}
+      height={props.height || 57}
       viewBox="0 0 139 57"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

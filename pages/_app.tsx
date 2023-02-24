@@ -8,13 +8,16 @@ import { GlobalContextProvider } from '~/context/global.context'
 import { OpenAIProvider } from '~/context/openai.context'
 import { ReplicateProvider } from '~/context/replicate.context'
 import { RootLayout } from '~/layouts/root'
+/* * importing public css assets */
+import '~/public/assets/css/tailwind.css'
 import '~/public/assets/css/icons.min.css'
 import '~/styles/globals.css'
+import '~/styles/line.css'
 import '~/styles/home-wizard-header.css'
 import '~/styles/home-wizard-steps.css'
 import '~/styles/wizart-chat.css'
 
-import { clientEnv } from '../../geeklist-app/config/client'
+import { clientEnv } from '~/config/client'
 import '../config/flow/config'
 
 export default function MyApp({ Component, pageProps }: AppProps<any>) {
@@ -23,6 +26,7 @@ export default function MyApp({ Component, pageProps }: AppProps<any>) {
   useEffect(() => {
     localStorage.setItem(clientEnv.auth.jwtKey, session.data?.user?.jwt || '')
   }, [session.data?.user.jwt])
+
   return (
     <>
       <Head>

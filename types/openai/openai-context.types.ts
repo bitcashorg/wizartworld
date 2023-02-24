@@ -36,5 +36,7 @@ export interface OpenAIContextProvider extends OpenAIContextStateProvider {
   updateChat: (payload: OpenAIWizartChatType) => void
   initiateChat: () => Promise<{ initiated: boolean } | undefined>
   onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void
-  generateChatCompletion: (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement, MouseEvent>) => Promise<void>
+  generateChatCompletion: (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => Promise<void>
 }

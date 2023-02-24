@@ -1,5 +1,5 @@
 .wizard-step-header {
-  @apply flex items-center justify-between flex-1 h-14;
+  @apply mb-4 flex h-14 flex-1 items-center justify-between px-4;
 }
 
 .wizard-step-header__back-btn {

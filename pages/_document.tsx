@@ -8,7 +8,7 @@ export default class Document extends NextDocument {
         <Head>
           <meta name="description" content="Flow Hackathon AI Project" />
         </Head>
-        <body className="flex justify-center w-full h-screen text-base text-black align-middle font-urbanist dark:text-white dark:bg-slate-900">
+        <body className="flex justify-center w-full h-screen text-base align-middle font-urbanist text-white bg-slate-900">
           <Main />
           <NextScript />
         </body>

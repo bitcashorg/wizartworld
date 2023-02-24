@@ -1,8 +1,8 @@
+import clsx from 'clsx'
 import Image from 'next/image'
 import React from 'react'
 
 import { ImageAssetProps } from './image-component.type'
-import clsx from 'clsx'
 
 export function ImageAsset({ src, alt, width, height, preview }: ImageAssetProps) {
   const [loading, setLoading] = React.useState(true)

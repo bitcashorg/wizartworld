@@ -26,7 +26,9 @@ const defaultOpenAIState: OpenAIContextProvider = {
   setArtInspiration: (payload: string) => {},
   updateChat: (payload: OpenAIWizartChatType) => {},
   onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => {},
-  generateChatCompletion: async (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement, MouseEvent>) => { },
+  generateChatCompletion: async (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {},
   initiateChat: async () => ({ initiated: false }),
 }
 
@@ -83,7 +85,9 @@ function OpenAIProvider({ children }: { children: React.ReactNode }): JSX.Elemen
       payload,
     })
 
-  const generateChatCompletion = async (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const generateChatCompletion = async (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
     e.preventDefault()
 
     try {
@@ -168,7 +172,9 @@ function openAIReducer(
         ...state,
         wizartChat: {
           ...state.wizartChat,
-          [(action.payload as OpenAIWizartChatType).from as keyof typeof state.wizartChat]: (action.payload as OpenAIWizartChatType).message
+          [(action.payload as OpenAIWizartChatType).from as keyof typeof state.wizartChat]: (
+            action.payload as OpenAIWizartChatType
+          ).message,
         },
       }
     case 'update_history':
