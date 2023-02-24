@@ -7,3 +7,5 @@ export const serverEnv = {
   niftorySecret: process.env.NIFTORY_CLIENT_SECRET || '',
   niftoryClientId: process.env.NIFTORY_CLIENT_ID || '',
 }
+
+console.log(serverEnv)
