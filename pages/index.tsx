@@ -87,7 +87,7 @@ export default function Home() {
 
         <div className="flex flex-wrap flex-1 items-center justify-evenly snap-y snap-proximity">
           {landingAssets.map((item, index) => (
-            <div className="snap-center scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
+            <div key={`generated-asset-${index}`} className="snap-center scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
               <ImageAsset src="/assets/images/items/1.jpg" alt="" />
             </div>
           ))}
