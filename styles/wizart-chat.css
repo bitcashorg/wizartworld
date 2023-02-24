@@ -1,5 +1,5 @@
 .wizart-chat-globe-bg {
-  @apply bg-violet-600 p-5 mr-auto w-9/12;
+  @apply bg-violet-600 p-5 mr-auto max-w-[75%];
   
   border-radius: 24px;
   height: min-content;
@@ -7,7 +7,7 @@
   /* clip-path: path('M267 1C276.941 1 285 9.05887 285 19V62.1463C285 72.0628 276.98 80.1114 267.063 80.1462L23.7424 81C19.765 81 16.1112 79.4803 13.2374 76.9415C10.093 79.9818 6.07313 81.2408 1.17807 80.7188C1.11549 80.7121 1.05956 80.6731 1.02753 80.6138C0.983161 80.5316 0.994113 80.4303 1.04823 80.3619L1.09672 80.3176L1.45086 80.0833C3.77177 78.5185 5.28968 76.8976 6.0046 75.2206C6.76821 73.4293 7.10166 69.5293 7.00494 63.5205C6.99115 63.2222 6.98455 62.9228 6.98455 62.6216V19C6.98455 9.05889 15.0434 1 24.9845 1H267Z'); */
 }
 .wizart-user-globe-bg {
-  @apply bg-green-400 p-5 ml-auto w-9/12;
+  @apply bg-green-400 p-5 ml-auto mt-auto max-w-[75%];
   
   border-radius: 24px;
   height: min-content;
@@ -25,8 +25,8 @@
   @apply flex mb-8;
 }
 
-.form > div {
-  max-width: 400px;
+.wizart-chat-loader-wrapper {
+  @apply absolute bottom-[-1rem];
 }
 
 .wizart-chat-user-prompt {
@@ -46,6 +46,12 @@
 
 .imageWrapper {
   width: 100%;
-  aspect-ratio: 1 / 1;
   position: relative;
+}
+
+.imageWrapper img {
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+  max-width: 300px;
 }

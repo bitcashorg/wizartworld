@@ -8,14 +8,14 @@ export function NiftoryAuth() {
     return (
       <>
         Signed in as {session.user?.email} <br />
-        <Button onClick={signOut} label=" Sign out" />
+        <Button onClick={() => signOut()} label=" Sign out" />
       </>
     )
   }
   return (
     <>
       Not signed in <br />
-      <Button onClick={signIn} label="Sign in" variant="primary" />
+      <Button onClick={() => signIn()} label="Sign in" variant="primary" />
     </>
   )
 }

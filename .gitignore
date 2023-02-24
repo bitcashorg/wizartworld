@@ -49,3 +49,7 @@ tsconfig.tsbuildinfo
 .vscode
 
 /drafts
+
+*.mock.tsx
+*.mock.ts
+

@@ -9,16 +9,21 @@ export function NFTPreview() {
   const { prediction } = replicate
 
   return (
-    <div className="container">
+    <>
       {prediction && (
-        <div>
+        <div className="w-full">
           {prediction.output && (
-            <div className="imageWrapper">
-              <ImageAsset src={prediction.output[prediction.output.length - 1]} alt="output" />
+            <div className="w-full">
+              <ImageAsset
+                width={400}
+                height={400}
+                src={prediction.output[prediction.output.length - 1]}
+                alt="output"
+              />
             </div>
           )}
         </div>
       )}
-    </div>
+    </>
   )
 }
