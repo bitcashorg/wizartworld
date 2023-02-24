@@ -189,7 +189,7 @@ export default function Home() {
               </button>
             </div>
 
-            <a className="btn border-0 absolute flex w-full justify-center items-center mt-10" href="#assets">
+            <a className="btn border-0 flex w-full justify-center items-center mt-10" href="#assets">
               <Image src="/images/icons8-chevron-down-96.png" alt="" width={42} height={42} />
             </a>
           </div>
@@ -201,7 +201,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="md:mt-36 mt-30 px-5" id="assets">
+      <section className="md:mt-36 mt-40 px-5" id="assets">
         <h2 className="md:text-5xl text-4xl text-center font-bold w-full mb-10">Generated Assets</h2>
 
         {Object.keys(landingAssets).map((item, index) => (
@@ -210,7 +210,7 @@ export default function Home() {
 
             <div className="flex flex-wrap flex-1 items-center justify-center snap-y snap-proximity">
               {landingAssets[item as keyof typeof landingAssets].map((asset, index) => (
-                <div key={`generated-asset-${index}`} className="snap-center max-w-[45%] scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
+                <div key={`generated-asset-${index}`} className="snap-center max-w-full xs:max-w-[45%] scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
                   <ImageAsset src={asset} alt="" />
                 </div>
               ))}
