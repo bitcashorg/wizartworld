@@ -21,7 +21,7 @@ export function MintStep({ next, prev }: WizardStepProps) {
       <HomeWizardStepNav label="PREVIEW" prev={prev} step={5} />
       <div className="flex content-center py-6">
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 px-7">
             <TextInput
               id="nft_name"
               placeholder="Name your piece..."
@@ -39,10 +39,10 @@ export function MintStep({ next, prev }: WizardStepProps) {
           </div>
         </Form>
       </div>
-      <div className="flex content-center">
+      <div className="flex content-center px-4">
         <NFTPreview />
       </div>
-      <div className="py-8">
+      <div className="py-8 px-4">
         <Button onClick={next} variant="primary" size="full" label="Create & Mint NFT"></Button>
       </div>
     </div>

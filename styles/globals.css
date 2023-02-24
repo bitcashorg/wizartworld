@@ -69,7 +69,7 @@ select:focus {
   @apply block h-full;
 }
 .asset-image-wrapper img {
-  @apply w-full h-[285px] duration-700 ease-in-out object-cover
+  @apply w-full h-[285px] duration-700 ease-in-out object-cover rounded-xl;
 }
 
 /**

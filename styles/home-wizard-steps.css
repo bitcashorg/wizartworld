@@ -49,5 +49,5 @@
 
 .wizart-step-card__style-preview,
 .wizart-step-card__style-preview img {
-  @apply rounded-lg h-[200px];
+  @apply rounded-xl h-[200px];
 }

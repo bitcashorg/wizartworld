@@ -124,7 +124,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
     </div>
   )
 
-  const filterWizartPrompt = wizartMessage.includes(wizartDescriptionHeader) ? wizartDescriptionHeader : wizartMessage
+  const filterWizartPrompt = wizartMessage && wizartMessage.includes(wizartDescriptionHeader) ? wizartDescriptionHeader : wizartMessage
   const wizartThinkingResponse = loading ? 'Thinking...' : wizartDescriptionHeader
   const wizardResponse = wizartMessage && (!wizartMessage.includes(wizartDescriptionHeader) || !loading)
     ? filterWizartPrompt
