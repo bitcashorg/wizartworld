@@ -2,6 +2,10 @@ import React from 'react'
 
 import { HomeWizard } from '~/views/home/home-wizard'
 import { WizartLogo } from '~/components/icons'
+import Image from 'next/image'
+import { ImageAsset } from '~/components/image'
+
+const landingAssets = [1, 2, 3, 4, 5, 6]
 
 export default function Home() {
   const [open, setOpen] = React.useState(false)
@@ -12,13 +16,29 @@ export default function Home() {
     document.body.style.overflowY = open ? 'hidden' : 'auto'
   }, [open])
 
+  React.useEffect(() => {
+    if (!document) return () => {}
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [open])
+
   return (
     <>
       <span className="fixed blur-[200px] w-[600px] h-[600px] rounded-full top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 bg-gradient-to-tl from-red-600/20 to-violet-600/20 dark:from-red-600/40 dark:to-violet-600/40"></span>
       
       {open && <HomeWizard />}
 
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden px-5">
         <div className="grid grid-cols-1 justify-center text-center h-[calc(93vh-60px)] items-center">
           <div className="relative">
             <div className="relative mb-5">
@@ -47,6 +67,10 @@ export default function Home() {
                 Create Your NFT
               </button>
             </div>
+
+            <a className="btn border-0 absolute flex w-full justify-center items-center mt-20" href="#assets">
+              <Image src="/images/icons8-chevron-down-96.png" alt="" width={42} height={42} />
+            </a>
           </div>
         </div>
 
@@ -54,26 +78,17 @@ export default function Home() {
           <span className="after:absolute after:left-0 after:bottom-1/2 after:translate-y-1/2 after:h-2 after:w-8 after:rounded-md after:bg-violet-600/20 relative after:z-10"></span>
           <span className="after:absolute after:left-0 after:bottom-1/2 after:translate-y-1/2 after:rotate-90 after:h-2 after:w-8 after:rounded-md after:bg-violet-600/20 relative after:z-10"></span>
         </div>
+      </section>
 
-        <div className="md:mt-36 mt-30">
-          <div className="md:flex justify-between items-center">
-            <div className="md:w-10/12 md:text-left text-center">
-              <h3 className="md:text-[30px] text-[26px] font-semibold">Generated Assets</h3>
-            </div>
-            {/* <div className="md:w-2/12 text-right md:block hidden">
-              <a
-                href="collections.html"
-                className="btn btn-link text-[16px] font-medium hover:text-violet-600 after:bg-violet-600 duration-500 ease-in-out"
-              >
-                See More <i className="uil uil-arrow-right"></i>
-              </a>
-            </div> */}
-          </div>
+      <section className="md:mt-36 mt-30 px-5" id="assets">
+        <div className="md:w-10/12 md:text-left text-center mb-10">
+          <h2 className="md:text-4xl text-3xl font-semibold">Generated Assets</h2>
+        </div>
 
-          divb
-          {[1, 2, 3, 4, 5, 6].map((item, index) => (
-            <div className="group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
-              <img src="/assets/images/items/1.jpg" className="rounded-lg" alt="" />
+        <div className="flex flex-wrap flex-1 items-center justify-evenly snap-y snap-proximity">
+          {landingAssets.map((item, index) => (
+            <div className="snap-center scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
+              <ImageAsset src="/assets/images/items/1.jpg" alt="" />
             </div>
           ))}
         </div>

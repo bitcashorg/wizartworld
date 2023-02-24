@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { clientEnv } from '~/config/client'
+import { serverEnv } from '~/config/server'
 
 export default async function createPrediction(req: NextApiRequest, res: NextApiResponse) {
   const response = await fetch('https://api.replicate.com/v1/predictions', {
     method: 'POST',
     headers: {
-      Authorization: `Token ${clientEnv.services.replicate}`,
+      Authorization: `Token ${serverEnv.replicate}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
