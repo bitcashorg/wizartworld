@@ -160,10 +160,10 @@ export default function Home() {
       {open && <HomeWizard />}
 
       <section className="relative overflow-hidden px-5">
-        <div className="grid grid-cols-1 justify-center text-center h-[calc(93vh-60px)] items-center">
+        <div className="grid grid-cols-1 justify-center text-center min-h-[calc(93vh-60px)] items-center">
           <div className="relative">
             <div className="relative mb-5">
-              <span className="flex w-full items-center justify-center mb-24">
+              <span className="flex w-full items-center justify-center sm:mb-20">
                 <WizartLogo width={600} height={200} />
               </span>
               <h1 className="font-bold whitespace-pre-line lg:leading-snug leading-snug text-4xl lg:text-6xl">
