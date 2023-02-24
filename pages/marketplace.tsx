@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
 import { serverResponse } from '~/lib/ssr'
-import { getMaketplaceData } from '~/services/market'
+import { getMarketplaceData } from '~/services/market'
 import { Marketplace } from '~/views/marketplace'
 
 export default function PageMarketplace({ marketplace }: PageMarketplaceProps) {
@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps<any, PageMarketplaceParams> 
   context,
 ) => {
   return serverResponse(context, async ({ session }) => {
-    const marketplace = await getMaketplaceData()
+    const marketplace = await getMarketplaceData()
     if (!marketplace) return { notFound: true }
 
     return {

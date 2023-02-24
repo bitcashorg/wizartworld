@@ -4,7 +4,7 @@ export async function getCollection({ slug }: GetCollectionParams) {
   return []
 }
 
-export async function getMaketplaceData() {
+export async function getMarketplaceData() {
   return []
 }
 
