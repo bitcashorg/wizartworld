@@ -38,7 +38,7 @@ export async function getNiftoryApps() {
 
 export async function getAppUser() {
   return getClientGraphQLSdk().query({
-    appUser: everything,
+    appUser: { ...everything, wallet: everything },
   })
 }
 

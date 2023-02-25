@@ -47,7 +47,6 @@ function SessionSync() {
   const session = useSession()
   // keep jwt in sync with next session
   useEffect(() => {
-    console.log({ session })
     if (session?.data?.user?.jwt)
       localStorage.setItem(clientEnv.jwtLocalStorageKey, session.data?.user?.jwt || '')
   }, [session])
