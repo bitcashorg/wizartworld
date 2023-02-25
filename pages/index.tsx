@@ -317,8 +317,9 @@ export default function Home() {
           variant="tertiary"
           size="normal"
           className="animate-bounce rounded-full w-12 h-12 fixed flex bottom-5 right-5 text-center text-white leading-9"
-          children={<Image src="/images/icons8-chevron-down-96.png" className="scale-[-1]" alt="" width={32} height={32} />}
-        />
+        >
+          <Image src="/images/icons8-chevron-down-96.png" className="scale-[-1]" alt="" width={32} height={32} />
+        </Button>
       ) : null}
     </>
   )

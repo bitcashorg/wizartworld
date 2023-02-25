@@ -184,8 +184,9 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
                   className="my-2 ml-1 mr-2 flex h-8 w-16 rounded-2xl"
                   type="submit"
                   aria-label="click to send a prompt to Wizart"
-                  children={<SendPromptIcon />}
-                />
+                >
+                  <SendPromptIcon />
+                </Button>
               </div>
             </div>
           </div>

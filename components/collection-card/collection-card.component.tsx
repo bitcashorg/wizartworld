@@ -1,13 +1,14 @@
+import Image from 'next/image'
 import { CollectionCardProps } from './collection-card.type'
 
 // WIP
 export function CollectionCard({}: CollectionCardProps) {
   return (
     <div className="relative p-3 m-2 overflow-hidden duration-500 ease-in-out bg-white rounded-lg shadow group dark:bg-slate-900 dark:shadow-gray-800">
-      <img src="assets/images/items/1.jpg" className="rounded-lg" alt="" />
+      <Image src="assets/images/items/1.jpg" className="rounded-lg" alt="" />
       <div className="relative p-4 -mt-14">
         <div className="relative inline-block">
-          <img
+          <Image
             src="assets/images/avatar/1.jpg"
             className="h-16 rounded-md shadow-md dark:shadow-gray-800"
             alt=""
