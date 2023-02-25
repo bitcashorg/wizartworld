@@ -3,12 +3,14 @@ import { everything } from '@genql/runtime'
 
 import { getClientGraphQLSdk } from '~/graphql'
 
-export async function mint() {
-  // await getClientGraphQLSdk().mutation({
-  //   mintNFTModel: {},
-  // })
+export async function mintNFTModel(__args: { appId: string; id: string; quantity: string }) {
+  return getClientGraphQLSdk().mutation({
+    mintNFTModel: {
+      __args,
+    },
+    ...everything,
+  })
 }
-
 export async function createNFTSet() {
   const response = getClientGraphQLSdk().mutation({
     createNFTSet: {

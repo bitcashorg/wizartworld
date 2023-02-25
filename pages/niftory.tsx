@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Button } from '~/components/button'
 import { createNFTSet, getAppUser, getNftModels, getNiftoryApps } from '~/services/niftory'
 import { getNfts, registerWallet, transferNft } from '~/services/niftory/'
-import { getSets } from '~/services/niftory/niftory.service'
+import { getSets, mintNFTModel } from '~/services/niftory/niftory.service'
 import { NiftoryAuth } from '~/views/niftory/niftory-auth.component'
 
 export default function PageNiftory() {
@@ -75,6 +75,14 @@ export default function PageNiftory() {
     }
   }
 
+  const execMintNFTModel = async () => {
+    try {
+      setData(await mintNFTModel({ appId: 'string', id: 'string', quantity: 'string' }))
+    } catch (error) {
+      setData({ error: error as Error })
+    }
+  }
+
   return (
     <>
       <NiftoryAuth />
@@ -88,6 +96,7 @@ export default function PageNiftory() {
         <Button onClick={execRegisterWallet} label="register address nfts" />
         <Button onClick={execNftTransfer} label="transfer nft" />
         <Button onClick={execGetSets} label="get sets" />
+        <Button onClick={execMintNFTModel} label="mint nft model" />
       </div>
       <br /> <br />
       <h2>Query Response </h2>
