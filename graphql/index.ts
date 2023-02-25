@@ -1,10 +1,5 @@
-import { getToken } from 'next-auth/jwt'
-
-import { GraphqlOperation } from '@genql/runtime'
-
 import { chainConfig } from '~/config/chain'
 import { clientEnv } from '~/config/client'
-import { jwtIsExpired } from '~/lib/jwt'
 import { logger } from '~/lib/logger'
 
 import { createClient } from './generated'

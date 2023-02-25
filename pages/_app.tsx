@@ -50,7 +50,7 @@ function SessionSync() {
     console.log({ session })
     if (session?.data?.user?.jwt)
       localStorage.setItem(clientEnv.jwtLocalStorageKey, session.data?.user?.jwt || '')
-  }, [session?.data?.user?.jwt])
+  }, [session])
 
   return <></>
 }
