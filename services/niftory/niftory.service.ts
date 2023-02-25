@@ -35,3 +35,8 @@ export async function getNiftoryApps() {
     app: everything,
   })
 }
+export async function getAppUser() {
+  return getClientGraphQLSdk().query({
+    appUser: everything,
+  })
+}

@@ -44,7 +44,9 @@ export const authOptions: NextAuthOptions = {
       }
     },
     session: async ({ session, token }) => {
+      console.log('session', session)
       session.user = {
+        ...session.user,
         userId: token.sub || '',
         clientId: token.aud?.toString() || '',
         jwt: token.authToken?.toString() || '',
