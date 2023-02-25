@@ -4,6 +4,7 @@ import { HomeWizard } from '~/views/home/home-wizard'
 import { WizartLogo } from '~/components/icons'
 import Image from 'next/image'
 import { ImageAsset } from '~/components/image'
+import { Button } from '~/components/button'
 
 const landingAssets = {
   'cinema_🎥': [
@@ -106,13 +107,9 @@ export default function Home() {
   const [backToTop, setBackToTop] = React.useState(false)
 
   React.useEffect(() => {
-    if (!document) return
+    if (!document) return () => {}
 
     document.body.style.overflowY = open ? 'hidden' : 'auto'
-  }, [open])
-
-  React.useEffect(() => {
-    if (!document) return () => {}
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -181,12 +178,13 @@ export default function Home() {
             </div>
 
             <div className="mt-8">
-              <button
-                className="btn btn-lg bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white rounded-full"
+              <Button
+                variant="primary"
+                size="xl"
                 onClick={() => setOpen(true)}
-              >
-                Create Your NFT
-              </button>
+                label="Create Your NFT"
+                className="max-w-[300px]"
+              />
             </div>
 
             <a className="btn border-0 flex w-full justify-center items-center mt-10" href="#assets">
@@ -202,7 +200,7 @@ export default function Home() {
       </section>
 
       <section className="md:mt-36 mt-40 px-5" id="assets">
-        <h2 className="md:text-5xl text-4xl text-center font-bold w-full mb-10">Generated Assets</h2>
+        <h2 className="md:text-5xl text-4xl text-center font-bold w-full mb-10">Generated NFTs</h2>
 
         {Object.keys(landingAssets).map((item, index) => (
           <>
@@ -210,7 +208,7 @@ export default function Home() {
 
             <div className="flex flex-wrap flex-1 items-center justify-center snap-y snap-proximity">
               {landingAssets[item as keyof typeof landingAssets].map((asset, index) => (
-                <div key={`generated-asset-${index}`} className="snap-center max-w-full xs:max-w-[45%] scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
+                <div key={`generated-asset-${index}`} className="snap-center w-auto max-w-full sm:max-w-[42%] h-[380px] scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
                   <ImageAsset src={asset} alt="" />
                 </div>
               ))}

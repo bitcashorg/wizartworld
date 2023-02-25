@@ -6,6 +6,7 @@ import { TextInput } from '~/components/form/text-input'
 import { NFTPreview } from '~/components/nft-preview'
 import { WizardStepProps } from '~/components/wizard'
 import { HomeWizardStepNav } from '~/views/home/home-wizard-header'
+import { HomeWizardPageTransition } from '../home-wizard/home-wizard-page-transition.component'
 
 export function MintStep({ next }: WizardStepProps) {
   const { handleSubmit, register } = useForm<MintFormProps>()
@@ -17,37 +18,41 @@ export function MintStep({ next }: WizardStepProps) {
   return (
     <div className="wizard-step-wrapper">
       <HomeWizardStepNav label="PREVIEW" step={5} />
-      <div className="flex content-center py-6">
-        <Form>
-          <div className="flex flex-col gap-6 px-7">
-            <TextInput
-              id="nft_name"
-              placeholder="Name your piece..."
-              formProps={{
-                ...register('nftName', { required: true }),
-              }}
-            />
-            <TextInput
-              id="nft_collection"
-              placeholder="Collection..."
-              formProps={{
-                ...register('nftCollection', { required: true }),
-              }}
+      <HomeWizardPageTransition>
+        <div className="wizard-step__content-wrapper flex-1 px-6">
+          <div className="flex content-center py-6 w-full px-8">
+            <Form>
+              <div className="flex flex-col gap-6">
+                <TextInput
+                  id="nft_name"
+                  placeholder="Name your piece..."
+                  formProps={{
+                    ...register('nftName', { required: true }),
+                  }}
+                />
+                <TextInput
+                  id="nft_collection"
+                  placeholder="Collection..."
+                  formProps={{
+                    ...register('nftCollection', { required: true }),
+                  }}
+                />
+              </div>
+            </Form>
+          </div>
+          <div className="flex content-center w-full">
+            <NFTPreview />
+          </div>
+          <div className="py-8 w-full">
+            <Button
+              onClick={handleSubmit(onSubmit)}
+              variant="primary"
+              size="lg"
+              label="Create & Mint NFT"
             />
           </div>
-        </Form>
-      </div>
-      <div className="flex content-center px-4">
-        <NFTPreview />
-      </div>
-      <div className="px-4 py-8">
-        <Button
-          onClick={handleSubmit(onSubmit)}
-          variant="primary"
-          size="full"
-          label="Create & Mint NFT"
-        />
-      </div>
+        </div>
+      </HomeWizardPageTransition>
     </div>
   )
 }

@@ -139,7 +139,7 @@ export function StyleStep({ next, prev }: WizardStepProps) {
       <HomeWizardStepNav label="Style" prev={prev} step={2} />
 
       <HomeWizardPageTransition>
-        <div className="wizard-step__content-wrapper">
+        <div className="wizard-step__content-wrapper flex-1">
           {artStyles[artCategory as keyof typeof artStyles].map((style, index) => (
             <div
               key={style.value}

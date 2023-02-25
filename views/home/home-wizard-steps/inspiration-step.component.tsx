@@ -202,7 +202,7 @@ export function InspirationStep({ prev, next }: WizardStepProps) {
     <div className="wizard-step-wrapper">
       <HomeWizardStepNav label="Inspiration" prev={prev} step={3} />
       <HomeWizardPageTransition>
-        <div className="wizard-step__content-wrapper">
+        <div className="wizard-step__content-wrapper flex-1">
           {inspirationStyles[artCategory as keyof typeof inspirationStyles].map(
             (inspiration, index) => (
               <div

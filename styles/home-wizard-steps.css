@@ -1,16 +1,16 @@
 .wizard-step__content-wrapper {
-  @apply flex max-h-[calc(740px-5rem)] w-full flex-1 snap-y snap-proximity flex-wrap justify-center gap-x-3 gap-y-7 overflow-y-auto;
+  @apply flex h-full max-h-[calc(93vh-5rem-2.5rem)] min-h-[calc(93vh-194px-1.5rem)] w-full snap-y snap-proximity flex-wrap justify-center gap-x-3 gap-y-7 overflow-y-auto;
 
   scrollbar-color: rgba(100, 230, 42, 0.6) rgba(0, 0, 0, 0);
   scrollbar-width: thin;
 }
 
 .wizard-step__content-wrapper--chat {
-  @apply h-full max-h-[calc(93vh-194px-1.5rem)] min-h-[calc(93vh-194px-1.5rem)];
+  @apply block h-full max-h-[calc(93vh-194px-1.5rem)] min-h-[calc(93vh-194px-1.5rem)];
 }
 
 .wizard-step-card {
-  @apply flex h-[100px] w-[calc(50%-1.5rem)] max-w-sm border-spacing-6 snap-center scroll-mb-24 flex-col items-center gap-2 overflow-hidden rounded border border-solid border-white border-opacity-30 bg-white bg-opacity-5 p-3 shadow-lg transition-all hover:border-opacity-60 hover:bg-opacity-10;
+  @apply flex h-[100px] w-[calc(50%-1.5rem)] max-w-sm border-spacing-6 snap-center scroll-mb-24 flex-col items-center gap-2 overflow-hidden rounded border border-solid border-white border-opacity-30 bg-white bg-opacity-5 p-3 text-center shadow-lg transition-all hover:border-opacity-60 hover:bg-opacity-10;
 
   border-radius: 6px;
 }
@@ -19,7 +19,7 @@
 }
 .wizard-step-card--inspiration picture,
 .wizard-step-card--inspiration img {
-  @apply h-full;
+  @apply h-full w-full;
 }
 .wizard-step-card--style {
   @apply h-[260px] w-[calc(100%-1.5rem)] xs:w-[calc(50%-1.5rem)];
@@ -48,5 +48,5 @@
 
 .wizart-step-card__style-preview,
 .wizart-step-card__style-preview img {
-  @apply h-[200px] rounded-xl;
+  @apply h-[200px] w-full rounded-xl;
 }

@@ -14,7 +14,7 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex justify-center w-screen h-screen align-middle">
-      <div className="w-screen h-screen sm:max-w-screen-lg max-h-[800px] content-center sm:content-start flex flex-col">
+      <div className="w-screen h-screen sm:max-w-screen-2xl max-h-[800px] content-center sm:content-start flex flex-col">
         <Header />
         <Main>{children}</Main>
 

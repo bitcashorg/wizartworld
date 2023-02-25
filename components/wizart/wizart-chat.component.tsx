@@ -9,6 +9,9 @@ import { wizartDescriptionHeader } from '~/lib/openai'
 
 import { Text } from '../text/text'
 import { OpenAIWizartChatProps } from './wizart-chat.types'
+import { Player } from '@lottiefiles/react-lottie-player'
+import wizartMascotAnimation from '~/lib/lottiefiles/wizart-character.json'
+import { Button } from '../button/button.component';
 
 let replicateAssetRequested = false
 
@@ -109,7 +112,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
 
   if (prediction)
     return (
-      <div className="wizard-step__content-wrapper">
+      <div className="wizard-step__content-wrapper px-8">
         <div className="flex justify-center py-10">
           <div className="w-[200px] h-[200px] flex justify-center place-items-center">
             {loadingPercentage !== '100%' && <span className="dot-flashing" />}
@@ -144,16 +147,21 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
   return (
     <div className="wizart-chat-wrapper">
       <div className="wizard-step__content-wrapper wizard-step__content-wrapper--chat">
-        <div
-          className={chatCardClass('wizart')}
-          onClick={(e) => (!loading && !wizartMessage ? retryPromptToWizart(e) : undefined)}
-        >
-          {!loading && !wizartMessage ? 'Retry' : wizardResponse}
-          {loading ? (
-            <span className="wizart-chat-loader-wrapper">
-              <span className="dot-flashing" />
-            </span>
-          ) : null}
+        <div className="relative pt-10">
+          <div className="wizart-mascot">
+            <Player src={wizartMascotAnimation} loop={Boolean(prediction) || loading} autoplay />
+          </div>
+          <div
+            className={chatCardClass('wizart')}
+            onClick={(e) => (!loading && !wizartMessage ? retryPromptToWizart(e) : undefined)}
+          >
+              {!loading && !wizartMessage ? 'Retry' : wizardResponse}
+              {loading ? (
+                <span className="wizart-chat-loader-wrapper">
+                  <span className="dot-flashing" />
+                </span>
+              ) : null}
+          </div>
         </div>
         {userPrompt ? <div className={chatCardClass('user')}>{userPrompt}</div> : null}
       </div>
@@ -169,9 +177,15 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
                   placeholder="What's on your mind ?"
                   onChange={onChangeInput}
                 />
-                <button className="btn-multicolor my-2 ml-1 mr-2 flex h-8 w-16 rounded-2xl" type="submit" aria-label="click to send a prompt to Wizart">
-                  <SendPromptIcon />
-                </button>
+                {/* TODO: Fix Buttons types */}
+                {/* @ts-ignore */}
+                <Button
+                  variant="tertiary"
+                  className="my-2 ml-1 mr-2 flex h-8 w-16 rounded-2xl"
+                  type="submit"
+                  aria-label="click to send a prompt to Wizart"
+                  children={<SendPromptIcon />}
+                />
               </div>
             </div>
           </div>

@@ -2,9 +2,9 @@ import { W } from 'windstitch'
 
 import { ButtonVariants } from './button.component'
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+export type ButtonProps = React.ReactElement<'button'> &
   ButtonVariantsProps & {
-    label: string
+    label?: string
     onClick: () => void
   }
 

@@ -37,7 +37,7 @@ export function CategoryStep({ next, prev }: WizardStepProps) {
       <HomeWizardStepNav label="Category" prev={prev} step={1} />
 
       <HomeWizardPageTransition>
-        <div className="wizard-step__content-wrapper">
+        <div className="wizard-step__content-wrapper flex-1">
           {categories.map((category, index) => (
             <div
               key={category.value}
