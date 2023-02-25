@@ -5,32 +5,34 @@ import { WizartLogo } from '~/components/icons'
 import Image from 'next/image'
 import { ImageAsset } from '~/components/image'
 import { Button } from '~/components/button'
+import { GridGallery } from '~/components/grid-gallery'
+import { CollectionCard } from '~/components/collection-card'
 
 const landingAssets = {
   'cinema_🎥': [
-    '/images/movie1.png',
-    '/images/movie2.png',
-    '/images/movie3.png',
-    '/images/movie4.png',
-    '/images/movie5.png',
-    '/images/movie6.png',
-    '/images/movie7.png',
-    '/images/movie8.png',
-    '/images/movie10.png',
-    '/images/movie11.png',
-    '/images/movie12.png',
+    '/images/generated-nft/movie1.png',
+    '/images/generated-nft/movie2.png',
+    '/images/generated-nft/movie3.png',
+    '/images/generated-nft/movie4.png',
+    '/images/generated-nft/movie5.png',
+    '/images/generated-nft/movie6.png',
+    '/images/generated-nft/movie7.png',
+    '/images/generated-nft/movie8.png',
+    '/images/generated-nft/movie10.png',
+    '/images/generated-nft/movie11.png',
+    '/images/generated-nft/movie12.png',
     'https://bestaiprompts.art/img/cine102.jpeg',
     'https://bestaiprompts.art/img/cine103.jpeg',
-    '/images/movie9.png',
+    '/images/generated-nft/movie9.png',
   ],
   'video_games_🎮': [
-    '/images/game1.png',
-    '/images/game2.png',
-    '/images/game3.png',
-    '/images/game4.png',
-    '/images/game5.png',
-    '/images/game6.png',
-    '/images/game7.png',
+    '/images/generated-nft/game1.png',
+    '/images/generated-nft/game2.png',
+    '/images/generated-nft/game3.png',
+    '/images/generated-nft/game4.png',
+    '/images/generated-nft/game5.png',
+    '/images/generated-nft/game6.png',
+    '/images/generated-nft/game7.png',
     'https://bestaiprompts.art/img/game81.jpeg',
     'https://bestaiprompts.art/img/game34.jpeg',
     'https://bestaiprompts.art/img/game90.jpeg',
@@ -41,64 +43,64 @@ const landingAssets = {
 
   ],
   'graphic_design_🌁': [
-    '/images/graphic1.png',
-    '/images/graphic2.png',
-    '/images/graphic3.png',
-    '/images/graphic4.png',
-    '/images/graphic5.png',
-    '/images/graphic6.png',
-    '/images/graphic7.png',
-    '/images/graphic8.png',
-    '/images/graphic9.png',
-    '/images/graphic10.png',
-    '/images/graphic11.png',
+    '/images/generated-nft/graphic1.png',
+    '/images/generated-nft/graphic2.png',
+    '/images/generated-nft/graphic3.png',
+    '/images/generated-nft/graphic4.png',
+    '/images/generated-nft/graphic5.png',
+    '/images/generated-nft/graphic6.png',
+    '/images/generated-nft/graphic7.png',
+    '/images/generated-nft/graphic8.png',
+    '/images/generated-nft/graphic9.png',
+    '/images/generated-nft/graphic10.png',
+    '/images/generated-nft/graphic11.png',
   ],
   'illustration_🎨': [
-    '/images/illu1.png',
-    '/images/illu2.png',
-    '/images/illu3.png',
-    '/images/illu4.png',
-    '/images/illu5.png',
-    '/images/illu6.png',
-    '/images/illu7.png',
-    '/images/illu8.png',
-    '/images/illu9.png',
-    '/images/illu10.png',
-    '/images/illu11.png',
-    '/images/illu12.png',
-    '/images/illu13.png',
-    '/images/illu14.png',
+    '/images/generated-nft/illu1.png',
+    '/images/generated-nft/illu2.png',
+    '/images/generated-nft/illu3.png',
+    '/images/generated-nft/illu4.png',
+    '/images/generated-nft/illu5.png',
+    '/images/generated-nft/illu6.png',
+    '/images/generated-nft/illu7.png',
+    '/images/generated-nft/illu8.png',
+    '/images/generated-nft/illu9.png',
+    '/images/generated-nft/illu10.png',
+    '/images/generated-nft/illu11.png',
+    '/images/generated-nft/illu12.png',
+    '/images/generated-nft/illu13.png',
+    '/images/generated-nft/illu14.png',
   ],
   'interior_design_🏠': [
-    '/images/interior1.png',
-    '/images/interior2.png',
-    '/images/interior3.png',
-    '/images/interior4.png',
-    '/images/interior5.png',
-    '/images/interior6.png',
-    '/images/interior7.png',
-    '/images/interior8.png',
-    '/images/interior9.png',
-    '/images/interior10.png',
-    '/images/interior11.png',
-    '/images/interior12.png',
+    '/images/generated-nft/interior1.png',
+    '/images/generated-nft/interior2.png',
+    '/images/generated-nft/interior3.png',
+    '/images/generated-nft/interior4.png',
+    '/images/generated-nft/interior5.png',
+    '/images/generated-nft/interior6.png',
+    '/images/generated-nft/interior7.png',
+    '/images/generated-nft/interior8.png',
+    '/images/generated-nft/interior9.png',
+    '/images/generated-nft/interior10.png',
+    '/images/generated-nft/interior11.png',
+    '/images/generated-nft/interior12.png',
   ],
   'fashion_design_👗': [
-    '/images/fashion1.png',
-    '/images/fashion2.png',
-    '/images/fashion3.png',
-    '/images/fashion4.png',
-    '/images/fashion5.png',
-    '/images/fashion6.png',
-    '/images/fashion7.png',
-    '/images/fashion8.png',
-    '/images/fashion9.png',
-    '/images/fashion10.png',
-    '/images/fashion11.png',
-    '/images/fashion12.png',
-    '/images/fashion13.png',
-    '/images/fashion14.png',
-    '/images/fashion15.png',
+    '/images/generated-nft/fashion1.png',
+    '/images/generated-nft/fashion2.png',
+    '/images/generated-nft/fashion3.png',
+    '/images/generated-nft/fashion4.png',
+    '/images/generated-nft/fashion5.png',
+    '/images/generated-nft/fashion6.png',
+    '/images/generated-nft/fashion7.png',
+    '/images/generated-nft/fashion8.png',
+    '/images/generated-nft/fashion9.png',
+    '/images/generated-nft/fashion10.png',
+    '/images/generated-nft/fashion11.png',
+    '/images/generated-nft/fashion12.png',
+    '/images/generated-nft/fashion13.png',
+    '/images/generated-nft/fashion14.png',
+    '/images/generated-nft/fashion15.png',
   ]
 }
 
@@ -145,17 +147,59 @@ export default function Home() {
     }
   }, [])
 
+  // Activating tabs by datasets
+  React.useEffect(() => {
+    if (!document) return () => { }
+
+    const handleTabClick = (e: Event) => {
+      const target = e.target as HTMLElement
+      const tab = target.closest('[data-tab]') as HTMLElement
+
+      // if the clicked element is not a tab, we don't do anything
+      if (!tab) return
+
+      const tabName = tab.dataset.tab
+      const tabContent = document.querySelector(`[data-tab-content="${tabName}"]`) as HTMLElement
+
+      // if the clicked element is not a tab, we don't do anything
+      if (!tabContent) return
+
+      const tabs = document.querySelectorAll('[data-tab]') as NodeListOf<HTMLElement>
+      const tabContents = document.querySelectorAll('[data-tab-content]') as NodeListOf<HTMLElement>
+
+      // tabs are not active by default, so we need to remove the active class from the clicked tab
+      tabs.forEach(tab => tab.classList.remove('text-yellow-300', 'border-yellow-200'))
+      tab.classList.add('text-yellow-300', 'border-yellow-200', 'animation-opacity')
+
+      // tab content is hidden by default, so we need to remove the hidden class from the clicked tab content
+      tabContents.forEach(tabContent => tabContent.classList.add('hidden'))
+      tabContent.classList.remove('hidden')
+
+      e.preventDefault()
+    }
+
+    document.addEventListener('click', handleTabClick)
+
+    return () => {
+      document.removeEventListener('click', handleTabClick)
+    }
+  }, [])
+
   const navigateToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     setBackToTop(false)
   }
 
+  // We use useMemo to avoid re-rendering the components
+  const gallery = React.useMemo(() => [...new Array(Math.floor((Math.random() * 10) + 2))], [])
+
   return (
     <>
-      <span className="fixed blur-[200px] w-[600px] h-[600px] rounded-full top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 bg-gradient-to-tl from-red-600/20 to-violet-600/20 dark:from-red-600/40 dark:to-violet-600/40"></span>
+      <span className="z-0 fixed blur-[200px] w-[600px] h-[600px] rounded-full top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 bg-gradient-to-tl from-red-600/20 to-violet-600/20 dark:from-red-600/40 dark:to-violet-600/40"></span>
       
       {open && <HomeWizard />}
 
+      {/* // * HERO SECTION STARTS // */}
       <section className="relative overflow-hidden px-5">
         <div className="grid grid-cols-1 justify-center text-center min-h-[calc(93vh-60px)] items-center">
           <div className="relative">
@@ -198,30 +242,83 @@ export default function Home() {
           <span className="after:absolute after:left-0 after:bottom-1/2 after:translate-y-1/2 after:rotate-90 after:h-2 after:w-8 after:rounded-md after:bg-violet-600/20 relative after:z-10"></span>
         </div>
       </section>
+      {/* // * HERO SECTION ENDS // */}
 
-      <section className="md:mt-36 mt-40 px-5" id="assets">
-        <h2 className="md:text-5xl text-4xl text-center font-bold w-full mb-10">Generated NFTs</h2>
+      {/* // * TABS SECTION STARTS // */}
+      <section className="relative z-1 md:mt-36 mt-40 px-5" id="assets">
+        <h2 className="text-6xl text-center font-bold w-full mb-10">NFTs</h2>
+        
+        <ul className="mb-4 flex items-center justify-center list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row w-full" role="tablist">
+          <li role="presentation" data-tab="tabs-home" className="hover:animate-pulse duration-75 transition-all p-3 cursor-pointer">
+            <span className="md:text-5xl text-4xl font-bold w-full mb-10 leading-loose border-b-8 border-b-transparent"
+              role="tab"
+              aria-controls="tabs-home"
+              aria-selected="true"
+            >
+              Generated
+            </span>
+          </li>
+          <span className="hidden md:flex md:text-5xl text-4xl mx-6 font-bold">|</span>
+          <li role="presentation" data-tab="tabs-profile" className="hover:animate-pulse duration-75 transition-all p-3 cursor-pointer">
+            <span className="md:text-5xl text-4xl text-center font-bold w-full mb-10 leading-loose border-b-8 border-b-transparent"
+              aria-controls="tabs-profile"
+              aria-selected="false"
+              role="tab"
+            >
+              Fan Created
+            </span>
+          </li>
+        </ul>
 
-        {Object.keys(landingAssets).map((item, index) => (
-          <>
-            <h3 className="capitalize md:text-4xl text-3xl font-semibold mt-20 mb-6">{item.replace(/_/g, ' ')}</h3>
+        <div className="my-10">
+          <div className="transition-opacity duration-150 ease-linear"
+            data-tab-content="tabs-home"
+            aria-labelledby="tabs-home-tab"
+            role="tabpanel"
+          >
+            {Object.keys(landingAssets).map((item, index) => (
+              <>
+                <h3 className="capitalize md:text-4xl text-3xl font-semibold mb-6 mt-10">{item.replace(/_/g, ' ')}</h3>
 
-            <div className="flex flex-wrap flex-1 items-center justify-center snap-y snap-proximity">
-              {landingAssets[item as keyof typeof landingAssets].map((asset, index) => (
-                <div key={`generated-asset-${index}`} className="snap-center w-auto max-w-full sm:max-w-[42%] h-[380px] scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
-                  <ImageAsset src={asset} alt="" />
+                <div className="flex flex-wrap flex-1 items-center justify-center snap-y snap-proximity">
+                  {landingAssets[item as keyof typeof landingAssets].map((asset, index) => (
+                    <div key={`generated-asset-${index}`} className="snap-center w-auto max-w-full sm:max-w-[42%] h-[380px] scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
+                      <ImageAsset src={asset} alt="" />
+                    </div>
+                  ))}
                 </div>
+              </>
+            ))}
+          </div>
+          <div className="hidden transition-opacity duration-150 ease-linear"
+            data-tab-content="tabs-profile"
+            aria-labelledby="tabs-profile-tab"
+            role="tabpanel"
+          >
+              {[1, 2, 3, 4, 5].map((item, index) => (
+                <>
+                  <h3 className="capitalize md:text-4xl text-3xl font-semibold mb-6 mt-10">Collection #{index + 1}</h3>
+                  <GridGallery>
+                    {gallery.map((item, index) => (
+                      <CollectionCard key={index}></CollectionCard>
+                    ))}
+                  </GridGallery>
+                </>
               ))}
-            </div>
-          </>
-        ))}
+          </div>
+        </div>
       </section>
+      {/* // * TABS SECTION ENDS // */}
 
       {/* TODO: Show Animation */}
       {backToTop ? (
-        <button onClick={navigateToTop} className="btn-multicolor animate-bounce w-12 h-12 fixed flex text-lg rounded-full border-purple-800 bg-violet-900 bottom-5 right-5 text-center bg-transparent text-white leading-9">
-          <Image src="/images/icons8-chevron-down-96.png" className="scale-[-1]" alt="" width={32} height={32} />
-        </button>
+        <Button
+          onClick={navigateToTop}
+          variant="tertiary"
+          size="normal"
+          className="animate-bounce rounded-full w-12 h-12 fixed flex bottom-5 right-5 text-center text-white leading-9"
+          children={<Image src="/images/icons8-chevron-down-96.png" className="scale-[-1]" alt="" width={32} height={32} />}
+        />
       ) : null}
     </>
   )

@@ -5,7 +5,7 @@ import { t } from '~/lib/styles'
 import { ButtonProps } from './button.type'
 
 export function Button({ label, ...props }: ButtonProps) {
-  return <ButtonVariants {...props}>{label}</ButtonVariants>
+  return <ButtonVariants {...props}>{label || props.children}</ButtonVariants>
 }
 
 export const ButtonVariants = w.button(
