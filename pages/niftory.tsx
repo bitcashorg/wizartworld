@@ -77,7 +77,13 @@ export default function PageNiftory() {
 
   const execMintNFTModel = async () => {
     try {
-      setData(await mintNFTModel({ appId: 'string', id: 'string', quantity: 'string' }))
+      setData(
+        await mintNFTModel({
+          appId: 'cleddmva00002mm0v9hs6quxd',
+          id: 'bb8fc546-8bdb-40d9-a6b7-e4f371e29ef4',
+          quantity: '1',
+        }),
+      )
     } catch (error) {
       setData({ error: error as Error })
     }

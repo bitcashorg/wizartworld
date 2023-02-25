@@ -7,8 +7,8 @@ export async function mintNFTModel(__args: { appId: string; id: string; quantity
   return getClientGraphQLSdk().mutation({
     mintNFTModel: {
       __args,
+      ...everything,
     },
-    ...everything,
   })
 }
 export async function createNFTSet() {
@@ -66,8 +66,8 @@ export async function registerWallet({ address }: { address: string }) {
   return getClientGraphQLSdk().mutation({
     registerWallet: {
       __args: { address },
+      ...everything,
     },
-    ...everything,
   })
 }
 
@@ -75,8 +75,8 @@ export async function transferNft({ nftModelId, userId }: { nftModelId: string; 
   return getClientGraphQLSdk().mutation({
     transfer: {
       __args: { nftModelId, userId },
+      ...everything,
     },
-    ...everything,
   })
 }
 
