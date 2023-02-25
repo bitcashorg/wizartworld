@@ -229,18 +229,6 @@ export interface Contract {
 }
 
 
-/** Transactions that need to be given to Dapper Wallet for use with their platform. */
-export interface DapperTransactions {
-    /** The purchase transaction. */
-    purchase?: Scalars['String']
-    /** The metadata script for the purchase transaction. */
-    metadata?: Scalars['String']
-    /** The setup script for wallets. */
-    setup?: Scalars['String']
-    __typename: 'DapperTransactions'
-}
-
-
 /** A simple pricing strategy for listings with fixed prices. */
 export interface FixedPricing {
     /** The currency at which this price is set. */
@@ -581,6 +569,8 @@ export interface Query {
     app?: App
     /** Gets an [App]({{Types.App}}) by its ID. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/app-and-appuser). */
     appById?: App
+    /** Creates the [App]({{Types.App}}) on the specified organization for the user. */
+    createApp?: App
     /** Gets the [Contract]({{Types.Contract}}) from the currently authenticated app. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/contract). */
     contract?: Contract
     /** Gets a [File]({{Types.File}}) by its ID. */
@@ -595,8 +585,6 @@ export interface Query {
     organization?: Organization
     /** Gets the list of invoices for your app. */
     invoices?: InvoiceList
-    /** Gets transactions that need to be sent to Dapper for use with Dapper Wallet. */
-    dapperTransactions?: DapperTransactions
     /** Gets an [NFTListing]({{Types.NFTListing}}) by ID. */
     nftListing?: NFTListing
     /** Gets [NFTListing]({{Types.NFTListing}})s for the current [App]({{Types.App}}) context */
@@ -629,8 +617,6 @@ export interface Query {
 }
 
 export interface Mutation {
-    /** Creates the [App]({{Types.App}}) on the specified organization for the user. */
-    createApp?: App
     /** Deploys the [Contract]({{Types.Contract}}) from the currently authenticated app. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/contract). */
     deployContract?: Contract
     /** Generates a pre-signed URL that can then be used to upload a file. Once the file has been uploaded to the URL, it will automatically be uploaded to IPFS (if desired). Use the returned [File]({{Types.SimpleFile}}).state to track the upload. */
@@ -699,9 +685,7 @@ blockchain?: (Blockchain | null),
 /** The id of the organization to create app in */
 organizationId?: (Scalars['String'] | null),
 /** The URIs to redirect to after signin. Only required if using oauth */
-redirectUris?: ((Scalars['String'] | null)[] | null),
-/** A user to add to the organization. Required if using backend credentials. */
-adminUserEmail?: (Scalars['EmailAddress'] | null)}
+redirectUris?: ((Scalars['String'] | null)[] | null)}
 
 export interface CreateFileOptionsInput {
 /** Whether to asynchronously trigger an IPFS upload after the file has been uploaded to the returned cloud storage URL. */
@@ -863,9 +847,7 @@ attributes?: (Scalars['JSONObject'] | null),
 /** String labels to tag this [NFTSet]({{Types.NFTSet}}) with. These will be stored in the Niftory API but will not be added to the blockchain. Updating this will replace the existing tags. */
 tags?: ((Scalars['String'] | null)[] | null)}
 
-export interface OrganizationCreateInput {name: Scalars['String'],
-/** A user to add to the organization. Required if using backend credentials. */
-adminUserEmail?: (Scalars['EmailAddress'] | null)}
+export interface OrganizationCreateInput {name: Scalars['String']}
 
 
 /** The input to register a [Wallet]({{Types.Wallet}}). */
@@ -1123,19 +1105,6 @@ export interface ContractGenqlSelection{
     blockchain?: boolean | number
     /** The name of this contract. */
     name?: boolean | number
-    __typename?: boolean | number
-    __scalar?: boolean | number
-}
-
-
-/** Transactions that need to be given to Dapper Wallet for use with their platform. */
-export interface DapperTransactionsGenqlSelection{
-    /** The purchase transaction. */
-    purchase?: boolean | number
-    /** The metadata script for the purchase transaction. */
-    metadata?: boolean | number
-    /** The setup script for wallets. */
-    setup?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
 }
@@ -1558,6 +1527,8 @@ export interface QueryGenqlSelection{
     id?: (Scalars['ID'] | null), 
     /** The name of the App to retrieve. If unspecified, then 'id' must be specified. */
     name?: (Scalars['String'] | null)} })
+    /** Creates the [App]({{Types.App}}) on the specified organization for the user. */
+    createApp?: (AppGenqlSelection & { __args: {data: AppCreateInput} })
     /** Gets the [Contract]({{Types.Contract}}) from the currently authenticated app. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/contract). */
     contract?: ContractGenqlSelection
     /** Gets a [File]({{Types.File}}) by its ID. */
@@ -1592,10 +1563,6 @@ export interface QueryGenqlSelection{
     cursor?: (Scalars['String'] | null), 
     /** The maximum number of results to return. Defaults to 50, max is 100. */
     maxResults?: (Scalars['PositiveInt'] | null)} })
-    /** Gets transactions that need to be sent to Dapper for use with Dapper Wallet. */
-    dapperTransactions?: (DapperTransactionsGenqlSelection & { __args?: {
-    /** The app ID to get the transactions for. Only supported for certain clients. */
-    appId?: (Scalars['String'] | null)} })
     /** Gets an [NFTListing]({{Types.NFTListing}}) by ID. */
     nftListing?: (NFTListingGenqlSelection & { __args: {
     /** The ID of the NFTListing to retrieve. */
@@ -1689,15 +1656,13 @@ export interface QueryGenqlSelection{
 }
 
 export interface MutationGenqlSelection{
-    /** Creates the [App]({{Types.App}}) on the specified organization for the user. */
-    createApp?: (AppGenqlSelection & { __args: {data: AppCreateInput} })
     /** Deploys the [Contract]({{Types.Contract}}) from the currently authenticated app. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/contract). */
     deployContract?: (ContractGenqlSelection & { __args: {
-    /** The id of the app to deploy the contract for. */
+    /** The id of the app to deploy */
     appId: Scalars['String'], 
-    /** The name of the contract. */
+    /** The name of the contract */
     name: Scalars['String'], 
-    /** The blockchain to deploy the contract to. */
+    /** The blockchain to deploy the contract */
     blockchain: Blockchain} })
     /** Generates a pre-signed URL that can then be used to upload a file. Once the file has been uploaded to the URL, it will automatically be uploaded to IPFS (if desired). Use the returned [File]({{Types.SimpleFile}}).state to track the upload. */
     createFileUploadUrl?: (FileGenqlSelection & { __args: {
@@ -1985,14 +1950,6 @@ export interface MutationGenqlSelection{
     export const isContract = (obj?: { __typename?: any } | null): obj is Contract => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isContract"')
       return Contract_possibleTypes.includes(obj.__typename)
-    }
-    
-
-
-    const DapperTransactions_possibleTypes: string[] = ['DapperTransactions']
-    export const isDapperTransactions = (obj?: { __typename?: any } | null): obj is DapperTransactions => {
-      if (!obj?.__typename) throw new Error('__typename is missing in "isDapperTransactions"')
-      return DapperTransactions_possibleTypes.includes(obj.__typename)
     }
     
 

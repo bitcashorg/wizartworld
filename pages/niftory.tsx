@@ -1,9 +1,16 @@
-import { NiftoryAuth } from '~/views/niftory/niftory-auth.component'
+import { useState } from 'react'
 
-export default function Home() {
+import { Button } from '~/components/button'
+import { createNFTSet } from '~/services/niftory'
+
+export default function PageNiftory() {
+  const [data, setData] = useState({})
   return (
     <>
-      <NiftoryAuth />
+      <Button onClick={async () => setData(await createNFTSet())} label="create set" />
+      <pre>
+        <code>{JSON.stringify(data, null, 2)}</code>
+      </pre>
     </>
   )
 }

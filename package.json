@@ -16,7 +16,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
-    "graphql": "genql --endpoint https://graphql.api.staging.niftory.com --output ./graphql/generated -H 'X-Niftory-API-Key: beYyMaLIucJIt6CPFCAni2L0mYQ7nXnllNLYKVAgcTM=' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjZKcFhrRFM1UDFGY2hnT0tDQ242VVRLZkpnTGpMN09WR1JfakN6NUxENzAifQ.eyJzdWIiOiJjbGVpbzk2d2YwMDB2bDUweHBsMHEzdXA5IiwiZW1haWwiOiJoZWxsb0BibG9ja21hdGljLmlvIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJHYWJvIEVzcXVpdmVsIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FHTm15eFpqNEFibTFlclg5dVRKQTFkV1FMdkZiWWp4SXFUVDRjUENVZzEtPXM5Ni1jIiwiYXRfaGFzaCI6IjlsbUlobkdlNmRucFpDVjFudmZhUHciLCJhdWQiOiJjbGI1dGdlMHUwMDE5MGhsYmx2ZWgzMzFsIiwiZXhwIjoxNjc3MjU1MTM0LCJpYXQiOjE2NzcyNTE1MzQsImlzcyI6Imh0dHBzOi8vc3RhZ2luZy5uaWZ0b3J5LmNvbSJ9.VGgfC-Y7wu-mc13bdAw3eNwjDHnlRrks6Mr0FxRQp1lxutIA73R-VlrejEBIPGj6TYrSDqQn0kSgao_v0vCRM-OOYTO0xVSe9Svq2-nMlMesznynk1JcelplZLSIgnnCwSskb5TGGRMrgcwqVl0YVQ86PnKcDIZMl1SmHu3z8rxEVy9gl4Uml97L7iygKQPus1DUFZDt_AosRJO26Y48N2WMGBni7DXG0v_VfyiG3Qn6UWJQ598ECO9tRVxZEBZ7rCEnuipMSsuB1xYHtU-F7OUw1lkysia32SpDhZoRdFKiG0BGf2AH1EGOFhhJbxqLBezWnVknPs7B8LmTqkpIPg'"
+    "graphql": "genql --endpoint https://graphql.api.staging.niftory.com --output ./graphql/generated -H 'X-Niftory-API-Key: beYyMaLIucJIt6CPFCAni2L0mYQ7nXnllNLYKVAgcTM=' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjZKcFhrRFM1UDFGY2hnT0tDQ242VVRLZkpnTGpMN09WR1JfakN6NUxENzAifQ.eyJzdWIiOiJjbGVnem1yOWQwMDFmbWkwdTlodWwwaDF6IiwiZW1haWwiOiJjb250YWN0QGdhYm9lc3F1aXZlbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkdhYm8gRXNxdWl2ZWwiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUdObXl4WW9xZTlhNDhjT195TmZjN2pPVVlZeW9oeDM4bkx6eWJvNGRTc3ZaQT1zOTYtYyIsImF0X2hhc2giOiIxRE9IQ3NzVGtrMjRYNUhJTXFuR2pnIiwiYXVkIjoiY2xiNXRnZTB1MDAxOTBobGJsdmVoMzMxbCIsImV4cCI6MTY3NzM1MDY1OSwiaWF0IjoxNjc3MzQ3MDU5LCJpc3MiOiJodHRwczovL3N0YWdpbmcubmlmdG9yeS5jb20ifQ.bKZ8H3bPDFlVjPSnAUF8rYqhEf349h3NlPbA4If_k4mT4szmWvKudlTZiXxn2l8KnC5mE8wkCItSIOKPP3w6evlj_0QtvpearWxcKN3bKCjZeCsh-t2ns340nOKhoFcOFCiDmAzj78vaRPA1t_4irnuOIX4Rps7LIL1Scf0LlwtvkT_OWczGbGSYVYGIUeO6wD0dprwn0zZrr62q1NYzdHKzY3I7UcWJ71YyGEFx1qS3mIKEW6RB05KtHfKSresxEO4k4Oq39HgD2kT8r5ZYZHgzpZerJgt3DtWKdyI9KdyzZwY1P2IsM6nDm_kL4Ec1FlBc19r6XwWl_dGX_bCVYA'"
   },
   "dependencies": {
     "@apollo/client": "^3.7.9",
@@ -55,6 +55,7 @@
     "zod": "^3.20.6"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@genql/cli": "^3.0.3",
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.14.1",

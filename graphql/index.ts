@@ -30,10 +30,10 @@ export function getGraphQLSdk({ config, jwt }: GraphQLSdkProps = {}) {
             }),
       }
 
-      logger.info(
-        '\n ==> GraphQL Query : \n',
-        JSON.stringify((operation as GraphqlOperation).query.replaceAll('"', '')),
-      )
+      // logger.info(
+      //   '\n ==> GraphQL Query : \n',
+      //   JSON.stringify((operation as GraphqlOperation).query.replaceAll('"', '')),
+      // )
 
       let fetchResponse
       try {

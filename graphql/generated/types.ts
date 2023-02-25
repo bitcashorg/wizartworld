@@ -20,6 +20,7 @@ export default {
         19,
         20,
         49,
+        68,
         69,
         70,
         71,
@@ -28,8 +29,7 @@ export default {
         74,
         75,
         76,
-        77,
-        78
+        77
     ],
     "types": {
         "Blockchain": {},
@@ -61,9 +61,6 @@ export default {
             "redirectUris": [
                 17
             ],
-            "adminUserEmail": [
-                70
-            ],
             "__typename": [
                 17
             ]
@@ -93,10 +90,10 @@ export default {
                 17
             ],
             "price": [
-                73
+                72
             ],
             "attributes": [
-                72
+                71
             ],
             "nftModelId": [
                 20
@@ -107,7 +104,7 @@ export default {
         },
         "CreateNiftoryWalletInput": {
             "attributes": [
-                72
+                71
             ],
             "__typename": [
                 17
@@ -118,7 +115,7 @@ export default {
                 1
             ],
             "price": [
-                73
+                72
             ],
             "__typename": [
                 17
@@ -183,7 +180,7 @@ export default {
                 17
             ],
             "quantity": [
-                74
+                73
             ],
             "contentId": [
                 20
@@ -195,10 +192,10 @@ export default {
                 12
             ],
             "metadata": [
-                72
+                71
             ],
             "attributes": [
-                72
+                71
             ],
             "tags": [
                 17
@@ -238,7 +235,7 @@ export default {
                 17
             ],
             "quantity": [
-                74
+                73
             ],
             "contentId": [
                 20
@@ -250,10 +247,10 @@ export default {
                 12
             ],
             "metadata": [
-                72
+                71
             ],
             "attributes": [
-                72
+                71
             ],
             "tags": [
                 17
@@ -267,7 +264,7 @@ export default {
                 17
             ],
             "attributes": [
-                72
+                71
             ],
             "tags": [
                 17
@@ -298,7 +295,7 @@ export default {
                 17
             ],
             "attributes": [
-                72
+                71
             ],
             "tags": [
                 17
@@ -311,16 +308,13 @@ export default {
             "name": [
                 17
             ],
-            "adminUserEmail": [
-                70
-            ],
             "__typename": [
                 17
             ]
         },
         "RegisterWalletInput": {
             "attributes": [
-                72
+                71
             ],
             "__typename": [
                 17
@@ -334,13 +328,13 @@ export default {
                 17
             ],
             "price": [
-                73
+                72
             ],
             "nftModelId": [
                 20
             ],
             "attributes": [
-                72
+                71
             ],
             "__typename": [
                 17
@@ -348,7 +342,7 @@ export default {
         },
         "UpdateWalletInput": {
             "attributes": [
-                72
+                71
             ],
             "__typename": [
                 17
@@ -359,16 +353,16 @@ export default {
                 17
             ],
             "metadata": [
-                72
+                71
             ],
             "on_NFT": [
-                56
+                55
             ],
             "on_NFTModel": [
-                62
+                61
             ],
             "on_NFTSet": [
-                64
+                63
             ],
             "__typename": [
                 17
@@ -379,13 +373,13 @@ export default {
                 20
             ],
             "attributes": [
-                72
+                71
             ],
             "createdAt": [
-                69
+                68
             ],
             "updatedAt": [
-                69
+                68
             ],
             "status": [
                 12
@@ -394,13 +388,13 @@ export default {
                 17
             ],
             "metadata": [
-                72
+                71
             ],
             "on_NFTModel": [
-                62
+                61
             ],
             "on_NFTSet": [
-                64
+                63
             ],
             "__typename": [
                 17
@@ -411,7 +405,7 @@ export default {
                 20
             ],
             "url": [
-                75
+                74
             ],
             "state": [
                 2
@@ -426,10 +420,10 @@ export default {
                 17
             ],
             "on_NFTFile": [
-                58
+                57
             ],
             "on_SimpleFile": [
-                66
+                65
             ],
             "__typename": [
                 17
@@ -440,22 +434,22 @@ export default {
                 20
             ],
             "attributes": [
-                72
+                71
             ],
             "createdAt": [
-                69
+                68
             ],
             "updatedAt": [
-                69
+                68
             ],
             "status": [
                 12
             ],
             "on_NFTModel": [
-                62
+                61
             ],
             "on_NFTSet": [
-                64
+                63
             ],
             "__typename": [
                 17
@@ -466,7 +460,7 @@ export default {
                 10
             ],
             "on_NFT": [
-                56
+                55
             ],
             "__typename": [
                 17
@@ -474,7 +468,7 @@ export default {
         },
         "UserData": {
             "email": [
-                70
+                69
             ],
             "image": [
                 17
@@ -494,7 +488,7 @@ export default {
         },
         "AdminUser": {
             "email": [
-                70
+                69
             ],
             "image": [
                 17
@@ -509,7 +503,7 @@ export default {
                 44
             ],
             "organizations": [
-                65
+                64
             ],
             "__typename": [
                 17
@@ -531,7 +525,7 @@ export default {
         },
         "AppUser": {
             "email": [
-                70
+                69
             ],
             "image": [
                 17
@@ -543,19 +537,19 @@ export default {
                 20
             ],
             "createdAt": [
-                69
+                68
             ],
             "updatedAt": [
-                69
+                68
             ],
             "wallet": [
-                67
+                66
             ],
             "primaryWallet": [
-                67
+                66
             ],
             "wallets": [
-                67
+                66
             ],
             "app": [
                 44
@@ -648,26 +642,12 @@ export default {
                 17
             ]
         },
-        "DapperTransactions": {
-            "purchase": [
-                17
-            ],
-            "metadata": [
-                17
-            ],
-            "setup": [
-                17
-            ],
-            "__typename": [
-                17
-            ]
-        },
         "FixedPricing": {
             "currency": [
                 1
             ],
             "price": [
-                73
+                72
             ],
             "__typename": [
                 17
@@ -675,7 +655,7 @@ export default {
         },
         "InitiateCheckoutResponse": {
             "redirectUrl": [
-                75
+                74
             ],
             "status": [
                 17
@@ -692,16 +672,16 @@ export default {
                 20
             ],
             "createdAt": [
-                69
+                68
             ],
             "updatedAt": [
-                69
+                68
             ],
             "state": [
                 3
             ],
             "total": [
-                73
+                72
             ],
             "listingId": [
                 17
@@ -718,7 +698,7 @@ export default {
                 17
             ],
             "items": [
-                54
+                53
             ],
             "__typename": [
                 17
@@ -729,7 +709,7 @@ export default {
                 17
             ],
             "metadata": [
-                72
+                71
             ],
             "saleState": [
                 10
@@ -747,10 +727,10 @@ export default {
                 20
             ],
             "model": [
-                62
+                61
             ],
             "wallet": [
-                67
+                66
             ],
             "status": [
                 13
@@ -767,10 +747,10 @@ export default {
                 20
             ],
             "files": [
-                58
+                57
             ],
             "poster": [
-                66
+                65
             ],
             "__typename": [
                 17
@@ -781,7 +761,7 @@ export default {
                 20
             ],
             "url": [
-                75
+                74
             ],
             "state": [
                 2
@@ -810,7 +790,7 @@ export default {
                 17
             ],
             "items": [
-                56
+                55
             ],
             "__typename": [
                 17
@@ -818,16 +798,16 @@ export default {
         },
         "NFTListing": {
             "attributes": [
-                72
+                71
             ],
             "id": [
                 20
             ],
             "createdAt": [
-                69
+                68
             ],
             "updatedAt": [
-                69
+                68
             ],
             "title": [
                 17
@@ -836,13 +816,13 @@ export default {
                 17
             ],
             "pricing": [
-                52
+                51
             ],
             "appId": [
                 20
             ],
             "nftModel": [
-                62
+                61
             ],
             "state": [
                 4
@@ -856,7 +836,7 @@ export default {
                 17
             ],
             "items": [
-                60
+                59
             ],
             "__typename": [
                 17
@@ -867,13 +847,13 @@ export default {
                 20
             ],
             "attributes": [
-                72
+                71
             ],
             "createdAt": [
-                69
+                68
             ],
             "updatedAt": [
-                69
+                68
             ],
             "status": [
                 12
@@ -882,7 +862,7 @@ export default {
                 17
             ],
             "metadata": [
-                72
+                71
             ],
             "title": [
                 17
@@ -894,25 +874,25 @@ export default {
                 11
             ],
             "quantity": [
-                74
+                73
             ],
             "quantityMinted": [
-                77
+                76
             ],
             "content": [
-                57
+                56
             ],
             "state": [
                 6
             ],
             "set": [
-                64
+                63
             ],
             "nfts": [
-                56
+                55
             ],
             "nftListings": [
-                60
+                59
             ],
             "__typename": [
                 17
@@ -923,7 +903,7 @@ export default {
                 17
             ],
             "items": [
-                62
+                61
             ],
             "__typename": [
                 17
@@ -934,13 +914,13 @@ export default {
                 20
             ],
             "attributes": [
-                72
+                71
             ],
             "createdAt": [
-                69
+                68
             ],
             "updatedAt": [
-                69
+                68
             ],
             "status": [
                 12
@@ -949,13 +929,13 @@ export default {
                 17
             ],
             "metadata": [
-                72
+                71
             ],
             "title": [
                 17
             ],
             "image": [
-                75
+                74
             ],
             "state": [
                 7
@@ -964,7 +944,7 @@ export default {
                 17
             ],
             "models": [
-                62
+                61
             ],
             "app": [
                 44
@@ -995,7 +975,7 @@ export default {
                 20
             ],
             "url": [
-                75
+                74
             ],
             "state": [
                 2
@@ -1015,16 +995,16 @@ export default {
         },
         "Wallet": {
             "attributes": [
-                72
+                71
             ],
             "id": [
                 20
             ],
             "createdAt": [
-                69
+                68
             ],
             "updatedAt": [
-                69
+                68
             ],
             "address": [
                 17
@@ -1036,7 +1016,7 @@ export default {
                 17
             ],
             "nfts": [
-                56
+                55
             ],
             "appUser": [
                 45
@@ -1053,7 +1033,7 @@ export default {
                 17
             ],
             "items": [
-                67
+                66
             ],
             "__typename": [
                 17
@@ -1086,28 +1066,28 @@ export default {
                 50
             ],
             "on_Invoice": [
-                54
+                53
             ],
             "on_NFT": [
-                56
+                55
             ],
             "on_NFTContent": [
-                57
+                56
             ],
             "on_NFTListing": [
-                60
+                59
             ],
             "on_NFTModel": [
-                62
+                61
             ],
             "on_NFTSet": [
-                64
+                63
             ],
             "on_Organization": [
-                65
+                64
             ],
             "on_Wallet": [
-                67
+                66
             ],
             "__typename": [
                 17
@@ -1115,19 +1095,19 @@ export default {
         },
         "Attributable": {
             "attributes": [
-                72
+                71
             ],
             "on_NFTListing": [
-                60
+                59
             ],
             "on_NFTModel": [
-                62
+                61
             ],
             "on_NFTSet": [
-                64
+                63
             ],
             "on_Wallet": [
-                67
+                66
             ],
             "__typename": [
                 17
@@ -1135,28 +1115,28 @@ export default {
         },
         "HasTimes": {
             "createdAt": [
-                69
+                68
             ],
             "updatedAt": [
-                69
+                68
             ],
             "on_AppUser": [
                 45
             ],
             "on_Invoice": [
-                54
+                53
             ],
             "on_NFTListing": [
-                60
+                59
             ],
             "on_NFTModel": [
-                62
+                61
             ],
             "on_NFTSet": [
-                64
+                63
             ],
             "on_Wallet": [
-                67
+                66
             ],
             "__typename": [
                 17
@@ -1170,19 +1150,19 @@ export default {
                 46
             ],
             "on_InvoiceList": [
-                55
+                54
             ],
             "on_NFTList": [
-                59
+                58
             ],
             "on_NFTListingList": [
-                61
+                60
             ],
             "on_NFTModelList": [
-                63
+                62
             ],
             "on_WalletList": [
-                68
+                67
             ],
             "__typename": [
                 17
@@ -1211,7 +1191,7 @@ export default {
                         17
                     ],
                     "maxResults": [
-                        74
+                        73
                     ]
                 }
             ],
@@ -1229,11 +1209,20 @@ export default {
                     ]
                 }
             ],
+            "createApp": [
+                44,
+                {
+                    "data": [
+                        16,
+                        "AppCreateInput!"
+                    ]
+                }
+            ],
             "contract": [
                 50
             ],
             "file": [
-                66,
+                65,
                 {
                     "id": [
                         20,
@@ -1242,7 +1231,7 @@ export default {
                 }
             ],
             "nftContent": [
-                57,
+                56,
                 {
                     "id": [
                         20,
@@ -1251,7 +1240,7 @@ export default {
                 }
             ],
             "nftFile": [
-                58,
+                57,
                 {
                     "id": [
                         17
@@ -1265,7 +1254,7 @@ export default {
                 }
             ],
             "invoice": [
-                54,
+                53,
                 {
                     "id": [
                         20,
@@ -1274,7 +1263,7 @@ export default {
                 }
             ],
             "organization": [
-                65,
+                64,
                 {
                     "id": [
                         20,
@@ -1283,7 +1272,7 @@ export default {
                 }
             ],
             "invoices": [
-                55,
+                54,
                 {
                     "appId": [
                         20
@@ -1292,20 +1281,12 @@ export default {
                         17
                     ],
                     "maxResults": [
-                        74
-                    ]
-                }
-            ],
-            "dapperTransactions": [
-                51,
-                {
-                    "appId": [
-                        17
+                        73
                     ]
                 }
             ],
             "nftListing": [
-                60,
+                59,
                 {
                     "id": [
                         20,
@@ -1314,7 +1295,7 @@ export default {
                 }
             ],
             "nftListings": [
-                61,
+                60,
                 {
                     "filter": [
                         26
@@ -1323,12 +1304,12 @@ export default {
                         17
                     ],
                     "maxResults": [
-                        74
+                        73
                     ]
                 }
             ],
             "nftModel": [
-                62,
+                61,
                 {
                     "id": [
                         20,
@@ -1337,7 +1318,7 @@ export default {
                 }
             ],
             "nftModels": [
-                63,
+                62,
                 {
                     "appId": [
                         20
@@ -1349,12 +1330,12 @@ export default {
                         17
                     ],
                     "maxResults": [
-                        74
+                        73
                     ]
                 }
             ],
             "set": [
-                64,
+                63,
                 {
                     "id": [
                         20,
@@ -1363,7 +1344,7 @@ export default {
                 }
             ],
             "sets": [
-                64,
+                63,
                 {
                     "filter": [
                         31
@@ -1374,7 +1355,7 @@ export default {
                 }
             ],
             "nft": [
-                56,
+                55,
                 {
                     "id": [
                         20,
@@ -1383,7 +1364,7 @@ export default {
                 }
             ],
             "nfts": [
-                59,
+                58,
                 {
                     "userId": [
                         20
@@ -1398,12 +1379,12 @@ export default {
                         17
                     ],
                     "maxResults": [
-                        74
+                        73
                     ]
                 }
             ],
             "nftsByWallet": [
-                59,
+                58,
                 {
                     "walletId": [
                         20
@@ -1418,15 +1399,15 @@ export default {
                         17
                     ],
                     "maxResults": [
-                        74
+                        73
                     ]
                 }
             ],
             "wallet": [
-                67
+                66
             ],
             "walletById": [
-                67,
+                66,
                 {
                     "id": [
                         20,
@@ -1435,7 +1416,7 @@ export default {
                 }
             ],
             "walletByAddress": [
-                67,
+                66,
                 {
                     "appId": [
                         20
@@ -1447,7 +1428,7 @@ export default {
                 }
             ],
             "walletByUserId": [
-                67,
+                66,
                 {
                     "userId": [
                         20,
@@ -1456,7 +1437,7 @@ export default {
                 }
             ],
             "wallets": [
-                68,
+                67,
                 {
                     "appId": [
                         20,
@@ -1466,7 +1447,7 @@ export default {
                         17
                     ],
                     "maxResults": [
-                        74
+                        73
                     ]
                 }
             ],
@@ -1475,15 +1456,6 @@ export default {
             ]
         },
         "Mutation": {
-            "createApp": [
-                44,
-                {
-                    "data": [
-                        16,
-                        "AppCreateInput!"
-                    ]
-                }
-            ],
             "deployContract": [
                 50,
                 {
@@ -1531,7 +1503,7 @@ export default {
                 }
             ],
             "uploadNFTContent": [
-                57,
+                56,
                 {
                     "name": [
                         17
@@ -1548,7 +1520,7 @@ export default {
                 }
             ],
             "completeCheckoutWithDapperWallet": [
-                56,
+                55,
                 {
                     "transactionId": [
                         17,
@@ -1560,7 +1532,7 @@ export default {
                 }
             ],
             "createNFTListing": [
-                60,
+                59,
                 {
                     "data": [
                         21,
@@ -1569,7 +1541,7 @@ export default {
                 }
             ],
             "checkout": [
-                53,
+                52,
                 {
                     "invoiceId": [
                         17,
@@ -1602,15 +1574,15 @@ export default {
                         17
                     ],
                     "price": [
-                        76
+                        75
                     ],
                     "expiry": [
-                        77
+                        76
                     ]
                 }
             ],
             "reserve": [
-                54,
+                53,
                 {
                     "listingId": [
                         20,
@@ -1627,7 +1599,7 @@ export default {
                 }
             ],
             "updateNFTListing": [
-                60,
+                59,
                 {
                     "id": [
                         20,
@@ -1640,7 +1612,7 @@ export default {
                 }
             ],
             "deleteNFTListing": [
-                60,
+                59,
                 {
                     "id": [
                         20,
@@ -1649,14 +1621,14 @@ export default {
                 }
             ],
             "mintNFTModel": [
-                62,
+                61,
                 {
                     "id": [
                         20,
                         "ID!"
                     ],
                     "quantity": [
-                        74
+                        73
                     ],
                     "appId": [
                         20
@@ -1664,7 +1636,7 @@ export default {
                 }
             ],
             "createNFTModel": [
-                62,
+                61,
                 {
                     "setId": [
                         20,
@@ -1680,7 +1652,7 @@ export default {
                 }
             ],
             "deleteNFTModel": [
-                62,
+                61,
                 {
                     "id": [
                         20,
@@ -1689,7 +1661,7 @@ export default {
                 }
             ],
             "updateNFTModel": [
-                62,
+                61,
                 {
                     "id": [
                         20,
@@ -1702,7 +1674,7 @@ export default {
                 }
             ],
             "createNFTSet": [
-                64,
+                63,
                 {
                     "data": [
                         30,
@@ -1714,7 +1686,7 @@ export default {
                 }
             ],
             "updateNFTSet": [
-                64,
+                63,
                 {
                     "id": [
                         20,
@@ -1727,7 +1699,7 @@ export default {
                 }
             ],
             "mintNFT": [
-                56,
+                55,
                 {
                     "nftModelId": [
                         20,
@@ -1736,7 +1708,7 @@ export default {
                 }
             ],
             "transfer": [
-                56,
+                55,
                 {
                     "id": [
                         20
@@ -1762,7 +1734,7 @@ export default {
                 }
             ],
             "withdraw": [
-                56,
+                55,
                 {
                     "id": [
                         20,
@@ -1781,7 +1753,7 @@ export default {
                 }
             ],
             "createOrganization": [
-                65,
+                64,
                 {
                     "data": [
                         33,
@@ -1790,7 +1762,7 @@ export default {
                 }
             ],
             "createNiftoryWallet": [
-                67,
+                66,
                 {
                     "userId": [
                         20
@@ -1804,7 +1776,7 @@ export default {
                 }
             ],
             "readyWallet": [
-                67,
+                66,
                 {
                     "address": [
                         17,
@@ -1813,7 +1785,7 @@ export default {
                 }
             ],
             "registerWallet": [
-                67,
+                66,
                 {
                     "address": [
                         17,
@@ -1825,7 +1797,7 @@ export default {
                 }
             ],
             "setPrimaryWallet": [
-                67,
+                66,
                 {
                     "walletId": [
                         17
@@ -1836,7 +1808,7 @@ export default {
                 }
             ],
             "unlinkWallet": [
-                67,
+                66,
                 {
                     "walletId": [
                         17
@@ -1847,7 +1819,7 @@ export default {
                 }
             ],
             "updateWallet": [
-                67,
+                66,
                 {
                     "address": [
                         17,
@@ -1859,14 +1831,14 @@ export default {
                 }
             ],
             "verifyWallet": [
-                67,
+                66,
                 {
                     "address": [
                         17,
                         "String!"
                     ],
                     "signedVerificationCode": [
-                        71,
+                        70,
                         "JSON!"
                     ]
                 }

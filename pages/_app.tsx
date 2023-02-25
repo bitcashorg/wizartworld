@@ -20,19 +20,13 @@ import '~/styles/wizart-chat.css'
 import '../config/flow/config'
 
 export default function MyApp({ Component, pageProps }: AppProps<any>) {
-  const session = useSession()
-  // keep jwt in sync with next session
-  useEffect(() => {
-    if (session?.data?.user?.jwt)
-      localStorage.setItem(clientEnv.jwtLocalStorageKey, session.data?.user?.jwt || '')
-  }, [session?.data?.user?.jwt])
-
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <SessionProvider session={pageProps.session}>
+        <SessionSync />
         <AuthProvider>
           <GlobalContextProvider>
             <RootLayout>
@@ -47,4 +41,15 @@ export default function MyApp({ Component, pageProps }: AppProps<any>) {
       </SessionProvider>
     </>
   )
+}
+
+function SessionSync() {
+  const session = useSession()
+  // keep jwt in sync with next session
+  useEffect(() => {
+    if (session?.data?.user?.jwt)
+      localStorage.setItem(clientEnv.jwtLocalStorageKey, session.data?.user?.jwt || '')
+  }, [session?.data?.user?.jwt])
+
+  return <></>
 }

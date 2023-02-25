@@ -287,11 +287,6 @@ input AppCreateInput {
 
   """The URIs to redirect to after signin. Only required if using oauth"""
   redirectUris: [String]
-
-  """
-  A user to add to the organization. Required if using backend credentials.
-  """
-  adminUserEmail: EmailAddress
 }
 
 input CreateFileOptionsInput {
@@ -571,11 +566,6 @@ input NFTSetUpdateInput {
 
 input OrganizationCreateInput {
   name: String!
-
-  """
-  A user to add to the organization. Required if using backend credentials.
-  """
-  adminUserEmail: EmailAddress
 }
 
 """The input to register a [Wallet]({{Types.Wallet}})."""
@@ -871,20 +861,6 @@ type Contract implements Identifiable {
 
   """The name of this contract."""
   name: String
-}
-
-"""
-Transactions that need to be given to Dapper Wallet for use with their platform.
-"""
-type DapperTransactions {
-  """The purchase transaction."""
-  purchase: String
-
-  """The metadata script for the purchase transaction."""
-  metadata: String
-
-  """The setup script for wallets."""
-  setup: String
 }
 
 """A simple pricing strategy for listings with fixed prices."""
@@ -1410,6 +1386,11 @@ type Query {
   ): App
 
   """
+  Creates the [App]({{Types.App}}) on the specified organization for the user.
+  """
+  createApp(data: AppCreateInput!): App
+
+  """
   Gets the [Contract]({{Types.Contract}}) from the currently authenticated app. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/contract).
   """
   contract: Contract
@@ -1469,16 +1450,6 @@ type Query {
     """The maximum number of results to return. Defaults to 50, max is 100."""
     maxResults: PositiveInt
   ): InvoiceList
-
-  """
-  Gets transactions that need to be sent to Dapper for use with Dapper Wallet.
-  """
-  dapperTransactions(
-    """
-    The app ID to get the transactions for. Only supported for certain clients.
-    """
-    appId: String
-  ): DapperTransactions
 
   """Gets an [NFTListing]({{Types.NFTListing}}) by ID."""
   nftListing(
@@ -1651,21 +1622,16 @@ type Query {
 
 type Mutation {
   """
-  Creates the [App]({{Types.App}}) on the specified organization for the user.
-  """
-  createApp(data: AppCreateInput!): App
-
-  """
   Deploys the [Contract]({{Types.Contract}}) from the currently authenticated app. Read more [here](https://docs.niftory.com/home/v/api/core-concepts/contract).
   """
   deployContract(
-    """The id of the app to deploy the contract for."""
+    """The id of the app to deploy"""
     appId: String!
 
-    """The name of the contract."""
+    """The name of the contract"""
     name: String!
 
-    """The blockchain to deploy the contract to."""
+    """The blockchain to deploy the contract"""
     blockchain: Blockchain!
   ): Contract
 
