@@ -16,7 +16,7 @@ export function getGraphQLSdk({ config, jwt }: GraphQLSdkProps = {}) {
   return createClient({
     fetcher: async (operation) => {
       const headers = {
-        Accept: 'application/json',
+        Accept: '*/*',
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`,
         'X-Niftory-API-Key': clientEnv.niftoryApiKey,

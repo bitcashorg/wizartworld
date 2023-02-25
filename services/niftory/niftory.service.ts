@@ -29,3 +29,9 @@ export async function createNFTSet() {
   })
   return { response }
 }
+
+export async function getNiftoryApps() {
+  return getClientGraphQLSdk().query({
+    app: everything,
+  })
+}
