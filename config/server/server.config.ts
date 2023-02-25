@@ -8,5 +8,3 @@ export const serverEnv = {
   niftoryClientId: process.env.NIFTORY_CLIENT_ID || '',
   openai: process.env.OPENAI_API_KEY || '',
 }
-
-console.log(serverEnv)

@@ -44,13 +44,13 @@ export async function getAppUser() {
 
 export async function getNftModels() {
   return getClientGraphQLSdk().query({
-    nftModels: everything,
+    nftModels: { ...everything, items: everything },
   })
 }
 
 export async function getNfts() {
   return getClientGraphQLSdk().query({
-    nfts: everything,
+    nfts: { ...everything, items: everything },
   })
 }
 
@@ -75,5 +75,11 @@ export async function transferNft({ nftModelId, userId }: { nftModelId: string; 
       __args: { nftModelId, userId },
     },
     ...everything,
+  })
+}
+
+export async function getSets() {
+  return getClientGraphQLSdk().query({
+    sets: { ...everything, models: everything },
   })
 }

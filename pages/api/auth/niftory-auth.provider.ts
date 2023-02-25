@@ -3,8 +3,6 @@ import { Provider } from 'next-auth/providers'
 import { chainConfig } from '~/config/chain'
 import { serverEnv } from '~/config/server'
 
-console.log(serverEnv.niftoryClientId, serverEnv.niftorySecret)
-
 export const niftoryAuthProvider: Provider = {
   id: 'niftory',
   name: 'Niftory',
