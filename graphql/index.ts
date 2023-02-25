@@ -1,5 +1,6 @@
 import { chainConfig } from '~/config/chain'
 import { clientEnv } from '~/config/client'
+import { serverEnv } from '~/config/server'
 import { logger } from '~/lib/logger'
 
 import { createClient } from './generated'
@@ -9,10 +10,11 @@ export { everything } from './generated'
 type GraphQLSdkProps = {
   config?: RequestInit
   jwt?: string
+  isBackend?: boolean
 }
 
 // Server side client
-export function getGraphQLSdk({ config, jwt }: GraphQLSdkProps = {}) {
+export function getGraphQLSdk({ config, jwt, isBackend = true }: GraphQLSdkProps) {
   return createClient({
     fetcher: async (operation) => {
       const headers = {
@@ -20,6 +22,7 @@ export function getGraphQLSdk({ config, jwt }: GraphQLSdkProps = {}) {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`,
         'X-Niftory-API-Key': clientEnv.niftoryApiKey,
+        ...(isBackend ? { 'X-Niftory-Client-Secret': serverEnv.niftorySecret } : {}),
       }
       console.log(headers)
 
@@ -48,5 +51,5 @@ export function getGraphQLSdk({ config, jwt }: GraphQLSdkProps = {}) {
 export function getClientGraphQLSdk({ config }: Omit<GraphQLSdkProps, 'jwt'> = {}) {
   const jwt = localStorage.getItem(clientEnv.jwtLocalStorageKey) || undefined
 
-  return getGraphQLSdk({ jwt, config })
+  return getGraphQLSdk({ jwt, config, isBackend: false })
 }

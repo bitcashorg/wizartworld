@@ -69,7 +69,7 @@ export default function PageNiftory() {
     <>
       <NiftoryAuth />
       <br /> <br />
-      <div className="flex gap-2">
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5">
         <Button onClick={execCreateSet} label="create set" />
         <Button onClick={execGetNiftoryApps} label="get apps" />
         <Button onClick={execGetAppUser} label="get app user" />
