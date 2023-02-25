@@ -1,0 +1,50 @@
+@@include("partials/main.html")
+    <head>
+        @@include("partials/title-meta.html", {"title": "Giglink"})
+
+        <!-- Css -->
+        @@include("partials/head-css.html")
+    </head>
+    
+    @@include("partials/body.html")
+
+        <!-- Start -->
+        <section class="relative bg-violet-600/5">
+            <div class="container-fluid relative">
+                <div class="grid grid-cols-1">
+                    <div class="flex flex-col min-h-screen justify-center md:px-10 py-10 px-4">
+                        <div class="text-center">
+                            <img src="assets/images/logo-icon-64.png" class="mx-auto" alt="">
+                        </div>
+                        <div class="title-heading text-center my-auto">
+                            <div class="md:my-0 my-10">
+                                <img src="assets/images/error.png" class="mx-auto" alt="">
+                                <h1 class="my-6 md:text-5xl text-3xl font-bold">Page Not Found?</h1>
+                                <p class="text-slate-400">Whoops, this is embarassing. <br> Looks like the page you were looking for wasn't found.</p>
+                                
+                                <div class="mt-6">
+                                    <a href="index.html" class="btn bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white rounded-full">Back to Home</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-0 text-slate-400">© <script>document.write(new Date().getFullYear())</script> Giglink. Design with <i class="mdi mdi-heart text-red-600"></i> by <a href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
+                        </div>
+                    </div>
+                </div><!--end grid-->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- End -->
+
+        <div class="fixed bottom-3 right-3">
+            <a href="" class="back-button btn btn-icon bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white rounded-full"><i data-feather="arrow-left" class="h-4 w-4"></i></a>
+        </div>
+
+        @@include("partials/switcher.html")
+        
+        <!-- JAVASCRIPTS -->
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        @@include("partials/script-file.html")
+        <!-- JAVASCRIPTS -->
+    </body>
+</html>

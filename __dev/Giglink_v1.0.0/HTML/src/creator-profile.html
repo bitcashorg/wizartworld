@@ -1,0 +1,385 @@
+@@include("partials/main.html")
+    <head>
+        @@include("partials/title-meta.html", {"title": "Giglink"})
+
+        <!-- Css -->
+        @@include("partials/head-css.html")
+    </head>
+    
+    @@include("partials/body.html")
+        
+        @@include("partials/navbar/navbar.html")
+
+        <!-- Start Hero -->
+        <section class="relative md:pb-24 pb-16 lg:mt-24 mt-[74px]">
+            <div class="lg:container container-fluid">
+                <div class="group profile-banner relative overflow-hidden text-transparent lg:rounded-xl shadow dark:shadow-gray-700">
+                    <input id="pro-banner" name="profile-banner" type="file" class="hidden" onchange="loadFile(event)" />
+                    <div class="relative shrink-0">
+                        <img src="assets/images/blog/single.jpg" class="h-80 w-full object-cover" id="profile-banner" alt="">
+                        <div class="absolute inset-0 bg-slate/10 group-hover:bg-slate-900/40 transition duration-500"></div>
+                        <label class="absolute inset-0 cursor-pointer" for="pro-banner"></label>
+                    </div>
+                </div>
+
+                <div class="md:flex justify-center">
+                    <div class="md:w-full">
+                        <div class="relative -mt-[60px] text-center">
+                            <div class="group profile-pic w-[112px] mx-auto">
+                                <input id="pro-img" name="profile-image" type="file" class="hidden" onchange="loadFile(event)" />
+                                <div>
+                                    <div class="relative h-28 w-28 mx-auto rounded-full shadow dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800 overflow-hidden">
+                                        <img src="assets/images/avatar/1.jpg" class="rounded-full" id="profile-image" alt="">
+                                        <div class="absolute inset-0 group-hover:bg-slate-900/40 transition duration-500"></div>
+                                        <label class="absolute inset-0 cursor-pointer" for="pro-img"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6">
+                                <h5 class="text-xl font-semibold">Jenny Jimenez <i class="mdi mdi-check-decagram text-emerald-600 align-middle text-lg"></i></h5>
+                                <p class="text-slate-400 text-[16px] mt-1">Created by <a href="" class="text-violet-600 font-semibold">1x5484dcdvcdscds56c4</a></p>
+
+                                <div class="mt-4">
+                                    <a href="javascript:void(0)" class="btn btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-plus"></i> Follow me</a>
+                                    <a href="javascript:void(0)" class="btn btn-icon btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-account-plus"></i></a>
+                                    <a href="creator-profile-edit.html" class="btn btn-icon btn-sm rounded-full bg-violet-600/5 hover:bg-violet-600 border-violet-600/10 hover:border-violet-600 text-violet-600 hover:text-white"><i class="mdi mdi-cog"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end -->
+
+            <div class="container mt-16">
+                <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
+                    <div class="group relative overflow-hidden p-2 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:shadow-md dark:shadow-md hover:dark:shadow-gray-700 transition-all duration-500 hover:-mt-2 h-fit">
+                        <div class="relative overflow-hidden">
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img src="assets/images/items/1.jpg" class="rounded-lg shadow-md dark:shadow-gray-700 group-hover:scale-110 transition-all duration-500" alt="">
+                            </div>
+
+                            <div class="absolute -bottom-20 group-hover:bottom-1/2 group-hover:translate-y-1/2 right-0 left-0 mx-auto text-center transition-all duration-500">
+                                <a href="item-detail.html" class="btn btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-lightning-bolt"></i> Buy Now</a>                                
+                            </div>
+
+                            <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <a href="javascript:void(0)" class="btn btn-icon btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-plus"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="my-3">
+                                <a href="item-detail.html" class="font-semibold hover:text-violet-600">Genuine Undead #3902</a>
+                            </div>
+
+                            <div class="flex justify-between p-2 bg-gray-50 dark:bg-slate-800 rounded-lg shadow dark:shadow-gray-700">
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Price</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.5 ETH</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Highest Bid</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.55 ETH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end content-->
+
+                    <div class="group relative overflow-hidden p-2 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:shadow-md dark:shadow-md hover:dark:shadow-gray-700 transition-all duration-500 hover:-mt-2 h-fit">
+                        <div class="relative overflow-hidden">
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img src="assets/images/items/2.gif" class="rounded-lg shadow-md dark:shadow-gray-700 group-hover:scale-110 transition-all duration-500" alt="">
+                            </div>
+                            
+                            <div class="absolute -bottom-20 group-hover:bottom-1/2 group-hover:translate-y-1/2 right-0 left-0 mx-auto text-center transition-all duration-500">
+                                <a href="item-detail.html" class="btn btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-lightning-bolt"></i> Buy Now</a>                                
+                            </div>
+
+                            <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <a href="javascript:void(0)" class="btn btn-icon btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-plus"></i></a>
+                            </div>
+
+                            <div class="absolute bottom-2 right-0 left-0 mx-auto text-center bg-gradient-to-r from-violet-600 to-red-600 text-white inline-table text-lg px-3 rounded-full">
+                                <i class="uil uil-clock align-middle mr-1"></i> <small id="auction-item-1" class="font-bold"></small>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="my-3">
+                                <a href="item-detail.html" class="font-semibold hover:text-violet-600">Windchime #768</a>
+                            </div>
+
+                            <div class="flex justify-between p-2 bg-gray-50 dark:bg-slate-800 rounded-lg shadow dark:shadow-gray-700">
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Price</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.5 ETH</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Highest Bid</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.55 ETH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end content-->
+
+                    <div class="group relative overflow-hidden p-2 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:shadow-md dark:shadow-md hover:dark:shadow-gray-700 transition-all duration-500 hover:-mt-2 h-fit">
+                        <div class="relative overflow-hidden">
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img src="assets/images/items/2.jpg" class="rounded-lg shadow-md dark:shadow-gray-700 group-hover:scale-110 transition-all duration-500" alt="">
+                            </div>
+                            
+                            <div class="absolute -bottom-20 group-hover:bottom-1/2 group-hover:translate-y-1/2 right-0 left-0 mx-auto text-center transition-all duration-500">
+                                <a href="item-detail.html" class="btn btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-lightning-bolt"></i> Buy Now</a>                                
+                            </div>
+
+                            <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <a href="javascript:void(0)" class="btn btn-icon btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-plus"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="my-3">
+                                <a href="item-detail.html" class="font-semibold hover:text-violet-600">Probably A Label #3277</a>
+                            </div>
+
+                            <div class="flex justify-between p-2 bg-gray-50 dark:bg-slate-800 rounded-lg shadow dark:shadow-gray-700">
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Price</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.5 ETH</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Highest Bid</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.55 ETH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end content-->
+
+                    <div class="group relative overflow-hidden p-2 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:shadow-md dark:shadow-md hover:dark:shadow-gray-700 transition-all duration-500 hover:-mt-2 h-fit">
+                        <div class="relative overflow-hidden">
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img src="assets/images/items/3.jpg" class="rounded-lg shadow-md dark:shadow-gray-700 group-hover:scale-110 transition-all duration-500" alt="">
+                            </div>
+                            
+                            <div class="absolute -bottom-20 group-hover:bottom-1/2 group-hover:translate-y-1/2 right-0 left-0 mx-auto text-center transition-all duration-500">
+                                <a href="item-detail.html" class="btn btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-lightning-bolt"></i> Buy Now</a>                                
+                            </div>
+
+                            <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <a href="javascript:void(0)" class="btn btn-icon btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-plus"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="my-3">
+                                <a href="item-detail.html" class="font-semibold hover:text-violet-600">Probably A Label #1711</a>
+                            </div>
+
+                            <div class="flex justify-between p-2 bg-gray-50 dark:bg-slate-800 rounded-lg shadow dark:shadow-gray-700">
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Price</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.5 ETH</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Highest Bid</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.55 ETH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end content-->
+
+                    <div class="group relative overflow-hidden p-2 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:shadow-md dark:shadow-md hover:dark:shadow-gray-700 transition-all duration-500 hover:-mt-2 h-fit">
+                        <div class="relative overflow-hidden">
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img src="assets/images/items/3.gif" class="rounded-lg shadow-md dark:shadow-gray-700 group-hover:scale-110 transition-all duration-500" alt="">
+                            </div>
+                            
+                            <div class="absolute -bottom-20 group-hover:bottom-1/2 group-hover:translate-y-1/2 right-0 left-0 mx-auto text-center transition-all duration-500">
+                                <a href="item-detail.html" class="btn btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-lightning-bolt"></i> Buy Now</a>                                
+                            </div>
+
+                            <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <a href="javascript:void(0)" class="btn btn-icon btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-plus"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="my-3">
+                                <a href="item-detail.html" class="font-semibold hover:text-violet-600">Shibuya Scramble Punks</a>
+                            </div>
+
+                            <div class="flex justify-between p-2 bg-gray-50 dark:bg-slate-800 rounded-lg shadow dark:shadow-gray-700">
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Price</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.5 ETH</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Highest Bid</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.55 ETH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end content-->
+
+                    <div class="group relative overflow-hidden p-2 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:shadow-md dark:shadow-md hover:dark:shadow-gray-700 transition-all duration-500 hover:-mt-2 h-fit">
+                        <div class="relative overflow-hidden">
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img src="assets/images/items/4.jpg" class="rounded-lg shadow-md dark:shadow-gray-700 group-hover:scale-110 transition-all duration-500" alt="">
+                            </div>
+                            
+                            <div class="absolute -bottom-20 group-hover:bottom-1/2 group-hover:translate-y-1/2 right-0 left-0 mx-auto text-center transition-all duration-500">
+                                <a href="item-detail.html" class="btn btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-lightning-bolt"></i> Buy Now</a>                                
+                            </div>
+
+                            <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <a href="javascript:void(0)" class="btn btn-icon btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-plus"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="my-3">
+                                <a href="item-detail.html" class="font-semibold hover:text-violet-600">Probably A Label #650</a>
+                            </div>
+
+                            <div class="flex justify-between p-2 bg-gray-50 dark:bg-slate-800 rounded-lg shadow dark:shadow-gray-700">
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Price</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.5 ETH</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Highest Bid</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.55 ETH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end content-->
+
+                    <div class="group relative overflow-hidden p-2 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:shadow-md dark:shadow-md hover:dark:shadow-gray-700 transition-all duration-500 hover:-mt-2 h-fit">
+                        <div class="relative overflow-hidden">
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img src="assets/images/items/5.jpg" class="rounded-lg shadow-md dark:shadow-gray-700 group-hover:scale-110 transition-all duration-500" alt="">
+                            </div>
+                            
+                            <div class="absolute -bottom-20 group-hover:bottom-1/2 group-hover:translate-y-1/2 right-0 left-0 mx-auto text-center transition-all duration-500">
+                                <a href="item-detail.html" class="btn btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-lightning-bolt"></i> Buy Now</a>                                
+                            </div>
+
+                            <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <a href="javascript:void(0)" class="btn btn-icon btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-plus"></i></a>
+                            </div>
+
+                            <div class="absolute bottom-2 right-0 left-0 mx-auto text-center bg-gradient-to-r from-violet-600 to-red-600 text-white inline-table text-lg px-3 rounded-full">
+                                <i class="uil uil-clock align-middle mr-1"></i> <small id="auction-item-5" class="font-bold"></small>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="my-3">
+                                <a href="item-detail.html" class="font-semibold hover:text-violet-600">Looki#0147</a>
+                            </div>
+
+                            <div class="flex justify-between p-2 bg-gray-50 dark:bg-slate-800 rounded-lg shadow dark:shadow-gray-700">
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Price</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.5 ETH</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Highest Bid</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.55 ETH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end content-->
+
+                    <div class="group relative overflow-hidden p-2 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:shadow-md dark:shadow-md hover:dark:shadow-gray-700 transition-all duration-500 hover:-mt-2 h-fit">
+                        <div class="relative overflow-hidden">
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img src="assets/images/items/6.jpg" class="rounded-lg shadow-md dark:shadow-gray-700 group-hover:scale-110 transition-all duration-500" alt="">
+                            </div>
+                            
+                            <div class="absolute -bottom-20 group-hover:bottom-1/2 group-hover:translate-y-1/2 right-0 left-0 mx-auto text-center transition-all duration-500">
+                                <a href="item-detail.html" class="btn btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-lightning-bolt"></i> Buy Now</a>                                
+                            </div>
+
+                            <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <a href="javascript:void(0)" class="btn btn-icon btn-sm rounded-full bg-violet-600 hover:bg-violet-700 border-violet-600 hover:border-violet-700 text-white"><i class="mdi mdi-plus"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="my-3">
+                                <a href="item-detail.html" class="font-semibold hover:text-violet-600">Poob #285</a>
+                            </div>
+
+                            <div class="flex justify-between p-2 bg-gray-50 dark:bg-slate-800 rounded-lg shadow dark:shadow-gray-700">
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Price</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.5 ETH</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="text-[16px] font-medium text-slate-400 block">Highest Bid</span>
+                                    <span class="text-[16px] font-semibold block"><i class="mdi mdi-ethereum"></i> 3.55 ETH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end content-->
+                </div><!--end grid-->
+
+                <div class="grid md:grid-cols-12 grid-cols-1 mt-8">
+                    <div class="md:col-span-12 text-center">
+                        <nav>
+                            <ul class="inline-flex items-center -space-x-px">
+                                <li>
+                                    <a href="#" class="w-10 h-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 bg-white dark:bg-slate-900 hover:text-white shadow-sm dark:shadow-gray-700 hover:border-violet-600 dark:hover:border-violet-600 hover:bg-violet-600 dark:hover:bg-violet-600">
+                                        <i class="uil uil-angle-left text-[20px]"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="w-10 h-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-violet-600 dark:hover:border-violet-600 hover:bg-violet-600 dark:hover:bg-violet-600">1</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="w-10 h-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-violet-600 dark:hover:border-violet-600 hover:bg-violet-600 dark:hover:bg-violet-600">2</a>
+                                </li>
+                                <li>
+                                    <a href="#" aria-current="page" class="z-10 w-10 h-10 inline-flex justify-center items-center mx-1 rounded-full text-white bg-violet-600 shadow-sm dark:shadow-gray-700">3</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="w-10 h-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 hover:text-white bg-white dark:bg-slate-900 shadow-sm dark:shadow-gray-700 hover:border-violet-600 dark:hover:border-violet-600 hover:bg-violet-600 dark:hover:bg-violet-600">4</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="w-10 h-10 inline-flex justify-center items-center mx-1 rounded-full text-slate-400 bg-white dark:bg-slate-900 hover:text-white shadow-sm dark:shadow-gray-700 hover:border-violet-600 dark:hover:border-violet-600 hover:bg-violet-600 dark:hover:bg-violet-600">
+                                        <i class="uil uil-angle-right text-[20px]"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div><!--end grid-->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- End -->
+
+        
+        @@include("partials/footer.html")
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 right-5 h-9 w-9 text-center bg-violet-600 text-white leading-9"><i class="uil uil-arrow-up"></i></a>
+        <!-- Back to top -->
+
+        @@include("partials/switcher.html")
+
+        <!-- JAVASCRIPTS -->
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        @@include("partials/script-file.html")
+        <!-- JAVASCRIPTS -->
+    </body>
+</html>
