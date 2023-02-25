@@ -13,6 +13,6 @@ export const clientEnv = {
     apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY || '',
     apiSecret: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY || '',
   },
-  niftoryApiKey: process.env.NEXT_PUBLIC_NIFTORY_API || '',
+  niftoryApiKey: process.env.NEXT_PUBLIC_NIFTORY_API_KEY || '',
   jwtLocalStorageKey: 'jwt-secret',
 }

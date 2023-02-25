@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker'
+import { everything } from '@genql/runtime'
 
 import { getClientGraphQLSdk } from '~/graphql'
 
@@ -23,6 +24,7 @@ export async function createNFTSet() {
           },
         },
       },
+      ...everything,
     },
   })
   return { response }

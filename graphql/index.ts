@@ -23,12 +23,10 @@ export function getGraphQLSdk({ config, jwt }: GraphQLSdkProps = {}) {
       const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        ...(!jwtIsExpired(jwt)
-          ? { Authorization: `Bearer ${jwt}` }
-          : {
-              'X-Niftory-API-Key': clientEnv.niftoryApiKey,
-            }),
+        Authorization: `Bearer ${jwt}`,
+        'X-Niftory-API-Key': clientEnv.niftoryApiKey,
       }
+      console.log(headers)
 
       // logger.info(
       //   '\n ==> GraphQL Query : \n',
@@ -53,7 +51,7 @@ export function getGraphQLSdk({ config, jwt }: GraphQLSdkProps = {}) {
 }
 
 export function getClientGraphQLSdk({ config }: Omit<GraphQLSdkProps, 'jwt'> = {}) {
-  let jwt = localStorage.getItem(clientEnv.jwtLocalStorageKey) || undefined
+  const jwt = localStorage.getItem(clientEnv.jwtLocalStorageKey) || undefined
 
   return getGraphQLSdk({ jwt, config })
 }

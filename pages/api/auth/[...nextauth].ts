@@ -10,10 +10,14 @@ export const authOptions: NextAuthOptions = {
     colorScheme: 'light',
   },
   callbacks: {
-    async jwt({ token }) {
-      console.log('token callback', { token })
-      token.userRole = 'admin'
-      return token
+    async jwt({ token, user, account }) {
+      console.log('jwt callback', { account, user, token })
+      return {
+        ...token,
+        authToken: account?.id_token,
+        authTokenExpiresAt: account?.expires_at ? account?.expires_at * 1000 : 0,
+        refreshToken: account?.refresh_token,
+      }
     },
     session: async ({ session, token }) => {
       console.log('session callback', { session, token })
