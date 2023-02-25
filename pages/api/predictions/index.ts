@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+
 import { clientEnv } from '~/config/client'
 
 export default async function createPrediction(req: NextApiRequest, res: NextApiResponse) {

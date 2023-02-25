@@ -2,16 +2,17 @@ import clsx from 'clsx'
 import React from 'react'
 import { useEffectOnce } from 'react-use'
 
+import { Player } from '@lottiefiles/react-lottie-player'
+
 import { SendPromptIcon } from '~/components/icons'
 import { useOpenAI } from '~/context/openai.context'
 import { useReplicateContext } from '~/context/replicate.context'
+import wizartMascotAnimation from '~/lib/lottiefiles/wizart-character.json'
 import { wizartDescriptionHeader } from '~/lib/openai'
 
+import { Button } from '../button/button.component'
 import { Text } from '../text/text'
 import { OpenAIWizartChatProps } from './wizart-chat.types'
-import { Player } from '@lottiefiles/react-lottie-player'
-import wizartMascotAnimation from '~/lib/lottiefiles/wizart-character.json'
-import { Button } from '../button/button.component';
 
 let replicateAssetRequested = false
 
@@ -155,12 +156,12 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
             className={chatCardClass('wizart')}
             onClick={(e) => (!loading && !wizartMessage ? retryPromptToWizart(e) : undefined)}
           >
-              {!loading && !wizartMessage ? 'Retry' : wizardResponse}
-              {loading ? (
-                <span className="wizart-chat-loader-wrapper">
-                  <span className="dot-flashing" />
-                </span>
-              ) : null}
+            {!loading && !wizartMessage ? 'Retry' : wizardResponse}
+            {loading ? (
+              <span className="wizart-chat-loader-wrapper">
+                <span className="dot-flashing" />
+              </span>
+            ) : null}
           </div>
         </div>
         {userPrompt ? <div className={chatCardClass('user')}>{userPrompt}</div> : null}

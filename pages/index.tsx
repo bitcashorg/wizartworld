@@ -1,12 +1,12 @@
+import Image from 'next/image'
 import React from 'react'
 
-import { HomeWizard } from '~/views/home/home-wizard'
-import { WizartLogo } from '~/components/icons'
-import Image from 'next/image'
-import { ImageAsset } from '~/components/image'
 import { Button } from '~/components/button'
-import { GridGallery } from '~/components/grid-gallery'
 import { CollectionCard } from '~/components/collection-card'
+import { GridGallery } from '~/components/grid-gallery'
+import { WizartLogo } from '~/components/icons'
+import { ImageAsset } from '~/components/image'
+import { HomeWizard } from '~/views/home/home-wizard'
 
 const landingAssets = {
   'cinema_🎥': [
@@ -40,7 +40,6 @@ const landingAssets = {
     'https://bestaiprompts.art/img/game70.jpeg',
     'https://bestaiprompts.art/img/game96.jpeg',
     'https://bestaiprompts.art/img/game99.jpeg',
-
   ],
   'graphic_design_🌁': [
     '/images/generated-nft/graphic1.png',
@@ -101,7 +100,7 @@ const landingAssets = {
     '/images/generated-nft/fashion13.png',
     '/images/generated-nft/fashion14.png',
     '/images/generated-nft/fashion15.png',
-  ]
+  ],
 }
 
 export default function Home() {
@@ -129,13 +128,13 @@ export default function Home() {
   // on scroll listener, to set a boolean to true when the user scrolls down higher than current screen
   // then, when the user clicks on the button, it will scroll to the top of the screen
   React.useEffect(() => {
-    if (!document) return () => { }
+    if (!document) return () => {}
 
     const handleScroll = () => {
       // ? debounce the scroll event to avoid performance issues on mobile devices (scrolling is very sensitive)
       const timeout = setTimeout(() => {
-        setBackToTop(window.scrollY > window.innerHeight)        
-        
+        setBackToTop(window.scrollY > window.innerHeight)
+
         clearTimeout(timeout)
       }, 100)
     }
@@ -149,7 +148,7 @@ export default function Home() {
 
   // Activating tabs by datasets
   React.useEffect(() => {
-    if (!document) return () => { }
+    if (!document) return () => {}
 
     const handleTabClick = (e: Event) => {
       const target = e.target as HTMLElement
@@ -168,11 +167,11 @@ export default function Home() {
       const tabContents = document.querySelectorAll('[data-tab-content]') as NodeListOf<HTMLElement>
 
       // tabs are not active by default, so we need to remove the active class from the clicked tab
-      tabs.forEach(tab => tab.classList.remove('text-yellow-300', 'border-yellow-200'))
+      tabs.forEach((tab) => tab.classList.remove('text-yellow-300', 'border-yellow-200'))
       tab.classList.add('text-yellow-300', 'border-yellow-200', 'animation-opacity')
 
       // tab content is hidden by default, so we need to remove the hidden class from the clicked tab content
-      tabContents.forEach(tabContent => tabContent.classList.add('hidden'))
+      tabContents.forEach((tabContent) => tabContent.classList.add('hidden'))
       tabContent.classList.remove('hidden')
 
       e.preventDefault()
@@ -191,12 +190,12 @@ export default function Home() {
   }
 
   // We use useMemo to avoid re-rendering the components
-  const gallery = React.useMemo(() => [...new Array(Math.floor((Math.random() * 10) + 2))], [])
+  const gallery = React.useMemo(() => [...new Array(Math.floor(Math.random() * 10 + 2))], [])
 
   return (
     <>
       <span className="z-0 fixed blur-[200px] w-[600px] h-[600px] rounded-full top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 bg-gradient-to-tl from-red-600/20 to-violet-600/20 dark:from-red-600/40 dark:to-violet-600/40"></span>
-      
+
       {open && <HomeWizard />}
 
       {/* // * HERO SECTION STARTS // */}
@@ -231,7 +230,10 @@ export default function Home() {
               />
             </div>
 
-            <a className="btn border-0 flex w-full justify-center items-center mt-10" href="#assets">
+            <a
+              className="btn border-0 flex w-full justify-center items-center mt-10"
+              href="#assets"
+            >
               <Image src="/images/icons8-chevron-down-96.png" alt="" width={42} height={42} />
             </a>
           </div>
@@ -247,10 +249,18 @@ export default function Home() {
       {/* // * TABS SECTION STARTS // */}
       <section className="relative z-1 md:mt-36 mt-40 px-5" id="assets">
         <h2 className="text-6xl text-center font-bold w-full mb-10">NFTs</h2>
-        
-        <ul className="mb-4 flex items-center justify-center list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row w-full" role="tablist">
-          <li role="presentation" data-tab="tabs-home" className="hover:animate-pulse duration-75 transition-all p-3 cursor-pointer">
-            <span className="md:text-5xl text-4xl font-bold w-full mb-10 leading-loose border-b-8 border-b-transparent"
+
+        <ul
+          className="mb-4 flex items-center justify-center list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row w-full"
+          role="tablist"
+        >
+          <li
+            role="presentation"
+            data-tab="tabs-home"
+            className="hover:animate-pulse duration-75 transition-all p-3 cursor-pointer"
+          >
+            <span
+              className="md:text-5xl text-4xl font-bold w-full mb-10 leading-loose border-b-8 border-b-transparent"
               role="tab"
               aria-controls="tabs-home"
               aria-selected="true"
@@ -259,8 +269,13 @@ export default function Home() {
             </span>
           </li>
           <span className="hidden md:flex md:text-5xl text-4xl mx-6 font-bold">|</span>
-          <li role="presentation" data-tab="tabs-profile" className="hover:animate-pulse duration-75 transition-all p-3 cursor-pointer">
-            <span className="md:text-5xl text-4xl text-center font-bold w-full mb-10 leading-loose border-b-8 border-b-transparent"
+          <li
+            role="presentation"
+            data-tab="tabs-profile"
+            className="hover:animate-pulse duration-75 transition-all p-3 cursor-pointer"
+          >
+            <span
+              className="md:text-5xl text-4xl text-center font-bold w-full mb-10 leading-loose border-b-8 border-b-transparent"
               aria-controls="tabs-profile"
               aria-selected="false"
               role="tab"
@@ -271,18 +286,24 @@ export default function Home() {
         </ul>
 
         <div className="my-10">
-          <div className="transition-opacity duration-150 ease-linear"
+          <div
+            className="transition-opacity duration-150 ease-linear"
             data-tab-content="tabs-home"
             aria-labelledby="tabs-home-tab"
             role="tabpanel"
           >
             {Object.keys(landingAssets).map((item, index) => (
               <>
-                <h3 className="capitalize md:text-4xl text-3xl font-semibold mb-6 mt-10">{item.replace(/_/g, ' ')}</h3>
+                <h3 className="capitalize md:text-4xl text-3xl font-semibold mb-6 mt-10">
+                  {item.replace(/_/g, ' ')}
+                </h3>
 
                 <div className="flex flex-wrap flex-1 items-center justify-center snap-y snap-proximity">
                   {landingAssets[item as keyof typeof landingAssets].map((asset, index) => (
-                    <div key={`generated-asset-${index}`} className="snap-center w-auto max-w-full sm:max-w-[42%] h-[380px] scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2">
+                    <div
+                      key={`generated-asset-${index}`}
+                      className="snap-center w-auto max-w-full sm:max-w-[42%] h-[380px] scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2"
+                    >
                       <ImageAsset src={asset} alt="" />
                     </div>
                   ))}
@@ -290,21 +311,24 @@ export default function Home() {
               </>
             ))}
           </div>
-          <div className="hidden transition-opacity duration-150 ease-linear"
+          <div
+            className="hidden transition-opacity duration-150 ease-linear"
             data-tab-content="tabs-profile"
             aria-labelledby="tabs-profile-tab"
             role="tabpanel"
           >
-              {[1, 2, 3, 4, 5].map((item, index) => (
-                <>
-                  <h3 className="capitalize md:text-4xl text-3xl font-semibold mb-6 mt-10">Collection #{index + 1}</h3>
-                  <GridGallery>
-                    {gallery.map((item, index) => (
-                      <CollectionCard key={index}></CollectionCard>
-                    ))}
-                  </GridGallery>
-                </>
-              ))}
+            {[1, 2, 3, 4, 5].map((item, index) => (
+              <>
+                <h3 className="capitalize md:text-4xl text-3xl font-semibold mb-6 mt-10">
+                  Collection #{index + 1}
+                </h3>
+                <GridGallery>
+                  {gallery.map((item, index) => (
+                    <CollectionCard key={index}></CollectionCard>
+                  ))}
+                </GridGallery>
+              </>
+            ))}
           </div>
         </div>
       </section>
@@ -318,7 +342,13 @@ export default function Home() {
           size="normal"
           className="animate-bounce rounded-full w-12 h-12 fixed flex bottom-5 right-5 text-center text-white leading-9"
         >
-          <Image src="/images/icons8-chevron-down-96.png" className="scale-[-1]" alt="" width={32} height={32} />
+          <Image
+            src="/images/icons8-chevron-down-96.png"
+            className="scale-[-1]"
+            alt=""
+            width={32}
+            height={32}
+          />
         </Button>
       ) : null}
     </>

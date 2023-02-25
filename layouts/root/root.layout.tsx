@@ -1,8 +1,10 @@
+import { useSession } from 'next-auth/react'
 import React from 'react'
+
+import { clientEnv } from '~/config/client'
+
 import { Header } from '../components/header'
 import { Main } from '../components/main'
-import { clientEnv } from '~/config/client'
-import { useSession } from 'next-auth/react'
 
 export function RootLayout({ children }: { children: React.ReactNode }) {
   const session = useSession()

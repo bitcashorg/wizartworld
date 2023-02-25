@@ -6,6 +6,7 @@ import { TextInput } from '~/components/form/text-input'
 import { NFTPreview } from '~/components/nft-preview'
 import { WizardStepProps } from '~/components/wizard'
 import { HomeWizardStepNav } from '~/views/home/home-wizard-header'
+
 import { HomeWizardPageTransition } from '../home-wizard/home-wizard-page-transition.component'
 
 export function MintStep({ next }: WizardStepProps) {
