@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth'
 import { NextAuthOptions } from 'next-auth'
 
-import { refreshAuthToken } from './niftory-auth.lib'
+import { refreshAuthToken } from '../../../lib/auth/auth.lib'
 import { niftoryAuthProvider } from './niftory-auth.provider'
 
 export const authOptions: NextAuthOptions = {

@@ -1,10 +1,11 @@
 import { faker } from '@faker-js/faker'
 import { everything } from '@genql/runtime'
 
-import { getClientGraphQLSdk } from '~/graphql'
+import { getBackendEndGraphQLClient } from '~/graphql/backend-client'
+import { getFrontEndGraphQLClient } from '~/graphql/frontend-client'
 
 export async function mintNFTModel(__args: { appId: string; id: string; quantity: string }) {
-  return getClientGraphQLSdk().mutation({
+  return (await getBackendEndGraphQLClient()).mutation({
     mintNFTModel: {
       __args,
       ...everything,
@@ -12,7 +13,7 @@ export async function mintNFTModel(__args: { appId: string; id: string; quantity
   })
 }
 export async function createNFTSet() {
-  const response = getClientGraphQLSdk().mutation({
+  const response = getFrontEndGraphQLClient().mutation({
     createNFTSet: {
       __args: {
         data: {
@@ -33,37 +34,37 @@ export async function createNFTSet() {
 }
 
 export async function getNiftoryApps() {
-  return getClientGraphQLSdk().query({
+  return getFrontEndGraphQLClient().query({
     app: everything,
   })
 }
 
 export async function getAppUser() {
-  return getClientGraphQLSdk().query({
+  return getFrontEndGraphQLClient().query({
     appUser: { ...everything, wallet: everything },
   })
 }
 
 export async function getNftModels() {
-  return getClientGraphQLSdk().query({
+  return getFrontEndGraphQLClient().query({
     nftModels: { ...everything, items: everything },
   })
 }
 
 export async function getNfts() {
-  return getClientGraphQLSdk().query({
+  return getFrontEndGraphQLClient().query({
     nfts: { ...everything, items: everything },
   })
 }
 
 export async function getWallets() {
-  return getClientGraphQLSdk().query({
+  return getFrontEndGraphQLClient().query({
     wallet: everything,
   })
 }
 
 export async function registerWallet({ address }: { address: string }) {
-  return getClientGraphQLSdk().mutation({
+  return getFrontEndGraphQLClient().mutation({
     registerWallet: {
       __args: { address },
       ...everything,
@@ -72,7 +73,7 @@ export async function registerWallet({ address }: { address: string }) {
 }
 
 export async function transferNft({ nftModelId, userId }: { nftModelId: string; userId: string }) {
-  return getClientGraphQLSdk().mutation({
+  return getFrontEndGraphQLClient().mutation({
     transfer: {
       __args: { nftModelId, userId },
       ...everything,
@@ -81,7 +82,7 @@ export async function transferNft({ nftModelId, userId }: { nftModelId: string; 
 }
 
 export async function getSets() {
-  return getClientGraphQLSdk().query({
+  return getFrontEndGraphQLClient().query({
     sets: { ...everything, models: everything },
   })
 }

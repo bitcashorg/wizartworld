@@ -1,14 +1,21 @@
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
+import { useAsyncFn } from 'react-use'
 
 import { Button } from '~/components/button'
+import { fetchJson } from '~/lib/fetch/fetch.lib'
 import { createNFTSet, getAppUser, getNftModels, getNiftoryApps } from '~/services/niftory'
 import { getNfts, registerWallet, transferNft } from '~/services/niftory/'
-import { getSets, mintNFTModel } from '~/services/niftory/niftory.service'
+import { getSets } from '~/services/niftory/niftory.service'
 import { NiftoryAuth } from '~/views/niftory/niftory-auth.component'
 
 export default function PageNiftory() {
   const [data, setData] = useState({})
+  const [state, mint] = useAsyncFn(async () =>
+    fetchJson('/api/niftory/mint', {
+      method: 'POST',
+    }),
+  )
   const session = useSession()
 
   const execCreateSet = async () => {
@@ -75,20 +82,6 @@ export default function PageNiftory() {
     }
   }
 
-  const execMintNFTModel = async () => {
-    try {
-      setData(
-        await mintNFTModel({
-          appId: 'cleddmva00002mm0v9hs6quxd',
-          id: 'bb8fc546-8bdb-40d9-a6b7-e4f371e29ef4',
-          quantity: '1',
-        }),
-      )
-    } catch (error) {
-      setData({ error: error as Error })
-    }
-  }
-
   return (
     <>
       <NiftoryAuth />
@@ -102,7 +95,7 @@ export default function PageNiftory() {
         <Button onClick={execRegisterWallet} label="register address nfts" />
         <Button onClick={execNftTransfer} label="transfer nft" />
         <Button onClick={execGetSets} label="get sets" />
-        <Button onClick={execMintNFTModel} label="mint nft model" />
+        <Button onClick={mint} label="mint nft model" />
       </div>
       <br /> <br />
       <h2>Query Response </h2>
@@ -115,6 +108,11 @@ export default function PageNiftory() {
       <br />
       <pre>
         <code>{JSON.stringify(session, null, 2)}</code>
+      </pre>
+      <h2>State </h2>
+      <br />
+      <pre>
+        <code>{JSON.stringify(state, null, 2)}</code>
       </pre>
     </>
   )
