@@ -1,6 +1,8 @@
 import { Button } from '~/components/button'
 import { useAuthContext } from '~/context/auth.context'
 
+import { ButtonThemeSwitcher } from './button-theme-switcher.component'
+
 export const Auth = () => {
   const { currentUser, logOut, logIn, signUp } = useAuthContext()
 
@@ -21,6 +23,7 @@ export const Auth = () => {
   const UnauthenticatedState = () => {
     return (
       <div className="flex gap-2">
+        <ButtonThemeSwitcher />
         <Button onClick={logIn} label="Log in" variant="primary" />
         <Button onClick={signUp} label="Sign Up" />
       </div>

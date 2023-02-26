@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
+  darkMode: 'class',
   content: [
     './layouts/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -9,7 +10,6 @@ module.exports = {
     './ui/**/*.{js,ts,jsx,tsx}',
     '/ui/_legacy/components/**/*.{js,ts,jsx,tsx}',
     './node_modules/tailwindcss-dark-mode/prefers-dark.js',
-    './or/your/own/prefers-dark.js'
   ],
   theme: {
     fontFamily: {

@@ -66,7 +66,7 @@ img {
 /** Global classes... Might be better at components.css... */
 
 .asset-image-wrapper {
-  @apply h-auto w-full overflow-hidden;
+  @apply w-full h-auto overflow-hidden;
 
   border-radius: 6px;
 }
@@ -74,7 +74,7 @@ img {
   @apply block h-full;
 }
 .asset-image-wrapper img {
-  @apply h-full w-full rounded-xl object-cover object-top shadow-md transition-all duration-700 ease-in-out group-hover:scale-110 dark:shadow-gray-700;
+  @apply object-cover object-top w-full h-full transition-all duration-700 ease-in-out shadow-md rounded-xl group-hover:scale-110 dark:shadow-gray-700;
 }
 
 /**
@@ -128,5 +128,13 @@ img {
   50%,
   100% {
     background-color: rgba(152, 128, 255, 0.2);
+  }
+}
+
+/* THEME DARK */
+
+@layer base {
+  body {
+    @apply bg-white dark:bg-gray-800;
   }
 }
