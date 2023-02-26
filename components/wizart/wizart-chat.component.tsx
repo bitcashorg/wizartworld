@@ -50,16 +50,21 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
 
   React.useEffect(() => {
     if (!wizartMascotRef.current) return
-      
+
     // ? This is the animation of the wizart mascot
-    if ((loading || prediction) && wizartMascotRef.current.state.playerState === 'stopped' as typeof wizartMascotRef.current.state.playerState) wizartMascotRef.current.play()
+    if (
+      (loading || prediction) &&
+      wizartMascotRef.current.state.playerState ===
+        ('stopped' as typeof wizartMascotRef.current.state.playerState)
+    )
+      wizartMascotRef.current.play()
     if (!loading) wizartMascotRef.current.stop()
   }, [loading, prediction])
 
   // Verifying if wizartChat has a message from wizart with a specific regex pattern on a React.useEffect to execute a function
   React.useEffect(() => {
     const message = wizartChat.wizart
-    const wizartMessage = message.includes(wizartDescriptionHeader)
+    const wizartMessage = message?.includes(wizartDescriptionHeader)
 
     if (wizartMessage) {
       const nextPhaseTimeout = setTimeout(async () => {
@@ -122,7 +127,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
 
   if (prediction)
     return (
-      <div className="wizard-step__content-wrapper px-8">
+      <div className="px-8 wizard-step__content-wrapper">
         <div className="flex justify-center py-10">
           <div className="w-[200px] h-[200px] flex justify-center place-items-center">
             {loadingPercentage !== '100%' && <span className="dot-flashing" />}
@@ -178,7 +183,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
         {userPrompt ? <div className={chatCardClass('user')}>{userPrompt}</div> : null}
       </div>
 
-      <form className="w-full form pb-10" onSubmit={sendPromptToWizart}>
+      <form className="w-full pb-10 form" onSubmit={sendPromptToWizart}>
         <div className="flex">
           <div className="relative z-50 flex items-center justify-center w-full mx-auto">
             <div className="wizart-chat-user-prompt">
@@ -193,7 +198,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
                 {/* @ts-ignore */}
                 <Button
                   variant="tertiary"
-                  className="my-2 ml-1 mr-2 flex h-8 w-16 rounded-2xl"
+                  className="flex w-16 h-8 my-2 ml-1 mr-2 rounded-2xl"
                   type="submit"
                   aria-label="click to send a prompt to Wizart"
                 >
