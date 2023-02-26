@@ -1,6 +1,5 @@
 import { chainConfig } from '~/config/chain'
 import { clientEnv } from '~/config/client'
-import { serverEnv } from '~/config/server'
 import { logger } from '~/lib/logger'
 
 import { createClient } from './generated'

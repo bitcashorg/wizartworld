@@ -15,12 +15,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
+    console.log('minting ....')
     const response = await mintNFTModel({
       appId: 'cleddmva00002mm0v9hs6quxd',
-      id: 'bb8fc546-8bdb-40d9-a6b7-e4f371e29ef4',
+      id: '08080d41-e383-42bb-8bbf-364631fde023',
       quantity: '1',
     })
-    return { response }
+    console.log('minted!', response)
+    return res.send({
+      response,
+    })
   } catch (error) {
     console.log({ error })
     return res.send({
