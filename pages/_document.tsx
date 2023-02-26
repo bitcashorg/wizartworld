@@ -5,7 +5,7 @@ import React from 'react'
 export default class Document extends NextDocument {
   render() {
     return (
-      <Html lang="en" className="dark scroll-smooth">
+      <Html lang="en" className="dark scroll-smooth" dir="ltr">
         <Head>
           <link rel="manifest" href="/manifest.webmanifest" />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

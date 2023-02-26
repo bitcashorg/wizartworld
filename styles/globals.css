@@ -74,7 +74,7 @@ img {
   @apply block h-full;
 }
 .asset-image-wrapper img {
-  @apply h-full w-full rounded-xl object-cover object-top duration-700 ease-in-out;
+  @apply h-full w-full rounded-xl object-cover object-top shadow-md transition-all duration-700 ease-in-out group-hover:scale-110 dark:shadow-gray-700;
 }
 
 /**
