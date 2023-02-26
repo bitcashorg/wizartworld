@@ -17,7 +17,6 @@ export function Profile({}: ProfileProps) {
               name="profile-banner"
               type="file"
               className="hidden"
-              onchange="loadFile(event)"
             />
             <div className="relative shrink-0">
               <img
@@ -40,7 +39,6 @@ export function Profile({}: ProfileProps) {
                     name="profile-image"
                     type="file"
                     className="hidden"
-                    onchange="loadFile(event)"
                   />
                   <div>
                     <div className="relative h-28 w-28 mx-auto rounded-full shadow dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800 overflow-hidden">
