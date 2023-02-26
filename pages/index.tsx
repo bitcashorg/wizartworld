@@ -167,7 +167,7 @@ export default function Home() {
             </div>
 
             <a className="btn border-none border-0 flex w-full justify-center items-center mt-10" href="#assets">
-              <Image src="/images/icons8-chevron-down-96.png" alt="" width={42} height={42} />
+              <Image src="/images/icons8-chevron-down-96.png" className="ml-auto  mr-auto" alt="" width={42} height={42} />
             </a>
           </div>
         </div>
@@ -267,7 +267,7 @@ export default function Home() {
           onClick={downloadPWA}
           variant="tertiary"
           size="normal"
-          className="hover:animate-bounce px-1 rounded-full w-12 h-12 fixed flex bottom-5 left-5 text-center text-white leading-9"
+          className="hover:animate-bounce pl-1 pr-1 rounded-full w-12 h-12 fixed flex bottom-5 left-5 text-center text-white leading-9"
         >
           <PWADownloadIcon />
         </Button>
