@@ -1,44 +1,47 @@
 import Image from 'next/image'
-
-import { CollectionCardProps } from './collection-card.type'
+import { CollectionCardComponentProps, CollectionCardProps } from './collection-card.type'
+import React from 'react'
+import { titles, usernames } from '~/lib/utils'
+import { ImageAsset } from '~/components/image'
+import { useEffectOnce } from 'react-use';
 
 // WIP
-export function CollectionCard({}: CollectionCardProps) {
+export function CollectionCard({ item, index }: CollectionCardComponentProps) {
+  const [title, setTitle] = React.useState('')
+  const [user, setUser] = React.useState('')
+
+  useEffectOnce(() => {
+    const getRandomTitle = titles()[index || (Math.random() * titles.length)]
+    const getRandomUser = usernames()[index || (Math.random() * usernames.length)]
+
+    setTitle(getRandomTitle)
+    setUser(getRandomUser)
+  })
+
   return (
     <div className="relative p-3 m-2 overflow-hidden duration-500 ease-in-out bg-white rounded-lg shadow group dark:bg-slate-900 dark:shadow-gray-800">
-      <Image
-        src="/assets/images/items/1.jpg"
-        className="rounded-lg"
-        alt=""
-        width={100}
-        height={100}
-      />
+      <div className="h-[300px]">
+        <ImageAsset src={item.asset || '/assets/images/items/1.jpg'} alt="" width={300} height={300} />
+      </div>
       <div className="relative p-4 -mt-14">
-        <div className="relative inline-block">
+        <div className="relative inline-block bg-slate-800 rounded-xl">
           <Image
-            src="/assets/images/avatar/1.jpg"
+            src={item.avatar || '/assets/images/avatar/1.jpg'}
             className="h-16 rounded-md shadow-md dark:shadow-gray-800"
             alt=""
-            width={100}
-            height={100}
+            width={64}
+            height={64}
           />
           <i className="absolute text-2xl mdi mdi-check-decagram text-emerald-600 -bottom-3 -right-2"></i>
         </div>
 
         <div className="mt-3">
-          <a
-            href="explore-one.html"
-            className="font-semibold block text-[18px] hover:text-violet-600"
-          >
-            Digital Collection
+          <p className="font-semibold block text-[18px] hover:text-violet-600 capitalize cursor-pointer">
+            {item.title || title}
+          </p>
+          <a href="creator-profile.html" className="font-medium text-violet-600">
+            @{user}
           </a>
-          <span className="mt-1 text-sm text-slate-400">
-            <span className="italic">by</span>{' '}
-            <a href="creator-profile.html" className="font-medium text-violet-600">
-              @CutieGirl
-            </a>
-          </span>
-          <span className="text-slate-400 block text-[16px] mt-1">25 Items</span>
         </div>
       </div>
     </div>

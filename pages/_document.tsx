@@ -6,7 +6,11 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en" className="dark scroll-smooth">
         <Head>
-          <meta name="description" content="Flow Hackathon AI Project" />
+          <link rel="manifest" href="/manifest.webmanifest" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          <meta name="description" content="Flow Hackathon AI & NFT Project" />
         </Head>
         <body className="flex justify-center w-full h-screen text-base align-middle font-urbanist text-white bg-slate-900">
           <Main />

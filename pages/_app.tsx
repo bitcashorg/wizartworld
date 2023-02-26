@@ -24,6 +24,7 @@ export default function MyApp({ Component, pageProps }: AppProps<any>) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>WizartWorld</title>
       </Head>
       <SessionProvider session={pageProps.session}>
         <SessionSync />

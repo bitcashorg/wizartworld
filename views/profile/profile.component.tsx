@@ -10,7 +10,7 @@ export function Profile({}: ProfileProps) {
     <div className="flex pt-40">
       <GridGallery>
         {collection.map((i) => (
-          <CollectionCard key={i}></CollectionCard>
+          <CollectionCard item={{}} key={i}></CollectionCard>
         ))}
       </GridGallery>
     </div>

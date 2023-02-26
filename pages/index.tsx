@@ -1,111 +1,19 @@
 import Image from 'next/image'
 import React from 'react'
 
+import { HomeWizard } from '~/views/home/home-wizard'
+import { PWADownloadIcon, WizartLogo } from '~/components/icons'
+import { ImageAsset } from '~/components/image'
 import { Button } from '~/components/button'
 import { CollectionCard } from '~/components/collection-card'
+import { gallery, landingAssets } from '~/lib/utils'
+import { BeforeInstallPromptEvent } from '~/types'
 import { GridGallery } from '~/components/grid-gallery'
-import { WizartLogo } from '~/components/icons'
-import { ImageAsset } from '~/components/image'
-import { HomeWizard } from '~/views/home/home-wizard'
-
-const landingAssets = {
-  'cinema_🎥': [
-    '/images/generated-nft/movie1.png',
-    '/images/generated-nft/movie2.png',
-    '/images/generated-nft/movie3.png',
-    '/images/generated-nft/movie4.png',
-    '/images/generated-nft/movie5.png',
-    '/images/generated-nft/movie6.png',
-    '/images/generated-nft/movie7.png',
-    '/images/generated-nft/movie8.png',
-    '/images/generated-nft/movie10.png',
-    '/images/generated-nft/movie11.png',
-    '/images/generated-nft/movie12.png',
-    'https://bestaiprompts.art/img/cine102.jpeg',
-    'https://bestaiprompts.art/img/cine103.jpeg',
-    '/images/generated-nft/movie9.png',
-  ],
-  'video_games_🎮': [
-    '/images/generated-nft/game1.png',
-    '/images/generated-nft/game2.png',
-    '/images/generated-nft/game3.png',
-    '/images/generated-nft/game4.png',
-    '/images/generated-nft/game5.png',
-    '/images/generated-nft/game6.png',
-    '/images/generated-nft/game7.png',
-    'https://bestaiprompts.art/img/game81.jpeg',
-    'https://bestaiprompts.art/img/game34.jpeg',
-    'https://bestaiprompts.art/img/game90.jpeg',
-    'https://bestaiprompts.art/img/game19.jpeg',
-    'https://bestaiprompts.art/img/game70.jpeg',
-    'https://bestaiprompts.art/img/game96.jpeg',
-    'https://bestaiprompts.art/img/game99.jpeg',
-  ],
-  'graphic_design_🌁': [
-    '/images/generated-nft/graphic1.png',
-    '/images/generated-nft/graphic2.png',
-    '/images/generated-nft/graphic3.png',
-    '/images/generated-nft/graphic4.png',
-    '/images/generated-nft/graphic5.png',
-    '/images/generated-nft/graphic6.png',
-    '/images/generated-nft/graphic7.png',
-    '/images/generated-nft/graphic8.png',
-    '/images/generated-nft/graphic9.png',
-    '/images/generated-nft/graphic10.png',
-    '/images/generated-nft/graphic11.png',
-  ],
-  'illustration_🎨': [
-    '/images/generated-nft/illu1.png',
-    '/images/generated-nft/illu2.png',
-    '/images/generated-nft/illu3.png',
-    '/images/generated-nft/illu4.png',
-    '/images/generated-nft/illu5.png',
-    '/images/generated-nft/illu6.png',
-    '/images/generated-nft/illu7.png',
-    '/images/generated-nft/illu8.png',
-    '/images/generated-nft/illu9.png',
-    '/images/generated-nft/illu10.png',
-    '/images/generated-nft/illu11.png',
-    '/images/generated-nft/illu12.png',
-    '/images/generated-nft/illu13.png',
-    '/images/generated-nft/illu14.png',
-  ],
-  'interior_design_🏠': [
-    '/images/generated-nft/interior1.png',
-    '/images/generated-nft/interior2.png',
-    '/images/generated-nft/interior3.png',
-    '/images/generated-nft/interior4.png',
-    '/images/generated-nft/interior5.png',
-    '/images/generated-nft/interior6.png',
-    '/images/generated-nft/interior7.png',
-    '/images/generated-nft/interior8.png',
-    '/images/generated-nft/interior9.png',
-    '/images/generated-nft/interior10.png',
-    '/images/generated-nft/interior11.png',
-    '/images/generated-nft/interior12.png',
-  ],
-  'fashion_design_👗': [
-    '/images/generated-nft/fashion1.png',
-    '/images/generated-nft/fashion2.png',
-    '/images/generated-nft/fashion3.png',
-    '/images/generated-nft/fashion4.png',
-    '/images/generated-nft/fashion5.png',
-    '/images/generated-nft/fashion6.png',
-    '/images/generated-nft/fashion7.png',
-    '/images/generated-nft/fashion8.png',
-    '/images/generated-nft/fashion9.png',
-    '/images/generated-nft/fashion10.png',
-    '/images/generated-nft/fashion11.png',
-    '/images/generated-nft/fashion12.png',
-    '/images/generated-nft/fashion13.png',
-    '/images/generated-nft/fashion14.png',
-    '/images/generated-nft/fashion15.png',
-  ],
-}
 
 export default function Home() {
   const [open, setOpen] = React.useState(false)
   const [backToTop, setBackToTop] = React.useState(false)
+  const deferrer_prompt = React.useRef<BeforeInstallPromptEvent | null>(null)
 
   React.useEffect(() => {
     if (!document) return () => {}
@@ -189,8 +97,36 @@ export default function Home() {
     setBackToTop(false)
   }
 
-  // We use useMemo to avoid re-rendering the components
-  const gallery = React.useMemo(() => [...new Array(Math.floor(Math.random() * 10 + 2))], [])
+  React.useEffect(() => {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault()
+
+      deferrer_prompt.current = e
+    })
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault()
+
+        deferrer_prompt.current = e
+      })
+    }
+  }, [])
+
+  // get window reference for calls out of useEffect
+
+  // function handler that install the website as a PWA
+  const downloadPWA = () => {
+    if (!deferrer_prompt.current) return
+
+    deferrer_prompt!.current.prompt()
+
+    deferrer_prompt!.current.userChoice.then((choice: any) => {
+      console.log(`User ${choice.outcome} the A2HS prompt`)
+
+      deferrer_prompt.current = null
+    })
+  }
 
   return (
     <>
@@ -230,10 +166,7 @@ export default function Home() {
               />
             </div>
 
-            <a
-              className="btn border-0 flex w-full justify-center items-center mt-10"
-              href="#assets"
-            >
+            <a className="btn border-none border-0 flex w-full justify-center items-center mt-10" href="#assets">
               <Image src="/images/icons8-chevron-down-96.png" alt="" width={42} height={42} />
             </a>
           </div>
@@ -249,18 +182,10 @@ export default function Home() {
       {/* // * TABS SECTION STARTS // */}
       <section className="relative z-1 md:mt-36 mt-40 px-5" id="assets">
         <h2 className="text-6xl text-center font-bold w-full mb-10">NFTs</h2>
-
-        <ul
-          className="mb-4 flex items-center justify-center list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row w-full"
-          role="tablist"
-        >
-          <li
-            role="presentation"
-            data-tab="tabs-home"
-            className="hover:animate-pulse duration-75 transition-all p-3 cursor-pointer"
-          >
-            <span
-              className="md:text-5xl text-4xl font-bold w-full mb-10 leading-loose border-b-8 border-b-transparent"
+        
+        <ul className="mb-4 flex items-center justify-center list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row w-full" role="tablist">
+          <li role="presentation" data-tab="tabs-home" className="text-yellow-300 border-yellow-200 border-transparent hover:animate-pulse duration-75 transition-all p-3 cursor-pointer border-b-8">
+            <span className="md:text-5xl text-4xl font-bold w-full mb-10 leading-loose"
               role="tab"
               aria-controls="tabs-home"
               aria-selected="true"
@@ -269,13 +194,8 @@ export default function Home() {
             </span>
           </li>
           <span className="hidden md:flex md:text-5xl text-4xl mx-6 font-bold">|</span>
-          <li
-            role="presentation"
-            data-tab="tabs-profile"
-            className="hover:animate-pulse duration-75 transition-all p-3 cursor-pointer"
-          >
-            <span
-              className="md:text-5xl text-4xl text-center font-bold w-full mb-10 leading-loose border-b-8 border-b-transparent"
+          <li role="presentation" data-tab="tabs-profile" className="border-transparent hover:animate-pulse duration-75 transition-all p-3 cursor-pointer border-b-8">
+            <span className="md:text-5xl text-4xl text-center font-bold w-full mb-10 leading-loose"
               aria-controls="tabs-profile"
               aria-selected="false"
               role="tab"
@@ -317,30 +237,48 @@ export default function Home() {
             aria-labelledby="tabs-profile-tab"
             role="tabpanel"
           >
-            {[1, 2, 3, 4, 5].map((item, index) => (
-              <>
-                <h3 className="capitalize md:text-4xl text-3xl font-semibold mb-6 mt-10">
-                  Collection #{index + 1}
-                </h3>
-                <GridGallery>
-                  {gallery.map((item, index) => (
-                    <CollectionCard key={index}></CollectionCard>
-                  ))}
-                </GridGallery>
-              </>
-            ))}
+              {gallery.map((collection, index) => (
+                <>
+                  <h3 className="capitalize flex gap-6 flex-nowrap items-center md:text-4xl text-3xl font-semibold mb-6 mt-10">
+                    {collection.title}
+                    {collection.icon ? (
+                      <i className="h-[48px] p-1">
+                        <Image src={collection.icon} sizes="x2" className="object-contain w-full h-full" alt="" width={42} height={42} />
+                      </i>
+                    ) : null}
+                  </h3>
+                  <GridGallery>
+                    <React.Suspense fallback={<div className="relative p-3 m-2 overflow-hidden duration-500 ease-in-out bg-white rounded-lg shadow group dark:bg-slate-900 dark:shadow-gray-800"></div>}>
+                      {collection.items.map((item, index) => (
+                        <CollectionCard item={item} index={index} key={index}></CollectionCard>
+                      ))}
+                    </React.Suspense>
+                  </GridGallery>
+                </>
+              ))}
           </div>
         </div>
       </section>
       {/* // * TABS SECTION ENDS // */}
 
       {/* TODO: Show Animation */}
+      {deferrer_prompt.current ? (
+        <Button
+          onClick={downloadPWA}
+          variant="tertiary"
+          size="normal"
+          className="hover:animate-bounce px-1 rounded-full w-12 h-12 fixed flex bottom-5 left-5 text-center text-white leading-9"
+        >
+          <PWADownloadIcon />
+        </Button>
+      ): null}
+
       {backToTop ? (
         <Button
           onClick={navigateToTop}
           variant="tertiary"
           size="normal"
-          className="animate-bounce rounded-full w-12 h-12 fixed flex bottom-5 right-5 text-center text-white leading-9"
+          className="hover:animate-bounce rounded-full w-12 h-12 fixed flex bottom-5 right-5 text-center text-white leading-9"
         >
           <Image
             src="/images/icons8-chevron-down-96.png"

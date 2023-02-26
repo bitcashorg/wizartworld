@@ -26,6 +26,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
   const { prediction, loadingPercentage } = replicate
   const { prompt, wizartChat, onChangeInput, updateChat, generateChatCompletion, initiateChat } =
     useOpenAI()
+  const wizartMascotRef = React.useRef<Player>(null)
 
   const initializeWizart = async () => {
     if (prediction) {
@@ -46,6 +47,14 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
   useEffectOnce(() => {
     initializeWizart()
   })
+
+  React.useEffect(() => {
+    if (!wizartMascotRef.current) return
+      
+    // ? This is the animation of the wizart mascot
+    if ((loading || prediction) && wizartMascotRef.current.state.playerState === 'stopped' as typeof wizartMascotRef.current.state.playerState) wizartMascotRef.current.play()
+    if (!loading) wizartMascotRef.current.stop()
+  }, [loading, prediction])
 
   // Verifying if wizartChat has a message from wizart with a specific regex pattern on a React.useEffect to execute a function
   React.useEffect(() => {
@@ -150,7 +159,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
       <div className="wizard-step__content-wrapper wizard-step__content-wrapper--chat">
         <div className="relative pt-10">
           <div className="wizart-mascot">
-            <Player src={wizartMascotAnimation} loop={Boolean(prediction) || loading} autoplay />
+            <Player ref={wizartMascotRef} src={wizartMascotAnimation} loop autoplay />
           </div>
           <div
             className={chatCardClass('wizart')}
@@ -167,7 +176,7 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
         {userPrompt ? <div className={chatCardClass('user')}>{userPrompt}</div> : null}
       </div>
 
-      <form className="w-full form" onSubmit={sendPromptToWizart}>
+      <form className="w-full form pb-10" onSubmit={sendPromptToWizart}>
         <div className="flex">
           <div className="relative z-50 flex items-center justify-center w-full mx-auto">
             <div className="wizart-chat-user-prompt">

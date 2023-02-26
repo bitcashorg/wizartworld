@@ -16,6 +16,7 @@ export const ButtonVariants = w.button(
         primary: t`bg-wz-purple-500 border-wz-purple-500 text-white hover:bg-wz-purple-600`,
         secondary: t`text-gray-700  bg-gray-200 border-gray-200 hover:bg-gray-300`,
         tertiary: t`items-center justify-center bg-gradient-to-r from-violet-600 to-red-600 p-0 font-bold opacity-100 transition-all hover:opacity-80`,
+        transparent: t`bg-transparent border-transparent text-gray-700 hover:text-gray-800`,
       },
       size: {
         normal: t``,
