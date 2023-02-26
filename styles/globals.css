@@ -58,6 +58,11 @@ select:focus {
   outline: none !important ;
 }
 
+/* Deactivating User Interaction */
+img {
+  pointer-events: none;
+}
+
 /** Global classes... Might be better at components.css... */
 
 .asset-image-wrapper {
@@ -69,7 +74,7 @@ select:focus {
   @apply block h-full;
 }
 .asset-image-wrapper img {
-  @apply h-full w-full rounded-xl object-cover duration-700 ease-in-out;
+  @apply h-full w-full rounded-xl object-cover object-top duration-700 ease-in-out;
 }
 
 /**

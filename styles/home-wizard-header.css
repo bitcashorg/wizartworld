@@ -8,7 +8,7 @@
 
 .wizard-step-header__back-btn svg,
 .wizard-step-header__back-btn path {
-  @apply transition-all hover:fill-green-800;
+  @apply fill-green-500 transition-all hover:fill-green-800;
 }
 
 .wizard-step-header__label,
@@ -17,8 +17,8 @@
 }
 
 .wizard-step-header__step-counter {
-  @apply font-semibold text-white;
+  @apply font-extrabold;
 }
 .wizard-step-header__step-counter::first-letter {
-  @apply text-green-400;
+  @apply text-green-600 dark:text-green-400;
 }

@@ -20,6 +20,7 @@ export function CollectionCard({ item, index }: CollectionCardComponentProps) {
 
   return (
     <div className="relative p-3 m-2 overflow-hidden duration-500 ease-in-out bg-white rounded-lg shadow group dark:bg-slate-900 dark:shadow-gray-800">
+      <div className="flex absolute px-3 top-1 z-10 right-3 bg-slate-100 dark:bg-slate-600 w-auto font-extrabold rounded-2xl shadow-sm leading-tight drop-shadow-md text-[16px] mt-1">#{Math.floor(Math.random() * 99 + (index || 1))}</div>
       <div className="h-[300px]">
         <ImageAsset src={item.asset || '/assets/images/items/1.jpg'} alt="" width={300} height={300} />
       </div>
@@ -27,7 +28,7 @@ export function CollectionCard({ item, index }: CollectionCardComponentProps) {
         <div className="relative inline-block bg-slate-800 rounded-xl">
           <Image
             src={item.avatar || '/assets/images/avatar/1.jpg'}
-            className="h-16 rounded-md shadow-md dark:shadow-gray-800"
+            className="h-16 rounded-md shadow-md dark:shadow-gray-800 object-cover object-top"
             alt=""
             width={64}
             height={64}

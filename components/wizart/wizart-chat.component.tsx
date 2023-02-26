@@ -172,6 +172,8 @@ export function WizartChat({ next }: OpenAIWizartChatProps) {
               </span>
             ) : null}
           </div>
+          {/* TODO: Not Displaying on UI. Check clip-path */}
+          <span className="flex chat-point" />
         </div>
         {userPrompt ? <div className={chatCardClass('user')}>{userPrompt}</div> : null}
       </div>

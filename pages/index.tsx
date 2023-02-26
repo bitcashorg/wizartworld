@@ -9,6 +9,7 @@ import { CollectionCard } from '~/components/collection-card'
 import { gallery, landingAssets } from '~/lib/utils'
 import { BeforeInstallPromptEvent } from '~/types'
 import { GridGallery } from '~/components/grid-gallery'
+import clsx from 'clsx';
 
 export default function Home() {
   const [open, setOpen] = React.useState(false)
@@ -75,8 +76,8 @@ export default function Home() {
       const tabContents = document.querySelectorAll('[data-tab-content]') as NodeListOf<HTMLElement>
 
       // tabs are not active by default, so we need to remove the active class from the clicked tab
-      tabs.forEach((tab) => tab.classList.remove('text-yellow-300', 'border-yellow-200'))
-      tab.classList.add('text-yellow-300', 'border-yellow-200', 'animation-opacity')
+      tabs.forEach((tab) => tab.classList.remove('text-yellow-800', 'dark:text-yellow-300', 'border-yellow-700', 'dark:border-yellow-200'))
+      tab.classList.add('text-yellow-800', 'dark:text-yellow-300', 'border-yellow-700', 'dark:border-yellow-200', 'animation-opacity')
 
       // tab content is hidden by default, so we need to remove the hidden class from the clicked tab content
       tabContents.forEach((tabContent) => tabContent.classList.add('hidden'))
@@ -140,7 +141,7 @@ export default function Home() {
           <div className="relative">
             <div className="relative mb-5">
               <span className="flex w-full items-center justify-center sm:mb-20">
-                <WizartLogo width={600} height={200} />
+                <WizartLogo width={600} height={200} className="filter invert dark:invert-0" />
               </span>
               <h1 className="font-bold whitespace-pre-line lg:leading-snug leading-snug text-4xl lg:text-6xl">
                 {/* TODO: CSS ANIMATION */}
@@ -167,7 +168,7 @@ export default function Home() {
             </div>
 
             <a className="btn border-none border-0 flex w-full justify-center items-center mt-10" href="#assets">
-              <Image src="/images/icons8-chevron-down-96.png" className="ml-auto  mr-auto" alt="" width={42} height={42} />
+              <Image src="/images/chevron-down.png" className="ml-auto  mr-auto" alt="" width={42} height={42} />
             </a>
           </div>
         </div>
@@ -184,7 +185,7 @@ export default function Home() {
         <h2 className="text-6xl text-center font-bold w-full mb-10">NFTs</h2>
         
         <ul className="mb-4 flex items-center justify-center list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row w-full" role="tablist">
-          <li role="presentation" data-tab="tabs-home" className="text-yellow-300 border-yellow-200 border-transparent hover:animate-pulse duration-75 transition-all p-3 cursor-pointer border-b-8">
+          <li role="presentation" data-tab="tabs-home" className="text-yellow-800 dark:text-yellow-300 border-yellow-700 dark:border-yellow-200 border-transparent hover:animate-pulse duration-75 transition-all p-3 cursor-pointer border-b-8">
             <span className="md:text-5xl text-4xl font-bold w-full mb-10 leading-loose"
               role="tab"
               aria-controls="tabs-home"
@@ -239,11 +240,11 @@ export default function Home() {
           >
               {gallery.map((collection, index) => (
                 <>
-                  <h3 className="capitalize flex gap-6 flex-nowrap items-center md:text-4xl text-3xl font-semibold mb-6 mt-10">
+                  <h3 className="capitalize flex gap-3 sm:gap-5 flex-nowrap items-center md:text-4xl text-3xl font-semibold mb-6 mt-10">
                     {collection.title}
                     {collection.icon ? (
                       <i className="h-[48px] p-1">
-                        <Image src={collection.icon} sizes="x2" className="object-contain w-full h-full" alt="" width={42} height={42} />
+                        <Image src={collection.icon} sizes="x2" className={clsx('object-contain', 'w-full', 'h-full', collection.icon.match(/(top-shot|evo-|ufc)/g) ? 'invert dark:invert-0' : '')} alt="" width={42} height={42} />
                       </i>
                     ) : null}
                   </h3>
@@ -281,7 +282,7 @@ export default function Home() {
           className="hover:animate-bounce rounded-full w-12 h-12 fixed flex bottom-5 right-5 text-center text-white leading-9"
         >
           <Image
-            src="/images/icons8-chevron-down-96.png"
+            src="/images/chevron-down.png"
             className="scale-[-1]"
             alt=""
             width={32}

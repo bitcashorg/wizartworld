@@ -10,7 +10,8 @@ import { OpenAIProvider } from '~/context/openai.context'
 import { ReplicateProvider } from '~/context/replicate.context'
 import { RootLayout } from '~/layouts/root'
 import '~/public/assets/css/icons.min.css'
-import '~/public/assets/css/tailwind.css'
+// import '~/public/assets/css/tailwind.css'
+import '~/styles/theme.css'
 import '~/styles/globals.css'
 import '~/styles/home-wizard-header.css'
 import '~/styles/home-wizard-steps.css'
@@ -24,6 +25,7 @@ export default function MyApp({ Component, pageProps }: AppProps<any>) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <title>WizartWorld</title>
       </Head>
       <SessionProvider session={pageProps.session}>

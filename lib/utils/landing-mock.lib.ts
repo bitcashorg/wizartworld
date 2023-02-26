@@ -11,8 +11,8 @@ export const usernames = () => Array.from({ length: 20 }, (_, i) => {
 export const titles = () => Array.from({ length: 40 }, () => {
   const title = Array.from({ length: Math.floor(Math.random() * 2) + 1 }, () =>
     Array.from({ length: 2 }, () =>
-      ['The', 'Quick', 'Brown', 'Fox', 'Elephant', 'Jumps', 'Over', 'The', 'Lazy', 'Dog', 'a', 'an', 'the', 'and', 'in', 'on', 'at', 'to', 'from', 'of', 'off', 'with', 'without', 'for', 'Cat', 'Boots', 'Shoes', 'Sky', 'Dunk', 'Air', 'Snake', 'Bird', 'Fish', 'The',]
-      [Math.floor(Math.random() * 34 + 1)]
+      ['The', 'Quick', 'Brown', 'Fox', 'Elephant', 'Jumps', 'Over', 'The', 'Lazy', 'Fly', 'Sky', 'of', 'on', 'the', 'the', 'James', 'Jessie', 'Neutral', 'Neutral', 'Jane', 'John', 'HotDog', 'Dunk', 'Extreme', 'Faceless', 'Dog', 'a', 'an', 'the', 'and', 'in', 'on', 'at', 'to', 'from', 'of', 'off', 'with', 'without', 'for', 'Cat', 'Boots', 'Shoes', 'Sky', 'Dunk', 'Air', 'Snake', 'Bird', 'Fish', 'The',]
+      [Math.floor(Math.random() * 50)]
     ).join(' ')
   ).join(' ')
 
@@ -202,9 +202,21 @@ export const gallery = [
         avatar: '/images/avatars/flovatar-profile3.png',
       },
       {
-        asset: '/images/nft/nba-fan-nft2.png',
+        asset: '/images/nft/nba-fan-nft8.png',
         avatar: '/images/avatars/ballerz-profile2.png',
-      }
+      },
+      {
+        asset: '/images/nft/nba-fan-nft9.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft10.png',
+        avatar: '/images/avatars/fkivatar-profile7.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft11.png',
+        avatar: '/images/avatars/flunk-profile2.jpg',
+      },
     ]
   },
   {
@@ -212,47 +224,47 @@ export const gallery = [
     icon: '/images/ufc-strike-logo.png',
     items: [
       {
-        asset: '/images/nft/doodles-fan-nft1.png',
+        asset: '/images/nft/ufc-fan-nft1.png',
         avatar: '/images/avatars/ballerz-profile2.png',
       },
       {
-        asset: '/images/nft/doodles-fan-nft2.png',
+        asset: '/images/nft/ufc-fan-nft2.png',
         avatar: '/images/avatars/doodles-profile4.png',
       },
       {
-        asset: '/images/nft/doodles-fan-nft3.png',
+        asset: '/images/nft/ufc-fan-nft3.png',
         avatar: '/images/avatars/ballerz-profile1.png',
       },
       {
-        asset: '/images/nft/doodles-fan-nft4.png',
+        asset: '/images/nft/ufc-fan-nft4.png',
         avatar: '/images/avatars/evolution-profile1.png',
       },
       {
-        asset: '/images/nft/doodles-fan-nft5.png',
+        asset: '/images/nft/ufc-fan-nft5.png',
         avatar: '/images/avatars/flovatar-profile1.png',
       },
       {
-        asset: '/images/nft/doodles-fan-nft6.png',
+        asset: '/images/nft/ufc-fan-nft6.png',
         avatar: '/images/avatars/flovatar-profile2.png',
       },
       {
-        asset: '/images/nft/doodles-fan-nft7.png',
+        asset: '/images/nft/ufc-fan-nft7.png',
         avatar: '/images/avatars/doodles-profile2.png',
       },
       {
-        asset: '/images/nft/doodles-fan-nft8.png',
+        asset: '/images/nft/ufc-fan-nft8.png',
         avatar: '/images/avatars/doodles-profile1.png',
       },
       {
-        asset: '/images/nft/doodles-fan-nft9.png',
+        asset: '/images/nft/ufc-fan-nft9.png',
         avatar: '/images/avatars/doodles-flunk1.png',
       },
       {
-        asset: '/images/nft/doodles-fan-nft10.png',
+        asset: '/images/nft/ufc-fan-nft10.png',
         avatar: '/images/avatars/evolution-profile3.png',
       },
       {
-        asset: '/images/nft/doodles-fan-nft11.png',
+        asset: '/images/nft/ufc-fan-nft11.png',
         avatar: '/images/avatars/doodles-profile2.png',
       },
     ]
@@ -262,9 +274,33 @@ export const gallery = [
     icon: '/images/evo-logo.png',
     items: [
       {
-        asset: '/images/nft/',
-        avatar: '/images/avatar/',
-      }
+        asset: '/images/nft/evolution-fan-nft1.png',
+        avatar: '/images/avatars/evolution-profile1.png',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft2.png',
+        avatar: '/images/avatars/flovatar-profile1.png',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft3.png',
+        avatar: '/images/avatars/flovatar-profile8.png',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft4.png',
+        avatar: '/images/avatars/flunk-profile2.jpg',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft5.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft6.png',
+        avatar: '/images/avatars/ballerz-profile2.png',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft7.png',
+        avatar: '/images/avatars/doodles-profile1.png',
+      },
     ]
   },
   {
@@ -292,9 +328,21 @@ export const gallery = [
     icon: '',
     items: [
       {
-        asset: '/images/nft/',
-        avatar: '/images/avatar/',
-      }
+        asset: '/images/nft/custom-fan-nft1.webp',
+        avatar: '/images/avatars/evolution-profile1.png',
+      },
+      {
+        asset: '/images/nft/custom-fan-nft2.webp',
+        avatar: '/images/avatars/evolution-profile1.png',
+      },
+      {
+        asset: '/images/nft/custom-fan-nft3.webp',
+        avatar: '/images/avatars/evolution-profile1.png',
+      },
+      {
+        asset: '/images/nft/custom-fan-nft4.jpg',
+        avatar: '/images/avatars/evolution-profile1.png',
+      },
     ]
   },
 ]
