@@ -23,6 +23,12 @@ export function getFrontEndGraphQLClient() {
       //   JSON.stringify((operation as GraphqlOperation).query.replaceAll('"', '')),
       // )
 
+      console.log(chainConfig.flowTestnet.niftory, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(operation),
+      })
+
       let fetchResponse
       try {
         fetchResponse = fetch(chainConfig.flowTestnet.niftory, {

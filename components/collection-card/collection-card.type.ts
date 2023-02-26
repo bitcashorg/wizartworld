@@ -1,7 +1,7 @@
 export type CollectionCardComponentProps = {
   item: Partial<CollectionCardProps>
   // ? for the mock data
-  index?: number
+  index: number
 }
 
 export type CollectionCardProps = {

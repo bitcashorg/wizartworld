@@ -112,7 +112,7 @@ export default function Home() {
   }
 
   React.useEffect(() => {
-    if (!window) return () => { }
+    if (!window) return () => {}
 
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault()
@@ -127,7 +127,7 @@ export default function Home() {
         deferrer_prompt.current = e
       })
     }
-  }, [deferrer_prompt.current])
+  }, [deferrer_prompt])
 
   // get window reference for calls out of useEffect
 
@@ -172,7 +172,7 @@ export default function Home() {
               <div className="overflow-hidden after:content-[''] after:absolute after:h-10 after:w-10 after:bg-violet-600/20 dark:after:bg-violet-600/40 after:bottom-[0] after:right-[15%] after:-z-1 after:rounded-full after:animate-ping"></div>
             </div>
 
-            <div className="mt-8 flex items-center justify-center">
+            <div className="flex items-center justify-center mt-8">
               <Button
                 variant="primary"
                 size="xl"

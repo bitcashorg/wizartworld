@@ -1,863 +1,1851 @@
 export default {
-  scalars: [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 49, 68, 69, 70, 71, 72, 73,
-    74, 75, 76, 77,
-  ],
-  types: {
-    Blockchain: {},
-    Currency: {},
-    FileState: {},
-    InvoiceState: {},
-    ListingState: {},
-    NFTBlockchainState: {},
-    NFTModelBlockchainState: {},
-    NFTSetBlockchainState: {},
-    Role: {},
-    SaleProcessingState: {},
-    SaleState: {},
-    SimpleRarityLevel: {},
-    Status: {},
-    TransferState: {},
-    WalletState: {},
-    WalletType: {},
-    AppCreateInput: {
-      name: [17],
-      blockchain: [0],
-      organizationId: [17],
-      redirectUris: [17],
-      __typename: [17],
-    },
-    String: {},
-    CreateFileOptionsInput: {
-      uploadToIPFS: [19],
-      contentType: [17],
-      posterFileId: [20],
-      __typename: [17],
-    },
-    Boolean: {},
-    ID: {},
-    CreateNFTListingInput: {
-      title: [17],
-      description: [17],
-      price: [72],
-      attributes: [71],
-      nftModelId: [20],
-      __typename: [17],
-    },
-    CreateNiftoryWalletInput: {
-      attributes: [71],
-      __typename: [17],
-    },
-    FixedPricingInput: {
-      currency: [1],
-      price: [72],
-      __typename: [17],
-    },
-    NFTContentInput: {
-      fileId: [20],
-      posterId: [20],
-      __typename: [17],
-    },
-    NFTFilterInput: {
-      nftModelIds: [20],
-      ids: [20],
-      blockchainIds: [17],
-      saleStates: [10],
-      blockchainStates: [5],
-      transferStates: [13],
-      __typename: [17],
-    },
-    NFTListingFilterInput: {
-      state: [4],
-      title: [17],
-      ids: [20],
-      __typename: [17],
-    },
-    NFTModelCreateInput: {
-      title: [17],
-      description: [17],
-      subtitle: [17],
-      quantity: [73],
-      contentId: [20],
-      content: [24],
-      status: [12],
-      metadata: [71],
-      attributes: [71],
-      tags: [17],
-      __typename: [17],
-    },
-    NFTModelFilterInput: {
-      status: [12],
-      setIds: [20],
-      ids: [20],
-      blockchainIds: [17],
-      tags: [17],
-      __typename: [17],
-    },
-    NFTModelUpdateInput: {
-      title: [17],
-      description: [17],
-      subtitle: [17],
-      quantity: [73],
-      contentId: [20],
-      content: [24],
-      status: [12],
-      metadata: [71],
-      attributes: [71],
-      tags: [17],
-      __typename: [17],
-    },
-    NFTSetCreateInput: {
-      title: [17],
-      attributes: [71],
-      tags: [17],
-      __typename: [17],
-    },
-    NFTSetFilterInput: {
-      ids: [20],
-      blockchainIds: [17],
-      title: [17],
-      tags: [17],
-      __typename: [17],
-    },
-    NFTSetUpdateInput: {
-      title: [17],
-      attributes: [71],
-      tags: [17],
-      __typename: [17],
-    },
-    OrganizationCreateInput: {
-      name: [17],
-      __typename: [17],
-    },
-    RegisterWalletInput: {
-      attributes: [71],
-      __typename: [17],
-    },
-    UpdateNFTListingInput: {
-      title: [17],
-      description: [17],
-      price: [72],
-      nftModelId: [20],
-      attributes: [71],
-      __typename: [17],
-    },
-    UpdateWalletInput: {
-      attributes: [71],
-      __typename: [17],
-    },
-    BlockchainEntity: {
-      blockchainId: [17],
-      metadata: [71],
-      on_NFT: [55],
-      on_NFTModel: [61],
-      on_NFTSet: [63],
-      __typename: [17],
-    },
-    BlockchainResource: {
-      id: [20],
-      attributes: [71],
-      createdAt: [68],
-      updatedAt: [68],
-      status: [12],
-      blockchainId: [17],
-      metadata: [71],
-      on_NFTModel: [61],
-      on_NFTSet: [63],
-      __typename: [17],
-    },
-    File: {
-      id: [20],
-      url: [74],
-      state: [2],
-      name: [17],
-      contentType: [17],
-      md5: [17],
-      on_NFTFile: [57],
-      on_SimpleFile: [65],
-      __typename: [17],
-    },
-    Resource: {
-      id: [20],
-      attributes: [71],
-      createdAt: [68],
-      updatedAt: [68],
-      status: [12],
-      on_NFTModel: [61],
-      on_NFTSet: [63],
-      __typename: [17],
-    },
-    SellableEntity: {
-      saleState: [10],
-      on_NFT: [55],
-      __typename: [17],
-    },
-    UserData: {
-      email: [69],
-      image: [17],
-      name: [17],
-      on_AdminUser: [43],
-      on_AppUser: [45],
-      __typename: [17],
-    },
-    AdminUser: {
-      email: [69],
-      image: [17],
-      name: [17],
-      id: [20],
-      apps: [44],
-      organizations: [64],
-      __typename: [17],
-    },
-    App: {
-      id: [20],
-      name: [17],
-      contract: [50],
-      __typename: [17],
-    },
-    AppUser: {
-      email: [69],
-      image: [17],
-      name: [17],
-      id: [20],
-      createdAt: [68],
-      updatedAt: [68],
-      wallet: [66],
-      primaryWallet: [66],
-      wallets: [66],
-      app: [44],
-      __typename: [17],
-    },
-    AppUserList: {
-      cursor: [17],
-      items: [45],
-      __typename: [17],
-    },
-    BlockchainTransaction: {
-      blockchain: [0],
-      hash: [17],
-      name: [17],
-      __typename: [17],
-    },
-    CheckoutWithDapperWalletResponse: {
-      cadence: [17],
-      registryAddress: [17],
-      brand: [17],
-      nftId: [17],
-      nftTypeRef: [17],
-      nftDatabaseId: [17],
-      setId: [17],
-      templateId: [17],
-      price: [17],
-      expiry: [17],
-      signerKeyId: [49],
-      signerAddress: [17],
-      __typename: [17],
-    },
-    Int: {},
-    Contract: {
-      id: [20],
-      address: [17],
-      blockchain: [0],
-      name: [17],
-      __typename: [17],
-    },
-    FixedPricing: {
-      currency: [1],
-      price: [72],
-      __typename: [17],
-    },
-    InitiateCheckoutResponse: {
-      redirectUrl: [74],
-      status: [17],
-      statusMessage: [17],
-      __typename: [17],
-    },
-    Invoice: {
-      id: [20],
-      createdAt: [68],
-      updatedAt: [68],
-      state: [3],
-      total: [72],
-      listingId: [17],
-      userId: [17],
-      __typename: [17],
-    },
-    InvoiceList: {
-      cursor: [17],
-      items: [53],
-      __typename: [17],
-    },
-    NFT: {
-      blockchainId: [17],
-      metadata: [71],
-      saleState: [10],
-      id: [20],
-      serialNumber: [49],
-      blockchainState: [5],
-      modelId: [20],
-      model: [61],
-      wallet: [66],
-      status: [13],
-      transactions: [47],
-      __typename: [17],
-    },
-    NFTContent: {
-      id: [20],
-      files: [57],
-      poster: [65],
-      __typename: [17],
-    },
-    NFTFile: {
-      id: [20],
-      url: [74],
-      state: [2],
-      name: [17],
-      contentType: [17],
-      md5: [17],
-      ipfsContentAddress: [17],
-      ipfsMetadataAddress: [17],
-      __typename: [17],
-    },
-    NFTList: {
-      cursor: [17],
-      items: [55],
-      __typename: [17],
-    },
-    NFTListing: {
-      attributes: [71],
-      id: [20],
-      createdAt: [68],
-      updatedAt: [68],
-      title: [17],
-      description: [17],
-      pricing: [51],
-      appId: [20],
-      nftModel: [61],
-      state: [4],
-      __typename: [17],
-    },
-    NFTListingList: {
-      cursor: [17],
-      items: [59],
-      __typename: [17],
-    },
-    NFTModel: {
-      id: [20],
-      attributes: [71],
-      createdAt: [68],
-      updatedAt: [68],
-      status: [12],
-      blockchainId: [17],
-      metadata: [71],
-      title: [17],
-      description: [17],
-      rarity: [11],
-      quantity: [73],
-      quantityMinted: [76],
-      content: [56],
-      state: [6],
-      set: [63],
-      nfts: [55],
-      nftListings: [59],
-      __typename: [17],
-    },
-    NFTModelList: {
-      cursor: [17],
-      items: [61],
-      __typename: [17],
-    },
-    NFTSet: {
-      id: [20],
-      attributes: [71],
-      createdAt: [68],
-      updatedAt: [68],
-      status: [12],
-      blockchainId: [17],
-      metadata: [71],
-      title: [17],
-      image: [74],
-      state: [7],
-      tags: [17],
-      models: [61],
-      app: [44],
-      __typename: [17],
-    },
-    Organization: {
-      id: [20],
-      name: [17],
-      apps: [44],
-      members: [43],
-      __typename: [17],
-    },
-    SimpleFile: {
-      id: [20],
-      url: [74],
-      state: [2],
-      name: [17],
-      contentType: [17],
-      md5: [17],
-      __typename: [17],
-    },
-    Wallet: {
-      attributes: [71],
-      id: [20],
-      createdAt: [68],
-      updatedAt: [68],
-      address: [17],
-      state: [14],
-      verificationCode: [17],
-      nfts: [55],
-      appUser: [45],
-      walletType: [15],
-      __typename: [17],
-    },
-    WalletList: {
-      cursor: [17],
-      items: [66],
-      __typename: [17],
-    },
-    DateTime: {},
-    EmailAddress: {},
-    JSON: {},
-    JSONObject: {},
-    PositiveFloat: {},
-    PositiveInt: {},
-    URL: {},
-    UnsignedFloat: {},
-    UnsignedInt: {},
-    Upload: {},
-    Identifiable: {
-      id: [20],
-      on_AdminUser: [43],
-      on_App: [44],
-      on_AppUser: [45],
-      on_Contract: [50],
-      on_Invoice: [53],
-      on_NFT: [55],
-      on_NFTContent: [56],
-      on_NFTListing: [59],
-      on_NFTModel: [61],
-      on_NFTSet: [63],
-      on_Organization: [64],
-      on_Wallet: [66],
-      __typename: [17],
-    },
-    Attributable: {
-      attributes: [71],
-      on_NFTListing: [59],
-      on_NFTModel: [61],
-      on_NFTSet: [63],
-      on_Wallet: [66],
-      __typename: [17],
-    },
-    HasTimes: {
-      createdAt: [68],
-      updatedAt: [68],
-      on_AppUser: [45],
-      on_Invoice: [53],
-      on_NFTListing: [59],
-      on_NFTModel: [61],
-      on_NFTSet: [63],
-      on_Wallet: [66],
-      __typename: [17],
-    },
-    Pageable: {
-      cursor: [17],
-      on_AppUserList: [46],
-      on_InvoiceList: [54],
-      on_NFTList: [58],
-      on_NFTListingList: [60],
-      on_NFTModelList: [62],
-      on_WalletList: [67],
-      __typename: [17],
-    },
-    Query: {
-      adminUser: [43],
-      appUser: [45],
-      appUserById: [
-        45,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      appUsers: [
-        46,
-        {
-          cursor: [17],
-          maxResults: [73],
-        },
-      ],
-      app: [44],
-      appById: [
-        44,
-        {
-          id: [20],
-          name: [17],
-        },
-      ],
-      createApp: [
-        44,
-        {
-          data: [16, 'AppCreateInput!'],
-        },
-      ],
-      contract: [50],
-      file: [
-        65,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      nftContent: [
-        56,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      nftFile: [
-        57,
-        {
-          id: [17],
-          url: [17],
-          ipfsUrl: [17],
-        },
-      ],
-      invoice: [
-        53,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      organization: [
-        64,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      invoices: [
-        54,
-        {
-          appId: [20],
-          cursor: [17],
-          maxResults: [73],
-        },
-      ],
-      nftListing: [
-        59,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      nftListings: [
-        60,
-        {
-          filter: [26],
-          cursor: [17],
-          maxResults: [73],
-        },
-      ],
-      nftModel: [
-        61,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      nftModels: [
-        62,
-        {
-          appId: [20],
-          filter: [28],
-          cursor: [17],
-          maxResults: [73],
-        },
-      ],
-      set: [
-        63,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      sets: [
-        63,
-        {
-          filter: [31],
-          appId: [20],
-        },
-      ],
-      nft: [
-        55,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      nfts: [
-        58,
-        {
-          userId: [20],
-          appId: [20],
-          filter: [25],
-          cursor: [17],
-          maxResults: [73],
-        },
-      ],
-      nftsByWallet: [
-        58,
-        {
-          walletId: [20],
-          address: [17],
-          filter: [25],
-          cursor: [17],
-          maxResults: [73],
-        },
-      ],
-      wallet: [66],
-      walletById: [
-        66,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      walletByAddress: [
-        66,
-        {
-          appId: [20],
-          address: [17, 'String!'],
-        },
-      ],
-      walletByUserId: [
-        66,
-        {
-          userId: [20, 'ID!'],
-        },
-      ],
-      wallets: [
-        67,
-        {
-          appId: [20, 'ID!'],
-          cursor: [17],
-          maxResults: [73],
-        },
-      ],
-      __typename: [17],
-    },
-    Mutation: {
-      deployContract: [
-        50,
-        {
-          appId: [17, 'String!'],
-          name: [17, 'String!'],
-          blockchain: [0, 'Blockchain!'],
-        },
-      ],
-      createFileUploadUrl: [
-        39,
-        {
-          name: [17, 'String!'],
-          description: [17],
-          appId: [20],
-          options: [18],
-        },
-      ],
-      deleteFile: [
-        39,
-        {
-          id: [20],
-          url: [17],
-        },
-      ],
-      uploadNFTContent: [
-        56,
-        {
-          name: [17],
-          description: [17],
-          contentType: [17],
-          posterContentType: [17],
-        },
-      ],
-      completeCheckoutWithDapperWallet: [
-        55,
-        {
-          transactionId: [17, 'String!'],
-          nftDatabaseId: [17],
-        },
-      ],
-      createNFTListing: [
-        59,
-        {
-          data: [21, 'CreateNFTListingInput!'],
-        },
-      ],
-      checkout: [
-        52,
-        {
-          invoiceId: [17, 'String!'],
-          onSuccess: [17, 'String!'],
-          onError: [17, 'String!'],
-        },
-      ],
-      checkoutWithDapperWallet: [
-        48,
-        {
-          nftModelId: [20, 'ID!'],
-          userId: [20],
-          walletId: [20],
-          address: [17],
-          price: [75],
-          expiry: [76],
-        },
-      ],
-      reserve: [
-        53,
-        {
-          listingId: [20, 'ID!'],
-        },
-      ],
-      signTransactionForDapperWallet: [
+    "scalars": [
+        6,
+        10,
+        16,
         17,
-        {
-          transaction: [17],
-        },
-      ],
-      updateNFTListing: [
+        18,
+        20,
+        24,
+        27,
+        30,
+        31,
+        32,
+        33,
+        36,
+        46,
+        52,
         59,
-        {
-          id: [20, 'ID!'],
-          data: [35, 'UpdateNFTListingInput!'],
-        },
-      ],
-      deleteNFTListing: [
-        59,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      mintNFTModel: [
-        61,
-        {
-          id: [20, 'ID!'],
-          quantity: [73],
-          appId: [20],
-        },
-      ],
-      createNFTModel: [
-        61,
-        {
-          setId: [20, 'ID!'],
-          data: [27, 'NFTModelCreateInput!'],
-          appId: [20],
-        },
-      ],
-      deleteNFTModel: [
-        61,
-        {
-          id: [20, 'ID!'],
-        },
-      ],
-      updateNFTModel: [
-        61,
-        {
-          id: [20, 'ID!'],
-          data: [29, 'NFTModelUpdateInput!'],
-        },
-      ],
-      createNFTSet: [
-        63,
-        {
-          data: [30, 'NFTSetCreateInput!'],
-          appId: [20],
-        },
-      ],
-      updateNFTSet: [
-        63,
-        {
-          id: [20, 'ID!'],
-          data: [32, 'NFTSetUpdateInput!'],
-        },
-      ],
-      mintNFT: [
-        55,
-        {
-          nftModelId: [20, 'ID!'],
-        },
-      ],
-      transfer: [
-        55,
-        {
-          id: [20],
-          nftModelId: [20],
-          userId: [20],
-          walletId: [20],
-          address: [17],
-          appId: [20],
-          force: [19],
-        },
-      ],
-      withdraw: [
-        55,
-        {
-          id: [20, 'ID!'],
-          receiverAddress: [17, 'String!'],
-          niftoryWalletAddress: [17],
-          appId: [20],
-        },
-      ],
-      createOrganization: [
+        60,
         64,
-        {
-          data: [33, 'OrganizationCreateInput!'],
-        },
-      ],
-      createNiftoryWallet: [
+        65,
         66,
-        {
-          userId: [20],
-          data: [22],
-          appId: [20],
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        78,
+        82,
+        83
+    ],
+    "types": {
+        "AdminUser": {
+            "apps": [
+                1
+            ],
+            "email": [
+                18
+            ],
+            "id": [
+                24
+            ],
+            "image": [
+                71
+            ],
+            "name": [
+                71
+            ],
+            "organizations": [
+                56
+            ],
+            "__typename": [
+                71
+            ]
         },
-      ],
-      readyWallet: [
-        66,
-        {
-          address: [17, 'String!'],
+        "App": {
+            "contract": [
+                12
+            ],
+            "id": [
+                24
+            ],
+            "name": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
         },
-      ],
-      registerWallet: [
-        66,
-        {
-          address: [17, 'String!'],
-          data: [34],
+        "AppCreateInput": {
+            "blockchain": [
+                6
+            ],
+            "name": [
+                71
+            ],
+            "organizationId": [
+                71
+            ],
+            "redirectUris": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
         },
-      ],
-      setPrimaryWallet: [
-        66,
-        {
-          walletId: [17],
-          address: [17],
+        "AppUser": {
+            "app": [
+                1
+            ],
+            "createdAt": [
+                17
+            ],
+            "email": [
+                18
+            ],
+            "id": [
+                24
+            ],
+            "image": [
+                71
+            ],
+            "name": [
+                71
+            ],
+            "primaryWallet": [
+                80
+            ],
+            "updatedAt": [
+                17
+            ],
+            "wallet": [
+                80
+            ],
+            "wallets": [
+                80
+            ],
+            "__typename": [
+                71
+            ]
         },
-      ],
-      unlinkWallet: [
-        66,
-        {
-          walletId: [17],
-          address: [17],
+        "AppUserList": {
+            "cursor": [
+                71
+            ],
+            "items": [
+                3
+            ],
+            "__typename": [
+                71
+            ]
         },
-      ],
-      updateWallet: [
-        66,
-        {
-          address: [17, 'String!'],
-          data: [36],
+        "Attributable": {
+            "attributes": [
+                32
+            ],
+            "on_NFTListing": [
+                42
+            ],
+            "on_NFTModel": [
+                45
+            ],
+            "on_NFTSet": [
+                51
+            ],
+            "on_Wallet": [
+                80
+            ],
+            "__typename": [
+                71
+            ]
         },
-      ],
-      verifyWallet: [
-        66,
-        {
-          address: [17, 'String!'],
-          signedVerificationCode: [70, 'JSON!'],
+        "Blockchain": {},
+        "BlockchainEntity": {
+            "blockchainId": [
+                71
+            ],
+            "metadata": [
+                32
+            ],
+            "on_NFT": [
+                35
+            ],
+            "on_NFTModel": [
+                45
+            ],
+            "on_NFTSet": [
+                51
+            ],
+            "__typename": [
+                71
+            ]
         },
-      ],
-      __typename: [17],
-    },
-  },
+        "BlockchainResource": {
+            "attributes": [
+                32
+            ],
+            "blockchainId": [
+                71
+            ],
+            "createdAt": [
+                17
+            ],
+            "id": [
+                24
+            ],
+            "metadata": [
+                32
+            ],
+            "status": [
+                70
+            ],
+            "updatedAt": [
+                17
+            ],
+            "on_NFTModel": [
+                45
+            ],
+            "on_NFTSet": [
+                51
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "BlockchainTransaction": {
+            "blockchain": [
+                6
+            ],
+            "hash": [
+                71
+            ],
+            "name": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "Boolean": {},
+        "CheckoutWithDapperWalletResponse": {
+            "brand": [
+                71
+            ],
+            "cadence": [
+                71
+            ],
+            "expiry": [
+                71
+            ],
+            "nftDatabaseId": [
+                71
+            ],
+            "nftId": [
+                71
+            ],
+            "nftTypeRef": [
+                71
+            ],
+            "price": [
+                71
+            ],
+            "registryAddress": [
+                71
+            ],
+            "setId": [
+                71
+            ],
+            "signerAddress": [
+                71
+            ],
+            "signerKeyId": [
+                27
+            ],
+            "templateId": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "Contract": {
+            "address": [
+                71
+            ],
+            "blockchain": [
+                6
+            ],
+            "id": [
+                24
+            ],
+            "name": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "CreateFileOptionsInput": {
+            "contentType": [
+                71
+            ],
+            "posterFileId": [
+                24
+            ],
+            "uploadToIPFS": [
+                10
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "CreateNFTListingInput": {
+            "attributes": [
+                32
+            ],
+            "description": [
+                71
+            ],
+            "nftModelId": [
+                24
+            ],
+            "price": [
+                59
+            ],
+            "title": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "CreateNiftoryWalletInput": {
+            "attributes": [
+                32
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "Currency": {},
+        "DateTime": {},
+        "EmailAddress": {},
+        "File": {
+            "contentType": [
+                71
+            ],
+            "id": [
+                24
+            ],
+            "md5": [
+                71
+            ],
+            "name": [
+                71
+            ],
+            "state": [
+                20
+            ],
+            "url": [
+                73
+            ],
+            "on_NFTFile": [
+                39
+            ],
+            "on_SimpleFile": [
+                68
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "FileState": {},
+        "FixedPricing": {
+            "currency": [
+                16
+            ],
+            "price": [
+                59
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "FixedPricingInput": {
+            "currency": [
+                16
+            ],
+            "price": [
+                59
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "HasTimes": {
+            "createdAt": [
+                17
+            ],
+            "updatedAt": [
+                17
+            ],
+            "on_AppUser": [
+                3
+            ],
+            "on_Invoice": [
+                28
+            ],
+            "on_NFTListing": [
+                42
+            ],
+            "on_NFTModel": [
+                45
+            ],
+            "on_NFTSet": [
+                51
+            ],
+            "on_Wallet": [
+                80
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "ID": {},
+        "Identifiable": {
+            "id": [
+                24
+            ],
+            "on_AdminUser": [
+                0
+            ],
+            "on_App": [
+                1
+            ],
+            "on_AppUser": [
+                3
+            ],
+            "on_Contract": [
+                12
+            ],
+            "on_Invoice": [
+                28
+            ],
+            "on_NFT": [
+                35
+            ],
+            "on_NFTContent": [
+                37
+            ],
+            "on_NFTListing": [
+                42
+            ],
+            "on_NFTModel": [
+                45
+            ],
+            "on_NFTSet": [
+                51
+            ],
+            "on_Organization": [
+                56
+            ],
+            "on_Wallet": [
+                80
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "InitiateCheckoutResponse": {
+            "redirectUrl": [
+                73
+            ],
+            "status": [
+                71
+            ],
+            "statusMessage": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "Int": {},
+        "Invoice": {
+            "createdAt": [
+                17
+            ],
+            "id": [
+                24
+            ],
+            "listingId": [
+                71
+            ],
+            "state": [
+                30
+            ],
+            "total": [
+                59
+            ],
+            "updatedAt": [
+                17
+            ],
+            "userId": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "InvoiceList": {
+            "cursor": [
+                71
+            ],
+            "items": [
+                28
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "InvoiceState": {},
+        "JSON": {},
+        "JSONObject": {},
+        "ListingState": {},
+        "Mutation": {
+            "checkout": [
+                26,
+                {
+                    "invoiceId": [
+                        71,
+                        "String!"
+                    ],
+                    "onError": [
+                        71,
+                        "String!"
+                    ],
+                    "onSuccess": [
+                        71,
+                        "String!"
+                    ]
+                }
+            ],
+            "checkoutWithDapperWallet": [
+                11,
+                {
+                    "address": [
+                        71
+                    ],
+                    "expiry": [
+                        75
+                    ],
+                    "nftModelId": [
+                        24,
+                        "ID!"
+                    ],
+                    "price": [
+                        74
+                    ],
+                    "userId": [
+                        24
+                    ],
+                    "walletId": [
+                        24
+                    ]
+                }
+            ],
+            "completeCheckoutWithDapperWallet": [
+                35,
+                {
+                    "nftDatabaseId": [
+                        71
+                    ],
+                    "transactionId": [
+                        71,
+                        "String!"
+                    ]
+                }
+            ],
+            "createFileUploadUrl": [
+                19,
+                {
+                    "appId": [
+                        24
+                    ],
+                    "description": [
+                        71
+                    ],
+                    "name": [
+                        71,
+                        "String!"
+                    ],
+                    "options": [
+                        13
+                    ]
+                }
+            ],
+            "createNFTListing": [
+                42,
+                {
+                    "data": [
+                        14,
+                        "CreateNFTListingInput!"
+                    ]
+                }
+            ],
+            "createNFTModel": [
+                45,
+                {
+                    "appId": [
+                        24
+                    ],
+                    "data": [
+                        47,
+                        "NFTModelCreateInput!"
+                    ],
+                    "setId": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "createNFTSet": [
+                51,
+                {
+                    "appId": [
+                        24
+                    ],
+                    "data": [
+                        53,
+                        "NFTSetCreateInput!"
+                    ]
+                }
+            ],
+            "createNiftoryWallet": [
+                80,
+                {
+                    "appId": [
+                        24
+                    ],
+                    "data": [
+                        15
+                    ],
+                    "userId": [
+                        24
+                    ]
+                }
+            ],
+            "createOrganization": [
+                56,
+                {
+                    "data": [
+                        57,
+                        "OrganizationCreateInput!"
+                    ]
+                }
+            ],
+            "deleteFile": [
+                19,
+                {
+                    "id": [
+                        24
+                    ],
+                    "url": [
+                        71
+                    ]
+                }
+            ],
+            "deleteNFTListing": [
+                42,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "deleteNFTModel": [
+                45,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "deployContract": [
+                12,
+                {
+                    "appId": [
+                        71,
+                        "String!"
+                    ],
+                    "blockchain": [
+                        6,
+                        "Blockchain!"
+                    ],
+                    "name": [
+                        71,
+                        "String!"
+                    ]
+                }
+            ],
+            "mintNFT": [
+                35,
+                {
+                    "nftModelId": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "mintNFTModel": [
+                45,
+                {
+                    "appId": [
+                        24
+                    ],
+                    "id": [
+                        24,
+                        "ID!"
+                    ],
+                    "quantity": [
+                        60
+                    ]
+                }
+            ],
+            "readyWallet": [
+                80,
+                {
+                    "address": [
+                        71,
+                        "String!"
+                    ]
+                }
+            ],
+            "registerWallet": [
+                80,
+                {
+                    "address": [
+                        71,
+                        "String!"
+                    ],
+                    "data": [
+                        62
+                    ]
+                }
+            ],
+            "reserve": [
+                28,
+                {
+                    "listingId": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "setPrimaryWallet": [
+                80,
+                {
+                    "address": [
+                        71
+                    ],
+                    "walletId": [
+                        71
+                    ]
+                }
+            ],
+            "signTransactionForDapperWallet": [
+                71,
+                {
+                    "transaction": [
+                        71
+                    ]
+                }
+            ],
+            "transfer": [
+                35,
+                {
+                    "address": [
+                        71
+                    ],
+                    "appId": [
+                        24
+                    ],
+                    "force": [
+                        10
+                    ],
+                    "id": [
+                        24
+                    ],
+                    "nftModelId": [
+                        24
+                    ],
+                    "userId": [
+                        24
+                    ],
+                    "walletId": [
+                        24
+                    ]
+                }
+            ],
+            "unlinkWallet": [
+                80,
+                {
+                    "address": [
+                        71
+                    ],
+                    "walletId": [
+                        71
+                    ]
+                }
+            ],
+            "updateNFTListing": [
+                42,
+                {
+                    "data": [
+                        76,
+                        "UpdateNFTListingInput!"
+                    ],
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "updateNFTModel": [
+                45,
+                {
+                    "data": [
+                        50,
+                        "NFTModelUpdateInput!"
+                    ],
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "updateNFTSet": [
+                51,
+                {
+                    "data": [
+                        55,
+                        "NFTSetUpdateInput!"
+                    ],
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "updateWallet": [
+                80,
+                {
+                    "address": [
+                        71,
+                        "String!"
+                    ],
+                    "data": [
+                        77
+                    ]
+                }
+            ],
+            "uploadNFTContent": [
+                37,
+                {
+                    "contentType": [
+                        71
+                    ],
+                    "description": [
+                        71
+                    ],
+                    "name": [
+                        71
+                    ],
+                    "posterContentType": [
+                        71
+                    ]
+                }
+            ],
+            "verifyWallet": [
+                80,
+                {
+                    "address": [
+                        71,
+                        "String!"
+                    ],
+                    "signedVerificationCode": [
+                        31,
+                        "JSON!"
+                    ]
+                }
+            ],
+            "withdraw": [
+                35,
+                {
+                    "appId": [
+                        24
+                    ],
+                    "id": [
+                        24,
+                        "ID!"
+                    ],
+                    "niftoryWalletAddress": [
+                        71
+                    ],
+                    "receiverAddress": [
+                        71,
+                        "String!"
+                    ]
+                }
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFT": {
+            "blockchainId": [
+                71
+            ],
+            "blockchainState": [
+                36
+            ],
+            "id": [
+                24
+            ],
+            "metadata": [
+                32
+            ],
+            "model": [
+                45
+            ],
+            "modelId": [
+                24
+            ],
+            "saleState": [
+                66
+            ],
+            "serialNumber": [
+                27
+            ],
+            "status": [
+                72
+            ],
+            "transactions": [
+                9
+            ],
+            "wallet": [
+                80
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTBlockchainState": {},
+        "NFTContent": {
+            "files": [
+                39
+            ],
+            "id": [
+                24
+            ],
+            "poster": [
+                68
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTContentInput": {
+            "fileId": [
+                24
+            ],
+            "posterId": [
+                24
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTFile": {
+            "contentType": [
+                71
+            ],
+            "id": [
+                24
+            ],
+            "ipfsContentAddress": [
+                71
+            ],
+            "ipfsMetadataAddress": [
+                71
+            ],
+            "md5": [
+                71
+            ],
+            "name": [
+                71
+            ],
+            "state": [
+                20
+            ],
+            "url": [
+                73
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTFilterInput": {
+            "blockchainIds": [
+                71
+            ],
+            "blockchainStates": [
+                36
+            ],
+            "ids": [
+                24
+            ],
+            "nftModelIds": [
+                24
+            ],
+            "saleStates": [
+                66
+            ],
+            "transferStates": [
+                72
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTList": {
+            "cursor": [
+                71
+            ],
+            "items": [
+                35
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTListing": {
+            "appId": [
+                24
+            ],
+            "attributes": [
+                32
+            ],
+            "createdAt": [
+                17
+            ],
+            "description": [
+                71
+            ],
+            "id": [
+                24
+            ],
+            "nftModel": [
+                45
+            ],
+            "pricing": [
+                21
+            ],
+            "state": [
+                33
+            ],
+            "title": [
+                71
+            ],
+            "updatedAt": [
+                17
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTListingFilterInput": {
+            "ids": [
+                24
+            ],
+            "state": [
+                33
+            ],
+            "title": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTListingList": {
+            "cursor": [
+                71
+            ],
+            "items": [
+                42
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTModel": {
+            "attributes": [
+                32
+            ],
+            "blockchainId": [
+                71
+            ],
+            "content": [
+                37
+            ],
+            "createdAt": [
+                17
+            ],
+            "description": [
+                71
+            ],
+            "id": [
+                24
+            ],
+            "metadata": [
+                32
+            ],
+            "nftListings": [
+                42
+            ],
+            "nfts": [
+                35
+            ],
+            "quantity": [
+                60
+            ],
+            "quantityMinted": [
+                75
+            ],
+            "rarity": [
+                69
+            ],
+            "set": [
+                51
+            ],
+            "state": [
+                46
+            ],
+            "status": [
+                70
+            ],
+            "title": [
+                71
+            ],
+            "updatedAt": [
+                17
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTModelBlockchainState": {},
+        "NFTModelCreateInput": {
+            "attributes": [
+                32
+            ],
+            "content": [
+                38
+            ],
+            "contentId": [
+                24
+            ],
+            "description": [
+                71
+            ],
+            "metadata": [
+                32
+            ],
+            "quantity": [
+                60
+            ],
+            "status": [
+                70
+            ],
+            "subtitle": [
+                71
+            ],
+            "tags": [
+                71
+            ],
+            "title": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTModelFilterInput": {
+            "blockchainIds": [
+                71
+            ],
+            "ids": [
+                24
+            ],
+            "setIds": [
+                24
+            ],
+            "status": [
+                70
+            ],
+            "tags": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTModelList": {
+            "cursor": [
+                71
+            ],
+            "items": [
+                45
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTModelUpdateInput": {
+            "attributes": [
+                32
+            ],
+            "content": [
+                38
+            ],
+            "contentId": [
+                24
+            ],
+            "description": [
+                71
+            ],
+            "metadata": [
+                32
+            ],
+            "quantity": [
+                60
+            ],
+            "status": [
+                70
+            ],
+            "subtitle": [
+                71
+            ],
+            "tags": [
+                71
+            ],
+            "title": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTSet": {
+            "app": [
+                1
+            ],
+            "attributes": [
+                32
+            ],
+            "blockchainId": [
+                71
+            ],
+            "createdAt": [
+                17
+            ],
+            "id": [
+                24
+            ],
+            "image": [
+                73
+            ],
+            "metadata": [
+                32
+            ],
+            "models": [
+                45
+            ],
+            "state": [
+                52
+            ],
+            "status": [
+                70
+            ],
+            "tags": [
+                71
+            ],
+            "title": [
+                71
+            ],
+            "updatedAt": [
+                17
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTSetBlockchainState": {},
+        "NFTSetCreateInput": {
+            "attributes": [
+                32
+            ],
+            "tags": [
+                71
+            ],
+            "title": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTSetFilterInput": {
+            "blockchainIds": [
+                71
+            ],
+            "ids": [
+                24
+            ],
+            "tags": [
+                71
+            ],
+            "title": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "NFTSetUpdateInput": {
+            "attributes": [
+                32
+            ],
+            "tags": [
+                71
+            ],
+            "title": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "Organization": {
+            "apps": [
+                1
+            ],
+            "id": [
+                24
+            ],
+            "members": [
+                0
+            ],
+            "name": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "OrganizationCreateInput": {
+            "name": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "Pageable": {
+            "cursor": [
+                71
+            ],
+            "on_AppUserList": [
+                4
+            ],
+            "on_InvoiceList": [
+                29
+            ],
+            "on_NFTList": [
+                41
+            ],
+            "on_NFTListingList": [
+                44
+            ],
+            "on_NFTModelList": [
+                49
+            ],
+            "on_WalletList": [
+                81
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "PositiveFloat": {},
+        "PositiveInt": {},
+        "Query": {
+            "adminUser": [
+                0
+            ],
+            "app": [
+                1
+            ],
+            "appById": [
+                1,
+                {
+                    "id": [
+                        24
+                    ],
+                    "name": [
+                        71
+                    ]
+                }
+            ],
+            "appUser": [
+                3
+            ],
+            "appUserById": [
+                3,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "appUsers": [
+                4,
+                {
+                    "cursor": [
+                        71
+                    ],
+                    "maxResults": [
+                        60
+                    ]
+                }
+            ],
+            "contract": [
+                12
+            ],
+            "createApp": [
+                1,
+                {
+                    "data": [
+                        2,
+                        "AppCreateInput!"
+                    ]
+                }
+            ],
+            "file": [
+                68,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "invoice": [
+                28,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "invoices": [
+                29,
+                {
+                    "appId": [
+                        24
+                    ],
+                    "cursor": [
+                        71
+                    ],
+                    "maxResults": [
+                        60
+                    ]
+                }
+            ],
+            "nft": [
+                35,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "nftContent": [
+                37,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "nftFile": [
+                39,
+                {
+                    "id": [
+                        71
+                    ],
+                    "ipfsUrl": [
+                        71
+                    ],
+                    "url": [
+                        71
+                    ]
+                }
+            ],
+            "nftListing": [
+                42,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "nftListings": [
+                44,
+                {
+                    "cursor": [
+                        71
+                    ],
+                    "filter": [
+                        43
+                    ],
+                    "maxResults": [
+                        60
+                    ]
+                }
+            ],
+            "nftModel": [
+                45,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "nftModels": [
+                49,
+                {
+                    "appId": [
+                        24
+                    ],
+                    "cursor": [
+                        71
+                    ],
+                    "filter": [
+                        48
+                    ],
+                    "maxResults": [
+                        60
+                    ]
+                }
+            ],
+            "nfts": [
+                41,
+                {
+                    "appId": [
+                        24
+                    ],
+                    "cursor": [
+                        71
+                    ],
+                    "filter": [
+                        40
+                    ],
+                    "maxResults": [
+                        60
+                    ],
+                    "userId": [
+                        24
+                    ]
+                }
+            ],
+            "nftsByWallet": [
+                41,
+                {
+                    "address": [
+                        71
+                    ],
+                    "cursor": [
+                        71
+                    ],
+                    "filter": [
+                        40
+                    ],
+                    "maxResults": [
+                        60
+                    ],
+                    "walletId": [
+                        24
+                    ]
+                }
+            ],
+            "organization": [
+                56,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "set": [
+                51,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "sets": [
+                51,
+                {
+                    "appId": [
+                        24
+                    ],
+                    "filter": [
+                        54
+                    ]
+                }
+            ],
+            "wallet": [
+                80
+            ],
+            "walletByAddress": [
+                80,
+                {
+                    "address": [
+                        71,
+                        "String!"
+                    ],
+                    "appId": [
+                        24
+                    ]
+                }
+            ],
+            "walletById": [
+                80,
+                {
+                    "id": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "walletByUserId": [
+                80,
+                {
+                    "userId": [
+                        24,
+                        "ID!"
+                    ]
+                }
+            ],
+            "wallets": [
+                81,
+                {
+                    "appId": [
+                        24,
+                        "ID!"
+                    ],
+                    "cursor": [
+                        71
+                    ],
+                    "maxResults": [
+                        60
+                    ]
+                }
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "RegisterWalletInput": {
+            "attributes": [
+                32
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "Resource": {
+            "attributes": [
+                32
+            ],
+            "createdAt": [
+                17
+            ],
+            "id": [
+                24
+            ],
+            "status": [
+                70
+            ],
+            "updatedAt": [
+                17
+            ],
+            "on_NFTModel": [
+                45
+            ],
+            "on_NFTSet": [
+                51
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "Role": {},
+        "SaleProcessingState": {},
+        "SaleState": {},
+        "SellableEntity": {
+            "saleState": [
+                66
+            ],
+            "on_NFT": [
+                35
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "SimpleFile": {
+            "contentType": [
+                71
+            ],
+            "id": [
+                24
+            ],
+            "md5": [
+                71
+            ],
+            "name": [
+                71
+            ],
+            "state": [
+                20
+            ],
+            "url": [
+                73
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "SimpleRarityLevel": {},
+        "Status": {},
+        "String": {},
+        "TransferState": {},
+        "URL": {},
+        "UnsignedFloat": {},
+        "UnsignedInt": {},
+        "UpdateNFTListingInput": {
+            "attributes": [
+                32
+            ],
+            "description": [
+                71
+            ],
+            "nftModelId": [
+                24
+            ],
+            "price": [
+                59
+            ],
+            "title": [
+                71
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "UpdateWalletInput": {
+            "attributes": [
+                32
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "Upload": {},
+        "UserData": {
+            "email": [
+                18
+            ],
+            "image": [
+                71
+            ],
+            "name": [
+                71
+            ],
+            "on_AdminUser": [
+                0
+            ],
+            "on_AppUser": [
+                3
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "Wallet": {
+            "address": [
+                71
+            ],
+            "appUser": [
+                3
+            ],
+            "attributes": [
+                32
+            ],
+            "createdAt": [
+                17
+            ],
+            "id": [
+                24
+            ],
+            "nfts": [
+                35
+            ],
+            "state": [
+                82
+            ],
+            "updatedAt": [
+                17
+            ],
+            "verificationCode": [
+                71
+            ],
+            "walletType": [
+                83
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "WalletList": {
+            "cursor": [
+                71
+            ],
+            "items": [
+                80
+            ],
+            "__typename": [
+                71
+            ]
+        },
+        "WalletState": {},
+        "WalletType": {}
+    }
 }
