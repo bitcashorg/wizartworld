@@ -7,15 +7,10 @@ export function NiftoryAuth() {
   if (session) {
     return (
       <>
-        Signed in as {session.user?.email} <br />
+        <span className="self-center pr-5 align-middle">Signed in as {session.user?.email} </span>
         <Button onClick={() => signOut()} label=" Sign out" />
       </>
     )
   }
-  return (
-    <>
-      Not signed in <br />
-      <Button onClick={() => signIn()} label="Sign in" variant="primary" />
-    </>
-  )
+  return <Button onClick={() => signIn()} label="Sign in" variant="primary" />
 }
