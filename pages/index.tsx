@@ -172,7 +172,7 @@ export default function Home() {
               <div className="overflow-hidden after:content-[''] after:absolute after:h-10 after:w-10 after:bg-violet-600/20 dark:after:bg-violet-600/40 after:bottom-[0] after:right-[15%] after:-z-1 after:rounded-full after:animate-ping"></div>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 flex items-center justify-center">
               <Button
                 variant="primary"
                 size="xl"
