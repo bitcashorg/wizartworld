@@ -8,6 +8,7 @@
   "name": "WizartWorld",
   "description": "AI and NFT project for Flow Hackaton",
   "short_name": "WW",
+  "id": "wizartworld",
   "icons": [
     {
       "src": "assets/images/ww-icons/android-icon-36x36.png",

@@ -25,12 +25,14 @@ export const ButtonVariants = w.button(
         xl: t`w-full text-white text-2xl font-bold h-16`,
       },
       border: {
+        none: t`border-none`,
         sm: t`border-2 border-gray-900`,
       }
     },
     defaultVariants: {
       size: 'normal',
       variant: 'secondary',
+      border: 'none',
     },
   },
 )
