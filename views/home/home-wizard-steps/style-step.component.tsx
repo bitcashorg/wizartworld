@@ -148,11 +148,6 @@ export function StyleStep({ next, prev }: WizardStepProps) {
                 style.value === categoryStyleValue ? 'wizard-step-card--selected' : '',
               )}
             >
-              {style.preview ? (
-                <div className="wizart-step-card__style-preview">
-                  <ImageAsset src={style.preview} alt={style.label} preview />
-                </div>
-              ) : null}
               <label htmlFor={style.value}>
                 <input
                   type="radio"
@@ -161,6 +156,11 @@ export function StyleStep({ next, prev }: WizardStepProps) {
                   value={style.value}
                   onChange={updateArtStyle}
                 />
+                {style.preview ? (
+                  <div className="wizart-step-card__style-preview">
+                    <ImageAsset src={style.preview} alt={style.label} preview />
+                  </div>
+                ) : null}
                 {style.label}
               </label>
             </div>
