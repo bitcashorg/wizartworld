@@ -306,7 +306,7 @@ export default function Home() {
                     }
                   >
                     {collection.items.map((item, index) => (
-                      <CollectionCard item={item} index={index} key={index}></CollectionCard>
+                      <CollectionCard item={item} index={index} key={index} />
                     ))}
                   </React.Suspense>
                 </GridGallery>

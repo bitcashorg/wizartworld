@@ -1,1 +1,1 @@
-export * from './niftory.service'
+export * from './niftory-frontend.service'

@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from 'next-auth/next'
 
-import { mintNFTModel } from '~/services/niftory/niftory.service'
+import { mintNFTModel } from '~/services/niftory/niftory-frontend.service'
 
 import { authOptions } from '../auth/[...nextauth]'
 

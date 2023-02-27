@@ -5,23 +5,26 @@ import { Button } from '~/components/button'
 import { TextInput } from '~/components/form/text-input'
 import { NFTPreview } from '~/components/nft-preview'
 import { WizardStepProps } from '~/components/wizard'
+import { useReplicateContext } from '~/context/replicate.context'
 import { HomeWizardStepNav } from '~/views/home/home-wizard-header'
 
-import { HomeWizardPageTransition } from '../home-wizard/home-wizard-page-transition.component'
+import { HomeWizardPageTransition } from '../home-wizard'
 
 export function MintStep({ next }: WizardStepProps) {
   const { handleSubmit, register } = useForm<MintFormProps>()
+  const { prediction } = useReplicateContext()
 
   const onSubmit = (data: MintFormProps) => {
-    console.log({ data })
-    next() // WIP: pending mint
+    const image = prediction && prediction.output[prediction.output.length - 1]
+    console.log({ data, image, prediction })
+    next()
   }
   return (
     <div className="wizard-step-wrapper">
       <HomeWizardStepNav label="PREVIEW" step={5} />
       <HomeWizardPageTransition>
-        <div className="wizard-step__content-wrapper flex-1 px-6">
-          <div className="flex content-center py-6 w-full px-8">
+        <div className="flex-1 px-6 wizard-step__content-wrapper">
+          <div className="flex content-center w-full px-8 py-6">
             <Form>
               <div className="flex flex-col gap-6">
                 <TextInput
@@ -44,7 +47,7 @@ export function MintStep({ next }: WizardStepProps) {
           <div className="flex content-center w-full">
             <NFTPreview />
           </div>
-          <div className="py-8 w-full">
+          <div className="w-full py-8">
             <Button
               onClick={handleSubmit(onSubmit)}
               variant="primary"

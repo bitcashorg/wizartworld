@@ -7,7 +7,7 @@ import { NiftoryAuth } from '~/layouts/components/header/niftory-auth.component'
 import { fetchJson } from '~/lib/fetch/fetch.lib'
 import { createNFTSet, getAppUser, getNftModels, getNiftoryApps } from '~/services/niftory'
 import { getNfts, registerWallet, transferNft } from '~/services/niftory/'
-import { getSets } from '~/services/niftory/niftory.service'
+import { getSets } from '~/services/niftory/niftory-frontend.service'
 
 export default function PageNiftory() {
   const [data, setData] = useState({})
