@@ -22,7 +22,7 @@ export function CollectionCard({ item, index }: CollectionCardComponentProps) {
     <>
       <div className="group relative overflow-hidden p-2 rounded-lg bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 hover:shadow-md dark:shadow-md hover:dark:shadow-gray-700 transition-all duration-500 hover:-mt-2 h-fit">
         <div className="flex absolute px-3 top-1 z-10 right-3 bg-slate-100 dark:bg-slate-600 w-auto font-extrabold rounded-2xl shadow-sm leading-tight drop-shadow-md text-[16px] mt-1">#{Math.floor(Math.random() * 99 + (index || 1))}</div>
-        <div className="h-[300px]">
+        <div className="h-[300px] overflow-hidden rounded-lg">
           <ImageAsset src={item.asset || '/assets/images/items/1.jpg'} alt="" width={300} height={300} />
         </div>
         <div className="relative p-4 -mt-14">

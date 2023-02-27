@@ -9,7 +9,7 @@ export function Button({ label, ...props }: ButtonProps) {
 }
 
 export const ButtonVariants = w.button(
-  t`px-4 py-2 text-gray-700 transition duration-500  border rounded-2xl select-none ease focus:outline-none focus:shadow-outline`,
+  t`flex items-center justify-center px-4 py-2 text-gray-700 transition duration-500  border rounded-2xl select-none ease focus:outline-none focus:shadow-outline`,
   {
     variants: {
       variant: {
@@ -24,6 +24,9 @@ export const ButtonVariants = w.button(
         lg: t`w-full text-white text-xl font-bold btn-lg`,
         xl: t`w-full text-white text-2xl font-bold h-16`,
       },
+      border: {
+        sm: t`border-2 border-gray-900`,
+      }
     },
     defaultVariants: {
       size: 'normal',

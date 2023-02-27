@@ -157,7 +157,7 @@ export const gallery = [
       },
       {
         asset: '/images/nft/doodles-fan-nft9.png',
-        avatar: '/images/avatars/doodles-flunk1.png',
+        avatar: '/images/avatars/doodles-profile4.png',
       },
       {
         asset: '/images/nft/doodles-fan-nft10.png',
@@ -211,11 +211,109 @@ export const gallery = [
       },
       {
         asset: '/images/nft/nba-fan-nft10.png',
-        avatar: '/images/avatars/fkivatar-profile7.png',
+        avatar: '/images/avatars/flovatar-profile7.png',
       },
       {
         asset: '/images/nft/nba-fan-nft11.png',
         avatar: '/images/avatars/flunk-profile2.jpg',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft12.png',
+        avatar: '/images/avatars/ballerz-profile1.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft13.png',
+        avatar: '/images/avatars/flovatar-profile3.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft14.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft15.png',
+        avatar: '/images/avatars/ballerz-profile2.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft16.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft17.png',
+        avatar: '/images/avatars/flunk-profile1.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft18.png',
+        avatar: '/images/avatars/flovatar-profile3.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft19.png',
+        avatar: '/images/avatars/ballerz-profile2.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft20.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft21.png',
+        avatar: '/images/avatars/flovatar-profile7.png',
+      },
+      {
+        asset: '/images/nft/nba-fan-nft22.png',
+        avatar: '/images/avatars/flunk-profile2.jpg',
+      },
+    ]
+  },
+  {
+    title: '',
+    icon: '/images/nfl-allday-logo.png',
+    items: [
+      {
+        asset: '/images/nft/nfl-fan-nft1.png',
+        avatar: '/images/avatars/ballerz-profile2.png',
+      },
+      {
+        asset: '/images/nft/nfl-fan-nft2.png',
+        avatar: '/images/avatars/doodles-profile4.png',
+      },
+      {
+        asset: '/images/nft/nfl-fan-nft3.png',
+        avatar: '/images/avatars/ballerz-profile1.png',
+      },
+      {
+        asset: '/images/nft/nfl-fan-nft4.png',
+        avatar: '/images/avatars/evolution-profile1.png',
+      },
+      {
+        asset: '/images/nft/nfl-fan-nft5.png',
+        avatar: '/images/avatars/flovatar-profile1.png',
+      },
+      {
+        asset: '/images/nft/nfl-fan-nft6.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
+      },
+      {
+        asset: '/images/nft/nfl-fan-nft7.png',
+        avatar: '/images/avatars/doodles-profile2.png',
+      },
+      {
+        asset: '/images/nft/nfl-fan-nft8.png',
+        avatar: '/images/avatars/doodles-profile1.png',
+      },
+      {
+        asset: '/images/nft/nfl-fan-nft9.png',
+        avatar: '/images/avatars/doodles-profile4.png',
+      },
+      {
+        asset: '/images/nft/nfl-fan-nft10.png',
+        avatar: '/images/avatars/evolution-profile3.png',
+      },
+      {
+        asset: '/images/nft/nfl-fan-nft11.png',
+        avatar: '/images/avatars/doodles-profile2.png',
+      },
+      {
+        asset: '/images/nft/nfl-fan-nft12.png',
+        avatar: '/images/avatars/doodles-profile1.png',
       },
     ]
   },
@@ -257,7 +355,7 @@ export const gallery = [
       },
       {
         asset: '/images/nft/ufc-fan-nft9.png',
-        avatar: '/images/avatars/doodles-flunk1.png',
+        avatar: '/images/avatars/doodles-profile4.png',
       },
       {
         asset: '/images/nft/ufc-fan-nft10.png',
@@ -266,6 +364,64 @@ export const gallery = [
       {
         asset: '/images/nft/ufc-fan-nft11.png',
         avatar: '/images/avatars/doodles-profile2.png',
+      },
+      {
+        asset: '/images/nft/ufc-fan-nft12.png',
+        avatar: '/images/avatars/doodles-profile1.png',
+      },
+    ]
+  },
+  {
+    title: '',
+    icon: '/images/laliga-logo.png',
+    items: [
+      {
+        asset: '/images/nft/laliga-fan-nft1.png',
+        avatar: '/images/avatars/evolution-profile1.png',
+      },
+      {
+        asset: '/images/nft/laliga-fan-nft2.png',
+        avatar: '/images/avatars/flovatar-profile1.png',
+      },
+      {
+        asset: '/images/nft/laliga-fan-nft3.png',
+        avatar: '/images/avatars/flovatar-profile8.png',
+      },
+      {
+        asset: '/images/nft/laliga-fan-nft4.png',
+        avatar: '/images/avatars/flunk-profile2.jpg',
+      },
+      {
+        asset: '/images/nft/laliga-fan-nft5.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
+      },
+      {
+        asset: '/images/nft/laliga-fan-nft6.png',
+        avatar: '/images/avatars/ballerz-profile2.png',
+      },
+      {
+        asset: '/images/nft/laliga-fan-nft7.png',
+        avatar: '/images/avatars/doodles-profile1.png',
+      },
+      {
+        asset: '/images/nft/laliga-fan-nft8.png',
+        avatar: '/images/avatars/evolution-profile1.png',
+      },
+      {
+        asset: '/images/nft/laliga-fan-nft9.png',
+        avatar: '/images/avatars/flovatar-profile1.png',
+      },
+      {
+        asset: '/images/nft/laliga-fan-nft10.png',
+        avatar: '/images/avatars/flovatar-profile8.png',
+      },
+      {
+        asset: '/images/nft/laliga-fan-nft11.png',
+        avatar: '/images/avatars/flunk-profile2.jpg',
+      },
+      {
+        asset: '/images/nft/laliga-fan-nft12.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
       },
     ]
   },
@@ -301,6 +457,38 @@ export const gallery = [
         asset: '/images/nft/evolution-fan-nft7.png',
         avatar: '/images/avatars/doodles-profile1.png',
       },
+      {
+        asset: '/images/nft/evolution-fan-nft8.png',
+        avatar: '/images/avatars/flovatar-profile8.png',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft9.png',
+        avatar: '/images/avatars/flunk-profile2.jpg',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft10.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft11.png',
+        avatar: '/images/avatars/ballerz-profile2.png',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft12.png',
+        avatar: '/images/avatars/doodles-profile1.png',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft13.png',
+        avatar: '/images/avatars/flunk-profile2.jpg',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft14.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft15.png',
+        avatar: '/images/avatars/ballerz-profile2.png',
+      },
     ]
   },
   {
@@ -308,9 +496,37 @@ export const gallery = [
     icon: '/images/flunks-os-logo-large.png',
     items: [
       {
-        asset: '/images/nft/',
-        avatar: '/images/avatar/',
-      }
+        asset: '/images/nft/flunk-fan-nft1.png',
+        avatar: '/images/avatars/flovatar-profile3.png',
+      },
+      {
+        asset: '/images/nft/flunk-fan-nft2.png',
+        avatar: '/images/avatars/flovatar-profile1.png',
+      },
+      {
+        asset: '/images/nft/flunk-fan-nft3.png',
+        avatar: '/images/avatars/flovatar-profile8.png',
+      },
+      {
+        asset: '/images/nft/flunk-fan-nft4.png',
+        avatar: '/images/avatars/flunk-profile1.png',
+      },
+      {
+        asset: '/images/nft/flunk-fan-nft5.png',
+        avatar: '/images/avatars/flovatar-profile5.png',
+      },
+      {
+        asset: '/images/nft/flunk-fan-nft6.png',
+        avatar: '/images/avatars/flunk-profile2.jpg',
+      },
+      {
+        asset: '/images/nft/flunk-fan-nft7.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
+      },
+      {
+        asset: '/images/nft/flunk-fan-nft8.png',
+        avatar: '/images/avatars/flovatar-profile4.png',
+      },
     ]
   },
   {
@@ -318,9 +534,53 @@ export const gallery = [
     icon: '/images/flovatar-logo.png',
     items: [
       {
-        asset: '/images/nft/',
-        avatar: '/images/avatar/',
-      }
+        asset: '/images/nft/flovatar-fan-nft1.png',
+        avatar: '/images/avatars/flovatar-profile1.png',
+      },
+      {
+        asset: '/images/nft/flovatar-fan-nft2.png',
+        avatar: '/images/avatars/doodles-profile4.png',
+      },
+      {
+        asset: '/images/nft/flovatar-fan-nft3.png',
+        avatar: '/images/avatars/doodles-profile3.png',
+      },
+      {
+        asset: '/images/nft/flovatar-fan-nft4.png',
+        avatar: '/images/avatars/doodles-profile2.png',
+      },
+      {
+        asset: '/images/nft/flovatar-fan-nft5.png',
+        avatar: '/images/avatars/doodles-profile1.png',
+      },
+      {
+        asset: '/images/nft/flovatar-fan-nft6.png',
+        avatar: '/images/avatars/flovatar-profile2.png',
+      },
+      {
+        asset: '/images/nft/flovatar-fan-nft7.png',
+        avatar: '/images/avatars/flovatar-profile3.png',
+      },
+      {
+        asset: '/images/nft/flovatar-fan-nft8.png',
+        avatar: '/images/avatars/flovatar-profile4.png',
+      },
+      {
+        asset: '/images/nft/flovatar-fan-nft9.png',
+        avatar: '/images/avatars/flovatar-profile5.png',
+      },
+      {
+        asset: '/images/nft/flovatar-fan-nft10.png',
+        avatar: '/images/avatars/flovatar-profile6.png',
+      },
+      {
+        asset: '/images/nft/flovatar-fan-nft11.png',
+        avatar: '/images/avatars/flovatar-profile7.png',
+      },
+      {
+        asset: '/images/nft/flovatar-fan-nft12.png',
+        avatar: '/images/avatars/flovatar-profile8.png',
+      },
     ]
   },
   {
@@ -333,15 +593,19 @@ export const gallery = [
       },
       {
         asset: '/images/nft/custom-fan-nft2.webp',
-        avatar: '/images/avatars/evolution-profile1.png',
+        avatar: '/images/avatars/evolution-profile2.png',
       },
       {
         asset: '/images/nft/custom-fan-nft3.webp',
-        avatar: '/images/avatars/evolution-profile1.png',
+        avatar: '/images/avatars/evolution-profile3.png',
       },
       {
         asset: '/images/nft/custom-fan-nft4.jpg',
-        avatar: '/images/avatars/evolution-profile1.png',
+        avatar: '/images/avatars/doodles-profile4.png',
+      },
+      {
+        asset: '/images/nft/custom-fan-nft5.png',
+        avatar: '/images/avatars/flunk-profile1.png',
       },
     ]
   },

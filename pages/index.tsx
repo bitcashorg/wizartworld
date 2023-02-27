@@ -37,7 +37,7 @@ export default function Home() {
   // on scroll listener, to set a boolean to true when the user scrolls down higher than current screen
   // then, when the user clicks on the button, it will scroll to the top of the screen
   React.useEffect(() => {
-    if (!document) return () => {}
+    if (!window) return () => {}
 
     const handleScroll = () => {
       // ? debounce the scroll event to avoid performance issues on mobile devices (scrolling is very sensitive)
@@ -112,6 +112,8 @@ export default function Home() {
   }
 
   React.useEffect(() => {
+    if (!window) return () => { }
+
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault()
 
@@ -125,7 +127,7 @@ export default function Home() {
         deferrer_prompt.current = e
       })
     }
-  }, [])
+  }, [deferrer_prompt.current])
 
   // get window reference for calls out of useEffect
 
@@ -258,7 +260,7 @@ export default function Home() {
                   {landingAssets[item as keyof typeof landingAssets].map((asset, index) => (
                     <div
                       key={`generated-asset-${index}`}
-                      className="snap-center w-auto max-w-full sm:max-w-[42%] h-[380px] scroll-mb-24 group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2"
+                      className="flex snap-center scroll-mb-24 w-auto max-w-full sm:max-w-[42%] h-[50vh] sm:h-[400px] lg:h-[450px] group relative overflow-hidden bg-white dark:bg-slate-900 rounded-lg p-3 shadow dark:shadow-gray-800 ease-in-out duration-500 m-2"
                     >
                       <ImageAsset src={asset} alt="" />
                     </div>
@@ -286,7 +288,7 @@ export default function Home() {
                           'object-contain',
                           'w-full',
                           'h-full',
-                          collection.icon.match(/(top-shot|evo-|ufc)/g)
+                          collection.icon.match(/(top-shot|evo-|ufc-|nfl-|laliga-)/g)
                             ? 'invert dark:invert-0'
                             : '',
                         )}
