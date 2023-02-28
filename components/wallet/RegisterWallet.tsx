@@ -26,7 +26,7 @@ export function RegisterWallet({ blockchain }: Props) {
     }
     console.log('registering wallet', { address: flowUser.addr })
     registerWalletMutation({ address: flowUser.addr })
-  }, [blockchain, flowUser?.addr, flowUser?.loggedIn, registerWalletMutation, isLoading])
+  }, [blockchain, flowUser?.addr, flowUser?.loggedIn, isLoading])
 
   const handleRegister = async () => {
     switch (blockchain) {

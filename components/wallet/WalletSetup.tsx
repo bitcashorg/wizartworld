@@ -60,6 +60,11 @@ export function WalletSetup() {
       case 'VERIFIED':
         // The user has verified their wallet, but hasn't configured it yet
         return <ConfigureWallet />
+      case 'READY':
+        // The user has verified their wallet, but hasn't configured it yet
+        return <>You wallet is ready!</>
+      default:
+        return
     }
   }
 

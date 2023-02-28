@@ -54,7 +54,7 @@ export function VerifyWallet({ blockchain }: Props) {
       address: wallet?.address,
       signedVerificationCode: signature,
     })
-  }, [blockchain, wallet, verifyWalletMutation])
+  }, [blockchain, wallet])
 
   return (
     <WalletSetupBox

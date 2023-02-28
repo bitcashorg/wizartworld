@@ -35,7 +35,6 @@ export function ConfigureWallet() {
   }, [
     flowUser?.addr,
     configured,
-    readyWalletMutation,
     fulfilled,
     isFlowAccountConfigurationLoading,
     isReadyWalletLoading,
