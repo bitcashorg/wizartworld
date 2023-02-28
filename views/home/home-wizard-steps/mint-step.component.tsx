@@ -32,15 +32,10 @@ export function MintStep({ next }: WizardStepProps) {
         description: data.description,
         options: {
           contentType: blob.type,
+          uploadToIPFS: true,
         },
       }),
     })
-
-    console.log('data', file, file.data.url)
-
-    // const content = uploadNFTContent?.files[0]
-    // content.contentType = file.type.split("/")[0]
-    // const poster = uploadNFTContent?.poster
 
     const response = await axios.put(file.data.url, blob, {
       onUploadProgress({ loaded, total }) {
@@ -48,7 +43,7 @@ export function MintStep({ next }: WizardStepProps) {
         // setContentProgress(Math.round((loaded * 100) / total))
       },
       headers: {
-        'Content-Type': file.type,
+        'Content-Type': blob.type,
       },
     })
     console.log('response', response)

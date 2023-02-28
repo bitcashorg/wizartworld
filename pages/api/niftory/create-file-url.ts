@@ -15,12 +15,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       error: 'You must be signed in to view the protected content on this page.',
     })
   }
+  const body = JSON.parse(req.body) as Omit<CreateFileUploadUrlParams, 'appId'>
 
   try {
-    console.log('minting ....', req.body)
+    console.log('minting ....', body)
     const response = await createFileUploadUrl({
       appId: 'cleddmva00002mm0v9hs6quxd',
-      ...(JSON.parse(req.body) as Omit<CreateFileUploadUrlParams, 'appId'>),
+      ...body,
     })
     console.log('minted!', response)
     return res.send({
