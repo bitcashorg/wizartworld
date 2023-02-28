@@ -10,7 +10,7 @@ import { Main } from '../components/main'
 
 export function RootLayout({ children }: { children: React.ReactNode }) {
   const session = useSession()
-  const { showSettings } = useGlobalContext()
+
 
   // keep jwt in sync with next session
   React.useEffect(() => {
@@ -21,7 +21,8 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
     <div className="flex justify-center w-screen h-screen align-middle">
       <div className="relative w-screen h-screen sm:max-w-screen-2xl max-h-[800px] content-center sm:content-start flex flex-col pt-20">
         <Header />
-        {showSettings ? <Settings /> : <Main>{children}</Main>}
+        <Settings />
+        <Main>{children}</Main>
 
         {/* <footer className="p-2 bg-indigo-200">Footer</footer> */}
       </div>

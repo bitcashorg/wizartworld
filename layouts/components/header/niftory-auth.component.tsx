@@ -8,19 +8,9 @@ export function NiftoryAuth() {
   const { data: session } = useSession()
   const { signIn, signOut } = useAuthContext()
 
-  if (session) {
-    return (
-      <div className="flex justify-end gap-4 pt-1 h-30 lg:pr-7">
-        <div className="hidden md:block">
-          <WalletSetup />
-        </div>
-        <Button onClick={() => signOut()} label=" Sign Out" />
-      </div>
-    )
-  }
   return (
     <div className="flex justify-end gap-4 pt-1 h-30 lg:pr-7">
-      <Button onClick={() => signIn()} label="Sign In" variant="primary" />
+      <Button onClick={() => session ? signOut() : signIn()} label={session ? 'Sign Out' : 'Sign In'} variant={session ? 'secondary' : 'primary'} />
     </div>
   )
 }

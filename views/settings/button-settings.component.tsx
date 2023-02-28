@@ -9,10 +9,10 @@ export const ButtonSettings = () => {
     <Button
       variant="transparent"
       border="sm"
-      className="w-12 h-12 rounded-full "
+      className="w-12 h-12 rounded-full"
       onClick={toggleSettings}
     >
-      <i className="uil uil-setting text-[26px] text-green-50"></i>
+      <i className="uil uil-setting text-[26px] text-green-900 dark:text-green-50"></i>
     </Button>
   )
 }
