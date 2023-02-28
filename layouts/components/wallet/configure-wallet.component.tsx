@@ -39,7 +39,7 @@ export function ConfigureWallet({ callback }: { callback: () => void }) {
     <WalletSetupBox
       isLoading={state.loading}
       error={state.error}
-      label={'Now we need to configure your wallet to receive NFTs.'}
+      label={'Configure your wallet to receive NFTs.'}
       onClick={configure}
     />
   )
