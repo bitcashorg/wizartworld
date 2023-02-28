@@ -1,58 +1,41 @@
-// TODO: IMPORT: it is code from a Demo, please improve it
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useAsyncFn } from 'react-use'
 
 import * as fcl from '@onflow/fcl'
 
-import { useContractCadence } from '../use-contract/use-contract.hook'
-import { useFlowUser } from '../use-flow-user/use-flow-user.hook'
+import { useCadenceScripts } from '~/hooks/use-cadence-scripts'
+import { useFlowUser } from '~/hooks/use-flow-user'
 
 export function useFlowAccountConfiguration() {
   const flowUser = useFlowUser()
-  const [configured, setConfigured] = useState(false)
-  const [isConfiguring, setIsConfiguring] = useState(false)
+  const cadenceScripts = useCadenceScripts()
+  const [configurationState, execConfiguration] = useAsyncFn(async () => {
+    const txId = await fcl.mutate({
+      cadence: cadenceScripts.configureAccountScript,
+      limit: 9999,
+    })
 
-  const {
-    isAccountConfigured_script,
-    configureAccount_transaction,
-    isLoading: isContractLoading,
-  } = useContractCadence()
+    return fcl.tx(txId).onceSealed()
+  }, [cadenceScripts.configureAccountScript])
 
-  // A callback that runs a transaction against the user account to initialize it
-  const configure = useCallback(async () => {
-    try {
-      setIsConfiguring(true)
-      const txId = await fcl.mutate({
-        cadence: configureAccount_transaction,
-        limit: 9999,
-      })
+  const [isAccountConfiguredState, execIsAccountConfigured] = useAsyncFn(async (address: string) =>
+    fcl.query({
+      cadence: cadenceScripts.isAccountConfiguredScript,
+      args: (arg, t) => [arg(address, t.Address)],
+    }),
+  )
 
-      await fcl.tx(txId).onceSealed()
-    } finally {
-      setIsConfiguring(false)
-    }
-  }, [configureAccount_transaction])
+  const isLoading = cadenceScripts.isLoading || configurationState.loading
 
   // When configuration transaction completes, check if the account is configured
   useEffect(() => {
-    ;(async function () {
-      if (isConfiguring || !flowUser?.addr || !isAccountConfigured_script) {
-        return
-      }
-
-      const result = await fcl.query({
-        cadence: isAccountConfigured_script,
-        args: (arg, t) => [arg(flowUser.addr, t.Address)],
-      })
-
-      setConfigured(result)
-    })()
-  }, [flowUser?.addr, isConfiguring, isAccountConfigured_script])
-
-  const isLoading = isContractLoading || isConfiguring
+    if (!flowUser?.addr || configurationState.loading) return
+    execIsAccountConfigured(flowUser.addr)
+  }, [flowUser?.addr, configurationState])
 
   return {
-    configured,
-    configure,
+    configured: isAccountConfiguredState.value,
+    configure: execConfiguration,
     isLoading,
   }
 }

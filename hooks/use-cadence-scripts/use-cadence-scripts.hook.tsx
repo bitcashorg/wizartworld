@@ -68,11 +68,11 @@ function prepareCadence(script: string, contractName: string, address: string) {
   return script.replaceAll('{contractName}', contractName).replaceAll('{contractAddress}', address)
 }
 
-export function useContractCadence() {
+export function useCadenceScripts() {
   const getContractState = useAsync(getContract)
   const [state, setState] = useSetState({
-    isAccountConfigured_script: '',
-    configureAccount_transaction: '',
+    isAccountConfiguredScript: '',
+    configureAccountScript: '',
   })
 
   useEffect(() => {
@@ -80,8 +80,8 @@ export function useContractCadence() {
     const name = getContractState.value.contract.name!
     const address = getContractState.value.contract.address!
     setState({
-      isAccountConfigured_script: prepareCadence(IS_ACCOUNT_CONFIGURED_SCRIPT, name, address),
-      configureAccount_transaction: prepareCadence(CONFIGURE_ACCOUNT_TRANSACTION, name, address),
+      isAccountConfiguredScript: prepareCadence(IS_ACCOUNT_CONFIGURED_SCRIPT, name, address),
+      configureAccountScript: prepareCadence(CONFIGURE_ACCOUNT_TRANSACTION, name, address),
     })
   }, [getContractState.value])
 
