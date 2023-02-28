@@ -2,9 +2,8 @@ import Link from 'next/link'
 import React from 'react'
 
 import { WizartLogo } from '~/components/icons'
+import { ButtonSettings } from '~/views/settings/button-settings.component'
 
-import { Menu } from '../menu'
-import { ButtonThemeSwitcher } from './button-theme-switcher.component'
 import { NiftoryAuth } from './niftory-auth.component'
 
 export function Header() {
@@ -16,33 +15,18 @@ export function Header() {
     if (document) {
       docRef.current = document
     }
-
     const localTheme = localStorage.getItem('theme')
     localTheme && setTheme(localTheme)
   }, [])
 
   React.useEffect(() => {
     localStorage.setItem('theme', theme)
-
     if (theme === 'dark') {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
     }
   }, [theme])
-
-  // ! Toggle not working...
-  const changeTheme = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-    e.preventDefault()
-
-    const htmlTag = docRef?.current!.getElementsByTagName('html')[0]
-
-    if (htmlTag.className.includes('dark')) {
-      htmlTag.className = 'light'
-    } else {
-      htmlTag.className = 'dark'
-    }
-  }
 
   return (
     <header className="fixed top-0 left-0 z-50 w-full px-3 py-2 border-b-1 border-b-slate-700 bg-opacity-25 dark:bg-opacity-25 bg-slate-100 dark:bg-slate-900 backdrop-blur-lg backdrop-saturate-[75%]">
@@ -54,7 +38,7 @@ export function Header() {
 
         <div className="flex justify-end pt-1 gap-x-4 h-30">
           <NiftoryAuth />
-          <ButtonThemeSwitcher />
+          <ButtonSettings />
         </div>
       </div>
     </header>

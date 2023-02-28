@@ -14,13 +14,13 @@ export function NiftoryAuth() {
         <div className="hidden md:block">
           <WalletSetup />
         </div>
-        <Button onClick={() => signOut()} label=" Sign out" />
+        <Button onClick={() => signOut()} label=" Sign Out" />
       </div>
     )
   }
   return (
     <div className="flex justify-end gap-4 pt-1 h-30 lg:pr-7">
-      <Button onClick={() => signIn()} label="Sign in" variant="primary" />
+      <Button onClick={() => signIn()} label="Sign In" variant="primary" />
     </div>
   )
 }
