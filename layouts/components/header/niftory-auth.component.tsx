@@ -1,9 +1,8 @@
 import { useSession } from 'next-auth/react'
 
 import { Button } from '~/components/button'
-import { WalletSetup } from '~/components/wallet/WalletSetup'
+import { WalletSetup } from '~/components/wallet/verify-setup.component'
 import { useAuthContext } from '~/context/auth.context'
-import { ButtonThemeSwitcher } from '~/layouts/components/header/button-theme-switcher.component'
 
 export function NiftoryAuth() {
   const { data: session } = useSession()

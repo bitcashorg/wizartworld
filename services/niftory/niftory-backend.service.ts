@@ -3,9 +3,13 @@ import { everything } from '@genql/runtime'
 
 import { getBackendEndGraphQLClient } from '~/graphql/backend-client'
 import { CreateFileOptionsInput, NFTModelCreateInput } from '~/graphql/generated'
-import { CreateFileUploadUrlParams } from '~/services/niftory/niftory.service.type'
+import {
+  CreateFileUploadUrlParams,
+  CreateNftModelParams,
+} from '~/services/niftory/niftory.service.type'
 
 export async function mintNFTModel(__args: { appId: string; id: string; quantity: string }) {
+  console.log('mintNFTModel', __args)
   return (await getBackendEndGraphQLClient()).mutation({
     mintNFTModel: {
       __args,
@@ -14,11 +18,7 @@ export async function mintNFTModel(__args: { appId: string; id: string; quantity
   })
 }
 
-export async function createNFTModel(__args: {
-  appId: string
-  setId: string
-  data: NFTModelCreateInput
-}) {
+export async function createNFTModel(__args: CreateNftModelParams) {
   return (await getBackendEndGraphQLClient()).mutation({
     createNFTModel: {
       __args,
@@ -26,7 +26,7 @@ export async function createNFTModel(__args: {
       content: everything,
       nftListings: everything,
       nfts: everything,
-      set: everything,
+      // set: everything,
     },
   })
 }

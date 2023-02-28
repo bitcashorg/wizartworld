@@ -17,10 +17,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    console.log('minting ....', req.body)
+    const body = JSON.parse(req.body) as Omit<CreateFileUploadUrlParams, 'appId'>
+    console.log('minting ....', body)
     const response = await createFileUploadUrl({
       appId: 'cleddmva00002mm0v9hs6quxd',
-      ...(JSON.parse(req.body) as Omit<CreateFileUploadUrlParams, 'appId'>),
+      ...body,
     })
     console.log('minted!', response)
     return res.send({

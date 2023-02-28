@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from 'next-auth/next'
 
 import { mintNFTModel } from '~/services/niftory'
+import { CreateNftModelParams } from '~/services/niftory/niftory.service.type'
 
 import { authOptions } from '../auth/[...nextauth]'
 
@@ -16,14 +17,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     console.log('minting ....')
+    const body: { id: string } = JSON.parse(req.body)
     const response = await mintNFTModel({
       appId: 'cleddmva00002mm0v9hs6quxd',
-      id: '08080d41-e383-42bb-8bbf-364631fde023',
+      id: body.id,
       quantity: '1',
     })
     console.log('minted!', response)
     return res.send({
-      response,
+      data: response.mintNFTModel,
     })
   } catch (error) {
     console.log({ error })
