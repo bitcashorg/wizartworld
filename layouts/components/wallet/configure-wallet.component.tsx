@@ -23,13 +23,6 @@ export function ConfigureWallet({ callback }: { callback: () => void }) {
 
   // Once the wallet is configured, call the ready mutation to tell Niftory it's ready to receive NFTs
   useEffect(() => {
-    console.log('ConfigureWallet useEffect', {
-      value: state.value,
-      isFlowAccountConfigurationLoading,
-      loading: state.loading,
-      addr: flowUser?.addr,
-      configured,
-    })
     if (
       state.value ||
       isFlowAccountConfigurationLoading ||
@@ -38,8 +31,6 @@ export function ConfigureWallet({ callback }: { callback: () => void }) {
       !configured
     )
       return
-
-    if (state.value && configured) callback() // TODO: little hacky way to call callback when wallet is ready
 
     execSetWalletReady(flowUser.addr)
   }, [flowUser?.addr, configured, state, isFlowAccountConfigurationLoading])

@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useAsync, useAsyncFn, useEffectOnce } from 'react-use'
 
 import * as fcl from '@onflow/fcl'
@@ -9,11 +8,10 @@ import { getContract, getWallets } from '~/services/niftory/niftory-frontend.ser
 
 import { ConfigureWallet } from './configure-wallet.component'
 import { RegisterWallet } from './register-wallet.component'
-import { VerifyWallet } from './veirify-wallet.component'
+import { VerifyWallet } from './verify-wallet.component'
 import { WalletSetupBox } from './wallet-setup-box.component'
 
 export function WalletSetup() {
-  const flowUser = useFlowUser()
   const [getWalletsState, execGetWallets] = useAsyncFn(getWallets)
   const getContractState = useAsync(getContract)
   const isLoading = getWalletsState.loading || getContractState.loading
@@ -37,6 +35,7 @@ export function WalletSetup() {
     return (
       <ConfigureWallet
         callback={() => {
+          // Keep this log for a while
           console.log('[[[[[[[VERIFIED]]]]]]]]]')
           setTimeout(() => {
             execGetWallets()
