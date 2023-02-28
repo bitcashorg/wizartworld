@@ -1,22 +1,18 @@
 import {
-  QueryGenqlSelection,
-  Query,
-  MutationGenqlSelection,
-  Mutation,
-} from './schema'
-import {
-  linkTypeMap,
+  ClientOptions,
+  FieldsSelection,
+  GenqlError,
+  GraphqlOperation,
   createClient as createClientOriginal,
   generateGraphqlOperation,
-  FieldsSelection,
-  GraphqlOperation,
-  ClientOptions,
-  GenqlError,
+  linkTypeMap,
 } from './runtime'
+import { Mutation, MutationGenqlSelection, Query, QueryGenqlSelection } from './schema'
+import types from './types'
+
 export type { FieldsSelection } from './runtime'
 export { GenqlError }
 
-import types from './types'
 export * from './schema'
 const typeMap = linkTypeMap(types as any)
 
@@ -45,18 +41,17 @@ export const everything = {
   __scalar: true,
 }
 
-export type QueryResult<fields extends QueryGenqlSelection> = FieldsSelection<
-  Query,
-  fields
->
+export type QueryResult<fields extends QueryGenqlSelection> = FieldsSelection<Query, fields>
 export const generateQueryOp: (
   fields: QueryGenqlSelection & { __name?: string },
 ) => GraphqlOperation = function (fields) {
   return generateGraphqlOperation('query', typeMap.Query!, fields as any)
 }
 
-export type MutationResult<fields extends MutationGenqlSelection> =
-  FieldsSelection<Mutation, fields>
+export type MutationResult<fields extends MutationGenqlSelection> = FieldsSelection<
+  Mutation,
+  fields
+>
 export const generateMutationOp: (
   fields: MutationGenqlSelection & { __name?: string },
 ) => GraphqlOperation = function (fields) {

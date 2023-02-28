@@ -20,9 +20,13 @@ glob(svgFiles, {}, function (er, files) {
     writtenFiles += 1
   })
 
-  fs.writeFile(path.join(process.cwd(), `sprite/${process.env.STYLE}/unicons.svg`), sprites, (err) => {
-    if (err) console.log(err)
-  })
+  fs.writeFile(
+    path.join(process.cwd(), `sprite/${process.env.STYLE}/unicons.svg`),
+    sprites,
+    (err) => {
+      if (err) console.log(err)
+    },
+  )
 
   console.log(`Wrote Sprite for ${writtenFiles} files`)
 })

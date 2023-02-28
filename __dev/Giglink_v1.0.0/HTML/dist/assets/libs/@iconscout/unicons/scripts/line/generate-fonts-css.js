@@ -50,18 +50,10 @@ glob(sourcePath, (err, files) => {
   src: url('../fonts/${process.env.STYLE}/${
       configData.name
     }.eot#iefix') format('embedded-opentype'),
-        url('../fonts/${process.env.STYLE}/${
-      configData.name
-    }.woff2') format('woff2'),
-        url('../fonts/${process.env.STYLE}/${
-      configData.name
-    }.woff') format('woff'),
-        url('../fonts/${process.env.STYLE}/${
-      configData.name
-    }.ttf') format('truetype'),
-        url('../fonts/${process.env.STYLE}/${
-      configData.name
-    }.svg#unicons') format('svg');
+        url('../fonts/${process.env.STYLE}/${configData.name}.woff2') format('woff2'),
+        url('../fonts/${process.env.STYLE}/${configData.name}.woff') format('woff'),
+        url('../fonts/${process.env.STYLE}/${configData.name}.ttf') format('truetype'),
+        url('../fonts/${process.env.STYLE}/${configData.name}.svg#unicons') format('svg');
   font-weight: normal;
   font-style: normal;
   unicode-range: U+${firstChar.toUpperCase()}-${lastChar.toUpperCase()};
@@ -71,9 +63,7 @@ glob(sourcePath, (err, files) => {
       ...cssCodesList,
       ...configData.glyphs.map(
         (g) =>
-          `.${process.env.CSS_PREFIX}-${
-            g.css
-          }:before { content: '\\${g.code.toString(16)}'; }`,
+          `.${process.env.CSS_PREFIX}-${g.css}:before { content: '\\${g.code.toString(16)}'; }`,
       ),
     ]
 
@@ -81,8 +71,6 @@ glob(sourcePath, (err, files) => {
   })
 
   // Write `unicons.css` file
-  const cssUnicons = `${cssFontFaceList.join(
-    '\n',
-  )}${cssBefore}${cssCodesList.join('')}`
+  const cssUnicons = `${cssFontFaceList.join('\n')}${cssBefore}${cssCodesList.join('')}`
   fs.writeFileSync(cssPath, cssUnicons, 'utf-8')
 })

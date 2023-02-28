@@ -27,7 +27,7 @@ export const ButtonVariants = w.button(
       border: {
         none: t`border-none`,
         sm: t`border-2 border-gray-900`,
-      }
+      },
     },
     defaultVariants: {
       size: 'normal',

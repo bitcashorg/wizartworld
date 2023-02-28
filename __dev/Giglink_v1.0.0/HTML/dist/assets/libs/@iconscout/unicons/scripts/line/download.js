@@ -15,10 +15,7 @@ const targetPath = path.join(process.cwd(), `json/${process.env.STYLE}.json`)
 const targetImagePath = path.join(process.cwd(), `svg/${process.env.STYLE}`)
 
 const existingConfig = JSON.parse(
-  fs.readFileSync(
-    path.join(process.cwd(), `json/${process.env.STYLE}.json`),
-    'utf-8',
-  ),
+  fs.readFileSync(path.join(process.cwd(), `json/${process.env.STYLE}.json`), 'utf-8'),
 )
 
 const url = process.env[`API_DOWNLOAD_${process.env.STYLE.toUpperCase()}`]
@@ -55,9 +52,7 @@ const response = axios.get(url).then((response) => {
   const duplicates = filter(repeated, (item) => item.count > 1)
 
   if (duplicates.length && breakOnError) {
-    console.log(
-      `Total Icons: ${names.length}, Unique Names: ${uniqueNames.length}`,
-    )
+    console.log(`Total Icons: ${names.length}, Unique Names: ${uniqueNames.length}`)
 
     console.log(`${process.env.STYLE} Duplicates:`, duplicates)
 
@@ -66,11 +61,7 @@ const response = axios.get(url).then((response) => {
       dupFiles = [...dupFiles, ...filter(icons, { name: d.value })]
     })
 
-    fs.writeFileSync(
-      `${process.env.STYLE}-duplicates.json`,
-      JSON.stringify(dupFiles),
-      'utf-8',
-    )
+    fs.writeFileSync(`${process.env.STYLE}-duplicates.json`, JSON.stringify(dupFiles), 'utf-8')
 
     throw new Error('There are duplicate files')
   }
@@ -91,9 +82,7 @@ const response = axios.get(url).then((response) => {
 
         const charCodeExists = existingConfig.find((i) => i.name === name)
         const charCode =
-          charCodeExists && charCodeExists.code
-            ? charCodeExists.code
-            : startCharCode++
+          charCodeExists && charCodeExists.code ? charCodeExists.code : startCharCode++
 
         data.push({
           id: row.id,
@@ -119,11 +108,7 @@ const response = axios.get(url).then((response) => {
 
       console.log(`${data.length} Images Downloaded!`)
       // Save the Airtable data as json
-      fs.writeFileSync(
-        targetPath,
-        JSON.stringify(sortBy(data, 'name')),
-        'utf-8',
-      )
+      fs.writeFileSync(targetPath, JSON.stringify(sortBy(data, 'name')), 'utf-8')
 
       // console.log(`New Data saved from Airtable to ${targetPath}!`)
     },

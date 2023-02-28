@@ -1,25 +1,77 @@
 // create a list of 20 static readable usernames between 9 to 15 characters and between a-z and 0-9
-export const usernames = () => Array.from({ length: 20 }, (_, i) => {
-  const username = Array.from({ length: Math.floor(Math.random() * 7) + 9 }, () =>
-    String.fromCharCode(Math.floor(Math.random() * 26) + 97)
-  ).join('')
+export const usernames = () =>
+  Array.from({ length: 20 }, (_, i) => {
+    const username = Array.from({ length: Math.floor(Math.random() * 7) + 9 }, () =>
+      String.fromCharCode(Math.floor(Math.random() * 26) + 97),
+    ).join('')
 
-  return `${username}${i}`
-})
+    return `${username}${i}`
+  })
 
 // create a list of 40 real english sentences that can make a title for an NFT. Vary the length of the sentence between 3 to 4 words and variation in the length of the words between 3 to 10 characters
-export const titles = () => Array.from({ length: 40 }, () => {
-  const title = Array.from({ length: Math.floor(Math.random() * 2) + 1 }, () =>
-    Array.from({ length: 2 }, () =>
-      ['The', 'Quick', 'Brown', 'Fox', 'Elephant', 'Jumps', 'Over', 'The', 'Lazy', 'Fly', 'Sky', 'of', 'on', 'the', 'the', 'James', 'Jessie', 'Neutral', 'Neutral', 'Jane', 'John', 'HotDog', 'Dunk', 'Extreme', 'Faceless', 'Dog', 'a', 'an', 'the', 'and', 'in', 'on', 'at', 'to', 'from', 'of', 'off', 'with', 'without', 'for', 'Cat', 'Boots', 'Shoes', 'Sky', 'Dunk', 'Air', 'Snake', 'Bird', 'Fish', 'The',]
-      [Math.floor(Math.random() * 50)]
+export const titles = () =>
+  Array.from({ length: 40 }, () => {
+    const title = Array.from({ length: Math.floor(Math.random() * 2) + 1 }, () =>
+      Array.from(
+        { length: 2 },
+        () =>
+          [
+            'The',
+            'Quick',
+            'Brown',
+            'Fox',
+            'Elephant',
+            'Jumps',
+            'Over',
+            'The',
+            'Lazy',
+            'Fly',
+            'Sky',
+            'of',
+            'on',
+            'the',
+            'the',
+            'James',
+            'Jessie',
+            'Neutral',
+            'Neutral',
+            'Jane',
+            'John',
+            'HotDog',
+            'Dunk',
+            'Extreme',
+            'Faceless',
+            'Dog',
+            'a',
+            'an',
+            'the',
+            'and',
+            'in',
+            'on',
+            'at',
+            'to',
+            'from',
+            'of',
+            'off',
+            'with',
+            'without',
+            'for',
+            'Cat',
+            'Boots',
+            'Shoes',
+            'Sky',
+            'Dunk',
+            'Air',
+            'Snake',
+            'Bird',
+            'Fish',
+            'The',
+          ][Math.floor(Math.random() * 50)],
+      ).join(' '),
     ).join(' ')
-  ).join(' ')
 
-  return title
-})
-      
-
+    return title
+  })
 
 export const landingAssets = {
   'cinema_🎥': [
@@ -53,7 +105,6 @@ export const landingAssets = {
     'https://bestaiprompts.art/img/game70.jpeg',
     'https://bestaiprompts.art/img/game96.jpeg',
     'https://bestaiprompts.art/img/game99.jpeg',
-
   ],
   'graphic_design_🌁': [
     '/images/generated-nft/graphic1.png',
@@ -114,9 +165,8 @@ export const landingAssets = {
     '/images/generated-nft/fashion13.png',
     '/images/generated-nft/fashion14.png',
     '/images/generated-nft/fashion15.png',
-  ]
+  ],
 }
-
 
 export const gallery = [
   {
@@ -171,7 +221,7 @@ export const gallery = [
         asset: '/images/nft/doodles-fan-nft11.png',
         avatar: '/images/avatars/doodles-profile3.png',
       },
-    ]
+    ],
   },
   {
     title: '',
@@ -257,7 +307,7 @@ export const gallery = [
         asset: '/images/nft/nba-fan-nft22.png',
         avatar: '/images/avatars/flunk-profile2.jpg',
       },
-    ]
+    ],
   },
   {
     title: '',
@@ -311,7 +361,7 @@ export const gallery = [
         asset: '/images/nft/nfl-fan-nft12.png',
         avatar: '/images/avatars/doodles-profile1.png',
       },
-    ]
+    ],
   },
   {
     title: '',
@@ -365,7 +415,7 @@ export const gallery = [
         asset: '/images/nft/ufc-fan-nft12.png',
         avatar: '/images/avatars/doodles-profile1.png',
       },
-    ]
+    ],
   },
   {
     title: '',
@@ -419,7 +469,7 @@ export const gallery = [
         asset: '/images/nft/laliga-fan-nft12.png',
         avatar: '/images/avatars/flovatar-profile2.png',
       },
-    ]
+    ],
   },
   {
     title: '',
@@ -489,7 +539,7 @@ export const gallery = [
         asset: '/images/nft/evolution-fan-nft16.png',
         avatar: '/images/avatars/ballerz-profile1.png',
       },
-    ]
+    ],
   },
   {
     title: 'Flunks',
@@ -527,7 +577,7 @@ export const gallery = [
         asset: '/images/nft/flunk-fan-nft8.png',
         avatar: '/images/avatars/flovatar-profile4.png',
       },
-    ]
+    ],
   },
   {
     title: '',
@@ -581,7 +631,7 @@ export const gallery = [
         asset: '/images/nft/flovatar-fan-nft12.png',
         avatar: '/images/avatars/flovatar-profile8.png',
       },
-    ]
+    ],
   },
   {
     title: 'You May Also Like',
@@ -607,6 +657,6 @@ export const gallery = [
         asset: '/images/nft/custom-fan-nft5.png',
         avatar: '/images/avatars/flunk-profile1.png',
       },
-    ]
+    ],
   },
 ]

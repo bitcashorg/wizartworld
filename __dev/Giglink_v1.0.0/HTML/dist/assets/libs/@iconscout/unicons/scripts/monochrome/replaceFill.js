@@ -16,7 +16,7 @@ const replaceFillWithClass = async (svg, name) => {
   const hexList = processedSVG.match(/(fill=\"\#)([A-F0-9a-f]{3,6})\"/gi)
 
   if (hexList) {
-    hexList.forEach(hex => {
+    hexList.forEach((hex) => {
       // console.log(COLOR_CLASS[hex])
       if (COLOR_CLASS[hex]) {
         processedSVG = processedSVG.replace(hex, COLOR_CLASS[hex])
@@ -33,8 +33,8 @@ const replaceFillWithClass = async (svg, name) => {
 
 const processSVG = async (data) => {
   const svgo = new SVGO(svgoOptions)
-  const result = await new Promise ((resolve, reject) => {
-    svgo.optimize(data).then(function(result) {
+  const result = await new Promise((resolve, reject) => {
+    svgo.optimize(data).then(function (result) {
       resolve(result)
     })
   })

@@ -3,5 +3,5 @@ export type ImageAssetProps = {
   alt: string
   preview?: boolean
   width?: number
-  height?: number 
+  height?: number
 }

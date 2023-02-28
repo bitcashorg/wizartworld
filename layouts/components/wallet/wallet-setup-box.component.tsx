@@ -11,29 +11,20 @@ type WalletSetupBoxProps = {
   onClick: () => void
 }
 export const WalletSetupBox = ({ label, isLoading, error, onClick }: WalletSetupBoxProps) => {
-  useMemo(() => error && console.error(error), [error])
-
-  if (isLoading) {
+  if (isLoading)
     return (
       <div className="flex items-center content-between justify-center px-4">
         <Loading />
       </div>
     )
-  }
-
-  if (error) {
-    return (
-      <div className="flex text-center">
-        <Text variant="info">Something went wrong. Please try again later!</Text>
-      </div>
-    )
-  }
 
   return (
-    <>
-      <div className="flex text-center">
-        <Button onClick={onClick} variant="primary" label={label}></Button>
-      </div>
-    </>
+    <div className="flex text-center">
+      {error ? (
+        <Text variant="info">Something went wrong. Please try again later!</Text>
+      ) : (
+        <Button onClick={onClick} variant="primary" label={label} />
+      )}
+    </div>
   )
 }

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useAsyncFn } from 'react-use'
 
-import { useFlowAccountConfiguration } from '~/hooks/useFlowAccountConfiguration'
-import { useFlowUser } from '~/hooks/useFlowUser'
+import { useFlowAccountConfiguration } from '~/hooks/use-account-config/use-account-config.hook'
+import { useFlowUser } from '~/hooks/use-flow-user/use-flow-user.hook'
 import { readyWallet } from '~/services/niftory'
 
 import { WalletSetupBox } from './wallet-setup-box.component'

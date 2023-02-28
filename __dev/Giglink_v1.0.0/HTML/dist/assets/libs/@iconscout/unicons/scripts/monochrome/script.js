@@ -1,6 +1,6 @@
-const SVG_URL_BASE = `https://unicons.iconscout.com/${
-  process.env.RELEASE_DIR || 'release'
-}/${process.env.CI_COMMIT_REF_NAME}/svg/monochrome/`
+const SVG_URL_BASE = `https://unicons.iconscout.com/${process.env.RELEASE_DIR || 'release'}/${
+  process.env.CI_COMMIT_REF_NAME
+}/svg/monochrome/`
 const iconPrefix = 'uim-'
 
 // Add Unicons Window
@@ -10,9 +10,7 @@ window.Unicons.DEBUG = window.Unicons.DEBUG || false
 const apply = (element) => {
   element.classList.forEach((className) => {
     if (className.includes(iconPrefix)) {
-      fetchIconsAndReplace(
-        className.toLocaleLowerCase().replace(iconPrefix, ''),
-      )
+      fetchIconsAndReplace(className.toLocaleLowerCase().replace(iconPrefix, ''))
     }
   })
 }

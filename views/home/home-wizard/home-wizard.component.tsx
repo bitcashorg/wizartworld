@@ -2,7 +2,6 @@ import { Wizard } from '~/components/wizard'
 import { homeWizardSteps } from '~/views/home/home-wizard-steps'
 
 export function HomeWizard() {
-
   // ! TODO: Add Dark-light mode reference here
   return (
     <div className="fixed flex border-t border-slate-200 dark:border-slate-800 items-start justify-center left-0 top-[72px] z-50 w-full h-full bg-slate-100 dark:bg-slate-900">

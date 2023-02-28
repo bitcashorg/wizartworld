@@ -3,29 +3,11 @@ import { useCallback, useEffect, useState } from 'react'
 
 import * as fcl from '@onflow/fcl'
 
-import { useContractCadence } from './useContractCadence'
-import { useFlowUser } from './useFlowUser'
+import { useContractCadence } from '../use-contract/use-contract.hook'
+import { useFlowUser } from '../use-flow-user/use-flow-user.hook'
 
-type FlowAccountConfiguration = {
-  /**
-   * Whether the Flow account is initialized.
-   */
-  configured: boolean
-
-  /**
-   * A function to initialize the Flow account.
-   */
-  configure: () => Promise<void>
-
-  /**
-   * True if the contract data is still loading.
-   */
-  isLoading: boolean
-}
-
-export function useFlowAccountConfiguration(): FlowAccountConfiguration {
+export function useFlowAccountConfiguration() {
   const flowUser = useFlowUser()
-
   const [configured, setConfigured] = useState(false)
   const [isConfiguring, setIsConfiguring] = useState(false)
 

@@ -2,32 +2,32 @@ module.exports = {
   plugins: [
     {
       removeAttrs: {
-        attrs: ['(path|rect|circle|polygon|line|polyline|g|ellipse)']
-      }
+        attrs: ['(path|rect|circle|polygon|line|polyline|g|ellipse)'],
+      },
     },
     {
-      removeTitle: true
+      removeTitle: true,
     },
     {
-      removeStyleElement: true
+      removeStyleElement: true,
     },
     {
-      removeComments: true
+      removeComments: true,
     },
     {
-      removeDesc: true
+      removeDesc: true,
     },
     {
-      removeUselessDefs: true
+      removeUselessDefs: true,
     },
     {
       cleanupIDs: {
         remove: true,
-        prefix: 'svgicon-'
-      }
+        prefix: 'svgicon-',
+      },
     },
     {
-      convertShapeToPath: true
-    }
-  ]
+      convertShapeToPath: true,
+    },
+  ],
 }

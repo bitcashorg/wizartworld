@@ -1,4 +1,4 @@
-const compressArray = original => {
+const compressArray = (original) => {
   var compressed = []
   // make a copy of the input array
   var copy = original.slice(0)

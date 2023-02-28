@@ -1,12 +1,6 @@
 export function PWADownloadIcon(props?: React.ComponentProps<'svg'>) {
   return (
-    <svg
-      viewBox="0 0 128 128"
-      fill="none"
-      width="128px"
-      height="128px"
-      {...props}
-    >
+    <svg viewBox="0 0 128 128" fill="none" width="128px" height="128px" {...props}>
       <path
         d="M68.862 53.4639H59.1548V71.0253H51.8949L64.0084 88.4845L76.122 71.0253H68.862V53.4639Z"
         fill="#ffffff"

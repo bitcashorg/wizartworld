@@ -6,7 +6,7 @@ const downloadImage = async (url, path, parseSVG) => {
   // axios image download with response type "stream"
   const response = await axios({
     method: 'GET',
-    url: url
+    url: url,
   })
 
   // Replace extra characters such as new lines, tabs from file

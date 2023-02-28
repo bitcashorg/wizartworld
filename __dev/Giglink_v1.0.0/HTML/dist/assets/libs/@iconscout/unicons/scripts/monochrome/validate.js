@@ -12,7 +12,7 @@ glob(sourcePath, function (err, files) {
 
   files = files.map((f) => path.normalize(f))
 
-  files.forEach(filename => {
+  files.forEach((filename) => {
     const svg = fs.readFileSync(filename, 'utf-8')
     replaceFill(svg, filename)
   })
