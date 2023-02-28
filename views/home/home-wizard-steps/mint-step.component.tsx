@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { useAsyncFn, useSetState } from 'react-use'
 
@@ -13,47 +14,44 @@ import { HomeWizardPageTransition } from '../home-wizard'
 import { HomeWizardStepNav } from '../home-wizard-header'
 
 export function MintStep({ next }: WizardStepProps) {
-  const { handleSubmit, register } = useForm<MintFormProps>()
   const { prediction } = useReplicateContext()
+  const { handleSubmit, register } = useForm<MintFormProps>({
+    defaultValues: { description: prediction?.input.prompt || '' },
+  })
+
   const [onSubmitState, onSubmit] = useAsyncFn(async (data: MintFormProps) => {
     const image = prediction && prediction.output[prediction.output.length - 1]
     if (!image) return
+
     const blob = await fetch(image).then((res) => res.blob())
-    console.log({ data, image, prediction, blob })
-    const response = fetchJson('/api/niftory/create-file-url', {
+
+    const file = await fetchJson<any>('/api/niftory/create-file-url', {
       method: 'POST',
       body: JSON.stringify({
-        name: 'test test',
-        description: prediction?.input.prompt,
+        name: data.title,
+        description: data.description,
         options: {
           contentType: blob.type,
-          posterContentType: blob.type,
         },
       }),
     })
 
-    console.log('response', { response })
+    console.log('data', file, file.data.url)
 
-    //     const { uploadNFTContent } = await backendClient<
-    //       UploadNftContentMutation,
-    //       UploadNftContentMutationVariables
-    //     >("fileUpload", {
-    //       name: file.name,
-    //       description: "Created using Mintme by Niftory",
-    //
-    //     })
-    //     const content = uploadNFTContent?.files[0]
-    //     content.contentType = file.type.split("/")[0]
-    //     const poster = uploadNFTContent?.poster
+    // const content = uploadNFTContent?.files[0]
+    // content.contentType = file.type.split("/")[0]
+    // const poster = uploadNFTContent?.poster
 
-    //     await axios.put(content?.url, file, {
-    //       onUploadProgress({ loaded, total }) {
-    //         setContentProgress(Math.round((loaded * 100) / total))
-    //       },
-    //       headers: {
-    //         "Content-Type": file.type,
-    //       },
-    //     })
+    const response = await axios.put(file.data.url, blob, {
+      onUploadProgress({ loaded, total }) {
+        console.log({ loaded, total })
+        // setContentProgress(Math.round((loaded * 100) / total))
+      },
+      headers: {
+        'Content-Type': file.type,
+      },
+    })
+    console.log('response', response)
 
     //     let posterFile = file
     //     if (content.contentType === "video") {
@@ -90,21 +88,20 @@ export function MintStep({ next }: WizardStepProps) {
             <Form>
               <div className="flex flex-col gap-6">
                 <TextInput
-                  id="nft_name"
+                  id="title"
                   placeholder="Name your piece..."
                   formProps={{
-                    ...register('nftName', { required: true }),
+                    ...register('title', { required: true }),
                   }}
                 />
                 <TextInput
-                  id="nft_collection"
+                  id="description"
                   placeholder="Collection..."
                   formProps={{
-                    ...register('nftCollection', { required: true }),
+                    ...register('description', { required: true }),
                   }}
                 />
               </div>
-              <Button type="submit" label="submit" />
             </Form>
           </div>
           <div className="flex content-center w-full">
@@ -125,6 +122,6 @@ export function MintStep({ next }: WizardStepProps) {
 }
 
 type MintFormProps = {
-  nftName: string
-  nftCollection: string
+  title: string
+  description: string
 }
