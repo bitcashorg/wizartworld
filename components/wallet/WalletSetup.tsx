@@ -52,7 +52,6 @@ export function WalletSetup() {
   // The wallet got an error. Show it to the user
   if (walletError && wallet?.address) return <pre className="text-red-600 text-sm font-bold">{walletError.message}</pre>
 
-  // TODO: This is making re-render for the other states verification. Improve guard here.
   // User doesn't have a wallet yet
   if (!wallet?.address) return <RegisterWallet blockchain={contractData?.contract?.blockchain} />
 
@@ -66,7 +65,7 @@ export function WalletSetup() {
   // if (wallet.state === enumWalletState.READY)
     return (
       <WalletSetupBox
-        label={`You're wallet is set up! Your address is ${wallet?.address}`}
+        label={`You're are set up! Address is ${wallet?.address}`}
         error={walletError}
         isLoading={contractIsLoading || walletIsLoading}
         onClick={() => {}}
