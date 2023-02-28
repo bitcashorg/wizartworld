@@ -1,10 +1,11 @@
+import { useAsync, useAsyncFn } from 'react-use'
+
 import * as fcl from '@onflow/fcl'
 
 import { Contract, Wallet } from '~/graphql/generated/schema'
-import { useFetchData } from '~/hooks/useFetchData'
 import { getContract, getWallets } from '~/services/niftory/niftory-frontend.service'
 
-import { Loading } from '../loading'
+import { Loading } from '../../../components/loading'
 import { RegisterWallet } from './register-wallet.component'
 import { WalletSetupBox } from './wallet-setup-box.component'
 
@@ -23,21 +24,10 @@ export type WalletSetupProps = WalletSetupStepProps & {
 }
 
 export function WalletSetup() {
-  const {
-    data: walletData,
-    isLoading: walletIsLoading,
-    error: walletError,
-  } = useFetchData<{
-    wallet?: Wallet
-  }>(getWallets)
-  const { data: contractData, isLoading: contractIsLoading } = useFetchData<{
-    contract?: Contract
-  }>(getContract)
+  const getWalletsState = useAsync(getWallets)
+  const getContractState = useAsync(getContract)
 
-  console.log('walletData', walletData)
-  console.log('contractData', contractData)
-
-  if (contractIsLoading || walletIsLoading) {
+  if (getWalletsState.loading || getContractState.loading) {
     return (
       <div className="flex items-center content-between justify-center px-4">
         <Loading />
@@ -45,13 +35,13 @@ export function WalletSetup() {
     )
   }
 
-  const wallet = walletData?.wallet
+  const wallet = getWalletsState.value?.wallet
 
   console.log('wallet data ==>', wallet)
 
   // The wallet got an error. Show it to the user
-  if (walletError && wallet?.address)
-    return <pre className="text-sm font-bold text-red-600">{walletError.message}</pre>
+  if (getWalletsState.error && wallet?.address)
+    return <pre className="text-sm font-bold text-red-600">{getWalletsState.error.message}</pre>
 
   // User doesn't have a wallet yet
   if (!wallet?.address) return <RegisterWallet />
@@ -67,8 +57,8 @@ export function WalletSetup() {
   return (
     <WalletSetupBox
       label={`You're are set up! Address is ${wallet?.address}`}
-      error={walletError}
-      isLoading={contractIsLoading || walletIsLoading}
+      error={getWalletsState.error}
+      isLoading={getWalletsState.loading || getContractState.loading}
       onClick={() => {}}
     />
   )

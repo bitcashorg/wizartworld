@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { useTheme } from 'next-themes'
 import React from 'react'
 
@@ -11,7 +10,7 @@ export const ButtonThemeSwitcher = () => {
     <Button
       variant="transparent"
       border="sm"
-      className="rounded-full h-12 w-12 border-violet-600 dark:border-yellow-400"
+      className="w-12 h-12 rounded-full border-violet-600 dark:border-yellow-400"
       onClick={() => (theme === 'dark' ? setTheme('light') : setTheme('dark'))}
     >
       {theme === 'light' ? (

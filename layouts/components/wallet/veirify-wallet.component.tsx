@@ -1,0 +1,40 @@
+import { useCallback } from 'react'
+import { useAsync, useAsyncFn, useEffectOnce } from 'react-use'
+
+import * as fcl from '@onflow/fcl'
+
+import { Blockchain } from '~/graphql/generated'
+import { useFlowUser } from '~/hooks/useFlowUser'
+import { getWallets, verifyWallet } from '~/services/niftory'
+
+import { WalletSetupBox } from './wallet-setup-box.component'
+
+export function VerifyWallet() {
+  useFlowUser()
+  const getWalletsState = useAsync(getWallets)
+  const [verifyWalletState, execVerifyWallet] = useAsyncFn(verifyWallet)
+
+  // On click, prompt the user to sign the verification message
+  const onClick = useCallback(async () => {
+    const wallet = getWalletsState.value?.wallet
+    if (!wallet?.address) return
+
+    let signature = await fcl.currentUser.signUserMessage(wallet.verificationCode || '')
+    if (!signature) return
+
+    // Send the signature to the API
+    execVerifyWallet({
+      address: wallet?.address,
+      signedVerificationCode: signature,
+    })
+  }, [getWalletsState.value])
+
+  return (
+    <WalletSetupBox
+      label={'Step 2 is proving that the wallet is yours.'}
+      onClick={onClick}
+      isLoading={verifyWalletState.loading}
+      error={verifyWalletState.error}
+    />
+  )
+}

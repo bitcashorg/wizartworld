@@ -1,7 +1,7 @@
-import { Contract } from '~/graphql/generated'
-import { getContract } from '~/services/niftory'
+import { useEffect } from 'react'
+import { useAsync, useSetState } from 'react-use'
 
-import { useFetchData } from './useFetchData'
+import { getContract } from '~/services/niftory'
 
 const nonFungibleTokenAddress = process.env.NEXT_PUBLIC_NFT_ADDRESS
 const metadataViewsAddress = process.env.NEXT_PUBLIC_NFT_ADDRESS
@@ -69,23 +69,24 @@ function prepareCadence(script: string, contractName: string, address: string) {
 }
 
 export function useContractCadence() {
-  const { data: contractData, fulfilled: isFetched } = useFetchData<{
-    contract?: Contract
-  }>(getContract)
+  const getContractState = useAsync(getContract)
+  const [state, setState] = useSetState({
+    isAccountConfigured_script: '',
+    configureAccount_transaction: '',
+  })
 
-  let isAccountConfigured_script: string = ''
-  let configureAccount_transaction: string = ''
-  if (isFetched) {
-    const name = contractData?.contract?.name || ''
-    const address = contractData?.contract?.address || ''
-    isAccountConfigured_script = prepareCadence(IS_ACCOUNT_CONFIGURED_SCRIPT, name, address)
-    configureAccount_transaction = prepareCadence(CONFIGURE_ACCOUNT_TRANSACTION, name, address)
-  }
+  useEffect(() => {
+    if (!getContractState.value?.contract) return
+    const name = getContractState.value.contract.name!
+    const address = getContractState.value.contract.address!
+    setState({
+      isAccountConfigured_script: prepareCadence(IS_ACCOUNT_CONFIGURED_SCRIPT, name, address),
+      configureAccount_transaction: prepareCadence(CONFIGURE_ACCOUNT_TRANSACTION, name, address),
+    })
+  }, [getContractState.value])
 
-  // TODO: improve name conventions
   return {
-    isAccountConfigured_script,
-    configureAccount_transaction,
-    isLoading: !isFetched,
+    ...state,
+    isLoading: getContractState.loading,
   }
 }

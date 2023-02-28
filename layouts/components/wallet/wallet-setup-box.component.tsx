@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 
-import { Button } from '../button'
-import { Loading } from '../loading'
-import { Text } from '../text/text'
+import { Button } from '../../../components/button'
+import { Loading } from '../../../components/loading'
+import { Text } from '../../../components/text/text'
 
 type WalletSetupBoxProps = {
   label: string

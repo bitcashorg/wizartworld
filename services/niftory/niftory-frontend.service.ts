@@ -56,8 +56,7 @@ export async function getSets() {
   })
 }
 
-export type ReadyWalletProps = { address: string }
-export async function readyWallet({ address }: ReadyWalletProps) {
+export async function readyWallet({ address }: { address: string }) {
   return getFrontEndGraphQLClient().mutation({
     readyWallet: {
       __args: { address },
