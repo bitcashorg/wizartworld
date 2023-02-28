@@ -52,15 +52,6 @@ export async function createNFTSet() {
   return { response }
 }
 
-export async function registerWallet({ address }: { address: string }) {
-  return (await getBackendEndGraphQLClient()).mutation({
-    registerWallet: {
-      __args: { address },
-      ...everything,
-    },
-  })
-}
-
 export async function transferNft({ nftModelId, userId }: { nftModelId: string; userId: string }) {
   return (await getBackendEndGraphQLClient()).mutation({
     transfer: {

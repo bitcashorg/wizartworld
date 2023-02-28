@@ -8,6 +8,7 @@ const TextStyled = w.button(t``, {
   variants: {
     variant: {
       'display-1': t`font-bold text-2xl`,
+      info: t`font-bold text-sm`,
       loading: t`font-bold text-2xl text-black`,
     },
   },

@@ -56,3 +56,5 @@ tsconfig.tsbuildinfo
 public/workbox-*.js
 public/workbox-*.min.js
 public/sw.js
+
+.keep

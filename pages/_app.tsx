@@ -20,8 +20,6 @@ import '~/styles/line.css'
 import '~/styles/theme.css'
 import '~/styles/wizart-chat.css'
 
-import '../config/flow/config'
-
 export default function MyApp({ Component, pageProps }: AppProps<any>) {
   return (
     <>

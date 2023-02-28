@@ -2,8 +2,9 @@ import Link from 'next/link'
 import React from 'react'
 
 import { WizartLogo } from '~/components/icons'
-import { ButtonThemeSwitcher } from '~/layouts/components/header/button-theme-switcher.component'
-import { NiftoryAuth } from '~/layouts/components/header/niftory-auth.component'
+
+import { ButtonThemeSwitcher } from './button-theme-switcher.component'
+import { NiftoryAuth } from './niftory-auth.component'
 
 export function Header() {
   // Create a function that controls the prefered theme and keep the selection on the local storage
@@ -50,8 +51,7 @@ export function Header() {
           <WizartLogo className="filter invert dark:invert-0" />
         </Link>
 
-
-        <div className="flex gap-x-4 justify-end pt-1 h-30">
+        <div className="flex justify-end pt-1 gap-x-4 h-30">
           <NiftoryAuth />
           <ButtonThemeSwitcher />
         </div>
