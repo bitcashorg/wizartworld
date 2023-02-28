@@ -5,9 +5,16 @@ import { useAsyncFn } from 'react-use'
 import { Button } from '~/components/button'
 import { NiftoryAuth } from '~/layouts/components/header/niftory-auth.component'
 import { fetchJson } from '~/lib/fetch/fetch.lib'
-import { createNFTSet, getAppUser, getNftModels, getNiftoryApps } from '~/services/niftory'
-import { getNfts, registerWallet, transferNft } from '~/services/niftory/'
-import { getSets } from '~/services/niftory/niftory-frontend.service'
+import {
+  createNFTSet,
+  getAppUser,
+  getNftModels,
+  getNfts,
+  getNiftoryApps,
+  getSets,
+  registerWallet,
+  transferNft,
+} from '~/services/niftory'
 
 export default function PageNiftory() {
   const [data, setData] = useState({})
