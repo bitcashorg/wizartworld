@@ -7,10 +7,12 @@ import { readyWallet } from '~/services/niftory'
 
 import { WalletSetupBox } from './wallet-setup-box.component'
 
-export function ConfigureWallet() {
+export function ConfigureWallet({ callback }: { callback: () => void }) {
   const flowUser = useFlowUser()
   const [state, execSetWalletReady] = useAsyncFn(async (address: string) => {
-    readyWallet({ address })
+    const response = readyWallet({ address })
+    callback()
+    return response
   })
 
   const {

@@ -8,12 +8,14 @@ import { registerWallet } from '~/services/niftory'
 
 import { WalletSetupBox } from './wallet-setup-box.component'
 
-export function RegisterWallet() {
+export function RegisterWallet({ callback }: { callback: () => void }) {
   const flowUser = useFlowUser()
 
   const [state, execRegisterWallet] = useAsyncFn(async (address: string) => {
     try {
-      await registerWallet({ address })
+      const response = await registerWallet({ address })
+      callback()
+      return response
     } catch (error) {
       console.log('Error registering wallet', error)
     }
@@ -25,5 +27,7 @@ export function RegisterWallet() {
     flowUser?.addr && execRegisterWallet(flowUser?.addr)
   }, [flowUser?.addr])
 
-  return <WalletSetupBox onClick={() => fcl.logIn()} label="Link Wallet" />
+  return (
+    <WalletSetupBox isLoading={state.loading} onClick={() => fcl.logIn()} label="Link Wallet" />
+  )
 }

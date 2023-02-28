@@ -5,14 +5,18 @@ import * as fcl from '@onflow/fcl'
 
 import { Blockchain } from '~/graphql/generated'
 import { useFlowUser } from '~/hooks/use-flow-user/use-flow-user.hook'
-import { getWallets, verifyWallet } from '~/services/niftory'
+import { VerifyWalletProps, getWallets, verifyWallet } from '~/services/niftory'
 
 import { WalletSetupBox } from './wallet-setup-box.component'
 
-export function VerifyWallet() {
+export function VerifyWallet({ callback }: { callback: () => void }) {
   useFlowUser()
   const getWalletsState = useAsync(getWallets)
-  const [verifyWalletState, execVerifyWallet] = useAsyncFn(verifyWallet)
+  const [verifyWalletState, execVerifyWallet] = useAsyncFn(async (params: VerifyWalletProps) => {
+    const response = await verifyWallet(params)
+    callback()
+    return response
+  })
 
   // On click, prompt the user to sign the verification message
   const onClick = useCallback(async () => {
