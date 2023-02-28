@@ -1,5 +1,10 @@
-import { signIn, signOut } from 'next-auth/react'
-import React from 'react'
+import { signIn as nextAuthSignIn, signOut as nextAuthSignOut, useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
+import React, { useCallback, useEffect, useState } from 'react'
+
+import * as fcl from '@onflow/fcl'
+
+import { useFlowUser } from '~/hooks/use-flow-user'
 
 export type User = { loggedIn: false; addr: string | undefined }
 
@@ -26,9 +31,54 @@ const defaultAuthContext: AuthContextType = {
   signIn: () => {},
 }
 
+type AuthComponentProps = {
+  children: React.ReactNode
+  requireAuth: boolean | undefined
+}
+
 // TODO: WIP global auth state
 // Please complete this function
-function AuthProvider({ children }: { children: React.ReactNode }): JSX.Element {
+function AuthProvider({ children, requireAuth }: AuthComponentProps): JSX.Element {
+  useFlowUser()
+  const router = useRouter()
+
+  const { data: session, status } = useSession()
+  const sessionLoading = status === 'loading'
+
+  const [isAuthenticating, setIsAuthenticating] = useState(false)
+  const isLoading = sessionLoading || isAuthenticating
+
+  const signIn = useCallback(async () => {
+    setIsAuthenticating(true)
+    await nextAuthSignIn('niftory')
+    setIsAuthenticating(false)
+  }, [])
+
+  const signOut = useCallback(async () => {
+    setIsAuthenticating(true)
+    fcl.unauthenticate()
+    const { url } = await nextAuthSignOut({ redirect: false })
+    await router.push(url)
+    setIsAuthenticating(false)
+  }, [router])
+
+  useEffect(() => {
+    if (!requireAuth || isLoading) {
+      return
+    }
+
+    if (session?.user.error) {
+      console.error(session?.user.error)
+      signOut()
+      return
+    }
+
+    if (!session) {
+      router.push('/')
+      return
+    }
+  }, [requireAuth, session, router, isLoading, signOut])
+
   const providerValue = {
     signIn,
     signOut,
