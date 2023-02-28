@@ -2,11 +2,7 @@ import { faker } from '@faker-js/faker'
 import { everything } from '@genql/runtime'
 
 import { getBackendEndGraphQLClient } from '~/graphql/backend-client'
-import { CreateFileOptionsInput, NFTModelCreateInput } from '~/graphql/generated'
-import {
-  CreateFileUploadUrlParams,
-  CreateNftModelParams,
-} from '~/services/niftory/niftory.service.type'
+import { CreateFileUploadUrlParams, CreateNftModelParams } from '~/services/niftory'
 
 export async function mintNFTModel(__args: { appId: string; id: string; quantity: string }) {
   console.log('mintNFTModel', __args)

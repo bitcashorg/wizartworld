@@ -1,9 +1,8 @@
 import { useCallback } from 'react'
-import { useAsync, useAsyncFn, useEffectOnce } from 'react-use'
+import { useAsync, useAsyncFn } from 'react-use'
 
 import * as fcl from '@onflow/fcl'
 
-import { Blockchain } from '~/graphql/generated'
 import { useFlowUser } from '~/hooks/use-flow-user/use-flow-user.hook'
 import { VerifyWalletProps, getWallets, verifyWallet } from '~/services/niftory'
 

@@ -1,15 +1,7 @@
-import { useMemo } from 'react'
+import { Button } from '~/components/button'
+import { Loading } from '~/components/loading'
+import { Text } from '~/components/text/text'
 
-import { Button } from '../../../components/button'
-import { Loading } from '../../../components/loading'
-import { Text } from '../../../components/text/text'
-
-type WalletSetupBoxProps = {
-  label: string
-  isLoading?: boolean
-  error?: Error | null
-  onClick: () => void
-}
 export const WalletSetupBox = ({ label, isLoading, error, onClick }: WalletSetupBoxProps) => {
   if (isLoading)
     return (
@@ -27,4 +19,11 @@ export const WalletSetupBox = ({ label, isLoading, error, onClick }: WalletSetup
       )}
     </div>
   )
+}
+
+type WalletSetupBoxProps = {
+  label: string
+  isLoading?: boolean
+  error?: Error | null
+  onClick: () => void
 }

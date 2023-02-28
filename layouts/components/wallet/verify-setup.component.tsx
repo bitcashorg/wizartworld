@@ -10,17 +10,6 @@ import { RegisterWallet } from './register-wallet.component'
 import { VerifyWallet } from './veirify-wallet.component'
 import { WalletSetupBox } from './wallet-setup-box.component'
 
-export type WalletSetupStepProps = {
-  setIsLoading: (isLoading: boolean) => void
-  setError: (error: Error | null) => void
-}
-
-export type WalletSetupProps = WalletSetupStepProps & {
-  wallet: Wallet
-  flowUser: fcl.CurrentUserObject
-  error: Error
-}
-
 export function WalletSetup() {
   const [getWalletsState, execGetWallets] = useAsyncFn(getWallets)
   const getContractState = useAsync(getContract)
@@ -53,4 +42,15 @@ export function WalletSetup() {
       onClick={execGetWallets}
     />
   )
+}
+
+export type WalletSetupStepProps = {
+  setIsLoading: (isLoading: boolean) => void
+  setError: (error: Error | null) => void
+}
+
+export type WalletSetupProps = WalletSetupStepProps & {
+  wallet: Wallet
+  flowUser: fcl.CurrentUserObject
+  error: Error
 }
