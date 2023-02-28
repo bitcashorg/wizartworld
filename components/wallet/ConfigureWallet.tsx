@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import { useFlowAccountConfiguration } from '~/hooks/useFlowAccountConfiguration'
 import { useFlowUser } from '~/hooks/useFlowUser'
@@ -9,6 +9,7 @@ import { WalletSetupBox } from './WalletSetupBox'
 
 export function ConfigureWallet() {
   const flowUser = useFlowUser()
+  const [executed, setExecuted] = React.useState(false)
 
   const {
     post: readyWalletMutation,
@@ -31,7 +32,10 @@ export function ConfigureWallet() {
       return
     }
 
-    readyWalletMutation({ address: flowUser?.addr || '' })
+    if (!executed) {
+      readyWalletMutation({ address: flowUser?.addr || '' })
+      setExecuted(true)
+    }
   }, [
     flowUser?.addr,
     configured,

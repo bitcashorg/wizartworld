@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import * as fcl from '@onflow/fcl'
 
@@ -15,6 +15,7 @@ interface Props {
 
 export function RegisterWallet({ blockchain }: Props) {
   const flowUser = useFlowUser()
+  const [executed, setExecuted] = React.useState(false)
   const { post: registerWalletMutation, isLoading } = usePostData<RegisterWalletProps, any>(
     registerWallet,
   )
@@ -25,7 +26,11 @@ export function RegisterWallet({ blockchain }: Props) {
       return
     }
     console.log('registering wallet', { address: flowUser.addr })
-    registerWalletMutation({ address: flowUser.addr })
+
+    if (!executed) {
+      registerWalletMutation({ address: flowUser.addr })
+      setExecuted(true)
+    }
   }, [blockchain, flowUser?.addr, flowUser?.loggedIn, isLoading])
 
   const handleRegister = async () => {

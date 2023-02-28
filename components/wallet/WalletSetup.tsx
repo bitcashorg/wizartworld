@@ -1,6 +1,6 @@
 import * as fcl from '@onflow/fcl'
 
-import { Contract, Wallet, WalletState } from '~/graphql/generated/schema'
+import { Contract, Wallet, WalletState, enumWalletState } from '~/graphql/generated/schema'
 import { useFetchData } from '~/hooks/useFetchData'
 import { getContract, getWallets } from '~/services/niftory/niftory-frontend.service'
 
@@ -46,34 +46,31 @@ export function WalletSetup() {
 
   const wallet = walletData?.wallet
 
-  if (!walletError) {
-    console.log('wallet.state', wallet?.state)
-    // User doesn't have a wallet yet
-    if (!wallet?.address) {
-      return <RegisterWallet blockchain={contractData?.contract?.blockchain} />
-    }
+  // The wallet got an error. Show it to the user
+  if (walletError) return <pre className="text-red-600 text-sm font-bold">{walletError.message}</pre>
 
-    switch (wallet.state as WalletState) {
-      case 'UNVERIFIED':
-        // User has a wallet but it's not verified yet
-        return <VerifyWallet blockchain={contractData?.contract?.blockchain} />
-      case 'VERIFIED':
-        // The user has verified their wallet, but hasn't configured it yet
-        return <ConfigureWallet />
-      case 'READY':
-        // The user has verified their wallet, but hasn't configured it yet
-        return <>You wallet is ready!</>
-      default:
-        return <>{`Invalid wallet configuration: ${wallet.state}`}</>
-    }
-  }
+  console.log('wallet.state', wallet?.state)
 
-  return (
-    <WalletSetupBox
-      label={`You're all set up! Your wallet address is ${wallet?.address}`}
-      error={walletError}
-      isLoading={contractIsLoading || walletIsLoading}
-      onClick={() => {}}
-    />
-  )
+  // User doesn't have a wallet yet
+  if (!wallet?.address) return <RegisterWallet blockchain={contractData?.contract?.blockchain} />
+
+  // User has a wallet but it's not verified yet
+  if (wallet.state === enumWalletState.UNVERIFIED) return <VerifyWallet blockchain={contractData?.contract?.blockchain} />
+  
+  // The user has verified their wallet, but hasn't configured it yet
+  if (wallet.state === enumWalletState.VERIFIED) return <ConfigureWallet />
+  
+  // The user has configured their wallet, now they can mint
+  if (wallet.state === enumWalletState.READY)
+    return (
+      <WalletSetupBox
+        label={`You're all set up! Your wallet address is ${wallet?.address}`}
+        error={walletError}
+        isLoading={contractIsLoading || walletIsLoading}
+        onClick={() => {}}
+      />
+    )
+  
+  // We couldn't receive a valid wallet state. We either failed to create a wallet, is pending or the API is broken
+  return <>Wallet state: {wallet.state || ''}</>
 }
