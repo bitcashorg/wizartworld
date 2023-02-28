@@ -26,9 +26,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       setId: 'e9dd71f3-2882-4748-aeef-e4954088f70a',
       ...body,
     })
-    console.log('minted!', response)
+    console.log('minted!', response.createNFTModel)
     return res.send({
-      response,
+      data: response.createNFTModel,
     })
   } catch (error) {
     console.log({ error })

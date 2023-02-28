@@ -9,6 +9,7 @@ import {
 } from '~/services/niftory/niftory.service.type'
 
 export async function mintNFTModel(__args: { appId: string; id: string; quantity: string }) {
+  console.log('mintNFTModel', __args)
   return (await getBackendEndGraphQLClient()).mutation({
     mintNFTModel: {
       __args,

@@ -77,7 +77,15 @@ export function MintStep({ next }: WizardStepProps) {
         },
       }),
     })
-    console.log('res', res)
+
+    const res2 = await fetchJson<any>('/api/niftory/mint-nft-model', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: res.data.id,
+      }),
+    })
+
+    console.log('res2', res2)
 
     next()
   })
