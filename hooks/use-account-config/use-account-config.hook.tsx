@@ -18,11 +18,13 @@ export function useFlowAccountConfiguration() {
     return fcl.tx(txId).onceSealed()
   }, [cadenceScripts.configureAccountScript])
 
-  const [isAccountConfiguredState, execIsAccountConfigured] = useAsyncFn(async (address: string) =>
-    fcl.query({
-      cadence: cadenceScripts.isAccountConfiguredScript,
-      args: (arg, t) => [arg(address, t.Address)],
-    }),
+  const [isAccountConfiguredState, execIsAccountConfigured] = useAsyncFn(
+    async (address: string) =>
+      fcl.query({
+        cadence: cadenceScripts.isAccountConfiguredScript,
+        args: (arg, t) => [arg(address, t.Address)],
+      }),
+    [cadenceScripts.isAccountConfiguredScript],
   )
 
   const isLoading = cadenceScripts.isLoading || configurationState.loading

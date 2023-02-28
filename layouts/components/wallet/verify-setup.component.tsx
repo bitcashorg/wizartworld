@@ -1,8 +1,10 @@
+import { useEffect } from 'react'
 import { useAsync, useAsyncFn, useEffectOnce } from 'react-use'
 
 import * as fcl from '@onflow/fcl'
 
 import { Wallet, enumWalletState } from '~/graphql/generated/schema'
+import { useFlowUser } from '~/hooks/use-flow-user'
 import { getContract, getWallets } from '~/services/niftory/niftory-frontend.service'
 
 import { ConfigureWallet } from './configure-wallet.component'
@@ -11,6 +13,7 @@ import { VerifyWallet } from './veirify-wallet.component'
 import { WalletSetupBox } from './wallet-setup-box.component'
 
 export function WalletSetup() {
+  const flowUser = useFlowUser()
   const [getWalletsState, execGetWallets] = useAsyncFn(getWallets)
   const getContractState = useAsync(getContract)
   const isLoading = getWalletsState.loading || getContractState.loading
@@ -31,7 +34,16 @@ export function WalletSetup() {
 
   // The user has verified their wallet, but hasn't configured it yet
   if (wallet?.state === enumWalletState.VERIFIED)
-    return <ConfigureWallet callback={execGetWallets} />
+    return (
+      <ConfigureWallet
+        callback={() => {
+          console.log('[[[[[[[VERIFIED]]]]]]]]]')
+          setTimeout(() => {
+            execGetWallets()
+          }, 1000)
+        }}
+      />
+    )
 
   // The user has configured their wallet, now they can mint
   return (
