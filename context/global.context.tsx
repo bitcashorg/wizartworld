@@ -1,9 +1,20 @@
 import React from 'react'
 
-export const GlobalContext = React.createContext<GlobalState>({})
+type GlobalProvider = GlobalState & {
+  showSettings: boolean
+  toggleSettings: () => void
+}
+
+export const GlobalContext = React.createContext<GlobalProvider>({
+  showSettings: false,
+  toggleSettings: () => {},
+})
 
 export const GlobalContextProvider = ({ children, ...value }: GlobalContextProviderProps) => {
-  return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
+  const [showSettings, setShowSettings] = React.useState(false)
+  const toggleSettings = () => setShowSettings(!showSettings)
+  const providerValue = { ...value, toggleSettings, showSettings }
+  return <GlobalContext.Provider value={providerValue}>{children}</GlobalContext.Provider>
 }
 
 export function useGlobalContext() {

@@ -1,6 +1,7 @@
+import { NextComponentType, NextPageContext } from 'next'
 import { SessionProvider, useSession } from 'next-auth/react'
 import { ThemeProvider } from 'next-themes'
-import type { AppProps } from 'next/app'
+import { AppProps as NextAppProps } from 'next/app'
 import Head from 'next/head'
 import { useEffect } from 'react'
 
@@ -20,6 +21,14 @@ import '~/styles/line.css'
 import '~/styles/theme.css'
 import '~/styles/wizart-chat.css'
 
+export type ComponentWithAuth<P = {}> = NextComponentType<NextPageContext, any, P> & {
+  requireAuth?: boolean
+}
+
+type AppProps<P = {}> = NextAppProps<P> & {
+  Component: ComponentWithAuth
+}
+
 export default function MyApp({ Component, pageProps }: AppProps<any>) {
   return (
     <>
@@ -29,9 +38,11 @@ export default function MyApp({ Component, pageProps }: AppProps<any>) {
 
           <title>WizartWorld</title>
         </Head>
-        <SessionProvider session={pageProps.session}>
+
+        {/* Refetch session every hour since niftory tokens expire after 1 hour */}
+        <SessionProvider session={pageProps.session} refetchInterval={60 * 60}>
           <SessionSync />
-          <AuthProvider>
+          <AuthProvider requireAuth={Component.requireAuth}>
             <GlobalContextProvider>
               <RootLayout>
                 <OpenAIProvider>
