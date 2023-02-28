@@ -64,7 +64,7 @@ export function WalletSetup() {
         // The user has verified their wallet, but hasn't configured it yet
         return <>You wallet is ready!</>
       default:
-        return
+        return <>{`Invalid wallet configuration: ${wallet.state}`}</>
     }
   }
 
