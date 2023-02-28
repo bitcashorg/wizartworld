@@ -37,7 +37,7 @@ export function MintStep({ next }: WizardStepProps) {
       }),
     })
 
-    const response = await axios.put(file.data.url, blob, {
+    await axios.put(file.data.url, blob, {
       onUploadProgress({ loaded, total }) {
         console.log({ loaded, total })
         // setContentProgress(Math.round((loaded * 100) / total))
@@ -46,32 +46,42 @@ export function MintStep({ next }: WizardStepProps) {
         'Content-Type': blob.type,
       },
     })
-    console.log('response', response)
 
-    //     let posterFile = file
-    //     if (content.contentType === "video") {
-    //       posterFile = captureVideoFrame("upload-video", "png").blob
-    //     }
+    const res = await fetchJson<any>('/api/niftory/create-nft-model', {
+      method: 'POST',
+      body: JSON.stringify({
+        data: {
+          /** The user-friendly title for this model. This will be added to the blockchain metadata when an NFT is minted. */
+          title: data.title,
+          /** The user-friendly subtitle for this model. This will be added to the blockchain metadata when an NFT is minted. */
+          subtitle: data.title,
+          /** The user-friendly details about this model. This will be added to the blockchain metadata when an NFT is minted. */
+          description: data.description,
+          /** The total supply of NFTs that can be available for this model. This can be updated until the NFTModel is minted. */
+          quantity: 1,
 
-    //     await axios.put(poster?.url, posterFile, {
-    //       onUploadProgress({ loaded, total }) {
-    //         setPosterProgress(Math.round((loaded * 100) / total))
-    //       },
-    //       headers: {
-    //         "Content-Type": file.type,
-    //       },
-    //     })
+          /** The file content for this model. Either 'content' or 'contentId' must be specified. */
+          content: {
+            /** The ID of the [NFTFile]({{Types.NFTFile}}) content. This can be created using [createFileUploadUrl]({{Mutations.createFileUploadUrl}}). */
+            fileId: file.data.id,
+            /** The ID of the poster [File]({{Types.File}}). This can be created using [createFileUploadUrl]({{Mutations.createFileUploadUrl}}). */
+            posterId: file.data.id,
+          },
 
-    //     await onUpload(uploadNFTContent)
-    //   } catch {
-    //     setFilePreview(null)
-    //     toast.error("Uh Oh, there was an error uploading your media")
-    //   }
-    //   setPosterProgress(0)
-    //   setContentProgress(0)
-    //   setLoading(false)
+          /** Metadata that will be added to the blockchain for any NFTs minted from this model. */
+          metadata: {},
+          /** A mapping of attributes for this resource. These will be stored in the Niftory API but will not be added to the blockchain. */
+          attributes: {},
+          /** String labels to tag this [NFTModel]({{Types.NFTModel}}) with. These will be stored in the Niftory API but will not be added to the blockchain. */
+          tags: [''],
+        },
+      }),
+    })
+    console.log('res', res)
+
     next()
   })
+
   const [state, setState] = useSetState({})
 
   return (

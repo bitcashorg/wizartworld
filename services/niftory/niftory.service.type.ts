@@ -1,4 +1,4 @@
-import { CreateFileOptionsInput } from '~/graphql/generated'
+import { CreateFileOptionsInput, NFTModelCreateInput } from '~/graphql/generated'
 
 export interface CreateFileUploadUrlParams {
   /** A friendly name for the file. */
@@ -9,4 +9,10 @@ export interface CreateFileUploadUrlParams {
   appId: string
   /** File upload options, such as whether to upload to IPFS. */
   options?: CreateFileOptionsInput
+}
+
+export interface CreateNftModelParams {
+  appId: string
+  setId: string
+  data: NFTModelCreateInput
 }
