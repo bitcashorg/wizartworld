@@ -3,6 +3,7 @@ import React from 'react'
 
 import { WizartLogo } from '~/components/icons'
 
+import { Menu } from '../menu'
 import { ButtonThemeSwitcher } from './button-theme-switcher.component'
 import { NiftoryAuth } from './niftory-auth.component'
 
@@ -52,8 +53,9 @@ export function Header() {
         </Link>
 
         <div className="flex justify-end pt-1 gap-x-4 h-30">
-          <NiftoryAuth />
-          <ButtonThemeSwitcher />
+          {/* <NiftoryAuth />
+          <ButtonThemeSwitcher /> */}
+          <Menu />
         </div>
       </div>
     </header>
