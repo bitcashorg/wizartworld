@@ -11,7 +11,9 @@ export function NiftoryAuth() {
   if (session) {
     return (
       <div className="flex justify-end gap-4 pt-1 h-30 lg:pr-7">
-        <WalletSetup />
+        <div className="hidden md:block">
+          <WalletSetup />
+        </div>
         <Button onClick={() => signOut()} label=" Sign out" />
       </div>
     )
