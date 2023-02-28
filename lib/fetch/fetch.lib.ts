@@ -1,7 +1,4 @@
-export async function fetchJson<JSON = unknown>(
-  input: RequestInfo,
-  init?: RequestInit,
-): Promise<JSON> {
+export async function fetchJson<JSON = {}>(input: RequestInfo, init?: RequestInit): Promise<JSON> {
   const response = await fetch(input, init)
 
   // if the server replies, there's always some data in json

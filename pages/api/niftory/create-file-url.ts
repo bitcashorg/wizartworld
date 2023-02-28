@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from 'next-auth/next'
 
+import { CreateFileOptionsInput } from '~/graphql/generated'
 import { createFileUploadUrl } from '~/services/niftory'
 
 import { authOptions } from '../auth/[...nextauth]'
@@ -16,10 +17,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     console.log('minting ....')
-    // const response = await createFileUploadUrl({
-    //   appId: 'cleddmva00002mm0v9hs6quxd',
-    // })
-    // console.log('minted!', response)
+    const response = await createFileUploadUrl({
+      appId: 'cleddmva00002mm0v9hs6quxd',
+      name: 'string',
+      description: 'string',
+    })
+    console.log('minted!', response)
     return res.send({
       response: {},
     })
