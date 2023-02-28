@@ -12,6 +12,7 @@ export function ConfigureWallet() {
   const [executed, setExecuted] = React.useState(false)
 
   const {
+    data,
     post: readyWalletMutation,
     fulfilled,
     isLoading: isReadyWalletLoading,
@@ -26,12 +27,9 @@ export function ConfigureWallet() {
 
   // Once the wallet is configured, call the ready mutation to tell Niftory it's ready to receive NFTs
   useEffect(() => {
-    if (fulfilled || isFlowAccountConfigurationLoading || isReadyWalletLoading) return
-
-    if (!configured) {
+    if (fulfilled || isFlowAccountConfigurationLoading || isReadyWalletLoading || !configured) {
       return
     }
-
     readyWalletMutation({ address: flowUser?.addr || '' })
   }, [
     flowUser?.addr,
@@ -40,8 +38,6 @@ export function ConfigureWallet() {
     isFlowAccountConfigurationLoading,
     isReadyWalletLoading,
   ])
-
-  
 
   const isLoading = isFlowAccountConfigurationLoading || isReadyWalletLoading
 

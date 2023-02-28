@@ -57,7 +57,7 @@ export async function getSets() {
 
 export type ReadyWalletProps = { address: string }
 export async function readyWallet({ address }: ReadyWalletProps) {
-  return getFrontEndGraphQLClient().mutation({
+  return await getFrontEndGraphQLClient().mutation({
     readyWallet: {
       __args: { address },
       ...everything,
@@ -70,7 +70,7 @@ export type VerifyWalletProps = {
   signedVerificationCode: fcl.CompositeSignature[]
 }
 export async function verifyWallet({ address, signedVerificationCode }: VerifyWalletProps) {
-  return getFrontEndGraphQLClient().mutation({
+  return await getFrontEndGraphQLClient().mutation({
     verifyWallet: {
       __args: { address, signedVerificationCode },
       ...everything,

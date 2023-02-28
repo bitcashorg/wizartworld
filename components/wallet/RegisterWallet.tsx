@@ -15,13 +15,15 @@ interface Props {
 
 export function RegisterWallet({ blockchain }: Props) {
   const flowUser = useFlowUser()
-  const { post: registerWalletMutation, isLoading } = usePostData<RegisterWalletProps, any>(
-    registerWallet,
-  )
+  const {
+    post: registerWalletMutation,
+    isLoading,
+    fulfilled,
+  } = usePostData<RegisterWalletProps, any>(registerWallet)
 
   // When the user logs in, register their wallet. This is because we need to register after fcl.login and it doesn't return a promise.
   useEffect(() => {
-    if (blockchain !== 'FLOW' || !flowUser?.addr || isLoading) {
+    if (blockchain !== 'FLOW' || !flowUser?.addr || isLoading || fulfilled) {
       return
     }
     console.log('registering wallet', { address: flowUser.addr })
@@ -30,6 +32,7 @@ export function RegisterWallet({ blockchain }: Props) {
   }, [blockchain, flowUser?.addr, flowUser?.loggedIn, isLoading])
 
   const handleRegister = async () => {
+    console.log('blockchain', blockchain)
     switch (blockchain) {
       case 'FLOW': {
         await fcl.logIn()

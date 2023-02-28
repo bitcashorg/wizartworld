@@ -37,7 +37,9 @@ export function VerifyWallet({ blockchain }: Props) {
     switch (blockchain) {
       case 'FLOW':
         // Use FCL to sign the verification message
-        signature = await fcl.currentUser.signUserMessage(wallet?.verificationCode || '')
+        if (wallet?.verificationCode) {
+          signature = await fcl.currentUser.signUserMessage(wallet?.verificationCode)
+        }
         break
       case 'POLYGON': {
         // TODO: implement
@@ -54,7 +56,7 @@ export function VerifyWallet({ blockchain }: Props) {
       address: wallet?.address,
       signedVerificationCode: signature,
     })
-  }, [blockchain, wallet])
+  }, [blockchain, wallet, verifyWalletMutation])
 
   return (
     <WalletSetupBox

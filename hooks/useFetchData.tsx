@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { getWallets } from '~/services/niftory'
 
 type DependencyArray = readonly unknown[]
@@ -17,66 +18,62 @@ export function useFetchData<OutputType>(
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<Error | null>(null)
   const [fulfilled, setFulfilled] = useState(false)
-  const [executed, setExecuted] = useState(false)
+  // const [executed, setExecuted] = useState(false)
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true)
-      setError(null)
-      setFulfilled(false)
-      try {
-        const response = await fetchService()
+    setIsLoading(false)
+    setFulfilled(false)
+    fetchService()
+      .then((response: OutputType) => {
         setData(response)
         setIsLoading(false)
         setFulfilled(true)
-      } catch (error: unknown) {
+      })
+      .catch((error) => {
         if (error instanceof Error) {
           setError(error)
         } else {
           // handle non-Error objects, if necessary
           setError(new Error('An unknown error occurred'))
         }
-      } finally {
+      })
+      .finally(() => {
         setIsLoading(false)
-        setExecuted(true)
-      }
-    }
+      })
+  }, [fetchService, ...dependencies])
 
-    fetchData()
-  }, dependencies)
+  // useEffect(() => {
+  //   if (!executed) return
 
-  useEffect(() => {
-    if (!executed) return
+  //   // ? Can we refetch the data
+  //   const refetchWalletAfterMutationService = async () => {
+  //     setIsLoading(true)
 
-    // ? Can we refetch the data 
-    const refetchWalletAfterMutationService = async () => {
-      setIsLoading(true)
+  //     try {
+  //       // Getting wallets to reFetch the wallet data
+  //       const response = await getWallets()
 
-      try {
-        // Getting wallets to reFetch the wallet data
-        const response = await getWallets()
+  //       if (!response?.wallet) throw new Error('No wallet found.')
 
-        if (!response?.wallet) throw new Error('No wallet found.')
+  //       // @ts-ignore
+  //       setData(response.wallet)
+  //       setIsLoading(false)
+  //       setFulfilled(true)
+  //     } catch (error: unknown) {
+  //       if (error instanceof Error) {
+  //         setError(error)
+  //       } else {
+  //         // handle non-Error objects, if necessary
+  //         setError(new Error('An unknown error occurred'))
+  //       }
+  //     } finally {
+  //       setIsLoading(false)
+  //       setExecuted(true)
+  //     }
+  //   }
 
-        // @ts-ignore
-        setData(response.wallet)
-        setIsLoading(false)
-        setFulfilled(true)
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          setError(error)
-        } else {
-          // handle non-Error objects, if necessary
-          setError(new Error('An unknown error occurred'))
-        }
-      } finally {
-        setIsLoading(false)
-        setExecuted(true)
-      }
-    }
-
-    refetchWalletAfterMutationService()
-  }, [executed])
+  //   refetchWalletAfterMutationService()
+  // }, [executed])
 
   return { data, isLoading, error, fulfilled }
 }
