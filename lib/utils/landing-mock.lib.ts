@@ -167,20 +167,16 @@ export const gallery = [
         asset: '/images/nft/doodles-fan-nft11.png',
         avatar: '/images/avatars/doodles-profile2.png',
       },
+      {
+        asset: '/images/nft/doodles-fan-nft11.png',
+        avatar: '/images/avatars/doodles-profile3.png',
+      },
     ]
   },
   {
     title: '',
     icon: '/images/top-shot-logo.png',
     items: [
-      {
-        asset: '/images/nft/nba-fan-nft1.png',
-        avatar: '/images/avatars/ballerz-profile1.png',
-      },
-      {
-        asset: '/images/nft/nba-fan-nft2.png',
-        avatar: '/images/avatars/flovatar-profile3.png',
-      },
       {
         asset: '/images/nft/nba-fan-nft3.png',
         avatar: '/images/avatars/flovatar-profile2.png',
@@ -488,6 +484,10 @@ export const gallery = [
       {
         asset: '/images/nft/evolution-fan-nft15.png',
         avatar: '/images/avatars/ballerz-profile2.png',
+      },
+      {
+        asset: '/images/nft/evolution-fan-nft16.png',
+        avatar: '/images/avatars/ballerz-profile1.png',
       },
     ]
   },

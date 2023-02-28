@@ -50,10 +50,10 @@ export function Header() {
           <WizartLogo className="filter invert dark:invert-0" />
         </Link>
 
-        <ButtonThemeSwitcher />
 
-        <div className="flex justify-end pt-1 h-30 lg:pr-7">
+        <div className="flex gap-x-4 justify-end pt-1 h-30">
           <NiftoryAuth />
+          <ButtonThemeSwitcher />
         </div>
       </div>
     </header>

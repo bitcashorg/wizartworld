@@ -276,7 +276,7 @@ export default function Home() {
             role="tabpanel"
           >
             {gallery.map((collection, index) => (
-              <div key={index}>
+              <div key={index} className="pt-7">
                 <h3 className="flex items-center gap-3 mt-10 mb-6 text-3xl font-semibold capitalize sm:gap-5 flex-nowrap md:text-4xl">
                   {collection.title}
                   {collection.icon ? (
