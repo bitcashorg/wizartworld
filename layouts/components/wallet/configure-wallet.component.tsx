@@ -37,7 +37,7 @@ export function ConfigureWallet({ callback }: { callback: () => void }) {
 
   return (
     <WalletSetupBox
-      isLoading={state.loading}
+      isLoading={state.loading || isFlowAccountConfigurationLoading}
       error={state.error}
       label={'Configure your wallet to receive NFTs.'}
       onClick={configure}
