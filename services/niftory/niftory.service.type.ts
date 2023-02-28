@@ -1,3 +1,5 @@
+import * as fcl from '@onflow/fcl'
+
 import { CreateFileOptionsInput, NFTModelCreateInput } from '~/graphql/generated'
 
 export interface CreateFileUploadUrlParams {
@@ -15,4 +17,9 @@ export interface CreateNftModelParams {
   appId: string
   setId: string
   data: NFTModelCreateInput
+}
+
+export type VerifyWalletProps = {
+  address: string
+  signedVerificationCode: fcl.CompositeSignature[]
 }

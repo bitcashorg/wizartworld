@@ -1,7 +1,8 @@
 import { everything } from '@genql/runtime'
-import * as fcl from '@onflow/fcl'
 
 import { getFrontEndGraphQLClient } from '~/graphql/frontend-client'
+
+import { VerifyWalletProps } from './niftory.service.type'
 
 export type RegisterWalletProps = { address: string }
 export async function registerWallet({ address }: RegisterWalletProps) {
@@ -55,8 +56,7 @@ export async function getSets() {
   })
 }
 
-export type ReadyWalletProps = { address: string }
-export async function readyWallet({ address }: ReadyWalletProps) {
+export async function readyWallet({ address }: { address: string }) {
   return getFrontEndGraphQLClient().mutation({
     readyWallet: {
       __args: { address },
@@ -65,10 +65,6 @@ export async function readyWallet({ address }: ReadyWalletProps) {
   })
 }
 
-export type VerifyWalletProps = {
-  address: string
-  signedVerificationCode: fcl.CompositeSignature[]
-}
 export async function verifyWallet({ address, signedVerificationCode }: VerifyWalletProps) {
   return getFrontEndGraphQLClient().mutation({
     verifyWallet: {
