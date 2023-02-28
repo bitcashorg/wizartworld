@@ -2,14 +2,12 @@ import { W, w } from 'windstitch'
 
 import { t } from '~/lib/styles'
 
-interface TextProps {}
-
-const TextStyled = w.button(t``, {
+export const Text = w.button(t`font-bold `, {
   variants: {
     variant: {
-      'display-1': t`font-bold text-2xl`,
-      info: t`font-bold text-sm`,
-      loading: t`font-bold text-2xl text-black`,
+      'display-1': t`text-2xl`,
+      info: t`text-sm`,
+      loading: t`text-2xl text-black`,
     },
   },
   defaultVariants: {
@@ -17,16 +15,4 @@ const TextStyled = w.button(t``, {
   },
 })
 
-type TextStyledProps = W.Infer<typeof TextStyled>
-
-export const Text: React.FC<React.ComponentPropsWithoutRef<'p'> & TextStyledProps & TextProps> = ({
-  variant,
-  children,
-  ...props
-}) => {
-  return (
-    <TextStyled variant={variant} {...props}>
-      {children}
-    </TextStyled>
-  )
-}
+export type TextProps = W.Infer<typeof Text>

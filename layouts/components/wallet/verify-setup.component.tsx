@@ -25,9 +25,8 @@ export function WalletSetup() {
   const [getWalletsState, execGetWallets] = useAsyncFn(getWallets)
   const getContractState = useAsync(getContract)
   const isLoading = getWalletsState.loading || getContractState.loading
-
+  const error = getWalletsState.error || getContractState.error
   const wallet = getWalletsState.value?.wallet
-
   console.log('💰 wallet', wallet)
 
   useEffectOnce(() => {
@@ -35,23 +34,23 @@ export function WalletSetup() {
   })
 
   // User doesn't have a wallet yet
-  if (!wallet?.address) return <RegisterWallet callback={execGetWallets} />
+  if (!wallet?.address && !isLoading) return <RegisterWallet callback={execGetWallets} />
 
   // User has a wallet but it's not verified yet
-  if (wallet.state === enumWalletState.UNVERIFIED) return <VerifyWallet callback={execGetWallets} />
+  if (wallet?.state === enumWalletState.UNVERIFIED)
+    return <VerifyWallet callback={execGetWallets} />
 
   // The user has verified their wallet, but hasn't configured it yet
-  if (wallet.state === enumWalletState.VERIFIED)
+  if (wallet?.state === enumWalletState.VERIFIED)
     return <ConfigureWallet callback={execGetWallets} />
 
   // The user has configured their wallet, now they can mint
-  if (wallet.state === enumWalletState.READY)
-    return (
-      <WalletSetupBox
-        label={`You're are set up! Address is ${wallet?.address}`}
-        error={getWalletsState.error}
-        isLoading={isLoading}
-        onClick={execGetWallets}
-      />
-    )
+  return (
+    <WalletSetupBox
+      label={`You're are set up! Address is ${wallet?.address}`}
+      error={error}
+      isLoading={isLoading}
+      onClick={execGetWallets}
+    />
+  )
 }

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useAsyncFn } from 'react-use'
 
-import { useFlowAccountConfiguration } from '~/hooks/use-account-config/use-account-config.hook'
-import { useFlowUser } from '~/hooks/use-flow-user/use-flow-user.hook'
+import { useFlowAccountConfiguration } from '~/hooks/use-account-config'
+import { useFlowUser } from '~/hooks/use-flow-user'
 import { readyWallet } from '~/services/niftory'
 
 import { WalletSetupBox } from './wallet-setup-box.component'
@@ -37,10 +37,10 @@ export function ConfigureWallet({ callback }: { callback: () => void }) {
 
   return (
     <WalletSetupBox
-      label={'Now we need to configure your wallet to receive NFTs.'}
-      onClick={configure}
       isLoading={state.loading}
       error={state.error}
+      label={'Now we need to configure your wallet to receive NFTs.'}
+      onClick={configure}
     />
   )
 }
