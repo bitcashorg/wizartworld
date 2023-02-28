@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { getWallets } from '~/services/niftory'
 
 type DependencyArray = readonly unknown[]
 interface ResponseType<OutputType> {
@@ -16,6 +17,7 @@ export function useFetchData<OutputType>(
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<Error | null>(null)
   const [fulfilled, setFulfilled] = useState(false)
+  const [executed, setExecuted] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,10 +38,45 @@ export function useFetchData<OutputType>(
         }
       } finally {
         setIsLoading(false)
+        setExecuted(true)
       }
     }
+
     fetchData()
-  }, [dependencies])
+  }, dependencies)
+
+  useEffect(() => {
+    if (!executed) return
+
+    // ? Can we refetch the data 
+    const refetchWalletAfterMutationService = async () => {
+      setIsLoading(true)
+
+      try {
+        // Getting wallets to reFetch the wallet data
+        const response = await getWallets()
+
+        if (!response?.wallet) throw new Error('No wallet found.')
+
+        // @ts-ignore
+        setData(response.wallet)
+        setIsLoading(false)
+        setFulfilled(true)
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setError(error)
+        } else {
+          // handle non-Error objects, if necessary
+          setError(new Error('An unknown error occurred'))
+        }
+      } finally {
+        setIsLoading(false)
+        setExecuted(true)
+      }
+    }
+
+    refetchWalletAfterMutationService()
+  }, [executed])
 
   return { data, isLoading, error, fulfilled }
 }

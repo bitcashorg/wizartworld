@@ -32,10 +32,7 @@ export function ConfigureWallet() {
       return
     }
 
-    if (!executed) {
-      readyWalletMutation({ address: flowUser?.addr || '' })
-      setExecuted(true)
-    }
+    readyWalletMutation({ address: flowUser?.addr || '' })
   }, [
     flowUser?.addr,
     configured,
@@ -43,6 +40,8 @@ export function ConfigureWallet() {
     isFlowAccountConfigurationLoading,
     isReadyWalletLoading,
   ])
+
+  
 
   const isLoading = isFlowAccountConfigurationLoading || isReadyWalletLoading
 

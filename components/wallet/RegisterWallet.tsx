@@ -15,7 +15,6 @@ interface Props {
 
 export function RegisterWallet({ blockchain }: Props) {
   const flowUser = useFlowUser()
-  const [executed, setExecuted] = React.useState(false)
   const { post: registerWalletMutation, isLoading } = usePostData<RegisterWalletProps, any>(
     registerWallet,
   )
@@ -27,16 +26,13 @@ export function RegisterWallet({ blockchain }: Props) {
     }
     console.log('registering wallet', { address: flowUser.addr })
 
-    if (!executed) {
-      registerWalletMutation({ address: flowUser.addr })
-      setExecuted(true)
-    }
+    registerWalletMutation({ address: flowUser.addr })
   }, [blockchain, flowUser?.addr, flowUser?.loggedIn, isLoading])
 
   const handleRegister = async () => {
     switch (blockchain) {
       case 'FLOW': {
-        fcl.logIn()
+        await fcl.logIn()
         break
       }
     }
