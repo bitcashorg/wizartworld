@@ -53,9 +53,8 @@ export function Header() {
         </Link>
 
         <div className="flex justify-end pt-1 gap-x-4 h-30">
-          {/* <NiftoryAuth />
-          <ButtonThemeSwitcher /> */}
-          <Menu />
+          <NiftoryAuth />
+          <ButtonThemeSwitcher />
         </div>
       </div>
     </header>
