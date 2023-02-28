@@ -1,4 +1,5 @@
 import axios from 'axios'
+import JSConfetti from 'js-confetti'
 import { useForm } from 'react-hook-form'
 import { useAsyncFn, useSetState } from 'react-use'
 
@@ -18,8 +19,9 @@ export function MintStep({ next }: WizardStepProps) {
   const { handleSubmit, register } = useForm<MintFormProps>({
     defaultValues: { description: prediction?.input.prompt || '' },
   })
+  const [state, setState] = useSetState({ isMinted: false })
 
-  const [onSubmitState, onSubmit] = useAsyncFn(async (data: MintFormProps) => {
+  const [submitState, onSubmit] = useAsyncFn(async (data: MintFormProps) => {
     const image = prediction && prediction.output[prediction.output.length - 1]
     if (!image) return
 
@@ -78,19 +80,25 @@ export function MintStep({ next }: WizardStepProps) {
       }),
     })
 
-    const res2 = await fetchJson<any>('/api/niftory/mint-nft-model', {
+    await fetchJson<any>('/api/niftory/mint-nft-model', {
       method: 'POST',
       body: JSON.stringify({
         id: res.data.id,
       }),
     })
 
-    console.log('res2', res2)
+    setState({ isMinted: true })
 
-    next()
+    const jsConfetti = new JSConfetti()
+
+    jsConfetti
+      .addConfetti({
+        // emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
+      })
+      .then(() => jsConfetti.clearCanvas())
+
+    // next()
   })
-
-  const [state, setState] = useSetState({})
 
   return (
     <div className="wizard-step-wrapper">
@@ -98,35 +106,44 @@ export function MintStep({ next }: WizardStepProps) {
       <HomeWizardPageTransition>
         <div className="flex-1 px-6 wizard-step__content-wrapper">
           <div className="flex content-center w-full px-8 py-6">
-            <Form>
-              <div className="flex flex-col gap-6">
-                <TextInput
-                  id="title"
-                  placeholder="Name your piece..."
-                  formProps={{
-                    ...register('title', { required: true }),
-                  }}
-                />
-                <TextInput
-                  id="description"
-                  placeholder="Collection..."
-                  formProps={{
-                    ...register('description', { required: true }),
-                  }}
-                />
-              </div>
-            </Form>
+            {!state.isMinted ? (
+              <Form>
+                <div className="flex flex-col gap-6">
+                  <TextInput
+                    id="title"
+                    placeholder="Name your piece..."
+                    formProps={{
+                      ...register('title', { required: true }),
+                    }}
+                  />
+                  <TextInput
+                    id="description"
+                    placeholder="Collection..."
+                    formProps={{
+                      ...register('description', { required: true }),
+                    }}
+                  />
+                </div>
+              </Form>
+            ) : (
+              <h2>NFT successfully minted! 🥳</h2>
+            )}
           </div>
           <div className="flex content-center w-full">
             <NFTPreview />
           </div>
           <div className="w-full py-8">
-            <Button
-              onClick={handleSubmit(onSubmit)}
-              variant="primary"
-              size="lg"
-              label="Create & Mint NFT"
-            />
+            {state.isMinted ? (
+              <Button label="Next" onClick={next} variant="primary" size="lg" />
+            ) : (
+              <Button
+                onClick={handleSubmit(onSubmit)}
+                disabled={submitState.loading}
+                variant="primary"
+                size="lg"
+                label={submitState.loading ? 'Minting your NFT ...' : 'Create & Mint NFT'}
+              />
+            )}
           </div>
         </div>
       </HomeWizardPageTransition>
