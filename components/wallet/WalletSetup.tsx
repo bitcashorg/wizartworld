@@ -46,7 +46,7 @@ export function WalletSetup() {
 
   const wallet = walletData?.wallet
 
-  if (!walletError && !walletIsLoading) {
+  if (!walletError) {
     console.log('wallet.state', wallet?.state)
     // User doesn't have a wallet yet
     if (!wallet?.address) {
