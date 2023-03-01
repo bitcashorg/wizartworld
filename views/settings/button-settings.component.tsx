@@ -5,14 +5,21 @@ import { useGlobalContext } from '~/context/global.context'
 
 export const ButtonSettings = () => {
   const { toggleSettings } = useGlobalContext()
+
   return (
-    <Button
-      variant="transparent"
-      border="sm"
-      className="w-12 h-12 rounded-full"
+    <svg
+      fill="currentcolor"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="flex self-center w-12 h-12"
       onClick={toggleSettings}
     >
-      <i className="uil uil-setting text-[26px] text-green-900 dark:text-green-50"></i>
-    </Button>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+      />
+    </svg>
   )
 }
